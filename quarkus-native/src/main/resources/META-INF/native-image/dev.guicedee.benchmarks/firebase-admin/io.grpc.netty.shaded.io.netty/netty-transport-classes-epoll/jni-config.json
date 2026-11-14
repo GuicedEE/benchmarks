@@ -1,0 +1,237 @@
+[
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.ChannelException"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.DefaultFileRegion",
+    "allDeclaredFields": true
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.LinuxSocket"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.NativeDatagramPacketArray$NativeDatagramPacket",
+    "allDeclaredFields": true
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.NativeStaticallyReferencedJniMethods"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.unix.Buffer"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.unix.DatagramSocketAddress",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "byte[]",
+          "int",
+          "int",
+          "int",
+          "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.unix.DatagramSocketAddress"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.unix.DomainDatagramSocketAddress",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "byte[]",
+          "int",
+          "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.unix.DomainDatagramSocketAddress"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.unix.ErrorsStaticallyReferencedJniMethods"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.unix.FileDescriptor"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.unix.LimitsStaticallyReferencedJniMethods"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.unix.PeerCredentials",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "int",
+          "int[]"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.unix.Socket"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "java.io.FileDescriptor",
+    "fields": [
+      {
+        "name": "fd"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "java.io.IOException"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "java.lang.Boolean",
+    "methods": [
+      {
+        "name": "getBoolean",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "java.lang.OutOfMemoryError"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "java.lang.RuntimeException"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "java.net.InetSocketAddress",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.String",
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "java.net.PortUnreachableException"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "java.nio.Buffer",
+    "fields": [
+      {
+        "name": "limit"
+      },
+      {
+        "name": "position"
+      }
+    ],
+    "methods": [
+      {
+        "name": "limit",
+        "parameterTypes": []
+      },
+      {
+        "name": "position",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "java.nio.DirectByteBuffer"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "java.nio.channels.ClosedChannelException",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.channel.epoll.Native"
+    },
+    "name": "sun.nio.ch.FileChannelImpl",
+    "fields": [
+      {
+        "name": "fd"
+      }
+    ]
+  }
+]

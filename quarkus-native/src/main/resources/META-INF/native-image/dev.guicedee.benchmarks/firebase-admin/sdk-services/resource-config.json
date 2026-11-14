@@ -1,0 +1,66 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\QMETA-INF/services/javax.xml.stream.XMLEventFactory\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.com.fasterxml.jackson.databind.Module\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.ctc.wstx.shaded.msv.relaxng_datatype.DatatypeLibraryFactory\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/java.time.chrono.Chronology\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.io.grpc.NameResolverProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.org.codehaus.stax2.validation.XMLValidationSchemaFactory.relaxng\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.io.grpc.ServerProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.com.fasterxml.jackson.core.JsonFactory\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.org.codehaus.stax2.validation.XMLValidationSchemaFactory.dtd\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/javax.xml.stream.XMLOutputFactory\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/reactor.blockhound.integration.BlockHoundIntegration\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.org.threeten.bp.zone.ZoneRulesProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.org.codehaus.stax2.validation.XMLValidationSchemaFactory\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.com.fasterxml.jackson.core.ObjectCodec\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/javax.xml.stream.XMLInputFactory\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.org.codehaus.stax2.validation.XMLValidationSchemaFactory.w3c\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.io.grpc.ManagedChannelProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.io.opentelemetry.sdk.autoconfigure.spi.ResourceProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.io.grpc.xds.XdsCredentialsProvider\\E"
+      }
+    ]
+  }
+}

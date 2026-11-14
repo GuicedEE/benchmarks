@@ -1,0 +1,37 @@
+{
+  "framework": "guicedee",
+  "run": 1,
+  "checks": {},
+  "samples": [],
+  "launch": [
+    "-Xms128m",
+    "-Xmx384m",
+    "-XX:ActiveProcessorCount=2",
+    "-cp",
+    "/app/app.jar:/app/lib/*",
+    "bench.guicedee.Main"
+  ],
+  "error": "Application exited 1; see guicedee-1.log",
+  "eligible": false,
+  "container": {
+    "image": "sha256:35512d5307f6c1435c8a806f4c9878f3d1dc4f1fd6312ae2d67e452caaf742bb",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 1,
+      "Error": "",
+      "StartedAt": "2026-11-14T08:40:38.954470113Z",
+      "FinishedAt": "2026-11-14T08:40:43.349877213Z"
+    },
+    "nanoCpus": 250000000,
+    "memoryBytes": 524288000,
+    "memorySwapBytes": 524288000
+  },
+  "containerStats": "",
+  "upstreamEvents": []
+}

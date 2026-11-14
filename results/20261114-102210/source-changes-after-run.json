@@ -1,0 +1,17 @@
+[
+  {
+    "path": "pom.xml",
+    "atRun": "1dc73c704fc96c06f9b8df3daa5717926740006a3598c330e3313c0059ecdc7c",
+    "now": "1d83e1145a8956a8fe206abfdf35f3e09e58e669387d7cafc025cbc777ee3196"
+  },
+  {
+    "path": "tools\\compare.py",
+    "atRun": "789cf2f90cc7d6a1d1fd817ad812fc528d20f87bc190823662a8025b4cc82ac9",
+    "now": "db9c3fcfd3ecb1e1a5e9cd93272500c027438abfb19f2970cf037ef61646c67c"
+  },
+  {
+    "path": "guicedee\\src\\main\\java\\bench\\guicedee\\Service.java",
+    "atRun": "d34df1ad85a30e4a3be29d1416cd8e4930ad4e2926c2f90ef3e247df7b79bee1",
+    "now": "53ce43c6f06d5465976e5ced6665b2a81081f26a74c83bbe2a624e8bf2f25177"
+  }
+]

@@ -1,0 +1,871 @@
+{
+  "framework": "guicedee",
+  "variant": "guicedee-native",
+  "discovery": "spi",
+  "runtime": "native",
+  "run": 7,
+  "checks": {
+    "business": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "available": 40,
+          "project": "Fixture shop",
+          "total": 250,
+          "sku": "fixture",
+          "quantity": 2
+        }
+      }
+    },
+    "vendorSdkOAuth": {
+      "passed": true,
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/oauth/token",
+          "status": 200
+        }
+      ]
+    },
+    "vendorSdkRest": {
+      "passed": true,
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/benchmark",
+          "status": 200
+        }
+      ]
+    },
+    "graphqlClient": {
+      "passed": true,
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/benchmark/graphql",
+          "status": 200
+        }
+      ]
+    },
+    "optionalPrimitiveQuery": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "available": 40,
+          "project": "Fixture shop",
+          "total": 250,
+          "sku": "fixture",
+          "quantity": 2
+        }
+      }
+    },
+    "validationError": {
+      "passed": true,
+      "observed": {
+        "status": 400,
+        "body": {
+          "error": {
+            "status": 400,
+            "code": "INVALID_ORDER"
+          }
+        }
+      }
+    },
+    "malformedJson": {
+      "passed": true,
+      "observed": {
+        "status": 400,
+        "body": {
+          "error": {
+            "status": 400,
+            "code": "INVALID_ORDER"
+          }
+        }
+      }
+    },
+    "unsupportedMedia": {
+      "passed": true,
+      "observed": {
+        "status": 415,
+        "body": "Unsupported Media Type"
+      }
+    },
+    "reactiveRetry": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "result": "ok"
+        },
+        "attempts": 3
+      }
+    },
+    "retryExhaustion": {
+      "passed": true,
+      "observed": {
+        "status": 502,
+        "body": {
+          "error": {
+            "status": 502,
+            "code": "UPSTREAM_FAILURE"
+          }
+        },
+        "attempts": 3
+      }
+    },
+    "reactiveTimeout": {
+      "passed": true,
+      "observed": {
+        "status": 504,
+        "body": {
+          "error": {
+            "status": 504,
+            "code": "UPSTREAM_TIMEOUT"
+          }
+        },
+        "elapsedMs": 52.288200000475626,
+        "concurrentReadyMs": 1.5625999949406832
+      }
+    },
+    "metrics": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "before": {
+          "benchmark_quotes": 2.0
+        },
+        "after": {
+          "benchmark_quotes": 3.0
+        }
+      }
+    },
+    "openapi": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "paths": [
+          "/firebase/{id}",
+          "/quote",
+          "/ready",
+          "/retry/{id}",
+          "/timeout"
+        ]
+      }
+    },
+    "swagger": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "assets": {
+          "swagger-ui-bundle.js": {
+            "status": 200,
+            "contentLength": 1525473,
+            "valid": true
+          },
+          "swagger-ui.css": {
+            "status": 200,
+            "contentLength": 178976,
+            "valid": true
+          }
+        }
+      }
+    },
+    "firebaseFirestore": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "sku": "fixture",
+          "id": "guicedee-native-7",
+          "total": 250
+        }
+      }
+    }
+  },
+  "samples": [
+    {
+      "ms": 5.501100000401493,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 5.338799994206056,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 18.862700002500787,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 29.449499998008832,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.451000000699423,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.545499999949243,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 21.551199999521486,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.6398000049521215,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 27.29679999902146,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.489500002819113,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.530799997155555,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.825900003197603,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.261199996108189,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.0942000050563365,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.753199995320756,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.445099999429658,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.010100004961714,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.285800001525786,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.213399995933287,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.126899999391753,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.006400005891919,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 23.86090000072727,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.411999994772486,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 22.623700002441183,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.37919999967562,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.12000000505941,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 3.8996000002953224,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.397199998493306,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.442800003744196,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 4.452100001799408,
+      "ok": true,
+      "status": 200
+    }
+  ],
+  "runtimeFlags": [
+    "-Xms128m",
+    "-Xmx384m",
+    "-XX:ActiveProcessorCount=2"
+  ],
+  "jvmFlags": [],
+  "jvmFlagsSource": "not-applicable",
+  "launch": [
+    "/app/application",
+    "-Xms128m",
+    "-Xmx384m",
+    "-XX:ActiveProcessorCount=2"
+  ],
+  "dependencyMode": "wrapped",
+  "launchToReadyMs": 517.5952999998117,
+  "firstBusinessStatus": 200,
+  "firstBusinessMs": 67.63450000289595,
+  "launchToFirstBusinessMs": 585.2731000049971,
+  "firstOpenApiJsonMs": 3.3642000053077936,
+  "warm": {
+    "p50Ms": 4.451550001249416,
+    "p95Ms": 23.86090000072727,
+    "p99Ms": 27.29679999902146,
+    "failures": 0,
+    "requests": 30,
+    "concurrency": 1
+  },
+  "eligible": true,
+  "container": {
+    "image": "sha256:79b8987c62a9eee01a6592332310c714031d75c986a98319a5f77ae9dcdb0868",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 20165,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-14T21:20:34.443566087Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "nanoCpus": 250000000,
+    "memoryBytes": 524288000,
+    "memorySwapBytes": 524288000
+  },
+  "containerStats": "usage_usec 231401\nuser_usec 117883\nsystem_usec 113517\nnr_periods 11\nnr_throttled 6\nthrottled_usec 250866\nnr_bursts 0\nburst_usec 0\n83611648\n80023552\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+  "discoveryEvidence": {
+    "classGraphInitialized": false,
+    "verticleDeployments": {
+      "bench.guicedee.rest": true,
+      "bench.guicedee.service": true
+    },
+    "verified": true,
+    "logLines": [
+      "[2026-11-14 21:20:34.650] [c.g.v.s.VerticleBuilder                 ] [-application-startup] [INFO ] - \ud83d\ude80 Deploying Verticle: bench.guicedee.rest - workerPool=bench-guicedee-rest",
+      "[2026-11-14 21:20:34.726] [c.g.v.s.VerticleBuilder                 ] [-application-startup] [INFO ] - \ud83d\ude80 Deploying Verticle: bench.guicedee.service - workerPool=bench-guicedee-service"
+    ]
+  },
+  "upstreamEvents": [
+    {
+      "method": "POST",
+      "path": "/oauth/token",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/guicedee-native-7",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/guicedee-native-7",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/guicedee-native-7",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/always",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/always",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/always",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/slow",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    }
+  ]
+}

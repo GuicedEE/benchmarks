@@ -1,0 +1,4 @@
+# Source and result provenance records byte hashes. Preserve original bytes on every platform.
+* -text whitespace=cr-at-eol
+# Native build scripts must remain executable by Linux shells.
+*.sh text eol=lf

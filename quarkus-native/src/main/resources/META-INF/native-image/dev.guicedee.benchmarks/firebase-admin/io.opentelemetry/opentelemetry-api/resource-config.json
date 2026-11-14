@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\Qcom/google/firebase/internal/shaded/io/opentelemetry/api/version/properties\\E"
+      }
+    ]
+  },
+  "bundles": []
+}

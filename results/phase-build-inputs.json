@@ -1,0 +1,18 @@
+{
+  "injectJarSha256": "2d53d75a4851830094a7f54bf6b1c196f6172e67a7b1065ff9018e54a1cf342c",
+  "frameworkSources": [
+    {
+      "path": "GuicedEE/inject/src/main/java/com/guicedee/guicedinjection/GuiceApplication.java",
+      "sha256": "8558d406f0afb1685fa6dfb2daa45f3a310c318abde3eb69077a13092b1ceb95"
+    },
+    {
+      "path": "GuicedEE/inject/src/main/java/com/guicedee/guicedinjection/GuiceContext.java",
+      "sha256": "1b5f7da7ad16fad46f90c76a04840f470aaa5736ff6e2bf6a07092b39621d3db"
+    },
+    {
+      "path": "GuicedEE/inject/src/main/java/com/guicedee/guicedinjection/StartupDiagnostics.java",
+      "sha256": "4bbb606e318e6e4aaeb5f2d9fc94ad47c8359f88157597fcc5c7063bb3b655bc"
+    }
+  ],
+  "sdkArtifactsMatchPreviousNativeComparison": true
+}

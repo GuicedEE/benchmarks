@@ -1,0 +1,4274 @@
+[
+  {
+    "name": "com.google.api.BatchingConfigProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.BatchingConfigProto"
+    }
+  },
+  {
+    "name": "com.google.api.BatchingConfigProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.BatchingConfigProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.BatchingDescriptorProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.BatchingDescriptorProto"
+    }
+  },
+  {
+    "name": "com.google.api.BatchingDescriptorProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.BatchingDescriptorProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.BatchingSettingsProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.BatchingSettingsProto"
+    }
+  },
+  {
+    "name": "com.google.api.BatchingSettingsProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.BatchingSettingsProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.ClientLibraryDestination",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.ClientLibraryDestination"
+    }
+  },
+  {
+    "name": "com.google.api.ClientLibraryOrganization",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.ClientLibraryOrganization"
+    }
+  },
+  {
+    "name": "com.google.api.ClientLibrarySettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.ClientLibrarySettings"
+    }
+  },
+  {
+    "name": "com.google.api.ClientLibrarySettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.ClientLibrarySettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.CommonLanguageSettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.CommonLanguageSettings"
+    }
+  },
+  {
+    "name": "com.google.api.CommonLanguageSettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.CommonLanguageSettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.CppSettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.CppSettings"
+    }
+  },
+  {
+    "name": "com.google.api.CppSettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.CppSettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.CustomHttpPattern",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.CustomHttpPattern"
+    }
+  },
+  {
+    "name": "com.google.api.CustomHttpPattern$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.CustomHttpPattern$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.DotnetSettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.DotnetSettings"
+    }
+  },
+  {
+    "name": "com.google.api.DotnetSettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.DotnetSettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.FieldBehavior",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.FieldBehavior"
+    }
+  },
+  {
+    "name": "com.google.api.FlowControlLimitExceededBehaviorProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.FlowControlLimitExceededBehaviorProto"
+    }
+  },
+  {
+    "name": "com.google.api.GoSettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.GoSettings"
+    }
+  },
+  {
+    "name": "com.google.api.GoSettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.GoSettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.Http",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.Http"
+    }
+  },
+  {
+    "name": "com.google.api.Http$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.Http$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.HttpRule",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.HttpRule"
+    }
+  },
+  {
+    "name": "com.google.api.HttpRule$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.HttpRule$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.JavaSettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.JavaSettings"
+    }
+  },
+  {
+    "name": "com.google.api.JavaSettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.JavaSettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.LaunchStage",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.LaunchStage"
+    }
+  },
+  {
+    "name": "com.google.api.MethodSettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.MethodSettings"
+    }
+  },
+  {
+    "name": "com.google.api.MethodSettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.MethodSettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.MethodSettings$LongRunning",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.MethodSettings$LongRunning"
+    }
+  },
+  {
+    "name": "com.google.api.MethodSettings$LongRunning$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.MethodSettings$LongRunning$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.NodeSettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.NodeSettings"
+    }
+  },
+  {
+    "name": "com.google.api.NodeSettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.NodeSettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.PhpSettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.PhpSettings"
+    }
+  },
+  {
+    "name": "com.google.api.PhpSettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.PhpSettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.Publishing",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.Publishing"
+    }
+  },
+  {
+    "name": "com.google.api.Publishing$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.Publishing$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.PythonSettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.PythonSettings"
+    }
+  },
+  {
+    "name": "com.google.api.PythonSettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.PythonSettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.PythonSettings$ExperimentalFeatures",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.PythonSettings$ExperimentalFeatures"
+    }
+  },
+  {
+    "name": "com.google.api.PythonSettings$ExperimentalFeatures$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.PythonSettings$ExperimentalFeatures$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.ResourceDescriptor",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.ResourceDescriptor"
+    }
+  },
+  {
+    "name": "com.google.api.ResourceDescriptor$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.ResourceDescriptor$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.ResourceDescriptor$History",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.ResourceDescriptor$History"
+    }
+  },
+  {
+    "name": "com.google.api.ResourceDescriptor$Style",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.ResourceDescriptor$Style"
+    }
+  },
+  {
+    "name": "com.google.api.ResourceReference",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.ResourceReference"
+    }
+  },
+  {
+    "name": "com.google.api.ResourceReference$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.ResourceReference$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.RoutingParameter",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.RoutingParameter"
+    }
+  },
+  {
+    "name": "com.google.api.RoutingParameter$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.RoutingParameter$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.RoutingRule",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.RoutingRule"
+    }
+  },
+  {
+    "name": "com.google.api.RoutingRule$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.RoutingRule$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.RubySettings",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.RubySettings"
+    }
+  },
+  {
+    "name": "com.google.api.RubySettings$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.RubySettings$Builder"
+    }
+  },
+  {
+    "name": "com.google.api.SelectiveGapicGeneration",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.SelectiveGapicGeneration"
+    }
+  },
+  {
+    "name": "com.google.api.SelectiveGapicGeneration$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.api.SelectiveGapicGeneration$Builder"
+    }
+  },
+  {
+    "name": "com.google.cloud.location.GetLocationRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.cloud.location.GetLocationRequest"
+    }
+  },
+  {
+    "name": "com.google.cloud.location.GetLocationRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.cloud.location.GetLocationRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.cloud.location.ListLocationsRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.cloud.location.ListLocationsRequest"
+    }
+  },
+  {
+    "name": "com.google.cloud.location.ListLocationsRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.cloud.location.ListLocationsRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.cloud.location.ListLocationsResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.cloud.location.ListLocationsResponse"
+    }
+  },
+  {
+    "name": "com.google.cloud.location.ListLocationsResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.cloud.location.ListLocationsResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.cloud.location.Location",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.cloud.location.Location"
+    }
+  },
+  {
+    "name": "com.google.cloud.location.Location$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.cloud.location.Location$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.AggregationResult",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.AggregationResult"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.AggregationResult$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.AggregationResult$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ArrayValue",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ArrayValue"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ArrayValue$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ArrayValue$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BatchGetDocumentsRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BatchGetDocumentsRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BatchGetDocumentsRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BatchGetDocumentsRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BatchGetDocumentsResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BatchGetDocumentsResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BatchGetDocumentsResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BatchGetDocumentsResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BatchWriteRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BatchWriteRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BatchWriteRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BatchWriteRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BatchWriteResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BatchWriteResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BatchWriteResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BatchWriteResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BeginTransactionRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BeginTransactionRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BeginTransactionRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BeginTransactionRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BeginTransactionResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BeginTransactionResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BeginTransactionResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BeginTransactionResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BitSequence",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BitSequence"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BitSequence$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BitSequence$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BloomFilter",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BloomFilter"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.BloomFilter$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.BloomFilter$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.CommitRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.CommitRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.CommitRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.CommitRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.CommitResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.CommitResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.CommitResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.CommitResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.CreateDocumentRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.CreateDocumentRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.CreateDocumentRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.CreateDocumentRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Cursor",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Cursor"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Cursor$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Cursor$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DeleteDocumentRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DeleteDocumentRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DeleteDocumentRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DeleteDocumentRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Document",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Document"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Document$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Document$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentChange",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentChange"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentChange$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentChange$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentDelete",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentDelete"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentDelete$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentDelete$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentMask",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentMask"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentMask$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentMask$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentRemove",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentRemove"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentRemove$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentRemove$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentTransform",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentTransform"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentTransform$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentTransform$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentTransform$FieldTransform",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentTransform$FieldTransform"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentTransform$FieldTransform$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentTransform$FieldTransform$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.DocumentTransform$FieldTransform$ServerValue",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.DocumentTransform$FieldTransform$ServerValue"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExecutePipelineRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExecutePipelineRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExecutePipelineRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExecutePipelineRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExecutePipelineResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExecutePipelineResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExecutePipelineResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExecutePipelineResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExecutionStats",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExecutionStats"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExecutionStats$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExecutionStats$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExistenceFilter",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExistenceFilter"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExistenceFilter$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExistenceFilter$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExplainMetrics",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExplainMetrics"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExplainMetrics$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExplainMetrics$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExplainOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExplainOptions"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExplainOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExplainOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExplainStats",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExplainStats"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ExplainStats$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ExplainStats$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Function",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Function"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Function$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Function$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.GetDocumentRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.GetDocumentRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.GetDocumentRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.GetDocumentRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListCollectionIdsRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListCollectionIdsRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListCollectionIdsRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListCollectionIdsRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListCollectionIdsResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListCollectionIdsResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListCollectionIdsResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListCollectionIdsResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListDocumentsRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListDocumentsRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListDocumentsRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListDocumentsRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListDocumentsResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListDocumentsResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListDocumentsResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListDocumentsResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListenRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListenRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListenRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListenRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListenResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListenResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.ListenResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.ListenResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.MapValue",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.MapValue"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.MapValue$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.MapValue$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.PartitionQueryRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.PartitionQueryRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.PartitionQueryRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.PartitionQueryRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.PartitionQueryResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.PartitionQueryResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.PartitionQueryResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.PartitionQueryResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Pipeline",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Pipeline"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Pipeline$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Pipeline$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Pipeline$Stage",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Pipeline$Stage"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Pipeline$Stage$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Pipeline$Stage$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.PlanSummary",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.PlanSummary"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.PlanSummary$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.PlanSummary$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Precondition",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Precondition"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Precondition$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Precondition$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RequestOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RequestOptions"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RequestOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RequestOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RollbackRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RollbackRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RollbackRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RollbackRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RunAggregationQueryRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RunAggregationQueryRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RunAggregationQueryRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RunAggregationQueryRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RunAggregationQueryResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RunAggregationQueryResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RunAggregationQueryResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RunAggregationQueryResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RunQueryRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RunQueryRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RunQueryRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RunQueryRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RunQueryResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RunQueryResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.RunQueryResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.RunQueryResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredAggregationQuery",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredAggregationQuery"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Avg",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Avg"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Avg$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Avg$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Count",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Count"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Count$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Count$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Sum",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Sum"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Sum$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredAggregationQuery$Aggregation$Sum$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredAggregationQuery$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredAggregationQuery$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredPipeline",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredPipeline"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredPipeline$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredPipeline$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$CollectionSelector",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$CollectionSelector"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$CollectionSelector$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$CollectionSelector$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$CompositeFilter",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$CompositeFilter"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$CompositeFilter$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$CompositeFilter$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$CompositeFilter$Operator",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$CompositeFilter$Operator"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$Direction",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$Direction"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$FieldFilter",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$FieldFilter"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$FieldFilter$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$FieldFilter$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$FieldFilter$Operator",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$FieldFilter$Operator"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$FieldReference",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$FieldReference"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$FieldReference$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$FieldReference$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$Filter",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$Filter"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$Filter$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$Filter$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$FindNearest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$FindNearest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$FindNearest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$FindNearest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$FindNearest$DistanceMeasure",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$FindNearest$DistanceMeasure"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$Order",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$Order"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$Order$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$Order$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$Projection",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$Projection"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$Projection$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$Projection$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$UnaryFilter",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$UnaryFilter"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$UnaryFilter$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$UnaryFilter$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.StructuredQuery$UnaryFilter$Operator",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.StructuredQuery$UnaryFilter$Operator"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Target",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Target"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Target$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Target$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Target$DocumentsTarget",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Target$DocumentsTarget"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Target$DocumentsTarget$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Target$DocumentsTarget$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Target$QueryTarget",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Target$QueryTarget"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Target$QueryTarget$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Target$QueryTarget$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.TargetChange",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.TargetChange"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.TargetChange$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.TargetChange$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.TargetChange$TargetChangeType",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.TargetChange$TargetChangeType"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.TransactionOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.TransactionOptions"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.TransactionOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.TransactionOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.TransactionOptions$ConcurrencyMode",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.TransactionOptions$ConcurrencyMode"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.TransactionOptions$ReadOnly",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.TransactionOptions$ReadOnly"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.TransactionOptions$ReadOnly$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.TransactionOptions$ReadOnly$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.TransactionOptions$ReadWrite",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.TransactionOptions$ReadWrite"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.TransactionOptions$ReadWrite$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.TransactionOptions$ReadWrite$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.UpdateDocumentRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.UpdateDocumentRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.UpdateDocumentRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.UpdateDocumentRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Value",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Value"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Value$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Value$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Write",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Write"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.Write$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.Write$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.WriteRequest",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.WriteRequest"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.WriteRequest$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.WriteRequest$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.WriteResponse",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.WriteResponse"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.WriteResponse$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.WriteResponse$Builder"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.WriteResult",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.WriteResult"
+    }
+  },
+  {
+    "name": "com.google.firestore.v1.WriteResult$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.firestore.v1.WriteResult$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Any",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Any"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Any$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Any$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.BoolValue",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.BoolValue"
+    }
+  },
+  {
+    "name": "com.google.protobuf.BoolValue$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.BoolValue$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.BytesValue",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.BytesValue"
+    }
+  },
+  {
+    "name": "com.google.protobuf.BytesValue$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.BytesValue$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$DescriptorProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$DescriptorProto"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$DescriptorProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$DescriptorProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$Edition",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$Edition"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$EnumDescriptorProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$EnumDescriptorProto"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$EnumDescriptorProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$EnumDescriptorProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$EnumDescriptorProto$EnumReservedRange",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$EnumDescriptorProto$EnumReservedRange"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$EnumDescriptorProto$EnumReservedRange$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$EnumDescriptorProto$EnumReservedRange$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$EnumOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$EnumOptions"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$EnumOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$EnumOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$EnumValueOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$EnumValueOptions"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$ExtensionRangeOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$ExtensionRangeOptions"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$ExtensionRangeOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$ExtensionRangeOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$ExtensionRangeOptions$Declaration",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$ExtensionRangeOptions$Declaration"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$ExtensionRangeOptions$Declaration$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$ExtensionRangeOptions$Declaration$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$ExtensionRangeOptions$VerificationState",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$ExtensionRangeOptions$VerificationState"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$EnforceNamingStyle",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$EnforceNamingStyle"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$EnumType",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$EnumType"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$FieldPresence",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$FieldPresence"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$JsonFormat",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$JsonFormat"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$MessageEncoding",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$MessageEncoding"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$RepeatedFieldEncoding",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$RepeatedFieldEncoding"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$Utf8Validation",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$Utf8Validation"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$VisibilityFeature",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$VisibilityFeature"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$VisibilityFeature$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$VisibilityFeature$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSet$VisibilityFeature$DefaultSymbolVisibility",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSet$VisibilityFeature$DefaultSymbolVisibility"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSetDefaults",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSetDefaults"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSetDefaults$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSetDefaults$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSetDefaults$FeatureSetEditionDefault",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSetDefaults$FeatureSetEditionDefault"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FeatureSetDefaults$FeatureSetEditionDefault$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FeatureSetDefaults$FeatureSetEditionDefault$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldDescriptorProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldDescriptorProto"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Label",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Label"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Type",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Type"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldOptions"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldOptions$CType",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldOptions$CType"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldOptions$EditionDefault",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldOptions$EditionDefault"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldOptions$EditionDefault$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldOptions$EditionDefault$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldOptions$FeatureSupport",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldOptions$FeatureSupport"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldOptions$FeatureSupport$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldOptions$FeatureSupport$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldOptions$JSType",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldOptions$JSType"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldOptions$OptionRetention",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldOptions$OptionRetention"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FieldOptions$OptionTargetType",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FieldOptions$OptionTargetType"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FileDescriptorProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FileDescriptorProto"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FileDescriptorSet",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FileDescriptorSet"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FileDescriptorSet$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FileDescriptorSet$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FileOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FileOptions"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FileOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FileOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$FileOptions$OptimizeMode",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$FileOptions$OptimizeMode"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$GeneratedCodeInfo",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$GeneratedCodeInfo"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation$Semantic",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation$Semantic"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$MessageOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$MessageOptions"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$MessageOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$MessageOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$MethodDescriptorProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$MethodDescriptorProto"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$MethodDescriptorProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$MethodDescriptorProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$MethodOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$MethodOptions"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$MethodOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$MethodOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$MethodOptions$IdempotencyLevel",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$MethodOptions$IdempotencyLevel"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$OneofDescriptorProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$OneofDescriptorProto"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$OneofDescriptorProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$OneofDescriptorProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$OneofOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$OneofOptions"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$OneofOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$OneofOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$ServiceDescriptorProto",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$ServiceDescriptorProto"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$ServiceDescriptorProto$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$ServiceDescriptorProto$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$ServiceOptions",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$ServiceOptions"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$ServiceOptions$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$ServiceOptions$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$SourceCodeInfo",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$SourceCodeInfo"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$SymbolVisibility",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$SymbolVisibility"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$UninterpretedOption",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$UninterpretedOption"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$UninterpretedOption$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$UninterpretedOption$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DoubleValue",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DoubleValue"
+    }
+  },
+  {
+    "name": "com.google.protobuf.DoubleValue$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.DoubleValue$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Duration",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Duration"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Duration$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Duration$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Empty",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Empty"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Empty$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Empty$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.FloatValue",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.FloatValue"
+    }
+  },
+  {
+    "name": "com.google.protobuf.FloatValue$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.FloatValue$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Int32Value",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Int32Value"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Int32Value$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Int32Value$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Int64Value",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Int64Value"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Int64Value$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Int64Value$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.ListValue",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.ListValue"
+    }
+  },
+  {
+    "name": "com.google.protobuf.ListValue$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.ListValue$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.NullValue",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.NullValue"
+    }
+  },
+  {
+    "name": "com.google.protobuf.StringValue",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.StringValue"
+    }
+  },
+  {
+    "name": "com.google.protobuf.StringValue$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.StringValue$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Struct",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Struct"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Struct$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Struct$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Timestamp",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Timestamp"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Timestamp$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Timestamp$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.UInt32Value",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.UInt32Value"
+    }
+  },
+  {
+    "name": "com.google.protobuf.UInt32Value$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.UInt32Value$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.UInt64Value",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.UInt64Value"
+    }
+  },
+  {
+    "name": "com.google.protobuf.UInt64Value$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.UInt64Value$Builder"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Value",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Value"
+    }
+  },
+  {
+    "name": "com.google.protobuf.Value$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.protobuf.Value$Builder"
+    }
+  },
+  {
+    "name": "com.google.rpc.Status",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.rpc.Status"
+    }
+  },
+  {
+    "name": "com.google.rpc.Status$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.rpc.Status$Builder"
+    }
+  },
+  {
+    "name": "com.google.type.LatLng",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.type.LatLng"
+    }
+  },
+  {
+    "name": "com.google.type.LatLng$Builder",
+    "queryAllDeclaredConstructors": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true,
+    "condition": {
+      "typeReachable": "com.google.type.LatLng$Builder"
+    }
+  }
+]

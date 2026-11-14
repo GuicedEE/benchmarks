@@ -1,0 +1,244 @@
+{
+  "instrumented": true,
+  "performanceComparison": false,
+  "variants": {
+    "guicedee-jlink": {
+      "runs": 3,
+      "startupMedianMs": {
+        "application-preparation": 0.027035,
+        "application-startup": 4604.252961,
+        "configuration": 3.619505,
+        "context-discovery": 496.723179,
+        "discovery": 0.264059,
+        "guice-create-injector": 1700.553204,
+        "guice-module-discovery": 404.722439,
+        "post-hook-complete:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.971636,
+        "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup": 6.5774349999999995,
+        "post-hook-complete:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 2.906454,
+        "post-hook-complete:com.guicedee.vertx.web.VertxWebServerPostStartup": 597.888618,
+        "post-hook-prepare:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.493568,
+        "post-hook-prepare:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.037923,
+        "post-hook-prepare:com.guicedee.vertx.spi.VertxVerticlePostStartup": 97.47977,
+        "post-hook-prepare:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.172001,
+        "post-hook-prepare:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.394469,
+        "post-startup": 898.539128,
+        "pre-hook-complete:com.guicedee.client.implementations.GuicedEEClientStartup": 91.336728,
+        "pre-hook-complete:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.156669,
+        "pre-hook-complete:com.guicedee.metrics.implementations.MetricsPreStartup": 1.928567,
+        "pre-hook-complete:com.guicedee.telemetry.implementations.TelemetryPreStartup": 102.318728,
+        "pre-hook-complete:com.guicedee.vertx.auth.VertxAuthPreStartup": 2.080706,
+        "pre-hook-complete:com.guicedee.vertx.spi.VertXPreStartup": 707.126068,
+        "pre-hook-prepare:com.guicedee.client.implementations.GuicedEEClientStartup": 85.894114,
+        "pre-hook-prepare:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.137624,
+        "pre-hook-prepare:com.guicedee.metrics.implementations.MetricsPreStartup": 1.906614,
+        "pre-hook-prepare:com.guicedee.rest.services.GuicedRestPreStartup": 0.003002,
+        "pre-hook-prepare:com.guicedee.telemetry.implementations.TelemetryPreStartup": 102.285763,
+        "pre-hook-prepare:com.guicedee.vertx.auth.VertxAuthPreStartup": 2.060345,
+        "pre-hook-prepare:com.guicedee.vertx.grpc.GrpcPreStartup": 0.130731,
+        "pre-hook-prepare:com.guicedee.vertx.redis.RedisPreStartup": 0.808476,
+        "pre-hook-prepare:com.guicedee.vertx.spi.VertXPreStartup": 707.081924,
+        "pre-startup": 997.534472,
+        "provision:com.codahale.metrics.MetricRegistry": 0.000503,
+        "provision:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.006306,
+        "provision:com.guicedee.client.scopes.CallScoper": 0.011314,
+        "provision:com.guicedee.client.utils.GlobalProperties": 0.054849,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider": 1000.151211,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.005934,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter": 0.003458,
+        "provision:com.guicedee.metrics.implementations.PrometheusMetricsConfigurator": 0.00423,
+        "provision:com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator": 0.00387,
+        "provision:com.guicedee.rest.implementations.GuicedRestRouterConfigurator": 0.004196,
+        "provision:com.guicedee.rest.pathing.OperationRegistry": 0.052132,
+        "provision:com.guicedee.servlets.swaggerui.SwaggerUIRegistration": 0.004675,
+        "provision:com.guicedee.vertx.spi.VertxVerticlePostStartup": 0.006819,
+        "provision:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.006478,
+        "provision:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.008633,
+        "provision:com.guicedee.vertx.web.spi.ManagedHttpListenerGroup": 0.013145,
+        "provision:io.swagger.v3.oas.models.OpenAPI": 0.004284,
+        "provision:io.vertx.core.Vertx": 0.000595,
+        "provision:tools.jackson.databind.ObjectMapper": 0.004505
+      },
+      "workloadMedianMs": {
+        "firestore-client-initialization": 1788.707817,
+        "firestore-read-await": 7.581913,
+        "firestore-write-await": 1196.631002,
+        "jdk-http-client-initialization": 703.420389,
+        "vendor-client-initialization": 1286.550462,
+        "vendor-graphql": 197.447372,
+        "vendor-rest-including-oauth": 1405.647329
+      },
+      "inventories": [
+        {
+          "scanPerformed": false,
+          "scannedClasses": 0,
+          "scanModules": [],
+          "classOrigins": [],
+          "resourcesByOrigin": {},
+          "bindings": 35,
+          "explicitBindings": 19
+        },
+        {
+          "scanPerformed": false,
+          "scannedClasses": 0,
+          "scanModules": [],
+          "classOrigins": [],
+          "resourcesByOrigin": {},
+          "bindings": 35,
+          "explicitBindings": 19
+        },
+        {
+          "scanPerformed": false,
+          "scannedClasses": 0,
+          "scanModules": [],
+          "classOrigins": [],
+          "resourcesByOrigin": {},
+          "bindings": 35,
+          "explicitBindings": 19
+        }
+      ],
+      "workloadConstructionsPerRun": [
+        1,
+        1,
+        1
+      ],
+      "rows": [
+        "benchmarks\\results\\20261114-200341\\guicedee-jlink-1.json",
+        "benchmarks\\results\\20261114-200341\\guicedee-jlink-2.json",
+        "benchmarks\\results\\20261114-200341\\guicedee-jlink-3.json"
+      ],
+      "imageIds": [
+        "sha256:867a886a5d8cf020d5d9320b93d521acf995535480c7f18d259620f031d7f86a"
+      ]
+    },
+    "guicedee-scan-jlink": {
+      "runs": 3,
+      "startupMedianMs": {
+        "application-preparation": 0.02357,
+        "application-startup": 5212.445465,
+        "classgraph-scan": 401.427759,
+        "configuration": 4.438286,
+        "context-discovery": 411.247235,
+        "discovery": 502.532782,
+        "guice-create-injector": 1689.563545,
+        "guice-module-discovery": 407.620254,
+        "post-hook-complete:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.856628,
+        "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup": 8.324342999999999,
+        "post-hook-complete:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 2.407132,
+        "post-hook-complete:com.guicedee.vertx.web.VertxWebServerPostStartup": 706.303153,
+        "post-hook-prepare:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.459815,
+        "post-hook-prepare:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.03308,
+        "post-hook-prepare:com.guicedee.vertx.spi.VertxVerticlePostStartup": 105.559654,
+        "post-hook-prepare:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.204243,
+        "post-hook-prepare:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.232088,
+        "post-startup": 1004.523456,
+        "pre-hook-complete:com.guicedee.client.implementations.GuicedEEClientStartup": 98.802703,
+        "pre-hook-complete:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.1602,
+        "pre-hook-complete:com.guicedee.metrics.implementations.MetricsPreStartup": 0.276656,
+        "pre-hook-complete:com.guicedee.telemetry.implementations.TelemetryPreStartup": 91.574515,
+        "pre-hook-complete:com.guicedee.vertx.auth.VertxAuthPreStartup": 85.858174,
+        "pre-hook-complete:com.guicedee.vertx.spi.VertXPreStartup": 700.937283,
+        "pre-hook-prepare:com.guicedee.client.implementations.GuicedEEClientStartup": 97.326613,
+        "pre-hook-prepare:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.146069,
+        "pre-hook-prepare:com.guicedee.metrics.implementations.MetricsPreStartup": 0.260195,
+        "pre-hook-prepare:com.guicedee.rest.services.GuicedRestPreStartup": 0.002991,
+        "pre-hook-prepare:com.guicedee.telemetry.implementations.TelemetryPreStartup": 91.516612,
+        "pre-hook-prepare:com.guicedee.vertx.auth.VertxAuthPreStartup": 85.811386,
+        "pre-hook-prepare:com.guicedee.vertx.grpc.GrpcPreStartup": 0.123634,
+        "pre-hook-prepare:com.guicedee.vertx.redis.RedisPreStartup": 0.816981,
+        "pre-hook-prepare:com.guicedee.vertx.spi.VertXPreStartup": 700.90037,
+        "pre-startup": 903.047441,
+        "provision:com.codahale.metrics.MetricRegistry": 0.000519,
+        "provision:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.007182,
+        "provision:com.guicedee.client.scopes.CallScoper": 0.010166,
+        "provision:com.guicedee.client.utils.GlobalProperties": 0.054604,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider": 902.241778,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.007202,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter": 0.003984,
+        "provision:com.guicedee.metrics.implementations.PrometheusMetricsConfigurator": 0.003667,
+        "provision:com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator": 0.003889,
+        "provision:com.guicedee.rest.implementations.GuicedRestRouterConfigurator": 0.006264,
+        "provision:com.guicedee.rest.pathing.OperationRegistry": 0.057875,
+        "provision:com.guicedee.servlets.swaggerui.SwaggerUIRegistration": 0.004444,
+        "provision:com.guicedee.vertx.spi.VertxVerticlePostStartup": 0.00604,
+        "provision:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.007046,
+        "provision:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.006905,
+        "provision:com.guicedee.vertx.web.spi.ManagedHttpListenerGroup": 0.012086,
+        "provision:io.swagger.v3.oas.models.OpenAPI": 0.003974,
+        "provision:io.vertx.core.Vertx": 0.000592,
+        "provision:tools.jackson.databind.ObjectMapper": 0.004573,
+        "scan-configuration": 96.696833,
+        "scan-resource-processing": 0.478612
+      },
+      "workloadMedianMs": {
+        "firestore-client-initialization": 1599.238662,
+        "firestore-read-await": 7.225189,
+        "firestore-write-await": 1292.218957,
+        "jdk-http-client-initialization": 598.287463,
+        "vendor-client-initialization": 910.694655,
+        "vendor-graphql": 206.461306,
+        "vendor-rest-including-oauth": 1391.936953
+      },
+      "inventories": [
+        {
+          "scanPerformed": true,
+          "scannedClasses": 3,
+          "scanModules": [
+            "bench.guicedee.scan"
+          ],
+          "classOrigins": [
+            "jrt:/bench.guicedee.scan"
+          ],
+          "resourcesByOrigin": {
+            "jrt:/bench.guicedee.scan": 7
+          },
+          "bindings": 35,
+          "explicitBindings": 19
+        },
+        {
+          "scanPerformed": true,
+          "scannedClasses": 3,
+          "scanModules": [
+            "bench.guicedee.scan"
+          ],
+          "classOrigins": [
+            "jrt:/bench.guicedee.scan"
+          ],
+          "resourcesByOrigin": {
+            "jrt:/bench.guicedee.scan": 7
+          },
+          "bindings": 35,
+          "explicitBindings": 19
+        },
+        {
+          "scanPerformed": true,
+          "scannedClasses": 3,
+          "scanModules": [
+            "bench.guicedee.scan"
+          ],
+          "classOrigins": [
+            "jrt:/bench.guicedee.scan"
+          ],
+          "resourcesByOrigin": {
+            "jrt:/bench.guicedee.scan": 7
+          },
+          "bindings": 35,
+          "explicitBindings": 19
+        }
+      ],
+      "workloadConstructionsPerRun": [
+        1,
+        1,
+        1
+      ],
+      "rows": [
+        "benchmarks\\results\\20261114-200341\\guicedee-scan-jlink-1.json",
+        "benchmarks\\results\\20261114-200341\\guicedee-scan-jlink-2.json",
+        "benchmarks\\results\\20261114-200341\\guicedee-scan-jlink-3.json"
+      ],
+      "imageIds": [
+        "sha256:b8ea0ab4aef0522b489a9ab6e42a4944a996758f813c5395c4c66af4703df2ac"
+      ]
+    }
+  },
+  "note": "Inclusive phase durations overlap. Guice graph is a runtime binding snapshot, not whole-program reachability."
+}

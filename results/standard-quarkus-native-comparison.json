@@ -1,0 +1,105 @@
+{
+  "batch": "combined",
+  "eligibleComparison": true,
+  "variants": {
+    "guicedee-native": {
+      "runs": 14,
+      "image": "sha256:79b8987c62a9eee01a6592332310c714031d75c986a98319a5f77ae9dcdb0868",
+      "imageBytes": 441627754,
+      "launchToReadyMs": {
+        "median": 582.115100001829,
+        "min": 513.2357999973465,
+        "max": 591.092499998922
+      },
+      "firstBusinessMs": {
+        "median": 86.43825000035577,
+        "min": 67.63450000289595,
+        "max": 442.24779999785824
+      },
+      "launchToFirstBusinessMs": {
+        "median": 667.8371999987576,
+        "min": 585.2731000049971,
+        "max": 1025.1671000005445
+      },
+      "firstOpenApiJsonMs": {
+        "median": 3.554850001819432,
+        "min": 3.2161000053747557,
+        "max": 4.464500001631677
+      },
+      "warm": {
+        "p50Ms": 5.183450000913581,
+        "p95Ms": 27.204199999687262,
+        "p99Ms": 29.531599997426383
+      },
+      "peakContainerMemoryBytes": 83445760.0,
+      "endContainerMemoryBytes": 80035840.0,
+      "executableBytes": 201149544,
+      "compilerVersion": "native-image 25.0.5 2026-10-20"
+    },
+    "quarkus-standard-native": {
+      "runs": 14,
+      "image": "sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69",
+      "imageBytes": 370191230,
+      "launchToReadyMs": {
+        "median": 576.648499998555,
+        "min": 566.1232999991626,
+        "max": 597.4320999957854
+      },
+      "firstBusinessMs": {
+        "median": 129.03134999942267,
+        "min": 94.65260000433773,
+        "max": 426.93290000170236
+      },
+      "launchToFirstBusinessMs": {
+        "median": 705.7476499976474,
+        "min": 671.3086999952793,
+        "max": 1024.4056999945315
+      },
+      "firstOpenApiJsonMs": {
+        "median": 2.2191000025486574,
+        "min": 1.9764999960898422,
+        "max": 24.46600000257604
+      },
+      "warm": {
+        "p50Ms": 6.024199999956181,
+        "p95Ms": 26.8560000040452,
+        "p99Ms": 31.553299999359297
+      },
+      "peakContainerMemoryBytes": 58019840.0,
+      "endContainerMemoryBytes": 54296576.0,
+      "executableBytes": 150269032,
+      "compilerVersion": "native-image 25.0.5 2026-10-20"
+    }
+  },
+  "sdkJarsByVariant": {
+    "guicedee-native": {
+      "firebase-admin": "0026ad198445ba7155bf34e33eca88c711619ccac53c422641317912ae340cf0",
+      "commercetools": "dd7c23c08dc3dab7b8e3b9d63d8357ecc69203aceef429ac28525c7a928b94e9"
+    },
+    "quarkus-standard-native": {
+      "firebase-admin": "52047eca2454ed10a95e107884f47cbbbf3c9a8833c74d59737096fb6516ff46",
+      "commercetools": "6e347d150e378ba58d01f79fb80e84e94f4a3c0b0fa45ec59512f25aae267c4b"
+    }
+  },
+  "capabilityChecksPassed": 420,
+  "measuredRequests": 840,
+  "failedMeasuredRequests": 0,
+  "sdkHashesMatch": false,
+  "dependencyComparison": "independent-upstream-vs-wrapped",
+  "sharedBusinessSourcesMatch": true,
+  "batches": [
+    "20261114-231729",
+    "20261114-231959"
+  ],
+  "initialOrders": [
+    [
+      "guicedee-native",
+      "quarkus-standard-native"
+    ],
+    [
+      "quarkus-standard-native",
+      "guicedee-native"
+    ]
+  ],
+  "aggregation": "Medians of all fresh starts; warm percentiles are medians of per-start percentiles; no runs removed"
+}

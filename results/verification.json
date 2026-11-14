@@ -1,0 +1,58 @@
+{
+  "scope": "Local focused verification only; HTTP contract eligibility is separate",
+  "javaChecks": [
+    {
+      "module": "metrics",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "metrics-verification.log"
+    },
+    {
+      "module": "telemetry",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "telemetry-verification.log"
+    },
+    {
+      "module": "openapi",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "openapi-verification.log"
+    },
+    {
+      "module": "fault-tolerance",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "fault-tolerance-verification.log"
+    },
+    {
+      "module": "vertx",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "vertx-verification.log"
+    }
+  ],
+  "pythonHarness": {
+    "tests": 3,
+    "failures": 0,
+    "command": "python -m unittest discover -s benchmarks/tools -p test_harness.py -v"
+  },
+  "fixtureBuild": {
+    "command": "mvn -B -f benchmarks/pom.xml install",
+    "status": "passed",
+    "jpmsCompiled": [
+      "comparison.common",
+      "bench.guicedee"
+    ]
+  }
+}

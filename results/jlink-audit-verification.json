@@ -1,0 +1,290 @@
+{
+  "auditSourceSha256": "78e7ec403763a1edb36267ba78c584efd45380fbf10166aae8c7d7f4a354ba93",
+  "checks": {
+    "allSpiResourceCountsAndUncompressedTotalsMatchJimage": true,
+    "copiedSpiModuleImageHashMatchesContainer": true,
+    "freshAuditMatchesSavedInventories": true,
+    "imageIdsMatch20261114_154043": true
+  },
+  "dockerDriverStatus": [
+    [
+      "driver-type",
+      "io.containerd.snapshotter.v1"
+    ]
+  ],
+  "images": {
+    "scan": {
+      "architecture": "amd64",
+      "dockerImageSizeBytes": 496344192,
+      "imageId": "sha256:f28c2400c6c6af8b7d5117c9657a24289a1e17f3e88cdf4a32c2b5d3cb3e1629",
+      "layerBytes": [
+        0,
+        0,
+        12288,
+        177324032,
+        0,
+        1654784,
+        8192,
+        0,
+        0,
+        0,
+        121147392
+      ],
+      "moduleCount": 107,
+      "moduleImageBytes": 141800539,
+      "moduleImageSha256": "b6fd8e2d9b86be3faa897a3d3ca10fe069f12a6b957d6b53d60ba79e020bbc5d",
+      "os": "linux",
+      "outsideRequiredClosure": [
+        "com.google.j2objc.annotations",
+        "com.guicedee.xmlrepresentation",
+        "com.sun.istack.runtime",
+        "com.sun.xml.txw2",
+        "io.netty.tcnative.classes.openssl",
+        "jakarta.el",
+        "jakarta.validation",
+        "org.apache.commons.io",
+        "org.eclipse.angus.activation",
+        "org.glassfish.jaxb.core",
+        "org.glassfish.jaxb.runtime"
+      ],
+      "outsideServiceBoundClosure": [
+        "com.google.j2objc.annotations",
+        "com.guicedee.xmlrepresentation",
+        "io.netty.tcnative.classes.openssl",
+        "jakarta.el",
+        "jakarta.validation",
+        "org.apache.commons.io"
+      ],
+      "requiredClosureCount": 96,
+      "runtimeTreeBytes": 177101977,
+      "serviceBoundClosureCount": 101,
+      "tag": "devsuite-bench-guicedee-scan-jlink:local",
+      "unpackedLayerBytes": 300146688
+    },
+    "spi": {
+      "architecture": "amd64",
+      "dockerImageSizeBytes": 496205824,
+      "imageId": "sha256:9d6f137227e1127c83ce7bb01ebf94167ddb0a721962767cc911e5e7aa8f0c4a",
+      "layerBytes": [
+        0,
+        12288,
+        177254400,
+        0,
+        1654784,
+        8192,
+        0,
+        0,
+        0,
+        121147392
+      ],
+      "moduleCount": 107,
+      "moduleImageBytes": 141730368,
+      "moduleImageSha256": "33efb99c3a902a2a0653c161d0c13b6e0580a6a0d1d77b32633e28dbcd7d7480",
+      "os": "linux",
+      "outsideRequiredClosure": [
+        "com.google.j2objc.annotations",
+        "com.guicedee.xmlrepresentation",
+        "com.sun.istack.runtime",
+        "com.sun.xml.txw2",
+        "io.netty.tcnative.classes.openssl",
+        "jakarta.el",
+        "jakarta.validation",
+        "org.apache.commons.io",
+        "org.eclipse.angus.activation",
+        "org.glassfish.jaxb.core",
+        "org.glassfish.jaxb.runtime"
+      ],
+      "outsideServiceBoundClosure": [
+        "com.google.j2objc.annotations",
+        "com.guicedee.xmlrepresentation",
+        "io.netty.tcnative.classes.openssl",
+        "jakarta.el",
+        "jakarta.validation",
+        "org.apache.commons.io"
+      ],
+      "requiredClosureCount": 96,
+      "runtimeTreeBytes": 177031796,
+      "serviceBoundClosureCount": 101,
+      "tag": "devsuite-bench-guicedee-jlink:local",
+      "unpackedLayerBytes": 300077056
+    }
+  },
+  "measuredAt": "2026-11-14T14:14:04.575209+00:00",
+  "method": {
+    "dockerImageSizeBytes": "docker image inspect Size; this containerd store includes compressed content and unpacked snapshots",
+    "providerUniverse": "Only modules already shipped in each linked image; not the full builder JDK",
+    "resolution": "ModuleFinder.ofSystem, root application only, Configuration.empty.resolve and resolveAndBind",
+    "runtimeTreeBytes": "du -sb /opt/java/openjdk (apparent bytes, not allocated blocks)",
+    "storedResourceBytes": "jimage list --verbose: Compressed when nonzero, otherwise Size; excludes shared image index/metadata",
+    "unpackedLayerBytes": "sum of docker history --human=false Size; includes layer/filesystem overhead; shared layers are not exclusive per-image disk usage"
+  },
+  "performanceComparison": false,
+  "spiStoredResources": {
+    "largestModules": {
+      "com.google.common": 2293673,
+      "com.guicedee.modules.services.openapi": 735897,
+      "com.guicedee.modules.services.opentelemetry": 1718996,
+      "com.guicedee.swaggerui": 3020702,
+      "commercetools.sdk.java.api": 29463658,
+      "firebase.admin": 56534115,
+      "io.vertx.core": 1618878,
+      "java.base": 11314679,
+      "java.desktop": 8577962,
+      "java.xml": 3597541,
+      "org.apache.logging.log4j.core": 1469267,
+      "tools.jackson.databind": 1497515
+    },
+    "nativeResources": [
+      {
+        "module": "commercetools.sdk.java.api",
+        "path": "META-INF/native/libnetty_transport_native_epoll_x86_64.so",
+        "storedBytes": 35157,
+        "uncompressedBytes": 106704
+      },
+      {
+        "module": "commercetools.sdk.java.api",
+        "path": "META-INF/native/libnetty_transport_native_kqueue_x86_64.jnilib",
+        "storedBytes": 21831,
+        "uncompressedBytes": 61168
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/conscrypt_openjdk_jni-windows-x86_64.dll",
+        "storedBytes": 975849,
+        "uncompressedBytes": 1967616
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/io_grpc_netty_shaded_netty_tcnative_windows_x86_64.dll",
+        "storedBytes": 1127603,
+        "uncompressedBytes": 3762176
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libconscrypt_openjdk_jni-linux-aarch_64.so",
+        "storedBytes": 1707178,
+        "uncompressedBytes": 4025096
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libconscrypt_openjdk_jni-linux-x86_64.so",
+        "storedBytes": 1693896,
+        "uncompressedBytes": 4246576
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libconscrypt_openjdk_jni-osx-aarch_64.dylib",
+        "storedBytes": 1205266,
+        "uncompressedBytes": 3019792
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libconscrypt_openjdk_jni-osx-x86_64.dylib",
+        "storedBytes": 1305162,
+        "uncompressedBytes": 3214336
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libio_grpc_netty_shaded_netty_tcnative_linux_aarch_64.so",
+        "storedBytes": 1260746,
+        "uncompressedBytes": 2806136
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libio_grpc_netty_shaded_netty_tcnative_linux_x86_64.so",
+        "storedBytes": 1358257,
+        "uncompressedBytes": 3033872
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libio_grpc_netty_shaded_netty_tcnative_osx_aarch_64.jnilib",
+        "storedBytes": 1118077,
+        "uncompressedBytes": 2798992
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libio_grpc_netty_shaded_netty_tcnative_osx_x86_64.jnilib",
+        "storedBytes": 1225142,
+        "uncompressedBytes": 3059048
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libio_grpc_netty_shaded_netty_transport_native_epoll_aarch_64.so",
+        "storedBytes": 36262,
+        "uncompressedBytes": 112856
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libio_grpc_netty_shaded_netty_transport_native_epoll_x86_64.so",
+        "storedBytes": 34723,
+        "uncompressedBytes": 106584
+      }
+    ],
+    "nonLinuxAmd64NativeResourceBytes": 9983116,
+    "nonLinuxAmd64NativeResources": [
+      {
+        "module": "commercetools.sdk.java.api",
+        "path": "META-INF/native/libnetty_transport_native_kqueue_x86_64.jnilib",
+        "storedBytes": 21831,
+        "uncompressedBytes": 61168
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/conscrypt_openjdk_jni-windows-x86_64.dll",
+        "storedBytes": 975849,
+        "uncompressedBytes": 1967616
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/io_grpc_netty_shaded_netty_tcnative_windows_x86_64.dll",
+        "storedBytes": 1127603,
+        "uncompressedBytes": 3762176
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libconscrypt_openjdk_jni-linux-aarch_64.so",
+        "storedBytes": 1707178,
+        "uncompressedBytes": 4025096
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libconscrypt_openjdk_jni-osx-aarch_64.dylib",
+        "storedBytes": 1205266,
+        "uncompressedBytes": 3019792
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libconscrypt_openjdk_jni-osx-x86_64.dylib",
+        "storedBytes": 1305162,
+        "uncompressedBytes": 3214336
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libio_grpc_netty_shaded_netty_tcnative_linux_aarch_64.so",
+        "storedBytes": 1260746,
+        "uncompressedBytes": 2806136
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libio_grpc_netty_shaded_netty_tcnative_osx_aarch_64.jnilib",
+        "storedBytes": 1118077,
+        "uncompressedBytes": 2798992
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libio_grpc_netty_shaded_netty_tcnative_osx_x86_64.jnilib",
+        "storedBytes": 1225142,
+        "uncompressedBytes": 3059048
+      },
+      {
+        "module": "firebase.admin",
+        "path": "META-INF/native/libio_grpc_netty_shaded_netty_transport_native_epoll_aarch_64.so",
+        "storedBytes": 36262,
+        "uncompressedBytes": 112856
+      }
+    ],
+    "outsideRequiredClosureBytes": 1539487,
+    "outsideServiceBoundClosureBytes": 645410,
+    "totalBytes": 135810696
+  }
+}

@@ -1,0 +1,7 @@
+[
+  {
+    "interfaces": [
+      "com.google.cloud.storage.spi.v1.StorageRpc"
+    ]
+  }
+]

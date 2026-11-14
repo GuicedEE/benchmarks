@@ -1,0 +1,89 @@
+{
+  "sourceImage": "sha256:6cba051fee52de917d207f907ed21fc67167a1e202c50ade432ccfd740012254",
+  "sdkValidationImage": "sha256:cdb289c5dccbf7f7d40390ae35884f7b84e4f540cfa0207899424ae1a2badcf6",
+  "sdkJars": [
+    {
+      "name": "com/google/firebase/firebase-admin/9.12.0/firebase-admin-9.12.0.jar",
+      "sha256": "52047eca2454ed10a95e107884f47cbbbf3c9a8833c74d59737096fb6516ff46"
+    },
+    {
+      "name": "com/commercetools/sdk/commercetools-sdk-java-api/20.4.0/commercetools-sdk-java-api-20.4.0.jar",
+      "sha256": "6e347d150e378ba58d01f79fb80e84e94f4a3c0b0fa45ec59512f25aae267c4b"
+    }
+  ],
+  "tracedSdkDependencies": [
+    {
+      "name": "com/commercetools/sdk/commercetools-sdk-java-api/20.4.0/commercetools-sdk-java-api-20.4.0.jar",
+      "sha256": "6e347d150e378ba58d01f79fb80e84e94f4a3c0b0fa45ec59512f25aae267c4b"
+    },
+    {
+      "name": "com/commercetools/sdk/rmf-java-base/20.4.0/rmf-java-base-20.4.0.jar",
+      "sha256": "88bdf49690f144834695981d4c11104efa9c5a4b9aafb2e8b10c0bef55b3f712"
+    },
+    {
+      "name": "tools/jackson/core/jackson-core/3.2.3/jackson-core-3.2.3.jar",
+      "sha256": "a0c17e7e665a5e95c82f5fb45c0fec2ae3dc556c80f0016452c9c84cd23f3817"
+    },
+    {
+      "name": "com/commercetools/sdk/commercetools-money/20.4.0/commercetools-money-20.4.0.jar",
+      "sha256": "85aa03a1c9eb6e663ab9f02760e2b6f1d89a081d5b8eaf915935ad527e47622d"
+    },
+    {
+      "name": "javax/money/money-api/1.1/money-api-1.1.jar",
+      "sha256": "3eda6a1379b57bdcd92f1edd39a47b945fea481cb38744335bee2adf218e4b17"
+    },
+    {
+      "name": "org/javamoney/moneta/moneta-core/1.4.5/moneta-core-1.4.5.jar",
+      "sha256": "959efe4411f2bbddc93ed83ead599e49ee16964b32687951745c0dda8cf99fa7"
+    },
+    {
+      "name": "com/fasterxml/jackson/core/jackson-annotations/2.23/jackson-annotations-2.23.jar",
+      "sha256": "e5b60c3088e0887b290ff9226394354589a1dad583743944b7f5538661056b4c"
+    },
+    {
+      "name": "tools/jackson/core/jackson-databind/3.2.3/jackson-databind-3.2.3.jar",
+      "sha256": "235b72436af983857e44efa42449f4f0a2c571e69d6c5d9dd1253ae7d192dcf2"
+    },
+    {
+      "name": "com/commercetools/sdk/commercetools-http-client/20.4.0/commercetools-http-client-20.4.0.jar",
+      "sha256": "c6deada2fac53b8ea6523dbda77597b128006674616f140f04df23264c6d1aa3"
+    },
+    {
+      "name": "com/commercetools/sdk/commercetools-async-http-client/20.4.0/commercetools-async-http-client-20.4.0.jar",
+      "sha256": "fd928c1ed197314fb568615c0a02318483f64c5eaca61e7a13b4461fd68ee323"
+    },
+    {
+      "name": "org/asynchttpclient/async-http-client/2.16.0/async-http-client-2.16.0.jar",
+      "sha256": "ddc11cdd96d5e58c4f8647834e68f228e9f03f5f976d0e603effd5de5b1c131a"
+    },
+    {
+      "name": "org/asynchttpclient/async-http-client-netty-utils/2.16.0/async-http-client-netty-utils-2.16.0.jar",
+      "sha256": "a33e4543cdadce76614c6cecff52b0765e655d32e389496c37594a01f62b6690"
+    }
+  ],
+  "allCapabilitiesPassed": true,
+  "agentSha256": "6a42aae41f2c615a17415e1c53672f6d57cc8444d88c914d440dded63566e8c4",
+  "traceSha256": "45ad639fe1b771ff8ec41c8c82e38f96115e4ca620bec0f333aa200f7c6ba110",
+  "included": {
+    "reflection": 4575,
+    "resources": 9
+  },
+  "declaredSdkProviders": {
+    "META-INF/services/io.vrap.rmf.base.client.utils.json.ModuleSupplier": [
+      "com.commercetools.api.json.ApiModuleSupplier"
+    ],
+    "META-INF/services/com.commercetools.money.MonetaryProvider": [
+      "com.commercetools.money.FastMoneyProvider"
+    ],
+    "META-INF/services/io.vrap.rmf.base.client.ExecutorHttpClientSupplier": [
+      "com.commercetools.http.asynchttp.AsyncHttpClientSupplier"
+    ],
+    "META-INF/services/io.vrap.rmf.base.client.HttpClientSupplier": [
+      "com.commercetools.http.asynchttp.AsyncHttpClientSupplier"
+    ],
+    "META-INF/services/io.vrap.rmf.base.client.SolutionInfo": [
+      "com.commercetools.http.asynchttp.AsyncHttpClientSolutionInfo"
+    ]
+  },
+  "scope": "Observed upstream commercetools, AsyncHttpClient, Jackson 3 and money types/resources, plus SDK-declared service providers; no GuicedEE wrapper metadata"
+}

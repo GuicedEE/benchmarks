@@ -1,0 +1,50 @@
+[
+  {
+    "name": "com.commercetools.http.asynchttp.AsyncHttpClientSupplier",
+    "condition": {
+      "typeReachable": "io.vrap.rmf.base.client.ExecutorHttpClientSupplier"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.commercetools.api.json.ApiModuleSupplier",
+    "condition": {
+      "typeReachable": "io.vrap.rmf.base.client.utils.json.ModuleSupplier"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.commercetools.http.asynchttp.AsyncHttpClientSolutionInfo",
+    "condition": {
+      "typeReachable": "io.vrap.rmf.base.client.SolutionInfo"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.commercetools.http.asynchttp.AsyncHttpClientSupplier",
+    "condition": {
+      "typeReachable": "io.vrap.rmf.base.client.HttpClientSupplier"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  }
+]

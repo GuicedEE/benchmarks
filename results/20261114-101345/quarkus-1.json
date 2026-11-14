@@ -1,0 +1,271 @@
+{
+  "framework": "quarkus",
+  "run": 1,
+  "checks": {
+    "business": {
+      "passed": false,
+      "observed": {
+        "status": 502,
+        "body": {
+          "error": {
+            "status": 502,
+            "code": "UPSTREAM_FAILURE"
+          }
+        }
+      }
+    },
+    "vendorSdkOAuth": {
+      "passed": true,
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/oauth/token",
+          "status": 200
+        }
+      ]
+    },
+    "vendorSdkRest": {
+      "passed": true,
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/benchmark",
+          "status": 200
+        }
+      ]
+    },
+    "graphqlClient": {
+      "passed": false,
+      "observed": []
+    },
+    "validationError": {
+      "passed": true,
+      "observed": {
+        "status": 400,
+        "body": {
+          "error": {
+            "status": 400,
+            "code": "INVALID_ORDER"
+          }
+        }
+      }
+    },
+    "malformedJson": {
+      "passed": true,
+      "observed": {
+        "status": 400,
+        "body": ""
+      }
+    },
+    "unsupportedMedia": {
+      "passed": true,
+      "observed": {
+        "status": 415,
+        "body": ""
+      }
+    },
+    "reactiveRetry": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "result": "ok"
+        },
+        "attempts": 3
+      }
+    },
+    "retryExhaustion": {
+      "passed": true,
+      "observed": {
+        "status": 502,
+        "body": {
+          "error": {
+            "status": 502,
+            "code": "UPSTREAM_FAILURE"
+          }
+        },
+        "attempts": 3
+      }
+    },
+    "reactiveTimeout": {
+      "passed": true,
+      "observed": {
+        "status": 504,
+        "body": {
+          "error": {
+            "status": 504,
+            "code": "UPSTREAM_TIMEOUT"
+          }
+        },
+        "elapsedMs": 57.69470000086585,
+        "concurrentReadyMs": 12.736900000163587
+      }
+    },
+    "metrics": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "hasCounter": true
+      }
+    },
+    "openapi": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "paths": [
+          "/firebase/{id}",
+          "/quote",
+          "/ready",
+          "/retry/{id}",
+          "/timeout"
+        ]
+      }
+    },
+    "swagger": {
+      "passed": true,
+      "observed": {
+        "status": 200
+      }
+    },
+    "firebaseFirestore": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "quarkus-1",
+          "sku": "fixture",
+          "total": 250
+        }
+      }
+    }
+  },
+  "samples": [
+    {
+      "ms": 16.577799997321563,
+      "ok": false,
+      "status": 502
+    },
+    {
+      "ms": 4.145899998547975,
+      "ok": false,
+      "status": 502
+    },
+    {
+      "ms": 4.913799999485491,
+      "ok": false,
+      "status": 502
+    },
+    {
+      "ms": 4.5979000024090055,
+      "ok": false,
+      "status": 502
+    },
+    {
+      "ms": 16.424299999926006,
+      "ok": false,
+      "status": 502
+    }
+  ],
+  "launch": [
+    "-Xms128m",
+    "-Xmx384m",
+    "-XX:ActiveProcessorCount=2",
+    "-jar",
+    "C:\\Java\\DevSuite\\benchmarks\\quarkus\\target\\quarkus-app\\quarkus-run.jar"
+  ],
+  "launchToReadyMs": 1324.969900000724,
+  "firstBusinessStatus": 502,
+  "firstBusinessMs": 1855.443500000547,
+  "launchToFirstBusinessMs": 3180.4604999997537,
+  "warm": {
+    "p50Ms": 4.913799999485491,
+    "p95Ms": 16.424299999926006,
+    "p99Ms": 16.424299999926006,
+    "failures": 5,
+    "requests": 5,
+    "concurrency": 1
+  },
+  "eligible": false,
+  "upstreamEvents": [
+    {
+      "method": "POST",
+      "path": "/oauth/token",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/quarkus-1",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/quarkus-1",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/quarkus-1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/always",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/always",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/always",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/slow",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    }
+  ]
+}

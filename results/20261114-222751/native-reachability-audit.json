@@ -1,0 +1,213 @@
+{
+  "native-before": {
+    "build": {
+      "resource_usage": {
+        "memory": {
+          "system_total": 33539874816,
+          "peak_rss_bytes": 10343845888
+        },
+        "garbage_collection": {
+          "count": 209,
+          "total_secs": 10.263,
+          "max_heap": 7635730432
+        },
+        "cpu": {
+          "load": 12.798088436768465,
+          "parallelism": 32,
+          "total_cores": 32
+        },
+        "total_secs": 91.934407357
+      },
+      "image_details": {
+        "code_area": {
+          "bytes": 99918720,
+          "compilation_units": 189045
+        },
+        "total_bytes": 250804304,
+        "image_heap": {
+          "bytes": 134217728,
+          "objects": {
+            "count": 948368
+          },
+          "resources": {
+            "bytes": 0,
+            "count": 309
+          }
+        }
+      },
+      "general_info": {
+        "c_compiler": "gcc (redhat, x86_64, 11.5.0)",
+        "name": "application",
+        "java_version": "25.0.5+8-LTS",
+        "garbage_collector": "Serial GC",
+        "graal_compiler": {
+          "march": "x86-64-v3",
+          "optimization_level": "2"
+        },
+        "vendor_version": "Mandrel-25.0.5.0-Final",
+        "graalvm_version": "Mandrel-25.0.5.0-Final"
+      },
+      "analysis_results": {
+        "types": {
+          "total": 53457,
+          "reflection": 23401,
+          "jni": 122,
+          "reachable": 47938
+        },
+        "methods": {
+          "foreign_upcalls": 0,
+          "foreign_downcalls": 0,
+          "total": 561295,
+          "reflection": 142290,
+          "jni": 1000,
+          "reachable": 273042
+        },
+        "fields": {
+          "total": 135680,
+          "reflection": 18130,
+          "jni": 291,
+          "reachable": 69254
+        }
+      }
+    },
+    "groups": {
+      "com.google.monitoring.": {
+        "methods": 16350,
+        "entryPoints": 13514,
+        "types": 520
+      },
+      "com.google.storage.": {
+        "methods": 10012,
+        "entryPoints": 8273,
+        "types": 263
+      },
+      "com.google.firestore.": {
+        "methods": 9974,
+        "entryPoints": 8225,
+        "types": 320
+      },
+      "com.sun.media.sound.": {
+        "methods": 1029,
+        "entryPoints": 102,
+        "types": 199
+      },
+      "java.awt.": {
+        "methods": 135,
+        "entryPoints": 49,
+        "types": 33
+      },
+      "io.github.classgraph.ClassGraph": {
+        "methods": 31,
+        "entryPoints": 1,
+        "types": 1
+      }
+    },
+    "methodReportSha256": "4f408442a8ebccfac1c6a21e17b6752e695dd59921258571ab0e2f68215c7d57"
+  },
+  "native-final": {
+    "build": {
+      "resource_usage": {
+        "memory": {
+          "system_total": 33539874816,
+          "peak_rss_bytes": 10334887936
+        },
+        "garbage_collection": {
+          "count": 188,
+          "total_secs": 8.225,
+          "max_heap": 7635730432
+        },
+        "cpu": {
+          "load": 12.908372659641156,
+          "parallelism": 32,
+          "total_cores": 32
+        },
+        "total_secs": 83.855067585
+      },
+      "image_details": {
+        "code_area": {
+          "bytes": 87171424,
+          "compilation_units": 155400
+        },
+        "total_bytes": 214376232,
+        "image_heap": {
+          "bytes": 113573888,
+          "objects": {
+            "count": 864368
+          },
+          "resources": {
+            "bytes": 0,
+            "count": 288
+          }
+        }
+      },
+      "general_info": {
+        "c_compiler": "gcc (redhat, x86_64, 11.5.0)",
+        "name": "application",
+        "java_version": "25.0.5+8-LTS",
+        "garbage_collector": "Serial GC",
+        "graal_compiler": {
+          "march": "x86-64-v3",
+          "optimization_level": "2"
+        },
+        "vendor_version": "Mandrel-25.0.5.0-Final",
+        "graalvm_version": "Mandrel-25.0.5.0-Final"
+      },
+      "analysis_results": {
+        "types": {
+          "total": 52183,
+          "reflection": 21992,
+          "jni": 122,
+          "reachable": 45686
+        },
+        "methods": {
+          "foreign_upcalls": 0,
+          "foreign_downcalls": 0,
+          "total": 526388,
+          "reflection": 108899,
+          "jni": 1000,
+          "reachable": 232581
+        },
+        "fields": {
+          "total": 126773,
+          "reflection": 18130,
+          "jni": 291,
+          "reachable": 62471
+        }
+      }
+    },
+    "groups": {
+      "com.google.monitoring.": {
+        "methods": 0,
+        "entryPoints": 0,
+        "types": 0
+      },
+      "com.google.storage.": {
+        "methods": 0,
+        "entryPoints": 0,
+        "types": 0
+      },
+      "com.google.firestore.": {
+        "methods": 9974,
+        "entryPoints": 8225,
+        "types": 320
+      },
+      "com.sun.media.sound.": {
+        "methods": 14,
+        "entryPoints": 3,
+        "types": 5
+      },
+      "java.awt.": {
+        "methods": 135,
+        "entryPoints": 49,
+        "types": 33
+      },
+      "io.github.classgraph.ClassGraph": {
+        "methods": 2,
+        "entryPoints": 1,
+        "types": 1
+      }
+    },
+    "methodReportSha256": "d6a1a64c1338c446c7849e122f065b348ca9f5de112f261384740bf9b2432f6c"
+  },
+  "scope": "Diagnostic compiler reports rebuilt from the preserved baseline and final inputs. Code reachability is not runtime execution or per-package RSS."
+}

@@ -1,0 +1,15 @@
+{
+  "batches": [
+    "20261114-231729",
+    "20261114-231959"
+  ],
+  "freshStarts": 28,
+  "allEligible": true,
+  "allUninstrumented": true,
+  "resourceLimitsVerified": true,
+  "oomKills": 0,
+  "compiledStandardQuarkusSourcesMatchWorkspace": true,
+  "resolvedUpstreamDependencies": 288,
+  "reportLinksExist": true,
+  "harnessTestsPassed": 17
+}

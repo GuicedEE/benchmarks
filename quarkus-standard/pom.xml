@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- Deliberately standalone: no GuicedEE parent, BOM, SDK wrappers or native substitutions. -->
+    <groupId>dev.guicedee.benchmarks</groupId>
+    <artifactId>comparison-quarkus-standard</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <maven.compiler.release>25</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <quarkus.version>3.40.1</quarkus.version>
+        <google-cloud-extension.version>2.25.1</google-cloud-extension.version>
+        <commercetools.version>20.4.0</commercetools.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!-- commercetools uses Jackson 3.2.3, which needs this shared annotations API.
+                 Quarkus's Jackson 2 mapper remains managed by the Quarkus BOM. -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId><artifactId>jackson-annotations</artifactId><version>2.23</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus.platform</groupId><artifactId>quarkus-bom</artifactId>
+                <version>${quarkus.version}</version><type>pom</type><scope>import</scope>
+            </dependency>
+            <!-- Same top-level SDK version as the GuicedEE fixture, normal transitive resolution. -->
+            <dependency>
+                <groupId>com.google.firebase</groupId><artifactId>firebase-admin</artifactId><version>9.12.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <dependency><groupId>io.quarkus</groupId><artifactId>quarkus-rest-jackson</artifactId></dependency>
+        <dependency><groupId>io.quarkus</groupId><artifactId>quarkus-smallrye-fault-tolerance</artifactId></dependency>
+        <dependency><groupId>io.quarkus</groupId><artifactId>quarkus-micrometer-registry-prometheus</artifactId></dependency>
+        <dependency><groupId>io.quarkus</groupId><artifactId>quarkus-smallrye-openapi</artifactId></dependency>
+        <dependency>
+            <groupId>io.quarkiverse.googlecloudservices</groupId><artifactId>quarkus-google-cloud-firebase-admin</artifactId>
+            <version>${google-cloud-extension.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkiverse.googlecloudservices</groupId><artifactId>quarkus-google-cloud-firestore</artifactId>
+            <version>${google-cloud-extension.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.commercetools.sdk</groupId><artifactId>commercetools-sdk-java-api</artifactId>
+            <version>${commercetools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.commercetools.sdk</groupId><artifactId>commercetools-http-client</artifactId>
+            <version>${commercetools.version}</version>
+        </dependency>
+        <!-- AsyncHttpClient 2.x uses javax.activation; Quarkus supplies the newer jakarta namespace. -->
+        <dependency>
+            <groupId>javax.activation</groupId><artifactId>activation</artifactId><version>1.1.1</version>
+        </dependency>
+    </dependencies>
+    <profiles>
+        <profile>
+            <id>native</id>
+            <properties>
+                <quarkus.native.enabled>true</quarkus.native.enabled>
+                <quarkus.package.jar.enabled>false</quarkus.package.jar.enabled>
+                <quarkus.native.native-image-xmx>8g</quarkus.native.native-image-xmx>
+            </properties>
+        </profile>
+    </profiles>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId><artifactId>build-helper-maven-plugin</artifactId><version>3.8.0</version>
+                <executions><execution>
+                    <id>shared-business-source</id><phase>generate-sources</phase><goals><goal>add-source</goal></goals>
+                    <configuration><sources>
+                        <!-- Compile shared packages directly into this normal Quarkus classpath application.
+                             The original common JPMS module and every module-info.class remain untouched. -->
+                        <source>${project.basedir}/../common/src/main/java/bench</source>
+                        <source>${project.basedir}/../quarkus/src/main/java</source>
+                    </sources></configuration>
+                </execution></executions>
+            </plugin>
+            <plugin>
+                <groupId>io.quarkus</groupId><artifactId>quarkus-maven-plugin</artifactId><version>${quarkus.version}</version>
+                <extensions>true</extensions>
+                <executions><execution><goals><goal>build</goal></goals></execution></executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

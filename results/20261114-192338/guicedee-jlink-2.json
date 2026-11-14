@@ -1,0 +1,1240 @@
+{
+  "framework": "guicedee",
+  "variant": "guicedee-jlink",
+  "discovery": "spi",
+  "runtime": "jlink",
+  "run": 2,
+  "checks": {
+    "business": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "available": 40,
+          "project": "Fixture shop",
+          "total": 250,
+          "sku": "fixture",
+          "quantity": 2
+        }
+      }
+    },
+    "vendorSdkOAuth": {
+      "passed": true,
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/oauth/token",
+          "status": 200
+        }
+      ]
+    },
+    "vendorSdkRest": {
+      "passed": true,
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/benchmark",
+          "status": 200
+        }
+      ]
+    },
+    "graphqlClient": {
+      "passed": true,
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/benchmark/graphql",
+          "status": 200
+        }
+      ]
+    },
+    "optionalPrimitiveQuery": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "available": 40,
+          "project": "Fixture shop",
+          "total": 250,
+          "sku": "fixture",
+          "quantity": 2
+        }
+      }
+    },
+    "validationError": {
+      "passed": true,
+      "observed": {
+        "status": 400,
+        "body": {
+          "error": {
+            "code": "INVALID_ORDER",
+            "status": 400
+          }
+        }
+      }
+    },
+    "malformedJson": {
+      "passed": true,
+      "observed": {
+        "status": 400,
+        "body": {
+          "error": {
+            "code": "INVALID_ORDER",
+            "status": 400
+          }
+        }
+      }
+    },
+    "unsupportedMedia": {
+      "passed": true,
+      "observed": {
+        "status": 415,
+        "body": "Unsupported Media Type"
+      }
+    },
+    "reactiveRetry": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "result": "ok"
+        },
+        "attempts": 3
+      }
+    },
+    "retryExhaustion": {
+      "passed": true,
+      "observed": {
+        "status": 502,
+        "body": {
+          "error": {
+            "code": "UPSTREAM_FAILURE",
+            "status": 502
+          }
+        },
+        "attempts": 3
+      }
+    },
+    "reactiveTimeout": {
+      "passed": true,
+      "observed": {
+        "status": 504,
+        "body": {
+          "error": {
+            "code": "UPSTREAM_TIMEOUT",
+            "status": 504
+          }
+        },
+        "elapsedMs": 56.6757000015059,
+        "concurrentReadyMs": 3.2007999980123714
+      }
+    },
+    "metrics": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "before": {
+          "benchmark_quotes": 2.0
+        },
+        "after": {
+          "benchmark_quotes": 3.0
+        }
+      }
+    },
+    "openapi": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "paths": [
+          "/firebase/{id}",
+          "/quote",
+          "/ready",
+          "/retry/{id}",
+          "/timeout"
+        ]
+      }
+    },
+    "swagger": {
+      "passed": true,
+      "observed": {
+        "status": 200
+      }
+    },
+    "firebaseFirestore": {
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "guicedee-jlink-2",
+          "total": 250,
+          "sku": "fixture"
+        }
+      }
+    }
+  },
+  "samples": [
+    {
+      "ms": 17.075499999918975,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 96.42249999888008,
+      "ok": true,
+      "status": 200
+    },
+    {
+      "ms": 96.81769999951939,
+      "ok": true,
+      "status": 200
+    }
+  ],
+  "runtimeFlags": [
+    "-Xms128m",
+    "-Xmx384m",
+    "-XX:ActiveProcessorCount=2"
+  ],
+  "jvmFlags": [
+    "-Xms128m",
+    "-Xmx384m",
+    "-XX:ActiveProcessorCount=2"
+  ],
+  "jvmFlagsSource": "JAVA_TOOL_OPTIONS",
+  "launch": [
+    "/opt/java/openjdk/bin/benchmark"
+  ],
+  "launchToReadyMs": 7759.302400001616,
+  "firstBusinessStatus": 200,
+  "firstBusinessMs": 5907.135200002813,
+  "launchToFirstBusinessMs": 13666.47980000198,
+  "warm": {
+    "p50Ms": 96.42249999888008,
+    "p95Ms": 96.42249999888008,
+    "p99Ms": 96.42249999888008,
+    "failures": 0,
+    "requests": 3,
+    "concurrency": 1
+  },
+  "eligible": false,
+  "container": {
+    "image": "sha256:52a971bf8a6f5df8c4d099504cd976da622721f29df265ef826851e8b132851e",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 2026,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-14T17:24:25.024787935Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "nanoCpus": 250000000,
+    "memoryBytes": 524288000,
+    "memorySwapBytes": 524288000
+  },
+  "containerStats": "usage_usec 3742830\nuser_usec 3430251\nsystem_usec 312579\nnr_periods 150\nnr_throttled 148\nthrottled_usec 25047492\nnr_bursts 0\nburst_usec 0\n226955264\n222986240\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+  "discoveryEvidence": {
+    "classGraphInitialized": false,
+    "verticleDeployments": {
+      "bench.guicedee.rest": true,
+      "bench.guicedee.service": true
+    },
+    "verified": true,
+    "logLines": [
+      "[2026-11-14 17:24:30.767] [c.g.v.s.VerticleBuilder                 ] [-application-startup] [INFO ] - \ud83d\ude80 Deploying Verticle: bench.guicedee.rest - workerPool=bench-guicedee-rest",
+      "[2026-11-14 17:24:30.859] [c.g.v.s.VerticleBuilder                 ] [-application-startup] [INFO ] - \ud83d\ude80 Deploying Verticle: bench.guicedee.service - workerPool=bench-guicedee-service"
+    ]
+  },
+  "upstreamEvents": [
+    {
+      "method": "POST",
+      "path": "/oauth/token",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/guicedee-jlink-2",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/guicedee-jlink-2",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/guicedee-jlink-2",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/always",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/always",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/flaky/always",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/slow",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/benchmark",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/benchmark/graphql",
+      "status": 200
+    }
+  ],
+  "instrumented": true,
+  "capabilitiesPassed": true,
+  "phaseEvidence": {
+    "verified": true,
+    "workload": [
+      {
+        "operation": "workload-construction",
+        "durationNs": 596980120,
+        "success": true,
+        "events": [
+          {
+            "phase": "jdk-http-client-initialization",
+            "startNs": 182798,
+            "durationNs": 596686278,
+            "success": true
+          }
+        ]
+      },
+      {
+        "operation": "first-quote",
+        "durationNs": 2991954108,
+        "success": true,
+        "events": [
+          {
+            "phase": "vendor-client-initialization",
+            "startNs": 582742,
+            "durationNs": 1299017669,
+            "success": true
+          },
+          {
+            "phase": "vendor-rest-including-oauth",
+            "startNs": 1299780845,
+            "durationNs": 1498390214,
+            "success": true
+          },
+          {
+            "phase": "vendor-graphql",
+            "startNs": 2798311066,
+            "durationNs": 193566485,
+            "success": true
+          }
+        ]
+      },
+      {
+        "operation": "first-firestore",
+        "durationNs": 2816760003,
+        "success": true,
+        "events": [
+          {
+            "phase": "firestore-client-initialization",
+            "startNs": 799562,
+            "durationNs": 1501540579,
+            "success": true
+          },
+          {
+            "phase": "firestore-write-await",
+            "startNs": 1506102707,
+            "durationNs": 1301527117,
+            "success": true
+          },
+          {
+            "phase": "firestore-read-await",
+            "startNs": 2807778980,
+            "durationNs": 8450736,
+            "success": true
+          }
+        ]
+      }
+    ],
+    "startup": {
+      "schemaVersion": 1,
+      "instrumented": true,
+      "performanceComparison": false,
+      "clock": "System.nanoTime relative to diagnostics initialization; not process launch",
+      "timingScope": "Inclusive spans can overlap; provisioning includes nested dependency construction",
+      "droppedEvents": 0,
+      "events": [
+        {
+          "success": true,
+          "durationNs": 5105220455,
+          "thread": "main",
+          "phase": "application-startup",
+          "startNs": 12234
+        },
+        {
+          "success": true,
+          "durationNs": 501253926,
+          "thread": "guicedee-application-startup",
+          "phase": "context-discovery",
+          "startNs": 4460288
+        },
+        {
+          "success": true,
+          "durationNs": 25668,
+          "thread": "guicedee-application-startup",
+          "phase": "application-preparation",
+          "startNs": 505936495
+        },
+        {
+          "success": true,
+          "durationNs": 3924496,
+          "thread": "guicedee-application-startup",
+          "phase": "configuration",
+          "startNs": 508651122
+        },
+        {
+          "success": true,
+          "durationNs": 413045,
+          "thread": "guicedee-application-startup",
+          "phase": "discovery",
+          "startNs": 512939958
+        },
+        {
+          "success": true,
+          "durationNs": 1090022174,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-startup",
+          "startNs": 513528550
+        },
+        {
+          "success": true,
+          "durationNs": 97622616,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-complete:com.guicedee.client.implementations.GuicedEEClientStartup",
+          "startNs": 604268434
+        },
+        {
+          "success": true,
+          "durationNs": 95618732,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-prepare:com.guicedee.client.implementations.GuicedEEClientStartup",
+          "startNs": 604468577
+        },
+        {
+          "success": true,
+          "durationNs": 103354522,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-complete:com.guicedee.telemetry.implementations.TelemetryPreStartup",
+          "startNs": 702527412
+        },
+        {
+          "success": true,
+          "durationNs": 103322942,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-prepare:com.guicedee.telemetry.implementations.TelemetryPreStartup",
+          "startNs": 702533524
+        },
+        {
+          "success": true,
+          "durationNs": 1988349,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-complete:com.guicedee.metrics.implementations.MetricsPreStartup",
+          "startNs": 805918665
+        },
+        {
+          "success": true,
+          "durationNs": 1958616,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-prepare:com.guicedee.metrics.implementations.MetricsPreStartup",
+          "startNs": 805922737
+        },
+        {
+          "success": true,
+          "durationNs": 702633231,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-complete:com.guicedee.vertx.spi.VertXPreStartup",
+          "startNs": 807945825
+        },
+        {
+          "success": true,
+          "durationNs": 702596252,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-prepare:com.guicedee.vertx.spi.VertXPreStartup",
+          "startNs": 807952441
+        },
+        {
+          "success": true,
+          "durationNs": 88904880,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-complete:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup",
+          "startNs": 1510611184
+        },
+        {
+          "success": true,
+          "durationNs": 88870799,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-prepare:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup",
+          "startNs": 1510613539
+        },
+        {
+          "success": true,
+          "durationNs": 2449053,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-complete:com.guicedee.vertx.auth.VertxAuthPreStartup",
+          "startNs": 1599566948
+        },
+        {
+          "success": true,
+          "durationNs": 2423594,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-prepare:com.guicedee.vertx.auth.VertxAuthPreStartup",
+          "startNs": 1599569596
+        },
+        {
+          "success": true,
+          "durationNs": 888005,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-prepare:com.guicedee.vertx.redis.RedisPreStartup",
+          "startNs": 1602059623
+        },
+        {
+          "success": true,
+          "durationNs": 196256,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-prepare:com.guicedee.vertx.grpc.GrpcPreStartup",
+          "startNs": 1603031763
+        },
+        {
+          "success": true,
+          "durationNs": 3286,
+          "thread": "guicedee-application-startup",
+          "phase": "pre-hook-prepare:com.guicedee.rest.services.GuicedRestPreStartup",
+          "startNs": 1603292866
+        },
+        {
+          "success": true,
+          "durationNs": 401783659,
+          "thread": "guicedee-application-startup",
+          "phase": "guice-module-discovery",
+          "startNs": 1603747555
+        },
+        {
+          "success": true,
+          "durationNs": 1998521847,
+          "thread": "guicedee-application-startup",
+          "phase": "guice-create-injector",
+          "startNs": 2006661037
+        },
+        {
+          "success": true,
+          "durationNs": 4990,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:tools.jackson.databind.ObjectMapper",
+          "startNs": 2607737913
+        },
+        {
+          "success": true,
+          "durationNs": 620,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:io.vertx.core.Vertx",
+          "startNs": 2607833004
+        },
+        {
+          "success": true,
+          "durationNs": 530,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:com.codahale.metrics.MetricRegistry",
+          "startNs": 2607850667
+        },
+        {
+          "success": true,
+          "durationNs": 1396193720,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider",
+          "startNs": 2608693552
+        },
+        {
+          "success": true,
+          "durationNs": 5692,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:io.swagger.v3.oas.models.OpenAPI",
+          "startNs": 4005020116
+        },
+        {
+          "success": true,
+          "durationNs": 52158,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:com.guicedee.client.utils.GlobalProperties",
+          "startNs": 4005095619
+        },
+        {
+          "success": true,
+          "durationNs": 1004579650,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-startup",
+          "startNs": 4100583500
+        },
+        {
+          "success": true,
+          "durationNs": 3838,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:com.guicedee.vertx.web.ManagedHttpListenersLifecycle",
+          "startNs": 4103943894
+        },
+        {
+          "success": true,
+          "durationNs": 3825,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:com.guicedee.vertx.spi.VertxVerticlePostStartup",
+          "startNs": 4104953207
+        },
+        {
+          "success": true,
+          "durationNs": 14963,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:com.guicedee.client.implementations.GuicedEEClientPostStartup",
+          "startNs": 4105748711
+        },
+        {
+          "success": true,
+          "durationNs": 3989,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:com.guicedee.vertx.web.VertxWebServerPostStartup",
+          "startNs": 4106649523
+        },
+        {
+          "success": true,
+          "durationNs": 3717,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup",
+          "startNs": 4107661017
+        },
+        {
+          "success": true,
+          "durationNs": 10525,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:com.guicedee.client.scopes.CallScoper",
+          "startNs": 4111484304
+        },
+        {
+          "success": true,
+          "durationNs": 3746,
+          "thread": "guicedee-application-startup",
+          "phase": "provision:com.guicedee.vertx.spi.VertxVerticlePostStartup",
+          "startNs": 4203326414
+        },
+        {
+          "success": true,
+          "durationNs": 95561408,
+          "thread": "guicedee-application-startup",
+          "phase": "post-hook-prepare:com.guicedee.vertx.spi.VertxVerticlePostStartup",
+          "startNs": 4209715583
+        },
+        {
+          "success": true,
+          "durationNs": 1838527,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup",
+          "startNs": 4307216895
+        },
+        {
+          "success": true,
+          "durationNs": 1512936,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup",
+          "startNs": 4307687861
+        },
+        {
+          "success": true,
+          "durationNs": 1563570,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup",
+          "startNs": 4307700640
+        },
+        {
+          "success": true,
+          "durationNs": 3212,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.vertx.web.VertxWebServerPostStartup",
+          "startNs": 4309318066
+        },
+        {
+          "success": true,
+          "durationNs": 192382,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-hook-prepare:com.guicedee.vertx.web.VertxWebServerPostStartup",
+          "startNs": 4309326158
+        },
+        {
+          "success": true,
+          "durationNs": 790887516,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-hook-complete:com.guicedee.vertx.web.VertxWebServerPostStartup",
+          "startNs": 4309550756
+        },
+        {
+          "success": true,
+          "durationNs": 5520,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator",
+          "startNs": 4400929661
+        },
+        {
+          "success": true,
+          "durationNs": 4005,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.metrics.implementations.PrometheusMetricsConfigurator",
+          "startNs": 4406409890
+        },
+        {
+          "success": true,
+          "durationNs": 3416,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter",
+          "startNs": 4408657137
+        },
+        {
+          "success": true,
+          "durationNs": 5174,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.rest.implementations.GuicedRestRouterConfigurator",
+          "startNs": 4500542269
+        },
+        {
+          "success": true,
+          "durationNs": 58339,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.rest.pathing.OperationRegistry",
+          "startNs": 4600035061
+        },
+        {
+          "success": true,
+          "durationNs": 6426,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.servlets.swaggerui.SwaggerUIRegistration",
+          "startNs": 4605918387
+        },
+        {
+          "success": true,
+          "durationNs": 3507,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.client.implementations.GuicedEEClientPostStartup",
+          "startNs": 5100543464
+        },
+        {
+          "success": true,
+          "durationNs": 455801,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-hook-prepare:com.guicedee.client.implementations.GuicedEEClientPostStartup",
+          "startNs": 5100557646
+        },
+        {
+          "success": true,
+          "durationNs": 1008303,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-hook-complete:com.guicedee.client.implementations.GuicedEEClientPostStartup",
+          "startNs": 5101060946
+        },
+        {
+          "success": true,
+          "durationNs": 4098,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup",
+          "startNs": 5102116517
+        },
+        {
+          "success": true,
+          "durationNs": 36183,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-hook-prepare:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup",
+          "startNs": 5102126495
+        },
+        {
+          "success": true,
+          "durationNs": 1624,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.vertx.web.ManagedHttpListenersLifecycle",
+          "startNs": 5102180052
+        },
+        {
+          "success": true,
+          "durationNs": 230447,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-hook-prepare:com.guicedee.vertx.web.ManagedHttpListenersLifecycle",
+          "startNs": 5102185195
+        },
+        {
+          "success": true,
+          "durationNs": 2667538,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "post-hook-complete:com.guicedee.vertx.web.ManagedHttpListenersLifecycle",
+          "startNs": 5102450502
+        },
+        {
+          "success": true,
+          "durationNs": 12828,
+          "thread": "bench-guicedee-service-startup",
+          "phase": "provision:com.guicedee.vertx.web.spi.ManagedHttpListenerGroup",
+          "startNs": 5104103830
+        }
+      ],
+      "registeredModules": [
+        "bench.guicedee"
+      ],
+      "scan": {
+        "reason": "No live scan was created; diagnostics do not start one",
+        "performed": false
+      },
+      "injector": {
+        "available": true,
+        "bindings": [
+          {
+            "id": "binding-0",
+            "type": "com.google.inject.Stage",
+            "qualifierType": "",
+            "module": "com.google.guice",
+            "explicit": true,
+            "bindingKind": "InstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-1",
+            "type": "com.google.inject.Injector",
+            "qualifierType": "",
+            "module": "com.google.guice",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-2",
+            "type": "java.util.logging.Logger",
+            "qualifierType": "",
+            "module": "java.logging",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-3",
+            "type": "com.guicedee.guicedinjection.GuiceConfig",
+            "qualifierType": "",
+            "module": "com.guicedee.guicedinjection",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-4",
+            "type": "io.github.classgraph.ScanResult",
+            "qualifierType": "",
+            "module": "io.github.classgraph",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-5",
+            "type": "tools.jackson.databind.ObjectMapper",
+            "qualifierType": "com.google.inject.name.Named",
+            "module": "tools.jackson.databind",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-6",
+            "type": "tools.jackson.databind.ObjectWriter",
+            "qualifierType": "com.google.inject.name.Named",
+            "module": "tools.jackson.databind",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-7",
+            "type": "tools.jackson.databind.ObjectWriter",
+            "qualifierType": "com.google.inject.name.Named",
+            "module": "tools.jackson.databind",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-8",
+            "type": "tools.jackson.databind.ObjectReader",
+            "qualifierType": "com.google.inject.name.Named",
+            "module": "tools.jackson.databind",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-9",
+            "type": "tools.jackson.databind.ObjectMapper",
+            "qualifierType": "com.google.inject.name.Named",
+            "module": "tools.jackson.databind",
+            "explicit": true,
+            "bindingKind": "InstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-10",
+            "type": "tools.jackson.databind.ObjectWriter",
+            "qualifierType": "com.google.inject.name.Named",
+            "module": "tools.jackson.databind",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-11",
+            "type": "tools.jackson.databind.ObjectWriter",
+            "qualifierType": "com.google.inject.name.Named",
+            "module": "tools.jackson.databind",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-12",
+            "type": "tools.jackson.databind.ObjectReader",
+            "qualifierType": "com.google.inject.name.Named",
+            "module": "tools.jackson.databind",
+            "explicit": true,
+            "bindingKind": "ProviderInstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-13",
+            "type": "io.vertx.core.Vertx",
+            "qualifierType": "",
+            "module": "io.vertx.core",
+            "explicit": true,
+            "bindingKind": "InstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-14",
+            "type": "io.swagger.v3.oas.models.OpenAPI",
+            "qualifierType": "",
+            "module": "com.guicedee.modules.services.openapi",
+            "explicit": true,
+            "bindingKind": "LinkedProviderBindingImpl",
+            "dependencies": [
+              {
+                "type": "com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider",
+                "bindingId": "binding-29"
+              }
+            ]
+          },
+          {
+            "id": "binding-15",
+            "type": "com.codahale.metrics.MetricRegistry",
+            "qualifierType": "",
+            "module": "com.codahale.metrics",
+            "explicit": true,
+            "bindingKind": "InstanceBindingImpl",
+            "dependencies": []
+          },
+          {
+            "id": "binding-16",
+            "type": "org.eclipse.microprofile.metrics.MetricRegistry",
+            "qualifierType": "",
+            "module": "com.codahale.metrics",
+            "explicit": true,
+            "bindingKind": "LinkedProviderBindingImpl",
+            "dependencies": [
+              {
+                "type": "com.guicedee.metrics.implementations.mp.MPMetricRegistryProvider",
+                "bindingId": "binding-32"
+              }
+            ]
+          },
+          {
+            "id": "binding-17",
+            "type": "com.guicedee.client.scopes.CallScopeProperties",
+            "qualifierType": "",
+            "module": "com.guicedee.client",
+            "explicit": true,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.client.scopes.CallScopeProperties",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-18",
+            "type": "com.guicedee.client.utils.GlobalProperties",
+            "qualifierType": "",
+            "module": "com.guicedee.client",
+            "explicit": true,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.client.utils.GlobalProperties",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-19",
+            "type": "com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup",
+            "qualifierType": "",
+            "module": "com.guicedee.openapi",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-20",
+            "type": "com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator",
+            "qualifierType": "",
+            "module": "com.guicedee.rest",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-21",
+            "type": "com.guicedee.vertx.web.ManagedHttpListenersLifecycle",
+            "qualifierType": "",
+            "module": "com.guicedee.vertx.web",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.vertx.web.ManagedHttpListenersLifecycle",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-22",
+            "type": "com.guicedee.rest.implementations.GuicedRestRouterConfigurator",
+            "qualifierType": "",
+            "module": "com.guicedee.rest",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.rest.implementations.GuicedRestRouterConfigurator",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-23",
+            "type": "com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter",
+            "qualifierType": "",
+            "module": "com.guicedee.openapi",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-24",
+            "type": "com.guicedee.client.scopes.CallScoper",
+            "qualifierType": "",
+            "module": "com.guicedee.client",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.client.scopes.CallScoper",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-25",
+            "type": "com.guicedee.vertx.spi.VertxVerticlePostStartup",
+            "qualifierType": "",
+            "module": "com.guicedee.vertx",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.vertx.spi.VertxVerticlePostStartup",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-26",
+            "type": "com.google.inject.Provider<org.eclipse.microprofile.metrics.MetricRegistry>",
+            "qualifierType": "",
+            "module": "com.google.guice",
+            "explicit": false,
+            "bindingKind": "SyntheticProviderBindingImpl",
+            "dependencies": [
+              {
+                "type": "org.eclipse.microprofile.metrics.MetricRegistry",
+                "bindingId": "binding-16"
+              }
+            ]
+          },
+          {
+            "id": "binding-27",
+            "type": "com.guicedee.client.implementations.GuicedEEClientPostStartup",
+            "qualifierType": "",
+            "module": "com.guicedee.client",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.client.implementations.GuicedEEClientPostStartup",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-28",
+            "type": "com.guicedee.rest.pathing.OperationRegistry",
+            "qualifierType": "",
+            "module": "com.guicedee.rest",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [
+              {
+                "type": "io.vertx.core.Vertx",
+                "bindingId": "binding-13"
+              }
+            ],
+            "constructorType": "com.guicedee.rest.pathing.OperationRegistry",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-29",
+            "type": "com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider",
+            "qualifierType": "",
+            "module": "com.guicedee.openapi",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-30",
+            "type": "com.guicedee.metrics.implementations.PrometheusMetricsConfigurator",
+            "qualifierType": "",
+            "module": "com.guicedee.metrics",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.metrics.implementations.PrometheusMetricsConfigurator",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-31",
+            "type": "com.guicedee.vertx.web.VertxWebServerPostStartup",
+            "qualifierType": "",
+            "module": "com.guicedee.vertx.web",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.vertx.web.VertxWebServerPostStartup",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-32",
+            "type": "com.guicedee.metrics.implementations.mp.MPMetricRegistryProvider",
+            "qualifierType": "",
+            "module": "com.guicedee.metrics",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.metrics.implementations.mp.MPMetricRegistryProvider",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-33",
+            "type": "com.guicedee.servlets.swaggerui.SwaggerUIRegistration",
+            "qualifierType": "",
+            "module": "com.guicedee.swaggerui",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.servlets.swaggerui.SwaggerUIRegistration",
+            "interceptedMethods": []
+          },
+          {
+            "id": "binding-34",
+            "type": "com.guicedee.vertx.web.spi.ManagedHttpListenerGroup",
+            "qualifierType": "",
+            "module": "com.guicedee.vertx.web",
+            "explicit": false,
+            "bindingKind": "ConstructorBindingImpl",
+            "dependencies": [],
+            "constructorType": "com.guicedee.vertx.web.spi.ManagedHttpListenerGroup",
+            "interceptedMethods": []
+          }
+        ],
+        "bindingCount": 35,
+        "explicitBindingCount": 19,
+        "note": "Snapshot only; no provider.get/getInstance calls, no unused-code proof, no instance or qualifier values"
+      }
+    }
+  }
+}

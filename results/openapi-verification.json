@@ -1,0 +1,183 @@
+{
+  "pairedBatch": "20261114-200551",
+  "performanceComparison": true,
+  "freshStarts": 12,
+  "passedCapabilities": 180,
+  "successfulMeasuredWarmRequests": 60,
+  "allCpuMemoryAndNoOomChecksPassed": true,
+  "defaultDiagnosticsDisabled": true,
+  "images": {
+    "guicedee-jlink-before": "sha256:52a971bf8a6f5df8c4d099504cd976da622721f29df265ef826851e8b132851e",
+    "guicedee-jlink-after": "sha256:867a886a5d8cf020d5d9320b93d521acf995535480c7f18d259620f031d7f86a",
+    "guicedee-scan-jlink-before": "sha256:91ba57147497432c11165b88ff41f924ca20163ea9e481a21e56cce63d6df55b",
+    "guicedee-scan-jlink-after": "sha256:b8ea0ab4aef0522b489a9ab6e42a4944a996758f813c5395c4c66af4703df2ac"
+  },
+  "variants": {
+    "guicedee-jlink": {
+      "launchToReadyMs": {
+        "before": 8062.036600000283,
+        "after": 7660.913399999117,
+        "reductionPercent": 4.975457442120169,
+        "beforeSamples": [
+          8033.842100001493,
+          8082.392699998309,
+          8062.036600000283
+        ],
+        "afterSamples": [
+          7336.143299999094,
+          7660.913399999117,
+          7865.026899999066
+        ]
+      },
+      "launchToFirstBusinessMs": {
+        "before": 14354.659200002061,
+        "after": 13745.344799997838,
+        "reductionPercent": 4.244715193267253,
+        "beforeSamples": [
+          14354.659200002061,
+          14788.57109999808,
+          13257.489199997508
+        ],
+        "afterSamples": [
+          13745.344799997838,
+          13859.748499999114,
+          13666.144999999233
+        ]
+      },
+      "firstOpenApiJsonMs": {
+        "before": 192.23529999726452,
+        "after": 103.32629999902565,
+        "reductionPercent": 46.250090383766164,
+        "beforeSamples": [
+          179.710200001864,
+          202.8957000002265,
+          192.23529999726452
+        ],
+        "afterSamples": [
+          97.41049999865936,
+          193.2782000003499,
+          103.32629999902565
+        ]
+      }
+    },
+    "guicedee-scan-jlink": {
+      "launchToReadyMs": {
+        "before": 8503.76690000121,
+        "after": 8037.348500001826,
+        "reductionPercent": 5.484844604563626,
+        "beforeSamples": [
+          8104.040199999872,
+          8776.818999998795,
+          8503.76690000121
+        ],
+        "afterSamples": [
+          8037.348500001826,
+          8093.584800000826,
+          7856.237700001657
+        ]
+      },
+      "launchToFirstBusinessMs": {
+        "before": 14507.779799998389,
+        "after": 13987.000199998874,
+        "reductionPercent": 3.5896574608857246,
+        "beforeSamples": [
+          14507.779799998389,
+          14972.508599999856,
+          14461.280300001818
+        ],
+        "afterSamples": [
+          14037.466199999471,
+          13987.000199998874,
+          13610.89340000035
+        ]
+      },
+      "firstOpenApiJsonMs": {
+        "before": 174.3069000003743,
+        "after": 190.86820000302396,
+        "reductionPercent": -9.501230302767187,
+        "beforeSamples": [
+          79.11960000274121,
+          174.3069000003743,
+          193.91879999966477
+        ],
+        "afterSamples": [
+          183.968500001356,
+          190.86820000302396,
+          194.31889999759733
+        ]
+      }
+    }
+  },
+  "moduleAudit": {
+    "guicedee-jlink": {
+      "modules": 107,
+      "identicalModuleFingerprints": 105,
+      "changedModules": [
+        "com.guicedee.openapi",
+        "java.base"
+      ],
+      "beforeFile": "openapi-before-module-hashes.tsv",
+      "afterFile": "openapi-after-module-hashes.tsv"
+    },
+    "guicedee-scan-jlink": {
+      "modules": 107,
+      "identicalModuleFingerprints": 105,
+      "changedModules": [
+        "com.guicedee.openapi",
+        "java.base"
+      ],
+      "beforeFile": "openapi-scan-before-module-hashes.tsv",
+      "afterFile": "openapi-scan-after-module-hashes.tsv"
+    },
+    "changedJdkResources": [
+      "java/lang/invoke/BoundMethodHandle$Species_D.class",
+      "java/lang/invoke/BoundMethodHandle$Species_DL.class",
+      "java/lang/invoke/BoundMethodHandle$Species_I.class",
+      "java/lang/invoke/BoundMethodHandle$Species_IL.class",
+      "java/lang/invoke/BoundMethodHandle$Species_LL.class",
+      "java/lang/invoke/BoundMethodHandle$Species_LLL.class",
+      "java/lang/invoke/BoundMethodHandle$Species_LLLL.class",
+      "java/lang/invoke/BoundMethodHandle$Species_LLLLL.class",
+      "java/lang/invoke/DelegatingMethodHandle$Holder.class",
+      "java/lang/invoke/DirectMethodHandle$Holder.class",
+      "java/lang/invoke/Invokers$Holder.class",
+      "java/lang/invoke/LambdaForm$Holder.class"
+    ],
+    "note": "java.base changes are jlink-generated method-handle classes; all other JDK resources and all application/SDK modules are identical.",
+    "changedJdkResourcesVerifiedForBothDiscoveryModes": true
+  },
+  "instrumentedDiagnostics": {
+    "beforeBatch": "20261114-192338",
+    "afterBatch": "20261114-200341",
+    "freshStartsAfter": 6,
+    "passedCapabilitiesAfter": 90,
+    "performanceComparison": false,
+    "providerMedianMs": {
+      "guicedee-jlink": {
+        "before": 1396.19372,
+        "after": 1000.151211,
+        "reductionPercent": 28.365870962376196
+      },
+      "guicedee-scan-jlink": {
+        "before": 1500.560833,
+        "after": 902.241778,
+        "reductionPercent": 39.87302892637876
+      }
+    }
+  },
+  "tests": {
+    "openapi": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "harnessPassed": 14
+  },
+  "exploratoryBatches": [
+    "20261114-194654",
+    "20261114-195349",
+    "20261114-200110"
+  ],
+  "note": "Three samples per role and discovery mode; retain all separate/noisy batches. Direct 3.1 generation has documented opaque-schema rendering differences."
+}

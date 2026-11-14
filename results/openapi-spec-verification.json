@@ -1,0 +1,56 @@
+[
+  {
+    "variant": "guicedee-jlink",
+    "run": 1,
+    "pathsAndTypedOrderUnchanged": true,
+    "changes": [
+      "default jsonSchemaDialect omitted",
+      "opaque UniResponse: object constraint becomes unconstrained schema"
+    ]
+  },
+  {
+    "variant": "guicedee-jlink",
+    "run": 2,
+    "pathsAndTypedOrderUnchanged": true,
+    "changes": [
+      "default jsonSchemaDialect omitted",
+      "opaque UniResponse: object constraint becomes unconstrained schema"
+    ]
+  },
+  {
+    "variant": "guicedee-jlink",
+    "run": 3,
+    "pathsAndTypedOrderUnchanged": true,
+    "changes": [
+      "default jsonSchemaDialect omitted",
+      "opaque UniResponse: object constraint becomes unconstrained schema"
+    ]
+  },
+  {
+    "variant": "guicedee-scan-jlink",
+    "run": 1,
+    "pathsAndTypedOrderUnchanged": true,
+    "changes": [
+      "default jsonSchemaDialect omitted",
+      "opaque UniResponse: object constraint becomes unconstrained schema"
+    ]
+  },
+  {
+    "variant": "guicedee-scan-jlink",
+    "run": 2,
+    "pathsAndTypedOrderUnchanged": true,
+    "changes": [
+      "default jsonSchemaDialect omitted",
+      "opaque UniResponse: object constraint becomes unconstrained schema"
+    ]
+  },
+  {
+    "variant": "guicedee-scan-jlink",
+    "run": 3,
+    "pathsAndTypedOrderUnchanged": true,
+    "changes": [
+      "default jsonSchemaDialect omitted",
+      "opaque UniResponse: object constraint becomes unconstrained schema"
+    ]
+  }
+]

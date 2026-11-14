@@ -1,0 +1,16 @@
+a0d8b606810f927aab0e7c3974ee64c121f358fa58dd1425fbc4841b0b0bad7e  guicedee/target/comparison-guicedee-1.0-SNAPSHOT.jar
+a0d8b606810f927aab0e7c3974ee64c121f358fa58dd1425fbc4841b0b0bad7e  guicedee-native/target/lib/comparison-guicedee-1.0-SNAPSHOT.jar
+0026ad198445ba7155bf34e33eca88c711619ccac53c422641317912ae340cf0  guicedee-native/target/lib/firebase-admin-2.5.1.jar
+dd7c23c08dc3dab7b8e3b9d63d8357ecc69203aceef429ac28525c7a928b94e9  guicedee-native/target/lib/commercetools-2.5.1.jar
+bench.guicedee.nativeimage@1.0-SNAPSHOT jar:file:///src/guicedee-native/target/comparison-guicedee-native-1.0-SNAPSHOT.jar!/module-info.class
+requires bench.guicedee
+requires com.guicedee.nativeimage
+bench.guicedee@1.0-SNAPSHOT jar:file:///src/guicedee-native/target/lib/comparison-guicedee-1.0-SNAPSHOT.jar!/module-info.class
+requires com.guicedee.faulttolerance
+requires com.guicedee.metrics transitive
+firebase.admin@2.5.1 jar:file:///src/guicedee-native/target/lib/firebase-admin-2.5.1.jar!/module-info.class open
+exports android.annotation
+exports com.ctc.wstx.api
+commercetools.sdk.java.api@2.5.1 jar:file:///src/guicedee-native/target/lib/commercetools-2.5.1.jar!/module-info.class open
+exports com.commercetools.api
+exports com.commercetools.api.client

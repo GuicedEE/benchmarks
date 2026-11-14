@@ -1,0 +1,124 @@
+{
+  "date": "2026-11-14",
+  "frameworkTests": {
+    "rest": {
+      "suites": [
+        {
+          "name": "com.guicedee.rest.test.ParameterDefaultsTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "com.guicedee.rest.test.ConsumesIntegrationTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "com.guicedee.rest.test.ResponseReturnTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "com.guicedee.rest.test.SecurityTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "com.guicedee.rest.test.RoleAuthorizationTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ],
+      "passed": 31,
+      "runtimeJarMatchesTestedTargetSha256": "18ce3c8ca1d97d80960c41515c0e986fd5989fc5bb2bc47e6b3b2ef3ef5fe79d"
+    },
+    "fault-tolerance": {
+      "suites": [
+        {
+          "name": "com.guicedee.faulttolerance.test.FaultToleranceIntegrationTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "com.guicedee.faulttolerance.test.ReactiveRetryTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "com.guicedee.faulttolerance.test.ReactiveTimeoutTest",
+          "tests": 10,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ],
+      "passed": 26,
+      "runtimeJarMatchesTestedTargetSha256": "ccbf8c855cd17cec0639fa6c9f0514253c75713058479759ab9b77de649557f2"
+    }
+  },
+  "harnessTestsPassed": 7,
+  "benchmarkReactorBuild": "passed (5 projects)",
+  "moduleDescriptors": {
+    "guicedee": "bench.guicedee@1.0-SNAPSHOT jar:file:///C:/Java/DevSuite/benchmarks/guicedee/target/comparison-guicedee-1.0-SNAPSHOT.jar!/module-info.class\nrequires com.guicedee.faulttolerance\nrequires com.guicedee.metrics transitive\nrequires com.guicedee.openapi\nrequires com.guicedee.rest\nrequires com.guicedee.swaggerui\nrequires com.guicedee.telemetry transitive\nrequires comparison.common\nrequires java.base mandated\nprovides com.guicedee.client.services.IGuiceDiscovery with bench.guicedee.BenchmarkDiscovery\nqualified opens bench.guicedee to com.google.guice com.guicedee.rest tools.jackson.databind\nqualified opens bench.guicedee.rest to com.google.guice com.guicedee.rest com.guicedee.vertx tools.jackson.databind\nqualified opens bench.guicedee.service to com.google.guice com.guicedee.vertx\n\n",
+    "guicedee-scan": "bench.guicedee.scan@1.0-SNAPSHOT jar:file:///C:/Java/DevSuite/benchmarks/guicedee-scan/target/comparison-guicedee-scan-1.0-SNAPSHOT.jar!/module-info.class\nrequires com.guicedee.faulttolerance\nrequires com.guicedee.metrics transitive\nrequires com.guicedee.openapi\nrequires com.guicedee.rest\nrequires com.guicedee.swaggerui\nrequires com.guicedee.telemetry transitive\nrequires comparison.common\nrequires java.base mandated\nqualified opens bench.guicedee to com.google.guice com.guicedee.rest tools.jackson.databind\nqualified opens bench.guicedee.rest to com.google.guice com.guicedee.rest com.guicedee.vertx tools.jackson.databind\nqualified opens bench.guicedee.service to com.google.guice com.guicedee.vertx\n\n"
+  },
+  "scannerDiscoveryProviderAbsent": true,
+  "matchingBusinessBytecode": true,
+  "packagedJarHashesVerified": 398,
+  "applicationBuildSourcesVerified": 19,
+  "sourceChangesAfterTimedRun": [
+    {
+      "path": "pom.xml",
+      "imageSourceSha256": "eeb26248b59b7a02755b4a3d05f75aed7aac1a29222b5a634a43a5efd84dbe55",
+      "currentSourceSha256": "b37593f1922195c9807a6d0fc15e5ec23d119681702fd70648711872ad42ac14"
+    },
+    {
+      "path": "common/pom.xml",
+      "imageSourceSha256": "4d844a50d0d98aa9b8486bb40333dabb3bf9b9786231f0414af532442fec8fe3",
+      "currentSourceSha256": "ac5cd4ed66692d0681af40a8d331ae67d11df1a0d319e95cd9ffd94c2e6ac9e1"
+    },
+    {
+      "path": "docker/Dockerfile",
+      "imageSourceSha256": "d610bcca5decdfd1066f8c1243429f208d7179eb167be19fdb87240a79438f65",
+      "currentSourceSha256": "fc5cae8e36c8308ee5416167208e2b33b51f5ac059026b5eb4239011a2433736"
+    },
+    {
+      "path": "docker/link-runtime.sh",
+      "imageSourceSha256": "4d0a72d17ce7d55e1bd9734dbcc17c246a128cbeb86ca3f62c82b22911a2ec59",
+      "currentSourceSha256": "d25cbac39480fccfab5e9999ce2ce8f8ca55691fd2bccb24ee08189cf25003ea"
+    },
+    {
+      "path": "common/src/main/java/module-info.java",
+      "imageSourceSha256": "f557e6dcab411a0f9c187604de65e297e67d4f156004b15b743eb7ca60249048",
+      "currentSourceSha256": "92f1279cdb95d4d608ecb41953c812968d09f5ae6ee2abcf70b541925f79ae49"
+    }
+  ],
+  "matrix": {
+    "directory": "20261114-122316",
+    "profile": "C1; Docker 250m CPU / 500 MiB; Firestore emulator",
+    "variants": 6,
+    "freshStarts": 18,
+    "capabilitiesPassedPerRun": 15,
+    "eligibleComparison": true,
+    "warmRequests": 540,
+    "warmFailures": 0,
+    "firstBusinessSuccesses": 18,
+    "oomKills": 0,
+    "effectiveLimitsAndDiscoveryVerified": true
+  },
+  "scope": "Focused local framework tests and reference-workload matrix; no full DevSuite reactor, hosted CI, native executable, JPMS runtime launch or reproduction of the unavailable historical template."
+}

@@ -1,0 +1,164 @@
+{
+  "batch": "20261114-221748",
+  "eligibleComparison": true,
+  "variants": {
+    "guicedee-native-before": {
+      "runs": 7,
+      "image": "sha256:3dd1fe1458f2236804fd28b2ab08ee60f60531d7846b9f25a05ec232c18b27d3",
+      "imageBytes": 485016828,
+      "launchToReadyMs": {
+        "median": 712.0491000023321,
+        "min": 598.0715000005148,
+        "max": 778.3052999984648
+      },
+      "firstBusinessMs": {
+        "median": 108.42069999853265,
+        "min": 70.25079999948503,
+        "max": 505.9122999991814
+      },
+      "launchToFirstBusinessMs": {
+        "median": 811.1745999995037,
+        "min": 731.6465000003518,
+        "max": 1104.0442000012263
+      },
+      "firstOpenApiJsonMs": {
+        "median": 3.9027999991958495,
+        "min": 3.1843999968259595,
+        "max": 24.004299997613998
+      },
+      "warm": {
+        "p50Ms": 7.073799999488983,
+        "p95Ms": 30.496999999741092,
+        "p99Ms": 31.07570000065607
+      },
+      "peakContainerMemoryBytes": 85475328,
+      "endContainerMemoryBytes": 81932288,
+      "executableBytes": 234560616,
+      "compilerVersion": "native-image 25.0.5 2026-10-20"
+    },
+    "guicedee-native-after": {
+      "runs": 7,
+      "image": "sha256:1fa99f53daf73ad7a241f606f73a16c01cde1c367fb2d74874e7f361daefcea1",
+      "imageBytes": 453438877,
+      "launchToReadyMs": {
+        "median": 573.390899997321,
+        "min": 512.5102999991213,
+        "max": 575.6211999978404
+      },
+      "firstBusinessMs": {
+        "median": 79.30560000022524,
+        "min": 61.4915000005567,
+        "max": 179.99280000003637
+      },
+      "launchToFirstBusinessMs": {
+        "median": 649.3307999990066,
+        "min": 635.5642999988049,
+        "max": 692.5444999978936
+      },
+      "firstOpenApiJsonMs": {
+        "median": 3.6076000033062883,
+        "min": 3.237600001739338,
+        "max": 19.788000001426553
+      },
+      "warm": {
+        "p50Ms": 5.74370000140334,
+        "p95Ms": 30.381700002180878,
+        "p99Ms": 30.67419999933918
+      },
+      "peakContainerMemoryBytes": 85925888,
+      "endContainerMemoryBytes": 82165760,
+      "executableBytes": 210181224,
+      "compilerVersion": "native-image 25.0.5 2026-10-20"
+    },
+    "quarkus-native-before": {
+      "runs": 7,
+      "image": "sha256:c3928e04b0e4d53f84c4755a10cb71b837806387db509cac6ef99ca2711c109d",
+      "imageBytes": 414427435,
+      "launchToReadyMs": {
+        "median": 574.1175999974075,
+        "min": 564.2188999991049,
+        "max": 583.7154000000737
+      },
+      "firstBusinessMs": {
+        "median": 103.25120000197785,
+        "min": 79.86819999860018,
+        "max": 150.69450000009965
+      },
+      "launchToFirstBusinessMs": {
+        "median": 679.5712999992247,
+        "min": 654.8197000010987,
+        "max": 724.8480999987805
+      },
+      "firstOpenApiJsonMs": {
+        "median": 2.123299997037975,
+        "min": 1.9082999970123637,
+        "max": 24.32760000010603
+      },
+      "warm": {
+        "p50Ms": 4.987700000128825,
+        "p95Ms": 25.120599999354454,
+        "p99Ms": 26.93850000287057
+      },
+      "peakContainerMemoryBytes": 65609728,
+      "endContainerMemoryBytes": 62337024,
+      "executableBytes": 183299176,
+      "compilerVersion": "native-image 25.0.5 2026-10-20"
+    },
+    "quarkus-native-after": {
+      "runs": 7,
+      "image": "sha256:dcd3fbe001026fccac0606fd7fa5853e3f46617a3b9378cf3546aa202aac3879",
+      "imageBytes": 393172921,
+      "launchToReadyMs": {
+        "median": 576.6753999996581,
+        "min": 564.4191999999748,
+        "max": 585.7079000015801
+      },
+      "firstBusinessMs": {
+        "median": 124.79829999938374,
+        "min": 78.90409999890835,
+        "max": 148.6799999984214
+      },
+      "launchToFirstBusinessMs": {
+        "median": 706.6779999986466,
+        "min": 643.3647999983805,
+        "max": 719.1313000002992
+      },
+      "firstOpenApiJsonMs": {
+        "median": 2.1137999974598642,
+        "min": 1.7953999995370395,
+        "max": 14.884899999742629
+      },
+      "warm": {
+        "p50Ms": 5.809550000776653,
+        "p95Ms": 27.91609999985667,
+        "p99Ms": 30.522200002451427
+      },
+      "peakContainerMemoryBytes": 65388544,
+      "endContainerMemoryBytes": 61886464,
+      "executableBytes": 165686376,
+      "compilerVersion": "native-image 25.0.5 2026-10-20"
+    }
+  },
+  "sdkJarsByVariant": {
+    "guicedee-native-before": {
+      "firebase-admin": "0026ad198445ba7155bf34e33eca88c711619ccac53c422641317912ae340cf0",
+      "commercetools": "dd7c23c08dc3dab7b8e3b9d63d8357ecc69203aceef429ac28525c7a928b94e9"
+    },
+    "guicedee-native-after": {
+      "firebase-admin": "0026ad198445ba7155bf34e33eca88c711619ccac53c422641317912ae340cf0",
+      "commercetools": "dd7c23c08dc3dab7b8e3b9d63d8357ecc69203aceef429ac28525c7a928b94e9"
+    },
+    "quarkus-native-before": {
+      "firebase-admin": "0026ad198445ba7155bf34e33eca88c711619ccac53c422641317912ae340cf0",
+      "commercetools": "dd7c23c08dc3dab7b8e3b9d63d8357ecc69203aceef429ac28525c7a928b94e9"
+    },
+    "quarkus-native-after": {
+      "firebase-admin": "0026ad198445ba7155bf34e33eca88c711619ccac53c422641317912ae340cf0",
+      "commercetools": "dd7c23c08dc3dab7b8e3b9d63d8357ecc69203aceef429ac28525c7a928b94e9"
+    }
+  },
+  "capabilityChecksPassed": 420,
+  "measuredRequests": 840,
+  "failedMeasuredRequests": 0,
+  "sdkHashesMatch": true
+}

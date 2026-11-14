@@ -1,0 +1,290 @@
+[
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.internal.DnsNameResolverProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.NameResolverProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.grpclb.SecretGrpclbNameResolverProvider$Provider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.NameResolverProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.grpc.netty.UdsNameResolverProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.NameResolverProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.googleapis.GoogleCloudToProdExperimentalNameResolverProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.NameResolverProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.googleapis.GoogleCloudToProdNameResolverProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.NameResolverProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.xds.XdsNameResolverProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.NameResolverProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.internal.PickFirstLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.grpclb.GrpclbLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.util.SecretRoundRobinLoadBalancerProvider$Provider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.util.OutlierDetectionLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.util.RandomSubsettingLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.xds.CdsLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.xds.PriorityLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.xds.WeightedTargetLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.xds.ClusterManagerLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.xds.ClusterImplLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.xds.LeastRequestLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.xds.RingHashLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.xds.WrrLocalityLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.xds.WeightedRoundRobinLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.protobuf.services.internal.HealthCheckingRoundRobinLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.rls.RlsLoadBalancerProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.grpc.netty.NettyChannelProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.ManagedChannelProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.grpc.netty.UdsNettyChannelProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.grpc.ManagedChannelProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  }
+]

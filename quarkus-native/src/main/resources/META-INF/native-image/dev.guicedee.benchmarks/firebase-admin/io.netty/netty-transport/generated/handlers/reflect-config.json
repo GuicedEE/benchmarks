@@ -1,0 +1,121 @@
+[
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.bootstrap.ServerBootstrap$1",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.bootstrap.ServerBootstrap$1"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.ChannelDuplexHandler",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.ChannelDuplexHandler"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.ChannelHandler",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.ChannelHandler"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.ChannelHandlerAdapter",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.ChannelHandlerAdapter"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.ChannelInboundHandler",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.ChannelInboundHandler"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.ChannelInboundHandlerAdapter",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.ChannelInboundHandlerAdapter"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.ChannelInitializer",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.ChannelInitializer"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.ChannelOutboundHandler",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.ChannelOutboundHandler"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.ChannelOutboundHandlerAdapter",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.ChannelOutboundHandlerAdapter"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.CombinedChannelDuplexHandler",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.CombinedChannelDuplexHandler"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.DefaultChannelPipeline$TailContext",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.DefaultChannelPipeline$TailContext"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.embedded.EmbeddedChannel$1",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.embedded.EmbeddedChannel$1"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.pool.SimpleChannelPool$1",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.pool.SimpleChannelPool$1"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.SimpleChannelInboundHandler",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.SimpleChannelInboundHandler"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.io.netty.channel.SimpleUserEventChannelHandler",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.io.netty.channel.SimpleUserEventChannelHandler"
+    },
+    "queryAllPublicMethods": true
+  }
+]

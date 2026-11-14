@@ -1,0 +1,26 @@
+[
+  {
+    "name": "com.google.firebase.internal.shaded.org.bouncycastle.jce.provider.BouncyCastleProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.org.bouncycastle.jcajce.provider.BouncyCastleProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.google.firebase.internal.shaded.org.bouncycastle.jcajce.provider.BouncyCastleFipsProvider",
+    "condition": {
+      "typeReachable": "com.google.firebase.internal.shaded.org.bouncycastle.jcajce.provider.BouncyCastleFipsProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  }
+]

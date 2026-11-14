@@ -1,0 +1,30 @@
+{
+  "changes": [
+    {
+      "path": "pom.xml",
+      "imageSourceSha256": "eeb26248b59b7a02755b4a3d05f75aed7aac1a29222b5a634a43a5efd84dbe55",
+      "currentSourceSha256": "b37593f1922195c9807a6d0fc15e5ec23d119681702fd70648711872ad42ac14"
+    },
+    {
+      "path": "common/pom.xml",
+      "imageSourceSha256": "4d844a50d0d98aa9b8486bb40333dabb3bf9b9786231f0414af532442fec8fe3",
+      "currentSourceSha256": "ac5cd4ed66692d0681af40a8d331ae67d11df1a0d319e95cd9ffd94c2e6ac9e1"
+    },
+    {
+      "path": "docker/Dockerfile",
+      "imageSourceSha256": "d610bcca5decdfd1066f8c1243429f208d7179eb167be19fdb87240a79438f65",
+      "currentSourceSha256": "fc5cae8e36c8308ee5416167208e2b33b51f5ac059026b5eb4239011a2433736"
+    },
+    {
+      "path": "docker/link-runtime.sh",
+      "imageSourceSha256": "4d0a72d17ce7d55e1bd9734dbcc17c246a128cbeb86ca3f62c82b22911a2ec59",
+      "currentSourceSha256": "d25cbac39480fccfab5e9999ce2ce8f8ca55691fd2bccb24ee08189cf25003ea"
+    },
+    {
+      "path": "common/src/main/java/module-info.java",
+      "imageSourceSha256": "f557e6dcab411a0f9c187604de65e297e67d4f156004b15b743eb7ca60249048",
+      "currentSourceSha256": "92f1279cdb95d4d608ecb41953c812968d09f5ae6ee2abcf70b541925f79ae49"
+    }
+  ],
+  "reason": "Commercetools wrapper integration arrived during the timed run; validate rebuilt images separately."
+}

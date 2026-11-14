@@ -1,0 +1,156 @@
+[
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksAuthRequestDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksAuthRequestDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksAuthResponseDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksAuthResponseDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksCmdRequestDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksCmdRequestDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksCmdResponseDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksCmdResponseDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksInitRequestDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksInitRequestDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksInitResponseDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksInitResponseDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksMessageEncoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksMessageEncoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.SocksPortUnificationServerHandler",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.SocksPortUnificationServerHandler"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v4.Socks4ClientDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v4.Socks4ClientDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v4.Socks4ClientEncoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v4.Socks4ClientEncoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v4.Socks4ServerDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v4.Socks4ServerDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v4.Socks4ServerEncoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v4.Socks4ServerEncoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5ClientEncoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5ClientEncoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5CommandRequestDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5CommandRequestDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5CommandResponseDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5CommandResponseDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5InitialRequestDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5InitialRequestDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5InitialResponseDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5InitialResponseDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5PasswordAuthRequestDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5PasswordAuthRequestDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5PasswordAuthResponseDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5PasswordAuthResponseDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5PrivateAuthRequestDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5PrivateAuthRequestDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5PrivateAuthResponseDecoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5PrivateAuthResponseDecoder"
+    },
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5ServerEncoder",
+    "condition": {
+      "typeReachable": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5ServerEncoder"
+    },
+    "queryAllPublicMethods": true
+  }
+]

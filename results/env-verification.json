@@ -1,0 +1,48 @@
+{
+  "purpose": "Environment-only configuration, without package/class option annotations",
+  "javaChecks": [
+    {
+      "module": "vertx",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "metrics",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "telemetry",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "newRegressionTests": [
+    "EnvironmentOnlyVertxTest",
+    "EnvironmentOnlyMetricsTest",
+    "EnvironmentOnlyTelemetryTest"
+  ],
+  "precedenceTested": [
+    ".env.local over .env",
+    "system property over files"
+  ],
+  "pythonHarness": {
+    "tests": 4,
+    "status": "passed"
+  },
+  "runtimeChecks": {
+    "docker": "20261114-110626/summary.json",
+    "knownGuicedeeFailures": [
+      "optionalPrimitiveQuery",
+      "unsupportedMedia",
+      "reactiveTimeout"
+    ],
+    "local": "20261114-110753/summary.json"
+  }
+}

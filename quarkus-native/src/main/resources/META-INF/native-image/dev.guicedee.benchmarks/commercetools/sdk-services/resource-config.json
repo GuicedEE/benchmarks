@@ -1,0 +1,60 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.org.javamoney.moneta.spi.loader.LoaderService\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.javax.money.spi.CurrencyProviderSpi\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.tools.jackson.databind.ObjectMapper\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.javax.money.spi.RoundingProviderSpi\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/io.vrap.rmf.base.client.ExecutorHttpClientSupplier\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.javax.money.spi.MonetaryAmountsSingletonQuerySpi\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.money.MonetaryProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.javax.money.spi.ServiceProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/io.vrap.rmf.base.client.utils.json.ModuleSupplier\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/reactor.blockhound.integration.BlockHoundIntegration\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.javax.money.spi.MonetaryAmountFactoryProviderSpi\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.javax.money.spi.MonetaryAmountFormatProviderSpi\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.javax.money.spi.MonetaryCurrenciesSingletonSpi\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/io.vrap.rmf.base.client.SolutionInfo\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/io.vrap.rmf.base.client.HttpClientSupplier\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.tools.jackson.core.TokenStreamFactory\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.org.javamoney.moneta.spi.MonetaryConfigProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/com.commercetools.internal.shaded.javax.money.spi.MonetaryAmountsSingletonSpi\\E"
+      }
+    ]
+  }
+}
