@@ -18,7 +18,7 @@ they are not distributed by this Git repository. Rebuilds with changed framework
 require new measurements and, where applicable, refreshed native metadata.
 
 The independent `quarkus-standard` project can be built without DevSuite or GuicedEE artifacts.
-See the standalone instructions in the repository README.
+See the standalone instructions in [the running guide](../RUNNING.md#run).
 
 ## Native support
 
