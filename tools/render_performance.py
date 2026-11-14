@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 import re
 import statistics
+from compare_builds import validate as validate_builds
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -42,6 +43,103 @@ def read(relative):
 
 def stats(values):
     return dict(median=statistics.median(values), minimum=min(values), maximum=max(values))
+
+
+def collect_builds(evidence):
+    raw = json.loads(evidence.read_text(encoding='utf-8'))
+    validate_builds(raw)
+    if not raw['eligible']:
+        raise ValueError('Build cohort is not eligible')
+    result = {key: raw[key] for key in ['measuredAt', 'runs', 'protocol', 'platform', 'cpuCount',
+                                       'maven', 'java', 'guicedeeArtifactVersion']}
+    result['container'] = raw.get('container')
+    result['sharedSources'] = {key:value for key, value in raw['sourceFiles'].items()
+                               if key.startswith('common/src/main/java/bench/')}
+    result['variants'] = {}
+    for name in raw['variants']:
+        values = {}
+        for goal in ['compile', 'package']:
+            rows = [r for r in raw['samples'] if r['variant'] == name and r['goal'] == goal]
+            if rows:
+                values[goal] = dict(stats([r['wallSeconds'] for r in rows]), samples=len(rows))
+        result['variants'][name] = values
+    for name, values in result['variants'].items():
+        baseline = 'quarkus-standard-native' if name.endswith('-native') else 'quarkus-standard'
+        for goal, item in values.items():
+            reference = result['variants'].get(baseline, {}).get(goal)
+            if reference:
+                item['baseline'] = baseline
+                item['differencePercent'] = (item['median'] / reference['median'] - 1) * 100
+    return result
+
+
+def verify_build_runtime_sources(data, image_inputs):
+    expected = data['builds']['sharedSources']
+    if not expected:
+        raise ValueError('Build evidence is missing the shared workload source hashes')
+    for group, values in data['groups'].items():
+        if group == 'local-windows':
+            continue
+        for name, item in values['variants'].items():
+            actual = {e['path']:e['sha256'] for e in image_inputs.get(item['image'], {}).get('sharedSourceHashes', [])}
+            if actual != expected:
+                raise ValueError(f'Build/runtime workload source mismatch: {group}/{name}')
+
+
+def build_sections(data):
+    values = data['builds']['variants']
+    reference = values['quarkus-standard']
+    spi = values['guicedee']
+    def difference(a, b):
+        delta = (a / b - 1) * 100
+        return f"{abs(delta):.1f}% {'less' if delta < 0 else 'more'} time"
+    headline = (
+        f"**Clean JVM build:** GuicedEE SPI compiles in **{spi['compile']['median']:.2f} s** versus "
+        f"**{reference['compile']['median']:.2f} s** for Quarkus "
+        f"(**{difference(spi['compile']['median'], reference['compile']['median'])}**). "
+        f"Complete runnable JVM packaging takes **{spi['package']['median']:.2f} / "
+        f"{reference['package']['median']:.2f} s** (GuicedEE / Quarkus), "
+        f"**{difference(spi['package']['median'], reference['package']['median'])}**. "
+        f"Medians of {data['builds']['runs']} clean, offline builds per task; dependency preparation is excluded.")
+    rows = []
+    for name, item in values.items():
+        native = name.endswith('-native')
+        baseline = values['quarkus-standard-native' if native else 'quarkus-standard']['package']['median']
+        package = item['package']
+        compile_time = item.get('compile')
+        rows.append([LABELS[name], number(item.get('compile', {}).get('median')),
+                     f"{compile_time['minimum']:.2f}–{compile_time['maximum']:.2f}" if compile_time else '—',
+                     number(package['median']), f"{package['minimum']:.2f}–{package['maximum']:.2f}",
+                     f"{(package['median'] / baseline - 1) * 100:+.1f}%" if name.startswith('guicedee') else 'Baseline'])
+    grid = table(['Artifact', 'Clean compile (s)', 'Compile min–max (s)', 'Complete package (s)', 'Package min–max (s)',
+                  'Package difference vs Quarkus'], rows)
+    tradeoffs = []
+    for name, item in values.items():
+        group = 'native-standard' if name.endswith('-native') else 'jvm-default'
+        runtime = data['groups'][group]['variants'][name]
+        tradeoffs.append([LABELS[name], number(item['package']['median']),
+                          number(runtime['launchToFirstBusinessMs']['median'] / 1000, 3),
+                          number(runtime['warm']['p50Ms'])])
+    phases = data['phases']
+    guice = phases['SPI jlink']['workload']['vendor-client-initialization'] / 1000
+    quarkus = phases['Quarkus upstream JVM']['workload']['vendor-client-initialization'] / 1000
+    sdk = (f"**Commercetools first-use initialization:** GuicedEE SPI jlink records **{guice:.3f} s** "
+           f"versus **{quarkus:.3f} s** for standard Quarkus JVM: **{quarkus-guice:.3f} s less** "
+           f"(**{difference(guice, quarkus)}**). These are instrumented phase diagnostics "
+           f"({phases['SPI jlink']['starts']} GuicedEE starts, {phases['Quarkus upstream JVM']['starts']} Quarkus start), "
+           'separate from build time and the uninstrumented runtime rankings. The samples identify a first-use cost; '
+           'they do not establish its cause or a general SDK performance ratio.')
+    native_g = values['guicedee-native']['package']['median']
+    native_q = values['quarkus-standard-native']['package']['median']
+    interpretation = (
+        f"GuicedEE's JVM package requires **{difference(spi['package']['median'], reference['package']['median'])}** "
+        'than Quarkus fast-JAR. Linking the runtime adds a separate packaging cost. '
+        f"The complete GuicedEE native build takes **{native_g:.2f} s** versus **{native_q:.2f} s**, "
+        f"or **{difference(native_g, native_q)}**. The runtime grid must therefore be read by artifact type: "
+        'the inexpensive JVM build and the native startup result describe different deployment choices.')
+    return {'build-headline': headline, 'build-grid': grid, 'build-findings': interpretation, 'build-runtime': table(
+        ['Artifact', 'Complete package (s)', 'Full-business startup (s)', 'Warm p50 (ms)'], tradeoffs),
+        'sdk-headline': sdk}
 
 
 def collect_group(batches, selected):
@@ -337,11 +435,27 @@ def main():
                 *[item[k]['median'] if item[k] else '' for k in ['peakMiB', 'endMiB']],
                 item['imageMiB'], item['executableMiB'], item['image']])
     sections = render(data)
+    build_evidence = EVIDENCE_ROOT/'results/latest/builds.json'
+    data['builds'] = collect_builds(build_evidence)
+    verify_build_runtime_sources(data, LATEST['imageInputs'])
+    data['inputSha256']['results/latest/builds.json'] = hashlib.sha256(build_evidence.read_bytes()).hexdigest()
+    sections.update(build_sections(data))
+    build_csv = io.StringIO(newline='')
+    build_writer = csv.writer(build_csv, lineterminator='\n')
+    build_writer.writerow(['variant', 'goal', 'samples', 'median_seconds', 'minimum_seconds', 'maximum_seconds',
+                           'baseline', 'difference_percent'])
+    for name, values in data['builds']['variants'].items():
+        for goal, item in values.items():
+            build_writer.writerow([name, goal, item['samples'], item['median'], item['minimum'], item['maximum'],
+                                   item.get('baseline', ''), item.get('differencePercent', '')])
     outputs = {
         ROOT / 'RESULTS.md': replace_sections(ROOT / 'RESULTS.md', sections),
-        ROOT / 'README.md': replace_sections(ROOT / 'README.md', {'overview': overview(data['groups']), 'headline': sections['headline']}),
+        ROOT / 'README.md': replace_sections(ROOT / 'README.md', dict(
+            overview=overview(data['groups']), **{key: sections[key] for key in
+            ['headline', 'build-headline', 'build-grid', 'sdk-headline']})),
         ROOT / 'docs/current-performance.json': json.dumps(data, indent=2) + '\n',
         ROOT / 'docs/current-performance.csv': output.getvalue(),
+        ROOT / 'docs/build-performance.csv': build_csv.getvalue(),
     }
     for path, content in outputs.items():
         if args.check:
@@ -350,10 +464,11 @@ def main():
         else:
             path.write_text(content, encoding='utf-8', newline='\n')
     if args.check:
-        chart = ROOT / 'docs/startup.svg'
         digest = hashlib.sha256((ROOT/'docs/current-performance.json').read_bytes()).hexdigest()
-        if not chart.exists() or f'performance-data-sha256: {digest}' not in chart.read_text(encoding='utf-8'):
-            raise ValueError('Stale startup chart; run tools/render_charts.py')
+        for name in ['startup', 'builds']:
+            chart = ROOT/f'docs/{name}.svg'
+            if not chart.exists() or f'performance-data-sha256: {digest}' not in chart.read_text(encoding='utf-8'):
+                raise ValueError(f'Stale {name} chart; run tools/render_charts.py')
     print(f"{'Verified' if args.check else 'Rendered'} {len(data['groups'])} performance groups, "
           f"{sum(len(g['variants']) for g in data['groups'].values())} metric rows and {len(data['phases'])} diagnostic variants")
 

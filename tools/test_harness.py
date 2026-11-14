@@ -10,6 +10,9 @@ from unittest.mock import patch
 import image_provenance
 from build import verify_framework
 import stage_link_repository
+import compare_builds
+from render_performance import verify_build_runtime_sources
+from publish_results import retained_images
 from compare import request, eligible_comparison, metric_counts, discovery_evidence, phase_evidence
 from upstream import Upstream
 from variants import select_variants, ordered_variants, paired_image_variants, guicedee_jar, runtime_flags
@@ -21,6 +24,67 @@ from summarize_native import sdk_evidence
 
 
 class HarnessTest(unittest.TestCase):
+    def test_publication_keeps_images_from_summary_only_diagnostics(self):
+        batches = dict(runtime=dict(environment=dict(images={'guicedee':'runtime-image'}), summary=dict(runs=[])),
+                       diagnostic=dict(summary=dict(runs=[dict(container=dict(image='diagnostic-image'))])))
+        self.assertEqual({'runtime-image', 'diagnostic-image'}, retained_images(batches))
+
+    def test_build_timing_rejects_native_sdks_that_do_not_match_trace(self):
+        with tempfile.TemporaryDirectory() as temporary, patch.object(compare_builds, 'ROOT', Path(temporary)):
+            root = Path(temporary)
+            (root/'guicedee-native').mkdir()
+            entries = []
+            for name in ['firebase-admin', 'commercetools']:
+                jar = root/f'repo/com/guicedee/modules/services/{name}/test/{name}-test.jar'
+                jar.parent.mkdir(parents=True)
+                jar.write_bytes(b'original')
+                entries.append(dict(name=jar.name, sha256=compare_builds.digest(jar)))
+            (root/'guicedee-native/native-trace-inputs.json').write_text(json.dumps(dict(sdkJars=entries)))
+            compare_builds.verify_native_inputs(root/'repo', 'test')
+            jar.write_bytes(b'changed')
+            with self.assertRaises(ValueError): compare_builds.verify_native_inputs(root/'repo', 'test')
+
+    def test_build_runtime_report_rejects_older_workload_images(self):
+        data = dict(builds=dict(sharedSources={'common/src/main/java/bench/Workload.java':'current'}),
+                    groups={'jvm-default':dict(variants={'guicedee':dict(image='sha256:image')})})
+        evidence = {'sha256:image':dict(sharedSourceHashes=[dict(path='common/src/main/java/bench/Workload.java', sha256='current')])}
+        verify_build_runtime_sources(data, evidence)
+        evidence['sha256:image']['sharedSourceHashes'][0]['sha256'] = 'older'
+        with self.assertRaises(ValueError): verify_build_runtime_sources(data, evidence)
+
+    def test_build_comparison_includes_runnable_packaging_and_offline_clean(self):
+        for variant in compare_builds.VARIANTS:
+            invocation = compare_builds.command(variant, 'package', '2.6.0')
+            self.assertIn('-o', invocation)
+            self.assertIn('clean', invocation)
+            if variant in ['guicedee', 'guicedee-scan']:
+                self.assertIn('dependency:copy-dependencies', invocation)
+            if variant == 'quarkus-standard-native':
+                self.assertIn('-Pnative', invocation)
+                self.assertNotIn('-Dguicedee.version=2.6.0', invocation)
+        schedule = compare_builds.tasks(compare_builds.VARIANTS)
+        self.assertEqual(10, len(schedule))
+        for run in range(1, 4):
+            self.assertCountEqual(schedule, compare_builds.ordered(schedule, run))
+        self.assertNotEqual(compare_builds.ordered(schedule, 1), compare_builds.ordered(schedule, 2))
+
+    def test_build_publication_rejects_missing_failed_and_online_samples(self):
+        data = dict(variants=['guicedee', 'quarkus-standard'], runs=1,
+                    preparation=[dict(exitCode=0, buildSuccess=True) for _ in range(2)], samples=[])
+        for variant, goal in compare_builds.tasks(data['variants']):
+            data['samples'].append(dict(variant=variant, goal=goal, run=1, exitCode=0,
+                buildSuccess=True, wallSeconds=1, evidence=['Compiling 2 source files'],
+                command=compare_builds.command(variant, goal, '2.6.0')))
+        compare_builds.validate(data)
+        complete = json.loads(json.dumps(data))
+        data['samples'].pop()
+        with self.assertRaises(ValueError): compare_builds.validate(data)
+        for change in [dict(exitCode=1), dict(buildSuccess=False), dict(wallSeconds=0),
+                       dict(wallSeconds=float('nan')), dict(command=['clean', 'compile']), dict(evidence=['Nothing to compile'])]:
+            data = json.loads(json.dumps(complete))
+            data['samples'][0].update(change)
+            with self.assertRaises(ValueError): compare_builds.validate(data)
+
     def test_build_checks_explicit_framework_inputs_before_native_build(self):
         with tempfile.TemporaryDirectory() as temporary:
             repository = Path(temporary)

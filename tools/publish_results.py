@@ -8,6 +8,7 @@ import argparse
 import copy
 import hashlib
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -86,6 +87,12 @@ def main():
     used = {batch for group in data['groups'].values() for batch in group['batches']}
     used.update(phase['batch'] for phase in data.get('phases', []))
     data['batches'] = {k: v for k, v in data['batches'].items() if k in used}
+    def retained_input(path):
+        batch = path.removeprefix('results/').split('/')[0]
+        return not re.fullmatch(r'\d{8}-\d{6}', batch) or batch in used
+    data['inputSha256'] = {k:v for k, v in data['inputSha256'].items() if retained_input(k)}
+    used_images = retained_images(data['batches'])
+    data['imageInputs'] = {k:v for k, v in data.get('imageInputs', {}).items() if k in used_images}
     data['reportAsOf'] = date.today().isoformat()
     # Validate every complete selected group before replacing the public evidence.
     import render_performance
@@ -95,6 +102,14 @@ def main():
     LATEST.write_text(json.dumps(data, separators=(',',':'))+'\n', encoding='utf-8', newline='\n')
     subprocess.run([sys.executable, ROOT/'tools/verify_latest.py', '--refresh'], check=True)
     print('Updated latest evidence for', args.group, '; run tools/render_performance.py to update the report grids.')
+
+
+def retained_images(batches):
+    images = {image for batch in batches.values()
+              for image in batch.get('environment', {}).get('images', {}).values()}
+    images.update(row['container']['image'] for batch in batches.values()
+                  for row in batch['summary']['runs'] if row.get('container'))
+    return images
 
 
 if __name__ == '__main__':

@@ -138,7 +138,7 @@
     },
     "jvm-default": {
       "batches": [
-        "20261115-003904"
+        "20261115-013229"
       ],
       "batchStarts": 21,
       "batchCapabilityChecks": 315,
@@ -151,47 +151,47 @@
           "starts": 3,
           "capabilityChecks": 45,
           "measuredRequests": 90,
-          "image": "sha256:7412efd0dc63066789101b2323b6111f225a8146d80b804a8d603787eb09db1b",
-          "imageMiB": 1003.7381639480591,
+          "image": "sha256:fad5ba9c31502a0d22bc8a2ddb31c8de9d7d49b05e773eb40de43a5ff9ee4cfb",
+          "imageMiB": 1005.1721858978271,
           "rowSources": [
-            "20261115-003904/guicedee/1",
-            "20261115-003904/guicedee/2",
-            "20261115-003904/guicedee/3"
+            "20261115-013229/guicedee/1",
+            "20261115-013229/guicedee/2",
+            "20261115-013229/guicedee/3"
           ],
           "launchToReadyMs": {
-            "median": 9202.206199995999,
-            "minimum": 8556.997499996214,
-            "maximum": 9376.775899996574
+            "median": 8812.560500002292,
+            "minimum": 7745.964999994612,
+            "maximum": 9098.025899998902
           },
           "firstBusinessMs": {
-            "median": 19609.51390000264,
-            "minimum": 18800.223300000653,
-            "maximum": 20205.882599999313
+            "median": 19888.512400000764,
+            "minimum": 19104.806299998017,
+            "maximum": 20592.45329999976
           },
           "launchToFirstBusinessMs": {
-            "median": 28177.054400002817,
-            "minimum": 28166.55609999725,
-            "maximum": 29408.133999997517
+            "median": 27917.407599998114,
+            "minimum": 27634.518399994704,
+            "maximum": 29690.527899998415
           },
           "firstOpenApiJsonMs": {
-            "median": 199.94860000588233,
-            "minimum": 195.42419999925187,
-            "maximum": 200.9436000007554
+            "median": 103.25269999884767,
+            "minimum": 13.647499996295664,
+            "maximum": 194.03279999824008
           },
           "warm": {
-            "p50Ms": 90.82219999982044,
-            "p95Ms": 99.54049999942072,
-            "p99Ms": 99.74350000265986
+            "p50Ms": 90.37925000302494,
+            "p95Ms": 99.7776000003796,
+            "p99Ms": 99.80750000249827
           },
           "peakMiB": {
-            "median": 294.890625,
-            "minimum": 289.29296875,
-            "maximum": 376.5
+            "median": 299.1875,
+            "minimum": 297.65625,
+            "maximum": 375.25
           },
           "endMiB": {
-            "median": 290.9765625,
-            "minimum": 285.50390625,
-            "maximum": 372.69921875
+            "median": 295.5390625,
+            "minimum": 294.02734375,
+            "maximum": 371.87109375
           },
           "executableMiB": null
         },
@@ -200,47 +200,47 @@
           "starts": 3,
           "capabilityChecks": 45,
           "measuredRequests": 90,
-          "image": "sha256:76668c56359263c7e7a003c58108a8fe7b9b6a8328cad1a1f9090781827b5257",
-          "imageMiB": 1003.7338991165161,
+          "image": "sha256:a9817e6465b054e8d2419cc03883ce6b81f4ec1bbaeedaa3631a0a5ec6a4ec8f",
+          "imageMiB": 1005.167896270752,
           "rowSources": [
-            "20261115-003904/guicedee-scan/1",
-            "20261115-003904/guicedee-scan/2",
-            "20261115-003904/guicedee-scan/3"
+            "20261115-013229/guicedee-scan/1",
+            "20261115-013229/guicedee-scan/2",
+            "20261115-013229/guicedee-scan/3"
           ],
           "launchToReadyMs": {
-            "median": 9320.25910000084,
-            "minimum": 9266.835399997944,
-            "maximum": 9639.671699995233
+            "median": 9433.240000005753,
+            "minimum": 9121.646999999939,
+            "maximum": 9693.851200005156
           },
           "firstBusinessMs": {
-            "median": 18396.487500001967,
-            "minimum": 18191.416899993783,
-            "maximum": 19886.009900001227
+            "median": 19998.80970000231,
+            "minimum": 18407.02610000153,
+            "maximum": 20195.64609999361
           },
           "launchToFirstBusinessMs": {
-            "median": 27831.132599996636,
-            "minimum": 27716.78840000095,
-            "maximum": 29152.89219999977
+            "median": 29629.04050000361,
+            "minimum": 27528.729899997415,
+            "maximum": 29692.726500004937
           },
           "firstOpenApiJsonMs": {
-            "median": 94.88119999878109,
-            "minimum": 92.21450000040932,
-            "maximum": 101.15439999935916
+            "median": 192.06989999656798,
+            "minimum": 105.51319999649422,
+            "maximum": 295.39899999508634
           },
           "warm": {
-            "p50Ms": 92.55074999600765,
-            "p95Ms": 100.41279999859398,
-            "p99Ms": 102.64739999547601
+            "p50Ms": 91.80164999634144,
+            "p95Ms": 98.98660000180826,
+            "p99Ms": 101.62660000059986
           },
           "peakMiB": {
-            "median": 306.5234375,
-            "minimum": 293.484375,
-            "maximum": 379.2265625
+            "median": 301.49609375,
+            "minimum": 295.8515625,
+            "maximum": 378.546875
           },
           "endMiB": {
-            "median": 302.55859375,
-            "minimum": 290.3984375,
-            "maximum": 375.4921875
+            "median": 297.91015625,
+            "minimum": 291.8984375,
+            "maximum": 374.33984375
           },
           "executableMiB": null
         },
@@ -252,44 +252,44 @@
           "image": "sha256:ff1c796950c84a86c8bc4f833fb17794bf4d4343ab52b98b51ffc0df436d45a8",
           "imageMiB": 976.7744750976562,
           "rowSources": [
-            "20261115-003904/quarkus-standard/1",
-            "20261115-003904/quarkus-standard/2",
-            "20261115-003904/quarkus-standard/3"
+            "20261115-013229/quarkus-standard/1",
+            "20261115-013229/quarkus-standard/2",
+            "20261115-013229/quarkus-standard/3"
           ],
           "launchToReadyMs": {
-            "median": 6856.440499999735,
-            "minimum": 6523.37410000473,
-            "maximum": 7377.300199994352
+            "median": 6976.052299993171,
+            "minimum": 6480.361100002483,
+            "maximum": 8783.822500001406
           },
           "firstBusinessMs": {
-            "median": 16696.907100005774,
-            "minimum": 16308.079099995666,
-            "maximum": 17611.593900001026
+            "median": 17399.014100003114,
+            "minimum": 16314.713600004325,
+            "maximum": 20794.392000003427
           },
           "launchToFirstBusinessMs": {
-            "median": 24074.246599993785,
-            "minimum": 23164.56130000006,
-            "maximum": 24135.021900001448
+            "median": 23879.41570000112,
+            "minimum": 23290.806400000292,
+            "maximum": 29578.276500003994
           },
           "firstOpenApiJsonMs": {
-            "median": 406.2192999990657,
-            "minimum": 405.18840000004275,
-            "maximum": 408.8527000058093
+            "median": 402.46990000014193,
+            "minimum": 389.449299997068,
+            "maximum": 698.2027999983984
           },
           "warm": {
-            "p50Ms": 91.15299999757553,
-            "p95Ms": 99.76620000088587,
-            "p99Ms": 101.3812000019243
+            "p50Ms": 87.05130000089412,
+            "p95Ms": 95.07259999372764,
+            "p99Ms": 95.8052000059979
           },
           "peakMiB": {
-            "median": 278.01171875,
-            "minimum": 274.35546875,
-            "maximum": 343.62109375
+            "median": 278.15234375,
+            "minimum": 271.42578125,
+            "maximum": 343.7109375
           },
           "endMiB": {
-            "median": 274.671875,
-            "minimum": 271.24609375,
-            "maximum": 340.2421875
+            "median": 275.08203125,
+            "minimum": 268.21484375,
+            "maximum": 340.5390625
           },
           "executableMiB": null
         },
@@ -301,44 +301,44 @@
           "image": "sha256:867a886a5d8cf020d5d9320b93d521acf995535480c7f18d259620f031d7f86a",
           "imageMiB": 473.2901554107666,
           "rowSources": [
-            "20261115-003904/guicedee-jlink/1",
-            "20261115-003904/guicedee-jlink/2",
-            "20261115-003904/guicedee-jlink/3"
+            "20261115-013229/guicedee-jlink/1",
+            "20261115-013229/guicedee-jlink/2",
+            "20261115-013229/guicedee-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 8354.81680000521,
-            "minimum": 7472.362200001953,
-            "maximum": 9044.217099995876
+            "median": 7522.26150000206,
+            "minimum": 7401.783099994645,
+            "maximum": 7548.167999993893
           },
           "firstBusinessMs": {
-            "median": 6609.923299998627,
-            "minimum": 6589.508600001864,
-            "maximum": 6783.07009999844
+            "median": 5895.651199993154,
+            "minimum": 5716.988699998183,
+            "maximum": 5998.681299999589
           },
           "launchToFirstBusinessMs": {
-            "median": 15137.930400000187,
-            "minimum": 14082.33079999627,
-            "maximum": 15633.77429999673
+            "median": 13400.659599996288,
+            "minimum": 13265.206600000965,
+            "maximum": 13417.953300006047
           },
           "firstOpenApiJsonMs": {
-            "median": 185.08409999776632,
-            "minimum": 102.7814999979455,
-            "maximum": 204.09959999960847
+            "median": 201.0313999999198,
+            "minimum": 200.62390000384767,
+            "maximum": 287.56569999677595
           },
           "warm": {
-            "p50Ms": 92.63269999792101,
-            "p95Ms": 103.13329999917187,
-            "p99Ms": 163.71390000131214
+            "p50Ms": 91.76655000192113,
+            "p95Ms": 100.54740000487072,
+            "p99Ms": 105.25549999874784
           },
           "peakMiB": {
-            "median": 241.3515625,
-            "minimum": 238.33203125,
-            "maximum": 244.3671875
+            "median": 238.98046875,
+            "minimum": 236.0546875,
+            "maximum": 251.62890625
           },
           "endMiB": {
-            "median": 237.703125,
-            "minimum": 234.6640625,
-            "maximum": 239.79296875
+            "median": 235.26171875,
+            "minimum": 229.94140625,
+            "maximum": 248.078125
           },
           "executableMiB": null
         },
@@ -350,44 +350,44 @@
           "image": "sha256:b8ea0ab4aef0522b489a9ab6e42a4944a996758f813c5395c4c66af4703df2ac",
           "imageMiB": 473.4251642227173,
           "rowSources": [
-            "20261115-003904/guicedee-scan-jlink/1",
-            "20261115-003904/guicedee-scan-jlink/2",
-            "20261115-003904/guicedee-scan-jlink/3"
+            "20261115-013229/guicedee-scan-jlink/1",
+            "20261115-013229/guicedee-scan-jlink/2",
+            "20261115-013229/guicedee-scan-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 7918.500100000529,
-            "minimum": 7862.404999999853,
-            "maximum": 8144.88849999907
+            "median": 8420.595800002047,
+            "minimum": 7713.67889999965,
+            "maximum": 8687.318999996933
           },
           "firstBusinessMs": {
-            "median": 6292.140100005781,
-            "minimum": 5594.074399996316,
-            "maximum": 6670.768399999361
+            "median": 5905.602699996962,
+            "minimum": 5283.433599994169,
+            "maximum": 6196.98100000096
           },
           "launchToFirstBusinessMs": {
-            "median": 14154.586700002255,
-            "minimum": 13512.61859999795,
-            "maximum": 14815.696400000888
+            "median": 13704.069400002481,
+            "minimum": 13619.322700003977,
+            "maximum": 14884.387899997819
           },
           "firstOpenApiJsonMs": {
-            "median": 192.01320000138367,
-            "minimum": 186.17269999958808,
-            "maximum": 194.04440000653267
+            "median": 188.2428000026266,
+            "minimum": 73.08929999999236,
+            "maximum": 188.94580000051064
           },
           "warm": {
-            "p50Ms": 90.92369999780203,
-            "p95Ms": 99.7711000018171,
-            "p99Ms": 101.14849999808939
+            "p50Ms": 90.25589999873773,
+            "p95Ms": 100.94129999924917,
+            "p99Ms": 105.18069999670843
           },
           "peakMiB": {
-            "median": 235.71875,
-            "minimum": 232.80078125,
-            "maximum": 248.46875
+            "median": 243.87109375,
+            "minimum": 226.4453125,
+            "maximum": 244.70703125
           },
           "endMiB": {
-            "median": 232.05859375,
-            "minimum": 229.3125,
-            "maximum": 245.375
+            "median": 240.234375,
+            "minimum": 223.0703125,
+            "maximum": 241.27734375
           },
           "executableMiB": null
         },
@@ -399,44 +399,44 @@
           "image": "sha256:79b8987c62a9eee01a6592332310c714031d75c986a98319a5f77ae9dcdb0868",
           "imageMiB": 421.16904640197754,
           "rowSources": [
-            "20261115-003904/guicedee-native/1",
-            "20261115-003904/guicedee-native/2",
-            "20261115-003904/guicedee-native/3"
+            "20261115-013229/guicedee-native/1",
+            "20261115-013229/guicedee-native/2",
+            "20261115-013229/guicedee-native/3"
           ],
           "launchToReadyMs": {
-            "median": 572.358900004474,
-            "minimum": 564.5307000013418,
-            "maximum": 587.1313000025111
+            "median": 568.5356999965734,
+            "minimum": 567.6800999935949,
+            "maximum": 569.320599999628
           },
           "firstBusinessMs": {
-            "median": 78.99100000213366,
-            "minimum": 65.59140000172192,
-            "maximum": 103.94099999393802
+            "median": 77.17609999963315,
+            "minimum": 72.10050000139745,
+            "maximum": 106.68079999595648
           },
           "launchToFirstBusinessMs": {
-            "median": 652.7806000012788,
-            "minimum": 643.5646999962046,
-            "maximum": 676.3447000048473
+            "median": 645.7492999979877,
+            "minimum": 639.8211999985506,
+            "maximum": 676.03919999965
           },
           "firstOpenApiJsonMs": {
-            "median": 3.795299999183044,
-            "minimum": 3.081000002566725,
-            "maximum": 5.20380000671139
+            "median": 3.7673999977414496,
+            "minimum": 3.322599994135089,
+            "maximum": 4.112800001166761
           },
           "warm": {
-            "p50Ms": 6.050449999747798,
-            "p95Ms": 20.359499998448882,
-            "p99Ms": 27.725699997972697
+            "p50Ms": 5.164500002138084,
+            "p95Ms": 30.787100004090462,
+            "p99Ms": 33.254499998292886
           },
           "peakMiB": {
-            "median": 79.3359375,
-            "minimum": 79.31640625,
-            "maximum": 79.4375
+            "median": 80.01953125,
+            "minimum": 79.59765625,
+            "maximum": 80.2890625
           },
           "endMiB": {
-            "median": 76.04296875,
-            "minimum": 75.453125,
-            "maximum": 76.2890625
+            "median": 76.484375,
+            "minimum": 76.453125,
+            "maximum": 76.578125
           },
           "executableMiB": 191.8311538696289
         },
@@ -448,44 +448,44 @@
           "image": "sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69",
           "imageMiB": 353.04186820983887,
           "rowSources": [
-            "20261115-003904/quarkus-standard-native/1",
-            "20261115-003904/quarkus-standard-native/2",
-            "20261115-003904/quarkus-standard-native/3"
+            "20261115-013229/quarkus-standard-native/1",
+            "20261115-013229/quarkus-standard-native/2",
+            "20261115-013229/quarkus-standard-native/3"
           ],
           "launchToReadyMs": {
-            "median": 579.5090999963577,
-            "minimum": 575.8837999965181,
-            "maximum": 585.734299995238
+            "median": 572.5808999995934,
+            "minimum": 564.3091000019922,
+            "maximum": 575.5357999951229
           },
           "firstBusinessMs": {
-            "median": 118.31829999573529,
-            "minimum": 106.30689999379683,
-            "maximum": 151.05279999988852
+            "median": 111.57509999611648,
+            "minimum": 87.58669999951962,
+            "maximum": 116.36150000413181
           },
           "launchToFirstBusinessMs": {
-            "median": 704.094200002146,
-            "minimum": 682.2291999997105,
-            "maximum": 730.60550000082
+            "median": 684.2321000003722,
+            "minimum": 651.9335000048159,
+            "maximum": 691.9362999979057
           },
           "firstOpenApiJsonMs": {
-            "median": 1.9874999998137355,
-            "minimum": 1.9212999977753498,
-            "maximum": 2.3908000002847984
+            "median": 2.2447999945143238,
+            "minimum": 2.1873000005143695,
+            "maximum": 15.482700000575278
           },
           "warm": {
-            "p50Ms": 5.058099999587284,
-            "p95Ms": 24.977999994007405,
-            "p99Ms": 26.233500000671484
+            "p50Ms": 4.985100000340026,
+            "p95Ms": 21.694600000046194,
+            "p99Ms": 28.377200003887992
           },
           "peakMiB": {
-            "median": 55.26171875,
-            "minimum": 55.15234375,
-            "maximum": 55.375
+            "median": 54.83984375,
+            "minimum": 54.68359375,
+            "maximum": 55.00390625
           },
           "endMiB": {
-            "median": 51.84765625,
-            "minimum": 51.6875,
-            "maximum": 52.06640625
+            "median": 51.65625,
+            "minimum": 50.984375,
+            "maximum": 51.8125
           },
           "executableMiB": 143.3077163696289
         }
@@ -493,7 +493,7 @@
     },
     "jvm-c1": {
       "batches": [
-        "20261115-004632"
+        "20261115-013945"
       ],
       "batchStarts": 21,
       "batchCapabilityChecks": 315,
@@ -506,47 +506,47 @@
           "starts": 3,
           "capabilityChecks": 45,
           "measuredRequests": 90,
-          "image": "sha256:7412efd0dc63066789101b2323b6111f225a8146d80b804a8d603787eb09db1b",
-          "imageMiB": 1003.7381639480591,
+          "image": "sha256:fad5ba9c31502a0d22bc8a2ddb31c8de9d7d49b05e773eb40de43a5ff9ee4cfb",
+          "imageMiB": 1005.1721858978271,
           "rowSources": [
-            "20261115-004632/guicedee/1",
-            "20261115-004632/guicedee/2",
-            "20261115-004632/guicedee/3"
+            "20261115-013945/guicedee/1",
+            "20261115-013945/guicedee/2",
+            "20261115-013945/guicedee/3"
           ],
           "launchToReadyMs": {
-            "median": 5329.739699998754,
-            "minimum": 5258.009099998162,
-            "maximum": 5710.630699999456
+            "median": 5187.79579999682,
+            "minimum": 4979.339600002277,
+            "maximum": 5247.368600001209
           },
           "firstBusinessMs": {
-            "median": 11416.276399999333,
-            "minimum": 11399.24510000128,
-            "maximum": 12026.411099999677
+            "median": 11999.364900002547,
+            "minimum": 11898.110100002668,
+            "maximum": 12003.610400002799
           },
           "launchToFirstBusinessMs": {
-            "median": 16746.07929999911,
-            "minimum": 16657.294799995725,
-            "maximum": 17737.088399997447
+            "median": 17191.478399996413,
+            "minimum": 16877.49079999776,
+            "maximum": 17246.772799997416
           },
           "firstOpenApiJsonMs": {
-            "median": 23.956199998792727,
-            "minimum": 9.687300000223331,
-            "maximum": 35.115599996061064
+            "median": 93.16930000204593,
+            "minimum": 12.37810000020545,
+            "maximum": 98.37030000198865
           },
           "warm": {
-            "p50Ms": 22.23720000256435,
-            "p95Ms": 91.59640000143554,
-            "p99Ms": 92.0375000059721
+            "p50Ms": 27.991349998046644,
+            "p95Ms": 92.01110000140034,
+            "p99Ms": 92.8598000027705
           },
           "peakMiB": {
-            "median": 260.93359375,
-            "minimum": 260.296875,
-            "maximum": 261.71875
+            "median": 262.93359375,
+            "minimum": 261.49609375,
+            "maximum": 263.1875
           },
           "endMiB": {
-            "median": 257.56640625,
-            "minimum": 256.90625,
-            "maximum": 258.32421875
+            "median": 259.42578125,
+            "minimum": 258.234375,
+            "maximum": 259.828125
           },
           "executableMiB": null
         },
@@ -555,47 +555,47 @@
           "starts": 3,
           "capabilityChecks": 45,
           "measuredRequests": 90,
-          "image": "sha256:76668c56359263c7e7a003c58108a8fe7b9b6a8328cad1a1f9090781827b5257",
-          "imageMiB": 1003.7338991165161,
+          "image": "sha256:a9817e6465b054e8d2419cc03883ce6b81f4ec1bbaeedaa3631a0a5ec6a4ec8f",
+          "imageMiB": 1005.167896270752,
           "rowSources": [
-            "20261115-004632/guicedee-scan/1",
-            "20261115-004632/guicedee-scan/2",
-            "20261115-004632/guicedee-scan/3"
+            "20261115-013945/guicedee-scan/1",
+            "20261115-013945/guicedee-scan/2",
+            "20261115-013945/guicedee-scan/3"
           ],
           "launchToReadyMs": {
-            "median": 5419.008099997882,
-            "minimum": 5317.132000003767,
-            "maximum": 5672.939899995981
+            "median": 5182.245399999374,
+            "minimum": 5143.793899995217,
+            "maximum": 5568.7334000031115
           },
           "firstBusinessMs": {
-            "median": 11901.735499995993,
-            "minimum": 11775.331000004371,
-            "maximum": 12011.542699998245
+            "median": 12469.686500000535,
+            "minimum": 11601.259499999287,
+            "maximum": 12496.807600000466
           },
           "launchToFirstBusinessMs": {
-            "median": 17430.591600001208,
-            "minimum": 17092.503300002136,
-            "maximum": 17574.71579999401
+            "median": 17640.642400001525,
+            "minimum": 17170.03670000122,
+            "maximum": 17651.973799998814
           },
           "firstOpenApiJsonMs": {
-            "median": 10.038899999926798,
-            "minimum": 9.747399999469053,
-            "maximum": 88.26740000222344
+            "median": 24.23819999967236,
+            "minimum": 15.549199997622054,
+            "maximum": 98.04209999856539
           },
           "warm": {
-            "p50Ms": 48.323399998480454,
-            "p95Ms": 92.01200000097742,
-            "p99Ms": 93.19220000179484
+            "p50Ms": 49.368499996489845,
+            "p95Ms": 89.5680999965407,
+            "p99Ms": 90.25209999526851
           },
           "peakMiB": {
-            "median": 263.71875,
-            "minimum": 262.3125,
-            "maximum": 263.8125
+            "median": 264.04296875,
+            "minimum": 263.3984375,
+            "maximum": 265.49609375
           },
           "endMiB": {
-            "median": 259.796875,
-            "minimum": 258.89453125,
-            "maximum": 260.5859375
+            "median": 260.32421875,
+            "minimum": 259.80078125,
+            "maximum": 262.203125
           },
           "executableMiB": null
         },
@@ -607,44 +607,44 @@
           "image": "sha256:ff1c796950c84a86c8bc4f833fb17794bf4d4343ab52b98b51ffc0df436d45a8",
           "imageMiB": 976.7744750976562,
           "rowSources": [
-            "20261115-004632/quarkus-standard/1",
-            "20261115-004632/quarkus-standard/2",
-            "20261115-004632/quarkus-standard/3"
+            "20261115-013945/quarkus-standard/1",
+            "20261115-013945/quarkus-standard/2",
+            "20261115-013945/quarkus-standard/3"
           ],
           "launchToReadyMs": {
-            "median": 3869.004699998186,
-            "minimum": 3856.6722000032314,
-            "maximum": 3970.2173999976367
+            "median": 3910.640299996885,
+            "minimum": 3903.4848000010243,
+            "maximum": 3948.8574999995762
           },
           "firstBusinessMs": {
-            "median": 10311.204400000861,
-            "minimum": 9904.883299997891,
-            "maximum": 10702.88150000124
+            "median": 10104.447500001697,
+            "minimum": 10049.456799999462,
+            "maximum": 10203.80699999805
           },
           "launchToFirstBusinessMs": {
-            "median": 14167.917200000375,
-            "minimum": 13875.141299999086,
-            "maximum": 14571.926999997231
+            "median": 14015.128699997149,
+            "minimum": 13998.365699997521,
+            "maximum": 14107.331899998826
           },
           "firstOpenApiJsonMs": {
-            "median": 217.43879999849014,
-            "minimum": 215.56940000300528,
-            "maximum": 282.92819999478525
+            "median": 296.28909999883035,
+            "minimum": 292.8959999990184,
+            "maximum": 384.30179999704706
           },
           "warm": {
-            "p50Ms": 13.06559999648016,
-            "p95Ms": 89.7287999978289,
-            "p99Ms": 92.24579999863636
+            "p50Ms": 21.03469999929075,
+            "p95Ms": 88.86390000407118,
+            "p99Ms": 92.32579999661539
           },
           "peakMiB": {
-            "median": 240.5234375,
-            "minimum": 239.5234375,
-            "maximum": 242.62890625
+            "median": 241.41015625,
+            "minimum": 240.93359375,
+            "maximum": 241.5234375
           },
           "endMiB": {
-            "median": 237.41796875,
-            "minimum": 236.55078125,
-            "maximum": 238.73828125
+            "median": 237.45703125,
+            "minimum": 237.17578125,
+            "maximum": 238.2734375
           },
           "executableMiB": null
         },
@@ -656,44 +656,44 @@
           "image": "sha256:867a886a5d8cf020d5d9320b93d521acf995535480c7f18d259620f031d7f86a",
           "imageMiB": 473.2901554107666,
           "rowSources": [
-            "20261115-004632/guicedee-jlink/1",
-            "20261115-004632/guicedee-jlink/2",
-            "20261115-004632/guicedee-jlink/3"
+            "20261115-013945/guicedee-jlink/1",
+            "20261115-013945/guicedee-jlink/2",
+            "20261115-013945/guicedee-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 4847.947700000077,
-            "minimum": 4487.636099998781,
-            "maximum": 4917.2608999942895
+            "median": 4614.5981999943615,
+            "minimum": 4575.967899996613,
+            "maximum": 4624.047899997095
           },
           "firstBusinessMs": {
-            "median": 3177.717099999427,
-            "minimum": 3089.805099996738,
-            "maximum": 3208.9787000004435
+            "median": 3012.9172000015387,
+            "minimum": 3004.7743000031915,
+            "maximum": 3209.0846999999485
           },
           "launchToFirstBusinessMs": {
-            "median": 7937.793400000373,
-            "minimum": 7665.387900000496,
-            "maximum": 8126.279899996007
+            "median": 7637.0126000038,
+            "minimum": 7619.412799998827,
+            "maximum": 7785.093099999358
           },
           "firstOpenApiJsonMs": {
-            "median": 21.953700001176912,
-            "minimum": 11.91100000141887,
-            "maximum": 83.98180000222055
+            "median": 12.143299994932022,
+            "minimum": 11.260800005402416,
+            "maximum": 96.66660000220872
           },
           "warm": {
-            "p50Ms": 27.08370000254945,
-            "p95Ms": 92.50369999790564,
-            "p99Ms": 93.43810000427766
+            "p50Ms": 20.337949998065596,
+            "p95Ms": 89.9308000007295,
+            "p99Ms": 91.5880999964429
           },
           "peakMiB": {
-            "median": 188.046875,
-            "minimum": 187.40234375,
-            "maximum": 188.50390625
+            "median": 189.09375,
+            "minimum": 188.8359375,
+            "maximum": 189.7734375
           },
           "endMiB": {
-            "median": 184.44921875,
-            "minimum": 182.9296875,
-            "maximum": 185.05078125
+            "median": 185.984375,
+            "minimum": 185.65234375,
+            "maximum": 186.42578125
           },
           "executableMiB": null
         },
@@ -705,44 +705,44 @@
           "image": "sha256:b8ea0ab4aef0522b489a9ab6e42a4944a996758f813c5395c4c66af4703df2ac",
           "imageMiB": 473.4251642227173,
           "rowSources": [
-            "20261115-004632/guicedee-scan-jlink/1",
-            "20261115-004632/guicedee-scan-jlink/2",
-            "20261115-004632/guicedee-scan-jlink/3"
+            "20261115-013945/guicedee-scan-jlink/1",
+            "20261115-013945/guicedee-scan-jlink/2",
+            "20261115-013945/guicedee-scan-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 4946.857099996123,
-            "minimum": 4898.958400000993,
-            "maximum": 5296.727200002351
+            "median": 4816.379600000801,
+            "minimum": 4761.888600005477,
+            "maximum": 5038.353500000085
           },
           "firstBusinessMs": {
-            "median": 3197.9262999957427,
-            "minimum": 3104.015500000969,
-            "maximum": 3487.7439999982016
+            "median": 3010.9694999991916,
+            "minimum": 3000.7829000023776,
+            "maximum": 3094.636099995114
           },
           "launchToFirstBusinessMs": {
-            "median": 8386.742299997422,
-            "minimum": 8050.912999999127,
-            "maximum": 8494.694500004698
+            "median": 7817.20349999523,
+            "minimum": 7772.898499999428,
+            "maximum": 8133.029800002987
           },
           "firstOpenApiJsonMs": {
-            "median": 84.68230000289623,
-            "minimum": 83.64789999905042,
-            "maximum": 94.21950000250945
+            "median": 12.493700000050012,
+            "minimum": 12.086599999747705,
+            "maximum": 97.9760999980499
           },
           "warm": {
-            "p50Ms": 31.70785000475007,
-            "p95Ms": 89.40459999575978,
-            "p99Ms": 92.12770000158343
+            "p50Ms": 30.96345000085421,
+            "p95Ms": 90.15279999584891,
+            "p99Ms": 90.61130000191042
           },
           "peakMiB": {
-            "median": 191.24609375,
-            "minimum": 190.6875,
-            "maximum": 191.46484375
+            "median": 191.2421875,
+            "minimum": 190.6484375,
+            "maximum": 191.29296875
           },
           "endMiB": {
-            "median": 187.81640625,
-            "minimum": 187.6171875,
-            "maximum": 188.31640625
+            "median": 187.37890625,
+            "minimum": 187.23046875,
+            "maximum": 187.8359375
           },
           "executableMiB": null
         },
@@ -754,44 +754,44 @@
           "image": "sha256:79b8987c62a9eee01a6592332310c714031d75c986a98319a5f77ae9dcdb0868",
           "imageMiB": 421.16904640197754,
           "rowSources": [
-            "20261115-004632/guicedee-native/1",
-            "20261115-004632/guicedee-native/2",
-            "20261115-004632/guicedee-native/3"
+            "20261115-013945/guicedee-native/1",
+            "20261115-013945/guicedee-native/2",
+            "20261115-013945/guicedee-native/3"
           ],
           "launchToReadyMs": {
-            "median": 568.4344999972382,
-            "minimum": 565.3282999992371,
-            "maximum": 585.4152999963844
+            "median": 577.8463000024203,
+            "minimum": 568.8336999955936,
+            "maximum": 587.2490000037942
           },
           "firstBusinessMs": {
-            "median": 71.20009999925969,
-            "minimum": 69.031899998663,
-            "maximum": 72.4809000021196
+            "median": 76.05200000398327,
+            "minimum": 62.667699996382,
+            "maximum": 97.96469999855617
           },
           "launchToFirstBusinessMs": {
-            "median": 637.8502000006847,
-            "minimum": 637.5019999977667,
-            "maximum": 656.6542999935336
+            "median": 653.9398000022629,
+            "minimum": 649.9573000037344,
+            "maximum": 666.8384999939008
           },
           "firstOpenApiJsonMs": {
-            "median": 3.5322000039741397,
-            "minimum": 3.1930999975884333,
-            "maximum": 3.6381000027176924
+            "median": 3.5814000002574176,
+            "minimum": 3.038900002138689,
+            "maximum": 3.668500001367647
           },
           "warm": {
-            "p50Ms": 5.010400000173831,
-            "p95Ms": 22.753100005502347,
-            "p99Ms": 26.663800003007054
+            "p50Ms": 4.872199999226723,
+            "p95Ms": 24.897200004488695,
+            "p99Ms": 29.455900003085844
           },
           "peakMiB": {
-            "median": 79.30078125,
-            "minimum": 79.08984375,
-            "maximum": 80.06640625
+            "median": 79.43359375,
+            "minimum": 79.30859375,
+            "maximum": 79.484375
           },
           "endMiB": {
-            "median": 75.9609375,
-            "minimum": 75.84765625,
-            "maximum": 76.453125
+            "median": 76.01171875,
+            "minimum": 75.984375,
+            "maximum": 76.296875
           },
           "executableMiB": 191.8311538696289
         },
@@ -803,44 +803,44 @@
           "image": "sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69",
           "imageMiB": 353.04186820983887,
           "rowSources": [
-            "20261115-004632/quarkus-standard-native/1",
-            "20261115-004632/quarkus-standard-native/2",
-            "20261115-004632/quarkus-standard-native/3"
+            "20261115-013945/quarkus-standard-native/1",
+            "20261115-013945/quarkus-standard-native/2",
+            "20261115-013945/quarkus-standard-native/3"
           ],
           "launchToReadyMs": {
-            "median": 572.44310000533,
-            "minimum": 564.4744999954128,
-            "maximum": 577.3314000034588
+            "median": 573.753199998464,
+            "minimum": 570.5331999997725,
+            "maximum": 581.9307999990997
           },
           "firstBusinessMs": {
-            "median": 100.8120999977109,
-            "minimum": 77.68159999977797,
-            "maximum": 111.64969999663299
+            "median": 106.34589999972377,
+            "minimum": 98.38570000283653,
+            "maximum": 106.50100000202656
           },
           "launchToFirstBusinessMs": {
-            "median": 673.2935000036377,
-            "minimum": 642.1950999938417,
-            "maximum": 689.0207000033115
+            "median": 680.2945000017644,
+            "minimum": 676.9216999964556,
+            "maximum": 680.3579999977956
           },
           "firstOpenApiJsonMs": {
-            "median": 2.0663999966927804,
-            "minimum": 2.01309999829391,
-            "maximum": 2.1587000010185875
+            "median": 2.1143999983905815,
+            "minimum": 2.007199997024145,
+            "maximum": 2.56239999725949
           },
           "warm": {
-            "p50Ms": 4.9059999983001035,
-            "p95Ms": 19.823499998892657,
-            "p99Ms": 27.410700000473298
+            "p50Ms": 5.438549997052178,
+            "p95Ms": 28.618399999686517,
+            "p99Ms": 31.69060000072932
           },
           "peakMiB": {
-            "median": 55.50390625,
-            "minimum": 55.0234375,
-            "maximum": 56.0390625
+            "median": 54.890625,
+            "minimum": 54.88671875,
+            "maximum": 55.3984375
           },
           "endMiB": {
-            "median": 52.04296875,
-            "minimum": 51.87109375,
-            "maximum": 52.0703125
+            "median": 51.76953125,
+            "minimum": 51.31640625,
+            "maximum": 51.76953125
           },
           "executableMiB": 143.3077163696289
         }
@@ -1268,6 +1268,126 @@
     }
   },
   "inputSha256": {
-    "results/latest/measurements.json": "00cc88b7872a677b75f33699e00ae89623c8c7d994d1e5d712c6ecc35ab2bdb1"
+    "results/latest/measurements.json": "79a2087debcc5ad90d7608305bc00321becbeee610d7c5dc83fed920bd9d1a55",
+    "results/latest/builds.json": "caa837413cf29006f263d79f7e5345f203709cf6178acea63113b66194ed9b61"
+  },
+  "builds": {
+    "measuredAt": "2026-11-14T23:17:00.800344+00:00",
+    "runs": 3,
+    "protocol": "Warm dependencies; new Maven process; clean outputs; timed invocations offline; tests skipped; sequential rotated order.",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.34",
+    "cpuCount": 32,
+    "maven": "Apache Maven 4.0.0-rc-7 (6d8f301b38af7399b36b862969d520974944f0b9)\nMaven home: /opt/maven\nJava version: 25.0.5, vendor: Eclipse Adoptium, runtime: /opt/mandrel\nDefault locale: en_US, platform encoding: UTF-8, time zone: GMT\nOS name: \"linux\", version: \"6.6.87.2-microsoft-standard-wsl2\", arch: \"amd64\", family: \"unix\"\n",
+    "java": "openjdk version \"25.0.5\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-25.0.5+8 (build 25.0.5+8-LTS)\nOpenJDK 64-Bit Server VM Temurin-25.0.5+8 (build 25.0.5+8-LTS, mixed mode, sharing)\n",
+    "guicedeeArtifactVersion": "2.5.1",
+    "container": {
+      "image": "sha256:bcf89ba3c394af8f8d1f00f123881e53c41bd05f61883469a1ad2deeb1e1bfcd",
+      "operatingSystem": "Docker Desktop",
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "cpus": 32,
+      "memoryBytes": 33539874816,
+      "cpuLimit": null,
+      "memoryLimit": null
+    },
+    "sharedSources": {
+      "common/src/main/java/bench/workload/Workload.java": "94e6dc001e54a52f1f69f6880d39710eb0d432174cffd5e0b127f7a6d66fab9e",
+      "common/src/main/java/bench/workload/WorkloadTrace.java": "b3a2c0d96a57eaaf3d1e8848fea9459fb837f1eefe8d2abe495544623706bd99"
+    },
+    "variants": {
+      "guicedee": {
+        "compile": {
+          "median": 3.0120308010009467,
+          "minimum": 2.929002491000574,
+          "maximum": 3.0509905729995808,
+          "samples": 3,
+          "baseline": "quarkus-standard",
+          "differencePercent": -17.498287381784582
+        },
+        "package": {
+          "median": 3.690636330000416,
+          "minimum": 3.6542858949978836,
+          "maximum": 3.741579816000012,
+          "samples": 3,
+          "baseline": "quarkus-standard",
+          "differencePercent": -40.20930044986517
+        }
+      },
+      "guicedee-scan": {
+        "compile": {
+          "median": 3.0537114380058483,
+          "minimum": 3.0159350729954895,
+          "maximum": 3.095051746997342,
+          "samples": 3,
+          "baseline": "quarkus-standard",
+          "differencePercent": -16.356624443019218
+        },
+        "package": {
+          "median": 3.6383987389999675,
+          "minimum": 3.5673120409992407,
+          "maximum": 3.677601871000661,
+          "samples": 3,
+          "baseline": "quarkus-standard",
+          "differencePercent": -41.05558326655502
+        }
+      },
+      "quarkus-standard": {
+        "compile": {
+          "median": 3.65087063700048,
+          "minimum": 3.5740567660031957,
+          "maximum": 4.167400443002407,
+          "samples": 3,
+          "baseline": "quarkus-standard",
+          "differencePercent": 0.0
+        },
+        "package": {
+          "median": 6.172592656999768,
+          "minimum": 6.157951768997009,
+          "maximum": 6.551202235001256,
+          "samples": 3,
+          "baseline": "quarkus-standard",
+          "differencePercent": 0.0
+        }
+      },
+      "guicedee-jlink": {
+        "package": {
+          "median": 17.82182259399997,
+          "minimum": 17.460278191996622,
+          "maximum": 17.907079194999824,
+          "samples": 3,
+          "baseline": "quarkus-standard",
+          "differencePercent": 188.72507201313346
+        }
+      },
+      "guicedee-scan-jlink": {
+        "package": {
+          "median": 17.695093438000185,
+          "minimum": 17.452647439997236,
+          "maximum": 17.707305779993476,
+          "samples": 3,
+          "baseline": "quarkus-standard",
+          "differencePercent": 186.6719775835817
+        }
+      },
+      "guicedee-native": {
+        "package": {
+          "median": 82.3565191289963,
+          "minimum": 80.96034888400027,
+          "maximum": 85.08352803000162,
+          "samples": 3,
+          "baseline": "quarkus-standard-native",
+          "differencePercent": 23.95377104754699
+        }
+      },
+      "quarkus-standard-native": {
+        "package": {
+          "median": 66.44131794699933,
+          "minimum": 66.33967636499438,
+          "maximum": 69.67397195999365,
+          "samples": 3,
+          "baseline": "quarkus-standard-native",
+          "differencePercent": 0.0
+        }
+      }
+    }
   }
 }

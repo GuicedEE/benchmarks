@@ -99,6 +99,29 @@ by a passing capability trace. Dependency changes require a fresh trace and meta
 the build rejects stale SDK inputs. See [GuicedEE native](guicedee-native/README.md),
 [normal Quarkus native](quarkus-standard/README.md), and the [wrapped SDK control](quarkus-native/README.md).
 
+## Build timing
+
+After building/staging the applications with `tools/build.py`, measure all seven artifact
+types on the same Linux JDK/Maven toolchain:
+
+```shell
+python tools/compare_builds.py --docker --runs 3
+```
+
+The runner prepares each dependency cache with an untimed successful build, then measures
+new offline Maven processes with clean outputs. Java compilation and complete packaging
+are separate tasks. Native packaging runs the actual native compiler on every repetition;
+Docker build-layer cache hits are never counted as compilation. No runtime container quota
+is applied to the builder. All samples and logs go to ignored `target/build-runs/<timestamp>`.
+Failed or incomplete matrices cannot be published.
+
+Use `--variants guicedee guicedee-scan quarkus-standard` for JVM-only builds, or omit
+`--docker` to use your host JDK/Maven. Host runs support `--maven-repository`; Docker uses
+the repository staged by `tools/build.py`. `--guicedee-version` selects the prepared artifacts
+explicitly. Changing native SDK inputs still requires matching reachability metadata.
+The published grid uses all seven variants. See [build results](RESULTS.md#build-performance)
+for the measured boundaries, artifact hashes and environment.
+
 ## Results and validation
 
 Fresh executions write raw results, logs and provenance to ignored `target/runs/<timestamp>`.

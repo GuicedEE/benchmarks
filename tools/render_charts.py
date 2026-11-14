@@ -9,6 +9,50 @@ import matplotlib.pyplot as plt
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def save(fig, name):
+    svg = ROOT/f'docs/{name}.svg'
+    fig.savefig(svg, metadata={'Date':None}, facecolor='white')
+    plt.close(fig)
+    fingerprint = hashlib.sha256((ROOT/'docs/current-performance.json').read_bytes()).hexdigest()
+    content = '\n'.join(line.rstrip() for line in svg.read_text(encoding='utf-8').splitlines())
+    svg.write_text(content+'\n<!-- performance-data-sha256: '+fingerprint+' -->\n',
+                   encoding='utf-8', newline='\n')
+
+
+def build_chart(data):
+    values = data['builds']['variants']
+    groups = [(['guicedee', 'guicedee-scan', 'quarkus-standard'], 'compile', 'Clean Java compilation'),
+              (['guicedee', 'guicedee-scan', 'quarkus-standard', 'guicedee-jlink', 'guicedee-scan-jlink'],
+               'package', 'Complete JVM / jlink packaging'),
+              (['guicedee-native', 'quarkus-standard-native'], 'package', 'Complete native packaging')]
+    labels = {'guicedee':'GuicedEE SPI', 'guicedee-scan':'GuicedEE scanner', 'quarkus-standard':'Quarkus',
+              'guicedee-jlink':'GuicedEE SPI jlink', 'guicedee-scan-jlink':'GuicedEE scanner jlink',
+              'guicedee-native':'GuicedEE SPI native', 'quarkus-standard-native':'Quarkus native'}
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4.8))
+    for ax, (names, goal, title) in zip(axes, groups):
+        seconds = [values[name][goal]['median'] for name in names]
+        errors = [[values[name][goal]['median']-values[name][goal]['minimum'] for name in names],
+                  [values[name][goal]['maximum']-values[name][goal]['median'] for name in names]]
+        maximum = max(values[name][goal]['maximum'] for name in names)
+        ax.barh(range(len(names)), seconds, xerr=errors, capsize=3, height=.6,
+                color=['#167c80' if name.startswith('guicedee') else '#5950a3' for name in names])
+        ax.set_yticks(range(len(names)), [labels[name] for name in names])
+        ax.invert_yaxis()
+        ax.set_xlim(0, maximum*1.32)
+        ax.set_xlabel('Wall time (seconds)')
+        ax.set_title(title, loc='left', fontsize=11, fontweight='bold')
+        ax.grid(axis='x', alpha=.15)
+        ax.set_axisbelow(True)
+        ax.spines[['top','right','left']].set_visible(False)
+        for index, (name, value) in enumerate(zip(names, seconds)):
+            ax.text(values[name][goal]['maximum']+maximum*.02, index, f'{value:.2f} s', va='center', fontsize=9)
+    fig.suptitle('Build cost by artifact type', x=.02, ha='left', fontsize=15, fontweight='bold')
+    fig.text(.02,.02, f"Medians and min–max of {data['builds']['runs']} clean, offline builds per task · warm dependency cache · new Maven process each time\n"
+             'Same Linux JDK 25 / Maven 4 toolchain · no runtime CPU quota · package includes compilation; do not add columns. Panels use different scales.', fontsize=9)
+    fig.tight_layout(rect=(0,.13,1,.94))
+    save(fig, 'builds')
+
+
 def main():
     data = json.loads((ROOT/'docs/current-performance.json').read_text())
     names = ['guicedee','guicedee-scan','quarkus-standard','guicedee-jlink',
@@ -38,13 +82,8 @@ def main():
     fig.text(.02,.02,'250m CPU / 500 MiB · 3 fresh starts per mode/profile · commercetools + GraphQL + Firestore\n'
              'Native repeats the same binaries without a JIT flag. Medians; all starts and capability checks retained.', fontsize=9)
     fig.tight_layout(rect=(0,.11,1,.94))
-    fig.savefig(ROOT/'docs/startup.svg', metadata={'Date':None}, facecolor='white')
-    plt.close(fig)
-    with (ROOT/'docs/startup.svg').open('a', encoding='utf-8', newline='\n') as image:
-        image.write('<!-- performance-data-sha256: '+hashlib.sha256((ROOT/'docs/current-performance.json').read_bytes()).hexdigest()+' -->\n')
-    svg = ROOT/'docs/startup.svg'
-    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text(encoding='utf-8').splitlines())+'\n',
-                   encoding='utf-8', newline='\n')
+    save(fig, 'startup')
+    build_chart(data)
 
 
 if __name__ == '__main__':

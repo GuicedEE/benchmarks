@@ -13,19 +13,19 @@
   ],
   "frameworkJars": [
     {
-      "path": "GuicedEE\\services\\Google\\guice-core\\target\\guice-2.5.1.jar",
+      "path": "com/guicedee/modules/services/guice/2.5.1/guice-2.5.1.jar",
       "sha256": "1aaa4ad03043e11ce8ae67b8095441eb0e850c0a9dc7e75315c3d202a6b89083"
     },
     {
-      "path": "GuicedEE\\native-image\\target\\native-image-2.5.1.jar",
+      "path": "com/guicedee/native-image/2.5.1/native-image-2.5.1.jar",
       "sha256": "dda451fa7db0ada743d0b1eb8f4273b8580ebf5f95dd373a99152fcca2843e5d"
     },
     {
-      "path": "GuicedEE\\openapi\\target\\openapi-2.5.1.jar",
+      "path": "com/guicedee/openapi/2.5.1/openapi-2.5.1.jar",
       "sha256": "e5dffe547f22a4e56ec2d2c316467a1d9392e3dc498ec15862de350cbe84c58a"
     },
     {
-      "path": "GuicedEE\\swagger-ui\\target\\swagger-ui-2.5.1.jar",
+      "path": "com/guicedee/swagger-ui/2.5.1/swagger-ui-2.5.1.jar",
       "sha256": "5e145cd464116eb20e506d39f79f2ac7b13c0cb1deac05b8e5c9ab88298c09a8"
     }
   ],

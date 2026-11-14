@@ -149,3 +149,19 @@ COPY --from=quarkus-standard-native-build /src/quarkus-standard/target/*-runner 
 COPY --from=quarkus-standard-native-build /native-build-info.txt /app/native-build-info.txt
 COPY --from=quarkus-standard-native-build /src/quarkus-standard/target/build-provenance.json /app/build-provenance.json
 ENTRYPOINT ["/app/application"]
+
+# Same compiler, Maven, machine and cache policy for all measured build modes.
+# No build output is reused: compare_builds.py runs clean and offline for every sample.
+FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-25@sha256:c0ff31764f70469795db5513d674e4721fd8e7e761beddbff741ef5d84e79ed3 AS build-benchmark
+USER root
+COPY --from=maven-build-base /opt/apache-maven-4.0.0-rc-7 /opt/maven
+COPY --from=maven-build-base /root/.m2/repository /root/.m2/repository
+COPY --from=maven-build-base /src /src
+ENV PATH=/opt/maven/bin:$PATH
+WORKDIR /src
+COPY quarkus-standard/src/ quarkus-standard/src/
+COPY quarkus-native/src/ quarkus-native/src/
+COPY guicedee-native/src/ guicedee-native/src/
+COPY guicedee-native/build-native.sh guicedee-native/NativeModuleAccess.java guicedee-native/native-resources.txt guicedee-native/
+COPY guicedee-native/native-trace-inputs.json guicedee-native/native-trace-inputs.json
+COPY tools/compare_builds.py tools/compare_builds.py

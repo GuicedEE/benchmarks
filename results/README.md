@@ -12,10 +12,16 @@ manifest records the byte count and SHA-256. It excludes source copies, logs, co
 artifacts and superseded experiments. Original input hashes and batch IDs remain available
 for provenance. Different profiles remain separate rather than pooling incomparable runs.
 
+`latest/builds.json` contains the current clean-build cohort: all compile/package samples,
+untimed cache preparation, exact commands, toolchain details and input hashes. It separates
+build costs from runtime measurements. Full Maven logs remain in the ignored local run folder;
+their hashes and completion/timing lines accompany the compact published samples.
+
 New executions write to ignored `target/runs/<timestamp>/`. To replace a published group:
 
 ```shell
 python tools/publish_results.py jvm-default target/runs/<batch>
+python tools/publish_builds.py target/build-runs/<build-batch>
 python tools/render_performance.py
 python tools/render_charts.py
 python tools/verify_latest.py

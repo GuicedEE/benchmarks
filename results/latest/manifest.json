@@ -3,8 +3,13 @@
   "files": [
     {
       "path": "measurements.json",
-      "bytes": 669224,
-      "sha256": "00cc88b7872a677b75f33699e00ae89623c8c7d994d1e5d712c6ecc35ab2bdb1"
+      "bytes": 666860,
+      "sha256": "79a2087debcc5ad90d7608305bc00321becbeee610d7c5dc83fed920bd9d1a55"
+    },
+    {
+      "path": "builds.json",
+      "bytes": 160488,
+      "sha256": "caa837413cf29006f263d79f7e5345f203709cf6178acea63113b66194ed9b61"
     }
   ]
 }
