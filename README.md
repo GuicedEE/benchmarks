@@ -37,6 +37,9 @@ The [framework version context](docs/FRAMEWORK_SOURCES.md#version-boundary) desc
 
 To use the complete workspace, initialize `benchmarks` with
 `git submodule update --init benchmarks` from DevSuite. The commands below use that layout.
+On Windows, deeply nested checkouts of SDK native metadata need
+`git -c core.longpaths=true submodule update --init benchmarks`. For a standalone clone,
+use `git -c core.longpaths=true clone https://github.com/GuicedEE/benchmarks.git`.
 GuicedEE builds require the matching locally built framework artifacts described in the
 [source requirements](docs/FRAMEWORK_SOURCES.md); those unpublished inputs are not bundled here.
 
