@@ -312,7 +312,7 @@ def main():
     parser.add_argument('--runtime',choices=['jre','jlink','both','native'],default='jre',help='JVM, linked application, or native executables (Docker only)')
     parser.add_argument('--native',action='store_true',help='Include the separate GuicedEE SPI and Quarkus native projects in the selected matrix')
     parser.add_argument('--framework',choices=['both','guicedee','quarkus'],default='both')
-    parser.add_argument('--quarkus-dependencies', choices=['wrapped','standard'], default='wrapped',
+    parser.add_argument('--quarkus-dependencies', choices=['wrapped','standard'], default='standard',
                         help='standard uses the independent upstream-SDK Quarkus project; wrapped preserves historical batches')
     parser.add_argument('--diagnostics',action='store_true',help='Collect startup/SDK phases and live scan/binding inventories; never a performance comparison')
     parser.add_argument('--image-tag',default='local',help='Docker image tag; immutable IDs are resolved before running')
@@ -333,7 +333,7 @@ def main():
         parser.error('Native comparison requires --docker (the executable is built for Linux)')
     if args.diagnostics and not args.firebase:
         parser.error('Phase diagnostics require --firebase for complete SDK phases')
-    out=ROOT/'results'/time.strftime('%Y%m%d-%H%M%S')
+    out=ROOT/'target/runs'/time.strftime('%Y%m%d-%H%M%S')
     out.mkdir(parents=True)
     flags=['-Xms'+args.initial_heap,'-Xmx384m','-XX:ActiveProcessorCount=2']+(['-XX:TieredStopAtLevel=1'] if args.tiered else [])
     inputs=[]

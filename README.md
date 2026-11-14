@@ -1,72 +1,76 @@
-# GuicedEE and Quarkus: current performance
+# GuicedEE benchmarks
 
-**Latest measurements: 14 November 2026. Report reviewed: 15 November 2026.**
+A standalone benchmark suite for **GuicedEE 2.6.0**, comparing SPI and scanner discovery,
+full-JDK and application-jlink execution, and native executables against normal Quarkus
+applications. Both frameworks execute the same commercetools/GraphQL/Firestore business
+workload, with REST, retries, timeouts, metrics, OpenAPI and Swagger capability checks.
 
-This repository compares a shared service workload across GuicedEE SPI, application
-scanning, linked JVM runtimes and native executables, and Quarkus JVM/native applications.
-The primary Quarkus comparison uses **normal upstream SDK dependencies** and unmodified
-Quarkus framework sources. A separate wrapped-SDK comparison controls for SDK packaging.
+## Performance
 
-At **250m CPU / 500 MiB**, GuicedEE native completes the first full business request in
-**668 ms**, versus **706 ms** for normal-dependency Quarkus native: **5.4% less time**.
-Warm request medians are **5.18 ms / 6.02 ms**. Quarkus uses less memory and disk:
-**55.33 / 79.58 MiB** peak container memory and **143.31 / 191.83 MiB** executables
-(Quarkus / GuicedEE). These are observed medians for this fixture, not a universal ranking.
+<!-- BEGIN GENERATED: headline -->
+GuicedEE native completes the first full business request in **657 ms**, versus **684 ms** for Quarkus native (**4.0% less time**). Warm p50 is **5.29 / 5.53 ms** (GuicedEE / Quarkus). Peak charged memory is **79.78 / 55.25 MiB**; executables are **191.83 / 143.31 MiB**. The native sample contains **28 starts and 420 passing capability checks**.
+<!-- END GENERATED: headline -->
 
-## All run modes
-
-**Median launch to completed business response, seconds.** Each linked cell identifies its
-measurement group. This is an overview of available evidence across different image revisions;
-comparative rankings belong within the matched groups in the detailed report.
+**Median launch to completed business response, seconds.** JVM/default and C1 columns use
+matched seven-mode Docker batches at **250m CPU / 500 MiB**. The native column uses a larger
+counterbalanced native-only sample. Links open the full timing and memory grids.
 
 <!-- BEGIN GENERATED: overview -->
-| Application / dependencies | Full JDK default (s) | Full JDK C1 (s) | Application jlink default (s) | Application jlink C1 (s) | Native (s) |
+| Application | Full JDK default (s) | Full JDK C1 (s) | Application jlink default (s) | Application jlink C1 (s) | Native (s) |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / wrapped SDKs | [31.019](RESULTS.md#jvm-default) | [18.546](RESULTS.md#jvm-c1) | [13.745](RESULTS.md#jlink-default) | [8.781](RESULTS.md#jvm-c1) | [0.668](RESULTS.md#native-standard) primary; [0.659](RESULTS.md#native-wrapped) control |
-| GuicedEE scanner / wrapped SDKs | [32.975](RESULTS.md#jvm-default) | [19.432](RESULTS.md#jvm-c1) | [13.987](RESULTS.md#jlink-default) | [8.854](RESULTS.md#jvm-c1) | Unsupported |
-| Quarkus / upstream SDKs | Diagnostic only | Unmeasured | No variant | No variant | [0.706](RESULTS.md#native-standard) |
-| Quarkus / wrapped SDKs (control) | [30.026](RESULTS.md#jvm-default) | [17.812](RESULTS.md#jvm-c1) | No variant | No variant | [0.655](RESULTS.md#native-wrapped) |
+| GuicedEE SPI | [28.177](RESULTS.md#jvm-default) | [16.746](RESULTS.md#jvm-c1) | [15.138](RESULTS.md#jvm-default) | [7.938](RESULTS.md#jvm-c1) | [0.657](RESULTS.md#native-standard) |
+| GuicedEE scanner | [27.831](RESULTS.md#jvm-default) | [17.431](RESULTS.md#jvm-c1) | [14.155](RESULTS.md#jvm-default) | [8.387](RESULTS.md#jvm-c1) | SPI only |
+| Quarkus / upstream SDKs | [24.074](RESULTS.md#jvm-default) | [14.168](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.684](RESULTS.md#native-standard) |
 <!-- END GENERATED: overview -->
 
-The current evidence does **not** contain one freshly rebuilt matrix covering every mode.
-JVM/C1 figures use the last complete matched matrix; default-jlink figures use the latest
-controlled linked-image batch. Native figures use the latest applicable dependency comparison.
-Normal-dependency Quarkus JVM has passed a diagnostic capability run but has no eligible
-repeated performance batch. These measurements are not a GuicedEE 2.6.0 release benchmark.
+![Startup by execution mode](docs/startup.svg)
 
-## Detailed results
+[The full results](RESULTS.md) include readiness, first-request and full-business startup,
+warm p50/p95/p99, memory, executable/image sizes, **percentage differences for every
+GuicedEE mode**, and scanning/Guice/commercetools/Firestore phase analysis. Actual image IDs,
+artifact hashes, flags and sample counts accompany the measurements. C1 applies equally to
+all JVMs; native executables have no JIT tiering.
 
-The **[full performance report](RESULTS.md)** contains:
+## Run it
 
-- All startup grids: HTTP readiness, first request alone, complete business response,
-  observed ranges, and first OpenAPI response.
-- Warm p50/p95/p99 latency, peak/end container memory, executable and image sizes.
-- Separate default JVM, C1, linked application, native and unrestricted local profiles.
-- Instrumented startup/Guice/scan and commercetools/Firestore phase grids.
-- Capability coverage, sample counts, missing modes, interpretation and immutable image IDs.
+Install JDK 25, Maven 4, Python 3.11+, Node.js 22+ and Docker with Linux containers, then:
 
-The headline native comparison includes **28 starts, 420 passing capability checks and
-840 successful measured requests**. The completed business response waits for commercetools
-SDK OAuth/REST/GraphQL and Firebase Admin SDK Firestore write/read. Timing includes the reactive
-flow's completion, not just an available HTTP port. [Measurement definitions](RESULTS.md#measurement-contract)
-explain the exact boundaries.
-
-## Use the repository
-
-- [Build, run, configure and validate](RUNNING.md)
-- [Machine-readable grids (JSON)](docs/current-performance.json) and [spreadsheet data (CSV)](docs/current-performance.csv)
-- [Companion GuicedEE sources and version requirements](docs/FRAMEWORK_SOURCES.md)
-- [Evidence retention policy](docs/RETENTION.md)
-- [Detailed investigations and archived measurements](docs/history/README.md)
-
-From this repository's root, verify the published grids and their underlying evidence:
-
-```powershell
-python tools/render_performance.py --check
-python tools/verify_retained_evidence.py
-python -m unittest discover -s tools -p test_harness.py
+```shell
+git -c core.longpaths=true clone --depth 1 https://github.com/GuicedEE/benchmarks.git
+cd benchmarks
+python tools/build.py --docker --runtime both --native
+python tools/compare.py --docker --firebase --runtime both --native --runs 5 --requests 100 --warmup 20
+# Repeat the same matrix with equal C1 tuning:
+python tools/compare.py --docker --firebase --runtime both --native --tiered --runs 5 --requests 100 --warmup 20
 ```
 
-This is a reference service using deterministic local vendor fixtures and the official
-Firestore emulator. The original comparison application's template was unavailable.
-Production network latency, sustained concurrent load and Kubernetes scale-out are unmeasured.
+GuicedEE dependencies resolve through Maven. No DevSuite checkout, private framework path,
+vendor account or production credentials are required. The build sets up the local Firestore
+emulator; the runner starts the deterministic vendor fixture and enforces container limits.
+See [RUNNING.md](RUNNING.md) for individual modes, configuration, explicit artifact repositories,
+native metadata and diagnostics.
+
+## Repository layout
+
+| Path | Purpose |
+|---|---|
+| `guicedee`, `guicedee-scan` | Separate modular SPI and scanner applications |
+| `guicedee-jlink`, `guicedee-scan-jlink`, `guicedee-native` | Linked-runtime and native packaging |
+| `quarkus-standard` | Default Quarkus JVM/native comparison with upstream SDK dependencies |
+| `common`, `quarkus`, `quarkus-native` | Shared workload, Quarkus adapter and optional wrapped-SDK control/build support |
+| `fixtures`, `docker`, `tools` | Local services, image recipes, build/measurement/report tools |
+| `results/latest` | Only the current published raw measurements and their manifest |
+| `target/runs` | Ignored output of new executions |
+
+[CSV](docs/current-performance.csv) and [JSON](docs/current-performance.json) expose the full
+numeric grids. [Publishing results](results/README.md) replaces current measurements without
+accumulating reports, source snapshots or experiment archives in the repository.
+
+```shell
+python -m unittest discover -s tools -p test_harness.py
+python tools/verify_latest.py
+python tools/render_performance.py --check
+```
+
+Measurements cover this local reference workload and its completed reactive flow. They are
+sequential latency tests, not sustained-load throughput or production WAN measurements.

@@ -17,13 +17,12 @@
 Thumbs.db
 **/*debug.log
 **/.firebase/
-# New runs stay local. Reviewed evidence is explicitly added using the retention manifest.
+# Only the current published measurements belong in Git. Fresh runs stay local.
 results/**
 !results/README.md
-!results/retained-evidence.json
+!results/latest/
+!results/latest/**
 docker/build-provenance.json
 docker/analysis/
 
 docker/repository/
-results/native-agent-library/
-results/**/.lock

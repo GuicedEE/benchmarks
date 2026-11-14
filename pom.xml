@@ -8,16 +8,17 @@
         <module>common</module>
         <module>guicedee</module>
         <module>guicedee-scan</module>
-        <module>quarkus</module>
-        <module>quarkus-native</module>
-        <module>guicedee-native</module>
-        <module>guicedee-jlink</module>
-        <module>guicedee-scan-jlink</module>
+        <module>quarkus-standard</module>
     </modules>
+    <profiles>
+        <profile><id>jlink</id><modules><module>guicedee-jlink</module><module>guicedee-scan-jlink</module></modules></profile>
+        <profile><id>native-app</id><modules><module>guicedee-native</module></modules></profile>
+        <profile><id>wrapped-control</id><modules><module>quarkus</module><module>quarkus-native</module></modules></profile>
+    </profiles>
     <properties>
         <maven.compiler.release>25</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <guicedee.version>2.5.1</guicedee.version>
+        <guicedee.version>2.6.0</guicedee.version>
         <quarkus.version>3.40.1</quarkus.version>
     </properties>
     <dependencyManagement>

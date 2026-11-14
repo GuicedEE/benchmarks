@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def verify_sdk_inputs(traced,current):
     if not traced or {e['name']:e['sha256'] for e in traced}!={e['name']:e['sha256'] for e in current}:
-        raise ValueError('Traced Docker SDKs differ from local SDKs; rebuild the Quarkus JVM image and retrace')
+        raise ValueError('Traced Docker SDKs differ from local SDKs; rebuild the matching JVM image and retrace')
 
 
 def main():
@@ -25,7 +25,7 @@ def main():
     inputs=[]
     for path in (ROOT/'guicedee/target/classpath.txt').read_text().strip().split(os.pathsep):
         jar=Path(path)
-        if jar.name not in ['commercetools-2.5.1.jar','firebase-admin-2.5.1.jar']:continue
+        if jar.name not in {entry['name'] for entry in diagnostic.get('sdkJars',[])}:continue
         with zipfile.ZipFile(jar) as archive: entries.update(archive.namelist())
         inputs.append({'name':jar.name,'sha256':hashlib.sha256(jar.read_bytes()).hexdigest()})
     verify_sdk_inputs(diagnostic.get('sdkJars'),inputs)

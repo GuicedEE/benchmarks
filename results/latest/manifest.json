@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "measurements.json",
+      "bytes": 669224,
+      "sha256": "00cc88b7872a677b75f33699e00ae89623c8c7d994d1e5d712c6ecc35ab2bdb1"
+    }
+  ]
+}

@@ -22,16 +22,7 @@ def capture():
         for path in directory.rglob('*.jar'):
             jars.append({'path': path.relative_to(ROOT).as_posix(),
                          'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
-    wrappers=[]
-    for name in ['firebase-admin','commercetools']:
-        directory=ROOT.parent/'GuicedEE/services/Libraries'/name
-        for relative in ['pom.xml','src/moditect/module-info.java']:
-            path=directory/relative
-            if path.is_file():
-                data=path.read_bytes()
-                wrappers.append({'path':path.relative_to(ROOT.parent).as_posix(),
-                                 'sha256':hashlib.sha256(data).hexdigest(),'content':data.decode('utf-8')})
-    return {'sourcesAtImageBuild': sources, 'packagedJars': jars, 'sdkWrapperSources':wrappers,
+    return {'sourcesAtImageBuild': sources, 'packagedJars': jars,
             'note': 'Source snapshot at image packaging; build the Maven reactor before packaging images.'}
 
 

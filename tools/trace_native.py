@@ -17,7 +17,9 @@ def main():
     parser.add_argument('output',type=Path)
     parser.add_argument('--framework',choices=['quarkus','guicedee'],default='quarkus')
     parser.add_argument('--image-tag',default='local')
-    parser.add_argument('--quarkus-dependencies',choices=['wrapped','standard'],default='wrapped')
+    parser.add_argument('--quarkus-dependencies',choices=['wrapped','standard'],default='standard')
+    from build import framework_version
+    parser.add_argument('--guicedee-version',default=framework_version())
     options=parser.parse_args()
     library=options.agent.resolve()
     output=options.output.resolve()
@@ -61,7 +63,7 @@ def main():
             sdk_jars.extend({'name':entry['path'],'sha256':entry['sha256']} for entry in provenance['sdkJars'])
             resolved_dependencies.extend(provenance['resolvedDependencies'])
         for sdk in ([] if options.framework == 'quarkus' and options.quarkus_dependencies == 'standard' else ['firebase-admin','commercetools']):
-            artifact=sdk+'-2.5.1.jar'
+            artifact=sdk+'-'+options.guicedee_version+'.jar'
             provenance=environment['imageBuildProvenance'][options.framework]
             if 'phaseDiagnosticInputs' in provenance:
                 matched=[entry for entry in provenance['phaseDiagnosticInputs']['stagedJars']

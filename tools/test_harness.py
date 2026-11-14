@@ -8,6 +8,8 @@ import subprocess
 from pathlib import Path
 from unittest.mock import patch
 import image_provenance
+from build import verify_framework
+import stage_link_repository
 from compare import request, eligible_comparison, metric_counts, discovery_evidence, phase_evidence
 from upstream import Upstream
 from variants import select_variants, ordered_variants, paired_image_variants, guicedee_jar, runtime_flags
@@ -19,6 +21,52 @@ from summarize_native import sdk_evidence
 
 
 class HarnessTest(unittest.TestCase):
+    def test_build_checks_explicit_framework_inputs_before_native_build(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            repository = Path(temporary)
+            client = repository/'com/guicedee/client/2.6.0/client-2.6.0.jar'
+            client.parent.mkdir(parents=True)
+            with zipfile.ZipFile(client, 'w') as jar:
+                jar.writestr('module-info.class', b'descriptor')
+            with self.assertRaisesRegex(ValueError, 'IGuiceDiscovery'):
+                verify_framework(repository, '2.6.0')
+            with zipfile.ZipFile(client, 'a') as jar:
+                jar.writestr('com/guicedee/client/services/IGuiceDiscovery.class', b'spi')
+            verify_framework(repository, '2.6.0')
+            with self.assertRaisesRegex(ValueError, 'native-image'):
+                verify_framework(repository, '2.6.0', native=True)
+
+    def test_staging_rejects_dependencies_outside_the_selected_repository(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            repository = root/'chosen-repository'
+            repository.mkdir()
+            (root/'guicedee/target').mkdir(parents=True)
+            outside = root/'unselected.jar'
+            outside.write_bytes(b'not-from-selected-repository')
+            (root/'guicedee/target/classpath.txt').write_text(str(outside))
+            with patch.object(stage_link_repository, 'ROOT', root):
+                with self.assertRaisesRegex(ValueError, 'outside --repository'):
+                    stage_link_repository.stage(repository, ['guicedee'])
+            self.assertFalse((root/'docker/repository').exists())
+
+    def test_staging_maps_this_checkouts_maven4_reactor_artifacts(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            repository = root/'chosen-repository'
+            repository.mkdir()
+            artifact = root/'.mvn/target/project-local-repo/dev.guicedee.benchmarks/common/1/common-1.jar'
+            artifact.parent.mkdir(parents=True)
+            artifact.write_bytes(b'current-reactor-output')
+            artifact.with_suffix('.pom').write_text('<project/>')
+            (root/'guicedee/target').mkdir(parents=True)
+            (root/'guicedee/target/classpath.txt').write_text(str(artifact))
+            with patch.object(stage_link_repository, 'ROOT', root):
+                stage_link_repository.stage(repository, ['guicedee'])
+            staged = root/'docker/repository/dev/guicedee/benchmarks/common/1/common-1.jar'
+            self.assertEqual(artifact.read_bytes(), staged.read_bytes())
+            self.assertTrue(staged.with_suffix('.pom').exists())
+
     def test_standard_quarkus_is_separate_and_provenance_cannot_be_mislabeled(self):
         variants = select_variants(runtime='native', quarkus_dependencies='standard')
         self.assertEqual(['guicedee-native','quarkus-standard-native'],[v['id'] for v in variants])

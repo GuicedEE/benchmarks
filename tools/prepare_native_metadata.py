@@ -66,8 +66,10 @@ def conditional_protobuf(value):
     return value
 
 
-def prepare(repository=None):
-    dependencies=([repository/f'com/guicedee/modules/services/{sdk}/2.5.1/{sdk}-2.5.1.jar'
+def prepare(repository=None, version=None):
+    from build import framework_version
+    version = version or framework_version()
+    dependencies=([repository/f'com/guicedee/modules/services/{sdk}/{version}/{sdk}-{version}.jar'
                    for sdk in ['firebase-admin','commercetools']] if repository else
                   [Path(p) for p in (ROOT/'guicedee/target/classpath.txt').read_text().strip().split(os.pathsep)])
     base=ROOT/'quarkus-native/src/main/resources/META-INF/native-image/dev.guicedee.benchmarks'
@@ -75,7 +77,7 @@ def prepare(repository=None):
     observed_types={entry['type'] for entry in traced['reflection'] if isinstance(entry.get('type'),str)}
     manifest=[]
     for sdk in ['firebase-admin','commercetools']:
-        jar=next(p for p in dependencies if p.name==sdk+'-2.5.1.jar')
+        jar=next(p for p in dependencies if p.name==sdk+'-'+version+'.jar')
         with zipfile.ZipFile(jar) as z:
             # Read the recipe for this exact binary. Workspace shade rules can
             # change independently of the immutable SDK used in the comparison.
@@ -128,4 +130,6 @@ def prepare(repository=None):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--repository',type=Path,help='Use the isolated benchmark SDK snapshot instead of host dependencies')
-    prepare(parser.parse_args().repository)
+    parser.add_argument('--version',help='GuicedEE artifact version; defaults to the benchmark POM')
+    args=parser.parse_args()
+    prepare(args.repository,args.version)

@@ -37,6 +37,7 @@ ENV GUICEDEE_DISCOVERY_MODE=scan
 CMD ["--module-path", "/app/app.jar:/app/lib", "-m", "bench.guicedee.scan/bench.guicedee.Main"]
 
 FROM stock-runtime AS maven-build-base
+ARG GUICEDEE_VERSION=2.6.0
 RUN microdnf install -y binutils && microdnf clean all
 ARG MAVEN_VERSION=4.0.0-rc-7
 ADD https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/${MAVEN_VERSION}/apache-maven-${MAVEN_VERSION}-bin.zip /tmp/maven.zip
@@ -53,12 +54,13 @@ COPY guicedee-scan/src/ guicedee-scan/src/
 COPY quarkus/pom.xml quarkus/pom.xml
 COPY quarkus/src/ quarkus/src/
 COPY quarkus-native/pom.xml quarkus-native/pom.xml
+COPY quarkus-standard/pom.xml quarkus-standard/pom.xml
 COPY guicedee-native/pom.xml guicedee-native/pom.xml
 COPY guicedee-jlink/ guicedee-jlink/
 COPY guicedee-scan-jlink/ guicedee-scan-jlink/
 
 FROM maven-build-base AS application-build
-RUN mvn -B -ntp -pl guicedee-jlink,guicedee-scan-jlink -am package -DskipTests
+RUN mvn -B -ntp -pl guicedee-jlink,guicedee-scan-jlink -am package -Pjlink -Dguicedee.version=$GUICEDEE_VERSION -DskipTests
 
 FROM common-os AS guicedee-jlink
 COPY --from=application-build /src/guicedee-jlink/target/maven-jlink/default /opt/java/openjdk
@@ -66,6 +68,7 @@ COPY guicedee/.env .env
 ENTRYPOINT ["/opt/java/openjdk/bin/benchmark"]
 
 FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-25@sha256:c0ff31764f70469795db5513d674e4721fd8e7e761beddbff741ef5d84e79ed3 AS native-build
+ARG GUICEDEE_VERSION=2.6.0
 USER root
 COPY --from=maven-build-base /opt/apache-maven-4.0.0-rc-7 /opt/maven
 COPY --from=maven-build-base /root/.m2/repository /root/.m2/repository
@@ -74,7 +77,7 @@ WORKDIR /src
 COPY quarkus-native/src/ quarkus-native/src/
 COPY quarkus-native/native-metadata-inputs.json quarkus-native/native-metadata-inputs.json
 RUN native-image --version > /native-build-info.txt && \
-    /opt/maven/bin/mvn -B -ntp -pl quarkus-native -am package -Pnative -DskipTests && \
+    /opt/maven/bin/mvn -B -ntp -pl quarkus-native -am package -Pnative,wrapped-control -Dguicedee.version=$GUICEDEE_VERSION -DskipTests && \
     sha256sum /src/quarkus-native/target/*-runner >> /native-build-info.txt
 
 FROM common-os AS quarkus-native
@@ -83,6 +86,7 @@ COPY --from=native-build /native-build-info.txt /app/native-build-info.txt
 ENTRYPOINT ["/app/application"]
 
 FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-25@sha256:c0ff31764f70469795db5513d674e4721fd8e7e761beddbff741ef5d84e79ed3 AS guicedee-native-build
+ARG GUICEDEE_VERSION=2.6.0
 USER root
 COPY --from=maven-build-base /opt/apache-maven-4.0.0-rc-7 /opt/maven
 COPY --from=maven-build-base /root/.m2/repository /root/.m2/repository
@@ -95,7 +99,7 @@ COPY guicedee-native/NativeModuleAccess.java guicedee-native/NativeModuleAccess.
 COPY guicedee-native/native-resources.txt guicedee-native/native-resources.txt
 ARG NATIVE_AUDIT=false
 ARG NATIVE_DESKTOP=false
-RUN NATIVE_AUDIT=$NATIVE_AUDIT NATIVE_DESKTOP=$NATIVE_DESKTOP /opt/maven/bin/mvn -B -ntp -pl guicedee-native -am package -Pnative -DskipTests
+RUN NATIVE_AUDIT=$NATIVE_AUDIT NATIVE_DESKTOP=$NATIVE_DESKTOP /opt/maven/bin/mvn -B -ntp -pl guicedee-native -am package -Pnative,native-app -Dguicedee.version=$GUICEDEE_VERSION -DskipTests
 
 FROM common-os AS guicedee-native
 COPY --from=guicedee-native-build /src/guicedee-native/target/application /app/application
@@ -110,15 +114,6 @@ COPY --from=application-build /src/guicedee-scan-jlink/target/maven-jlink/defaul
 COPY guicedee-scan/.env .env
 ENV GUICEDEE_DISCOVERY_MODE=scan
 ENTRYPOINT ["/opt/java/openjdk/bin/benchmark"]
-
-# Optional diagnostic build: compile all measured Java sources against the staged
-# repository inside Linux, independent of a concurrently changing host Maven cache.
-FROM application-build AS phase-application-build
-RUN mvn -B -ntp -pl quarkus -am package -DskipTests
-
-FROM base AS phase-quarkus
-COPY --from=phase-application-build /src/quarkus/target/quarkus-app/ /app/
-CMD ["-jar", "/app/quarkus-run.jar"]
 
 # Independent Quarkus build: only the upstream BOM and published SDK/extension dependencies.
 # Its Maven cache contains no staged GuicedEE artifacts or inherited workspace configuration.

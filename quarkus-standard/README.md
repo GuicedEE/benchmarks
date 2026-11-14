@@ -1,9 +1,9 @@
 # Quarkus with normal upstream dependencies
 
 This standalone Maven application imports Quarkus's BOM directly. It does not inherit
-the DevSuite/GuicedEE BOM, depend on `comparison-common`, or use GuicedEE's SDK wrappers,
+the GuicedEE BOM, depend on `comparison-common`, or use GuicedEE's SDK wrappers,
 relocated native metadata or application-specific substitutions from `quarkus-native`.
-The older projects remain available for the historical comparison with identical SDK JARs.
+The optional wrapped projects provide a control with identical SDK JARs.
 
 It compiles the **same shared business Java sources and Quarkus adapter sources** directly
 into a conventional Quarkus classpath application. The existing shared JPMS module is
@@ -51,20 +51,13 @@ Application integration requirements found by the capability checks and native c
   the measured workload sends JSON. Quarkus core excludes `com.sun.activation:javax.activation`
   from packaging, so that otherwise compatible coordinate cannot supply this legacy API here.
 
-The first native attempt compiled but failed the commercetools SPI capability check.
-Enabling automatic registration of every service also reached an incompatible optional
-gRPC xDS backend, so the final configuration retains Quarkus's default and supplies targeted
-metadata. Those failed attempts are excluded from performance comparisons. This is a working
-Quarkus application integration, not a claim that arbitrary vendor SDKs work natively with
-zero configuration.
-
 To regenerate native metadata after SDK changes, build the JVM image first, obtain the
 `libnative-image-agent.so` from the pinned Mandrel builder, then run:
 
 ```powershell
-python benchmarks/tools/trace_native.py <agent.so> <fresh-trace-directory> --quarkus-dependencies standard
-python benchmarks/tools/import_standard_native_trace.py <fresh-trace-directory>
-./benchmarks/docker/build-quarkus-standard.ps1 -NativeOnly
+python tools/trace_native.py <agent.so> <fresh-trace-directory> --quarkus-dependencies standard
+python tools/import_standard_native_trace.py <fresh-trace-directory>
+./docker/build-quarkus-standard.ps1 -NativeOnly
 ```
 
 The importer requires all 15 capabilities to pass and verifies the relevant SDK and transitive
@@ -73,20 +66,20 @@ also rejects stale SDK metadata; JVM packaging remains available so changed depe
 be traced again. Traces run with extra resources and are
 always excluded from timings; the finished native executable must pass the same full gate.
 
-From the DevSuite root:
+From the repository root:
 
 ```powershell
 # Independent Docker/Maven resolution; no GuicedEE rebuild or SDK staging required.
-./benchmarks/docker/build-quarkus-standard.ps1 -Native
+./docker/build-quarkus-standard.ps1 -Native
 # Reuse the current GuicedEE native image and compare seven alternating fresh starts.
-python benchmarks/tools/compare.py --docker --firebase --runtime native --quarkus-dependencies standard --runs 7 --requests 30 --warmup 10
-python benchmarks/tools/summarize_native.py benchmarks/results/<batch>
+python tools/compare.py --docker --firebase --runtime native --quarkus-dependencies standard --runs 7 --requests 30 --warmup 10
+python tools/summarize_native.py target/runs/<batch>
 # Optional full-JDK SPI/scanner comparison against the standard Quarkus fast-JAR.
-python benchmarks/tools/compare.py --docker --firebase --quarkus-dependencies standard --runs 5
+python tools/compare.py --docker --firebase --quarkus-dependencies standard --runs 5
 ```
 
-`--quarkus-dependencies wrapped` remains the harness default for reproducing old commands;
-use `standard` explicitly for the independent comparison. Native images use the same pinned
+`standard` is the build and harness default. Select `wrapped` explicitly for the optional
+identical-SDK control. Native images use the same pinned
 Mandrel compiler and OS base as the GuicedEE images. All measured images receive the same
 250m CPU / 500 MiB container limits, heap limits and processor count. Native build work is
 outside the startup timer. Business completion waits for real SDK OAuth, REST, GraphQL and

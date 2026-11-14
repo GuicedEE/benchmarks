@@ -13,7 +13,10 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def prepare(trace=None):
+def prepare(trace=None, source_repository=None, version=None):
+    from build import framework_version
+    version = version or framework_version()
+    source_repository = (source_repository or Path.home()/'.m2/repository').resolve()
     repository=ROOT/'docker/repository'
     manifest_path=ROOT/'guicedee-native/native-trace-inputs.json'
     diagnostic=json.loads((trace/'diagnostic.json' if trace else manifest_path).read_text())
@@ -22,23 +25,24 @@ def prepare(trace=None):
         raise ValueError('Native metadata requires a successful full GuicedEE capability trace')
     sdk_inputs=[]
     for sdk in ['firebase-admin','commercetools']:
-        jar=repository/f'com/guicedee/modules/services/{sdk}/2.5.1/{sdk}-2.5.1.jar'
+        jar=repository/f'com/guicedee/modules/services/{sdk}/{version}/{sdk}-{version}.jar'
         sdk_inputs.append({'name':jar.name,'sha256':sha(jar)})
     verify_sdk_inputs(diagnostic['sdkJars'],sdk_inputs)
     staged=[]
-    for source,coordinate in [('services/Google/guice-core','modules/services/guice'),('native-image','native-image'),
-                              ('openapi','openapi'),('swagger-ui','swagger-ui')]:
+    for coordinate in ['modules/services/guice','native-image','openapi','swagger-ui']:
         name=coordinate.split('/')[-1]
-        directory=ROOT.parent/'GuicedEE'/source
-        jar=directory/f'target/{name}-2.5.1.jar'
+        directory=source_repository/f'com/guicedee/{coordinate}/{version}'
+        jar=directory/f'{name}-{version}.jar'
         with zipfile.ZipFile(jar) as archive:
             if 'module-info.class' not in archive.namelist(): raise ValueError('Missing module descriptor: '+str(jar))
-        destination=repository/f'com/guicedee/{coordinate}/2.5.1'
+        destination=repository/f'com/guicedee/{coordinate}/{version}'
         destination.mkdir(parents=True,exist_ok=True)
-        shutil.copy2(jar,destination/jar.name)
-        pom=directory/('flatter.pom' if (directory/'flatter.pom').exists() else 'pom.xml')
-        shutil.copy2(pom,destination/f'{name}-2.5.1.pom')
-        staged.append({'path':str(jar.relative_to(ROOT.parent)),'sha256':sha(jar)})
+        if jar.resolve() != (destination/jar.name).resolve():
+            shutil.copy2(jar,destination/jar.name)
+        pom=directory/f'{name}-{version}.pom'
+        if pom.resolve() != (destination/pom.name).resolve():
+            shutil.copy2(pom,destination/pom.name)
+        staged.append({'path':jar.relative_to(source_repository).as_posix(),'sha256':sha(jar)})
     output=ROOT/'guicedee-native/src/main/resources/META-INF/native-image/dev.guicedee.benchmarks/guicedee-trace'
     metadata=json.loads((trace/'reachability-metadata.json' if trace else output/'reachability-metadata.json').read_text())
     def generated(entry):
@@ -81,4 +85,7 @@ def prepare(trace=None):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('trace',type=Path,nargs='?',help='Fresh agent trace, or reuse committed metadata for the exact recorded SDKs')
-    prepare(parser.parse_args().trace)
+    parser.add_argument('--repository',type=Path,help='Maven repository containing the framework artifacts under test')
+    parser.add_argument('--version',help='GuicedEE artifact version; defaults to the benchmark POM')
+    args=parser.parse_args()
+    prepare(args.trace,args.repository,args.version)
