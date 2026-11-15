@@ -515,37 +515,37 @@ and query in both applications. Readiness includes the database lifecycle; the f
 response includes the committed graph. The graph precedes the detailed measurements below.
 
 <!-- BEGIN GENERATED: persistence -->
-Measured **2026-11-15**, **default JVM profile**, batch `20261115-161617`. **6 fresh starts / 84 passing checks**. Each start has 10 warmup reads and CRUD cycles, then 30 measured reads and 30 measured CRUD cycles. All samples are retained.
+Measured **2026-11-15**, **default JVM profile**, batch `20261115-162401`. **6 fresh starts / 84 passing checks**. Each start has 10 warmup reads and CRUD cycles, then 30 measured reads and 30 measured CRUD cycles. All samples are retained.
 
 ![PostgreSQL startup and transaction latency](docs/persistence.svg)
 
 | Application | Starts | DB-ready (s) | First transaction (ms) | Launch to committed graph (s) | Full startup min–max (s) | Peak charged memory (MiB) | Hibernate ORM |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE reactive stateless | 3 | 16.270 | 2099.39 | 18.053 | 17.032–19.019 | 234.75 | 7.4.15.Final |
-| Quarkus ORM / Narayana | 3 | 11.197 | 1898.62 | 13.096 | 11.884–14.538 | 221.73 | 7.4.9.Final |
+| GuicedEE reactive stateless | 3 | 15.073 | 1993.68 | 16.973 | 16.702–17.835 | 234.57 | 7.4.15.Final |
+| Quarkus ORM / Narayana | 3 | 11.013 | 1815.16 | 12.828 | 11.748–13.847 | 218.27 | 7.4.9.Final |
 
 | Operation | GuicedEE p50 (ms) | p95 | p99 | Quarkus p50 (ms) | p95 | p99 | GuicedEE p50 difference |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Joined graph read | 3.07 | 86.52 | 87.17 | 3.13 | 80.31 | 81.90 | -1.7% |
-| Create 15 rows | 8.47 | 93.79 | 96.55 | 8.35 | 88.52 | 91.78 | +1.4% |
-| Update 15 rows | 64.35 | 97.89 | 103.35 | 9.37 | 94.41 | 96.20 | +586.7% |
-| Delete 15 rows | 9.26 | 96.98 | 97.62 | 7.07 | 93.84 | 94.05 | +30.9% |
-| Complete CRUD cycle | 107.86 | 200.87 | 291.35 | 102.66 | 202.26 | 203.98 | +5.1% |
+| Joined graph read | 3.26 | 84.53 | 86.63 | 2.89 | 47.47 | 73.79 | +12.8% |
+| Create 15 rows | 11.08 | 91.98 | 95.00 | 25.28 | 85.59 | 88.72 | -56.2% |
+| Update 15 rows | 25.73 | 97.03 | 99.07 | 28.77 | 89.27 | 91.48 | -10.6% |
+| Delete 15 rows | 12.31 | 97.40 | 97.91 | 10.09 | 86.07 | 95.04 | +22.1% |
+| Complete CRUD cycle | 111.23 | 210.67 | 234.95 | 103.25 | 190.03 | 198.84 | +7.7% |
 
 Per-start warm medians expose the variation within this small, CPU-capped cohort. No individual start is dropped.
 
 | Application | Start | Read p50 (ms) | Create p50 (ms) | Update p50 (ms) | Delete p50 (ms) | CRUD cycle p50 (ms) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE reactive stateless | 1 | 3.11 | 7.32 | 8.39 | 10.73 | 107.83 |
-| Quarkus ORM / Narayana | 1 | 3.13 | 8.35 | 9.37 | 7.07 | 102.66 |
-| Quarkus ORM / Narayana | 2 | 3.44 | 8.95 | 11.66 | 8.07 | 105.32 |
-| GuicedEE reactive stateless | 2 | 2.96 | 8.47 | 66.63 | 9.26 | 107.86 |
-| GuicedEE reactive stateless | 3 | 3.07 | 9.11 | 64.35 | 7.01 | 111.00 |
-| Quarkus ORM / Narayana | 3 | 2.71 | 5.98 | 7.83 | 6.72 | 99.06 |
+| GuicedEE reactive stateless | 1 | 3.26 | 18.55 | 8.56 | 23.65 | 110.85 |
+| Quarkus ORM / Narayana | 1 | 2.89 | 25.28 | 31.30 | 10.09 | 103.25 |
+| Quarkus ORM / Narayana | 2 | 3.58 | 31.20 | 26.97 | 10.76 | 110.00 |
+| GuicedEE reactive stateless | 2 | 2.99 | 11.08 | 25.73 | 10.63 | 111.91 |
+| GuicedEE reactive stateless | 3 | 3.48 | 8.80 | 26.22 | 12.31 | 111.23 |
+| Quarkus ORM / Narayana | 3 | 2.75 | 8.24 | 28.77 | 8.54 | 102.99 |
 
-Update p50 spans **8.39–66.63 ms** for GuicedEE and **7.83–11.66 ms** for Quarkus across starts. Every container records CPU throttling; these measurements do not separate database work from quota waits. Individual operation medians do not add up to the median of a complete CRUD cycle.
+Update p50 spans **8.56–26.22 ms** for GuicedEE and **26.97–31.30 ms** for Quarkus across starts. Every container records CPU throttling; these measurements do not separate database work from quota waits. Individual operation medians do not add up to the median of a complete CRUD cycle.
 
-GuicedEE's launch-to-commit median differs by **+37.9%**; its peak charged container memory differs by **+5.9%**. Negative differences mean less time or memory. Warm percentiles are medians of per-start percentiles. A CRUD cycle includes four HTTP requests, three completed write transactions and one read without an explicit transaction; its latency is not one transaction. Database memory is separate from the application memory figures.
+GuicedEE's launch-to-commit median differs by **+32.3%**; its peak charged container memory differs by **+7.5%**. Negative differences mean less time or memory. Warm percentiles are medians of per-start percentiles. A CRUD cycle includes four HTTP requests, three completed write transactions and one read without an explicit transaction; its latency is not one transaction. Database memory is separate from the application memory figures.
 
 Both full-JDK applications use the same immutable JDK base, schema, graph/query source and five-connection limit. The database runs separately at 2 CPU / 1 GiB with durable commit settings. Application limits are 250m CPU / 500 MiB. These are different persistence patterns: managed stateful JPA/Narayana versus explicit reactive stateless operations. This is not a distributed-transaction, saturation-throughput, native or jlink result.
 
@@ -553,8 +553,8 @@ Both full-JDK applications use the same immutable JDK base, schema, graph/query 
 
 | Application | Immutable image |
 | --- | ---: |
-| GuicedEE reactive stateless | `sha256:fd54493f513ea07352dad411eba6599998eedcefeec0713c965545b9982285e8` |
-| Quarkus ORM / Narayana | `sha256:192b4c4543d4bcd149ec8bc5592b769dcbb17fdcd352b5ec5dc866fbea8ab489` |
+| GuicedEE reactive stateless | `sha256:395afacda3d145d251603951b31cc4aa2b1f04f25b18fc6f4a0bf25dc161a05b` |
+| Quarkus ORM / Narayana | `sha256:d5d8c048ab4b29e642dedc50f702f88e10aa77b5790a6c32edfcfb9ae1828cd5` |
 
 PostgreSQL image: `sha256:0d938e975177bef9f1f61f3f9dbcf2e0aa0a139568f66d3415ed8892eb97f6ac`. JDK base: `eclipse-temurin@sha256:b8705e936964c228dfce359e63dbf08f6c69cb380ed1d576b1f6b1064f15567d`.
 <!-- END GENERATED: persistence -->

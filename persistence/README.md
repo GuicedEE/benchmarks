@@ -3,9 +3,9 @@
 Two independent JVM applications execute the same operations over **15 related entities
 and 19 foreign keys**. Quarkus uses Hibernate ORM with Narayana-managed JTA transactions.
 GuicedEE uses Hibernate Reactive's stateless sessions, explicit writes and resource-local
-transactions through the persistence module. Writes explicitly open a stateless session,
-compose one transaction and close the session after completion or failure, following
-ActivityMaster's `SessionUtils` pattern. This compares these application patterns;
+transactions through the persistence module. Writes use `withStatelessSession` with
+a composed `withTransaction`; Hibernate manages session opening and closing on success
+or failure. Reads also use `withStatelessSession`. This compares these application patterns;
 it does not isolate the transaction manager or compare distributed XA transactions.
 
 | Project | Role |

@@ -23,10 +23,9 @@ public class Store {
         return session.createQuery(Graph.PROJECTED_QUERY, Object[].class).setParameter("id", id).getResultList();
     }
 
-    // ActivityMaster's ownership pattern: one explicit session per write, closed on success or failure.
+    // Hibernate manages the session lifecycle; each write awaits its transaction before returning.
     private <T> Uni<T> transaction(Function<Mutiny.StatelessSession,Uni<T>> work) {
-        return factory.openStatelessSession().chain(session -> session.withTransaction(tx -> work.apply(session))
-            .eventually(session::close));
+        return factory.withStatelessSession(session -> session.withTransaction(tx -> work.apply(session)));
     }
 
     // A session belongs to one composed stream. Every SQL operation and the final commit is awaited.
