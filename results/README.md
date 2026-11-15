@@ -26,6 +26,12 @@ override validation. Only
 the accepted final configuration is published; exploratory and failed candidates remain
 in ignored local output. The extended native cohort retains all 1,000 requests per start.
 
+`latest/jvm-discovery-audit.json` retains the complete original/shared mapper control,
+scan observations, changed-class hashes and the unchanged module-descriptor hash. The
+candidate's entry bytes match the currently measured JVM SDK; both controls use identical
+dependencies and ZIP packaging. The main JVM matrices use the actual Maven-packaged wrapper.
+The earlier native and clean-build cohorts remain separately identified.
+
 New executions write to ignored `target/runs/<timestamp>/`.
 The root Maven aggregator preserves this evidence directory during `clean`; application
 modules still clean their own compiled outputs and packaged artifacts.

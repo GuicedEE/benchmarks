@@ -112,6 +112,33 @@ def collect_native_audit(path, current_image):
     return {**{k:v for k,v in raw.items() if k not in ['comparison', 'providerOverride']}, **cohorts}
 
 
+def collect_jvm_discovery_audit(path, current_image):
+    global LATEST
+    raw = json.loads(path.read_text(encoding='utf-8'))
+    if (raw['currentImage'] != current_image or not raw['candidateMatchesCurrentEntryBytes']
+            or raw['currentSdkSha256'] != LATEST['jvmDiscoveryInputs']['packagedSdkSha256']):
+        raise ValueError('JVM discovery audit does not describe the current SDK contents')
+    rows = raw['comparison']['summary']['runs']
+    expected = {(r['variant'], r['run']): 2 if r['variant'].endswith('-before') else 1 for r in rows}
+    observed = {(r['variant'], r['run']): r['scans'] for r in raw['scanCounts']}
+    if ({r['variant'] for r in rows} != {'guicedee-before', 'guicedee-after'}
+            or observed != expected or len(raw['scanCounts']) != len(expected)):
+        raise ValueError('JVM discovery scan observations do not cover the complete control')
+    saved = LATEST
+    try:
+        batch = raw['comparison']
+        LATEST = {'batches': {batch['batch']: batch}}
+        comparison = collect_group([batch['batch']], None)
+    finally:
+        LATEST = saved
+    return {**{k:v for k,v in raw.items() if k != 'comparison'}, 'comparison': comparison}
+
+
+def difference(a, b, metric='time'):
+    delta = (a / b - 1) * 100
+    return f"{abs(delta):.1f}% {'less' if delta < 0 else 'more'} {metric}"
+
+
 def build_sections(data):
     values = data['builds']['variants']
     reference = values['quarkus-standard']
@@ -120,9 +147,6 @@ def build_sections(data):
     linked_scan = values['guicedee-scan-jlink']['package']['median']
     native_g = values['guicedee-native']['package']['median']
     native_q = values['quarkus-standard-native']['package']['median']
-    def difference(a, b):
-        delta = (a / b - 1) * 100
-        return f"{abs(delta):.1f}% {'less' if delta < 0 else 'more'} time"
     headline = (
         f"**Clean JVM build:** GuicedEE SPI compiles in **{spi['compile']['median']:.2f} s** versus "
         f"**{reference['compile']['median']:.2f} s** for Quarkus "
@@ -153,14 +177,16 @@ def build_sections(data):
                           number(runtime['launchToFirstBusinessMs']['median'] / 1000, 3),
                           number(runtime['warm']['p50Ms'])])
     phases = data['phases']
-    guice = phases['SPI jlink']['workload']['vendor-client-initialization'] / 1000
+    guice_label = 'SPI JVM' if 'SPI JVM' in phases else 'SPI jlink'
+    guice = phases[guice_label]['workload']['vendor-client-initialization'] / 1000
     quarkus = phases['Quarkus upstream JVM']['workload']['vendor-client-initialization'] / 1000
-    sdk = (f"**Commercetools first-use initialization:** GuicedEE SPI jlink records **{guice:.3f} s** "
-           f"versus **{quarkus:.3f} s** for standard Quarkus JVM: **{quarkus-guice:.3f} s less** "
+    sdk = (f"**Commercetools first-use initialization:** GuicedEE {guice_label} records **{guice:.3f} s** "
+           f"versus **{quarkus:.3f} s** for standard Quarkus JVM: **{abs(quarkus-guice):.3f} s {'less' if guice < quarkus else 'more'}** "
            f"(**{difference(guice, quarkus)}**). These are instrumented phase diagnostics "
-           f"(GuicedEE n={phases['SPI jlink']['starts']}, Quarkus n={phases['Quarkus upstream JVM']['starts']}), "
+           f"(GuicedEE n={phases[guice_label]['starts']}, Quarkus n={phases['Quarkus upstream JVM']['starts']}), "
            'separate from build time and the uninstrumented runtime rankings. The samples identify a first-use cost; '
-           'they do not establish its cause or a general SDK performance ratio.')
+           'they do not establish a general SDK performance ratio. The linked-image SDK scanner reports zero URLs; '
+           'jlink timings cover the tested workload, not complete SDK mixin/subtype discovery.')
     interpretation = (
         f"GuicedEE's JVM package requires **{difference(spi['package']['median'], reference['package']['median'])}** "
         'than Quarkus fast-JAR.\n\n'
@@ -354,6 +380,25 @@ def render(data):
     groups = data['groups']
     sections = {name: timing_tables(group) for name, group in groups.items()}
     sections['overview'] = overview(groups)
+    if data.get('jvmDiscoveryAudit'):
+        audit = data['jvmDiscoveryAudit']['comparison']
+        before = audit['variants']['guicedee-before']
+        after = audit['variants']['guicedee-after']
+        rows = []
+        for label, key, scale in [('Ready (s)', 'launchToReadyMs', 1000),
+                                  ('First business request (s)', 'firstBusinessMs', 1000),
+                                  ('Full business (s)', 'launchToFirstBusinessMs', 1000),
+                                  ('Peak charged memory (MiB)', 'peakMiB', 1)]:
+            old, new = before[key]['median']/scale, after[key]['median']/scale
+            rows.append([label, f'{old:.3f}', f'{new:.3f}', difference(new, old, 'memory' if scale == 1 else 'time')])
+        sections['jvm-discovery-audit'] = (
+            table(['Matched SDK control', 'Original mapper', 'Shared scan', 'Difference'], rows)
+            + f"\n\n{before['starts']} alternating starts per artifact; "
+            f"**{before['capabilityChecks'] + after['capabilityChecks']} passing capability checks**. "
+            'The SDK performs two scans with the original mapper and one with scoped reuse. '
+            'Both JARs use the same dependencies and ZIP packaging; all other entry bytes, including '
+            'the module descriptor, are identical. This isolates mapper discovery from the wrapper dependency '
+            'changes. [Raw control evidence](results/latest/jvm-discovery-audit.json).')
     native = groups['native-standard']['variants']
     a, b = native['guicedee-native'], native['quarkus-standard-native']
     delta = []
@@ -456,10 +501,17 @@ def render(data):
         spi = values['guicedee-jlink']['launchToFirstBusinessMs']['median']
         scan = values['guicedee-scan-jlink']['launchToFirstBusinessMs']['median']
         percent = (spi / reference - 1) * 100
-        findings.append(f"**{label}:** linked SPI/scanner complete the first business response in "
+        full_spi = values['guicedee']['launchToFirstBusinessMs']['median']
+        full_scan = values['guicedee-scan']['launchToFirstBusinessMs']['median']
+        findings.append(f"**{label}:** full-JDK SPI/scanner complete the first business response in "
+                        f"**{full_spi / 1000:.3f}/{full_scan / 1000:.3f} s**, versus **{reference / 1000:.3f} s** "
+                        f"for Quarkus JVM. SPI uses **{difference(full_spi, reference)}**. "
+                        'Use the retained ranges to judge the median difference; each mode has three starts.')
+        findings.append(f"**{label}, linked workload:** linked SPI/scanner complete the first business response in "
                         f"**{spi / 1000:.3f}/{scan / 1000:.3f} s**, versus **{reference / 1000:.3f} s** "
                         f"for Quarkus JVM. SPI jlink uses **{abs(percent):.1f}% {'less' if percent < 0 else 'more'} "
-                        'time**. The separate readiness and first-request columns show where that difference occurs.')
+                        'time** for this workload. The SDK scanner reports zero linked-image URLs, so this is '
+                        'not evidence of equivalent complete SDK model discovery.')
     sections['findings'] = '\n\n'.join(findings)
     packaging = []
     packaged_images = set()
@@ -484,7 +536,7 @@ def render(data):
         [[label, item['starts'], f"`{item['batch']}`",
           '`' + item['image'].removeprefix('sha256:')[:12] + '`'] for label, item in phases.items()])
     for kind, names, keys in [
-        ('startup', ['SPI jlink', 'Scanner jlink', 'GuicedEE native'], [
+        ('startup', [name for name in ['SPI JVM', 'Scanner JVM', 'SPI jlink', 'Scanner jlink', 'GuicedEE native'] if name in phases], [
             ('Context discovery', 'context-discovery'), ('Discovery', 'discovery'), ('ClassGraph scan', 'classgraph-scan'),
             ('Pre-startup hooks', 'pre-startup'), ('Guice module discovery', 'guice-module-discovery'),
             ('Guice injector creation', 'guice-create-injector'),
@@ -530,6 +582,12 @@ def main():
     data = {'measuredOn': LATEST['measuredOn'], 'reportAsOf': LATEST['reportAsOf'],
             'aggregation': 'All starts retained; warm percentiles are medians of per-start percentiles.',
             'groups': {name: collect_group(*config) for name, config in GROUPS.items()}, 'phases': collect_phases()}
+    if LATEST.get('jvmDiscoveryInputs'):
+        data['jvmDiscoveryInputs'] = LATEST['jvmDiscoveryInputs']
+    jvm_audit_path = EVIDENCE_ROOT/'results/latest/jvm-discovery-audit.json'
+    if jvm_audit_path.exists():
+        data['jvmDiscoveryAudit'] = collect_jvm_discovery_audit(
+            jvm_audit_path, data['groups']['jvm-default']['variants']['guicedee']['image'])
     audit_path = EVIDENCE_ROOT/'results/latest/native-audit.json'
     if audit_path.exists():
         data['nativeAudit'] = collect_native_audit(audit_path, data['groups']['native-standard']['variants']['guicedee-native']['image'])
@@ -543,6 +601,8 @@ def main():
             recoveredBoundaryCpuPercent=host.get('recoveredBoundaryCpuPercent', {}),
             coverage=host['coverage'])
     data['inputSha256'] = {'results/latest/measurements.json': hashlib.sha256(evidence.read_bytes()).hexdigest()}
+    if jvm_audit_path.exists():
+        data['inputSha256']['results/latest/jvm-discovery-audit.json'] = hashlib.sha256(jvm_audit_path.read_bytes()).hexdigest()
     if audit_path.exists():
         data['inputSha256']['results/latest/native-audit.json'] = hashlib.sha256(audit_path.read_bytes()).hexdigest()
     output = io.StringIO(newline='')
@@ -579,7 +639,7 @@ def main():
             + preparation_note + 'Build, runtime and diagnostic stages ran sequentially. '
             'Host observations have partial coverage and are boundary snapshots, not continuous '
             'measurements of background load during each run. Available observations and their '
-            'coverage are included in the latest measurement dataset.')
+            'coverage are included in the latest measurement dataset. ' + host['coverage'])
     build_evidence = EVIDENCE_ROOT/'results/latest/builds.json'
     data['builds'] = collect_builds(build_evidence)
     verify_build_runtime_sources(data, LATEST['imageInputs'])

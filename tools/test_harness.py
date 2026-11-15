@@ -12,6 +12,7 @@ import image_provenance
 from build import verify_framework
 import stage_link_repository
 import compare_builds
+import render_performance
 from render_performance import verify_build_runtime_sources
 from publish_results import retained_images, compact
 from compare import request, eligible_comparison, metric_counts, discovery_evidence, phase_evidence
@@ -26,6 +27,21 @@ from summarize_native import sdk_evidence
 
 
 class HarnessTest(unittest.TestCase):
+    def test_jvm_discovery_control_rejects_mismatched_sdk_and_image(self):
+        root = Path(__file__).resolve().parents[1]
+        path = root/'results/latest/jvm-discovery-audit.json'
+        raw = json.loads(path.read_text())
+        context = dict(jvmDiscoveryInputs=dict(packagedSdkSha256=raw['currentSdkSha256']))
+        with patch.object(render_performance, 'LATEST', context):
+            result = render_performance.collect_jvm_discovery_audit(path, raw['currentImage'])
+            self.assertEqual(6, result['comparison']['batchStarts'])
+            self.assertIs(context, render_performance.LATEST)
+            with self.assertRaisesRegex(ValueError, 'current SDK'):
+                render_performance.collect_jvm_discovery_audit(path, 'different-image')
+            context['jvmDiscoveryInputs']['packagedSdkSha256'] = 'different-sdk'
+            with self.assertRaisesRegex(ValueError, 'current SDK'):
+                render_performance.collect_jvm_discovery_audit(path, raw['currentImage'])
+
     def test_native_platform_filter_preserves_linux_x64_tls_and_transport(self):
         recipe = (Path(__file__).resolve().parents[1]/'guicedee-native/build-native.sh').read_text()
         pattern = re.search(r"'-H:ExcludeResources=([^']+)'", recipe)[1]

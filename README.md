@@ -18,15 +18,15 @@ GuicedEE native completes the first full business request in **656 ms**, versus 
 <!-- END GENERATED: build-headline -->
 
 **Median launch to completed business response, seconds.** JVM/default and C1 columns use
-matched seven-mode Docker batches at **250m CPU / 500 MiB**. The native column uses a larger
+matched five-mode Docker batches at **250m CPU / 500 MiB**. The native column uses a larger
 counterbalanced native-only sample. Links open the full timing and memory grids.
 
 <!-- BEGIN GENERATED: overview -->
 | Application | Full JDK default (s) | Full JDK C1 (s) | Application jlink default (s) | Application jlink C1 (s) | Native (s) |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI | [25.375](RESULTS.md#jvm-default) | [16.402](RESULTS.md#jvm-c1) | [12.870](RESULTS.md#jvm-default) | [7.488](RESULTS.md#jvm-c1) | [0.656](RESULTS.md#native-standard) |
-| GuicedEE scanner | [26.062](RESULTS.md#jvm-default) | [16.491](RESULTS.md#jvm-c1) | [13.279](RESULTS.md#jvm-default) | [7.758](RESULTS.md#jvm-c1) | SPI only |
-| Quarkus / upstream SDKs | [21.919](RESULTS.md#jvm-default) | [13.620](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.678](RESULTS.md#native-standard) |
+| GuicedEE SPI | [22.928](RESULTS.md#jvm-default) | [13.353](RESULTS.md#jvm-c1) | [12.966](RESULTS.md#jvm-default) | [7.567](RESULTS.md#jvm-c1) | [0.656](RESULTS.md#native-standard) |
+| GuicedEE scanner | [23.706](RESULTS.md#jvm-default) | [13.364](RESULTS.md#jvm-c1) | [13.556](RESULTS.md#jvm-default) | [7.874](RESULTS.md#jvm-c1) | SPI only |
+| Quarkus / upstream SDKs | [23.387](RESULTS.md#jvm-default) | [14.311](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.678](RESULTS.md#native-standard) |
 <!-- END GENERATED: overview -->
 
 ![Startup by execution mode](docs/startup.svg)
@@ -36,6 +36,12 @@ warm p50/p95/p99, memory, executable/image sizes, **percentage differences for e
 GuicedEE mode**, and scanning/Guice/commercetools/Firestore phase analysis. Actual image IDs,
 artifact hashes, flags and sample counts accompany the measurements. C1 applies equally to
 all JVMs; native executables have no JIT tiering.
+
+The current JVM wrapper shares the SDK's duplicate Reflections scan during each mapper
+construction, then releases it. Full-JDK tests preserve SDK and application mixins/subtypes,
+mapper options and an independent-scan override. Native images and the clean-build grid
+retain their separately identified earlier artifact cohort; they were not rebuilt for this
+JVM change. See the [measurement boundaries](RESULTS.md#jvm-discovery-boundaries).
 
 The [native inclusion audit](RESULTS.md#native-inclusion-and-allocation-audit) records the
 SDK reflection, provider and buffer-pool policies, with validated full-reflection and
@@ -71,7 +77,7 @@ limits. [Build protocol, ranges and runtime tradeoffs](RESULTS.md#build-performa
 ## First-use SDK cost
 
 <!-- BEGIN GENERATED: sdk-headline -->
-**Commercetools first-use initialization:** GuicedEE SPI jlink records **0.996 s** versus **10.999 s** for standard Quarkus JVM: **10.003 s less** (**90.9% less time**). These are instrumented phase diagnostics (GuicedEE n=3, Quarkus n=3), separate from build time and the uninstrumented runtime rankings. The samples identify a first-use cost; they do not establish its cause or a general SDK performance ratio.
+**Commercetools first-use initialization:** GuicedEE SPI JVM records **13.995 s** versus **11.503 s** for standard Quarkus JVM: **2.492 s more** (**21.7% more time**). These are instrumented phase diagnostics (GuicedEE n=1, Quarkus n=1), separate from build time and the uninstrumented runtime rankings. The samples identify a first-use cost; they do not establish a general SDK performance ratio. The linked-image SDK scanner reports zero URLs; jlink timings cover the tested workload, not complete SDK mixin/subtype discovery.
 <!-- END GENERATED: sdk-headline -->
 
 The [phase grid](RESULTS.md#first-use-business-phases) also includes scanner, wrapped-SDK

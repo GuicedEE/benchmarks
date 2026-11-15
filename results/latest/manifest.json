@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "measurements.json",
-      "bytes": 1285425,
-      "sha256": "da912d578270c0a5412dbec173c7bbb2691f1851d3fdc7871baf2edf80c3acfe"
+      "bytes": 1121677,
+      "sha256": "2f893dd2cea470d2a7184e90c1ca521fb11d8c19dbd594e9860c38c092676155"
     },
     {
       "path": "builds.json",
@@ -15,6 +15,11 @@
       "path": "native-audit.json",
       "bytes": 106925,
       "sha256": "a954dd69e3b53d3d3b08a86703896fc4f7f19c16f56c43ed9cbb9580bafa8c8d"
+    },
+    {
+      "path": "jvm-discovery-audit.json",
+      "bytes": 73884,
+      "sha256": "706da7c70730e2871f3b0dfec0de3cc73af469d1e58ee8869ee93ec6fb126f50"
     }
   ]
 }

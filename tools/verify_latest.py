@@ -13,7 +13,7 @@ def main():
     args = parser.parse_args()
     evidence = ROOT/'results/latest/measurements.json'
     manifest = ROOT/'results/latest/manifest.json'
-    files = [evidence] + [evidence.with_name(name) for name in ['builds.json', 'native-audit.json']
+    files = [evidence] + [evidence.with_name(name) for name in ['builds.json', 'native-audit.json', 'jvm-discovery-audit.json']
                           if evidence.with_name(name).exists()]
     value = {'schemaVersion': 1, 'files': [{'path': p.name, 'bytes': p.stat().st_size,
                                          'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in files]}

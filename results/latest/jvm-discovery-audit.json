@@ -1,0 +1,2536 @@
+{
+  "schemaVersion": 1,
+  "currentImage": "sha256:81dc069a9833e36a6767e252c9b8a7a3ba611f179b203bf73a833a650a3bdbbd",
+  "currentSdkSha256": "c57691624f7da71fa0bdb247b2cb62a81f6d0927a4a8fec60c963d52ac22732a",
+  "protocol": "Three alternating full-JDK starts per variant at 250m CPU / 500 MiB, default JVM flags, 10 warmups and 30 measured requests. Same app and current dependencies. Original restores upstream 20.4.0 mapper definitions; shared uses current wrapper definitions. Both SDK JARs are repacked identically. This control is separate from Quarkus rankings.",
+  "comparison": {
+    "batch": "20261115-141847",
+    "summary": {
+      "eligibleComparison": true,
+      "variants": [
+        {
+          "id": "guicedee-before",
+          "framework": "guicedee",
+          "discovery": "spi",
+          "runtime": "jre",
+          "imageArtifact": "guicedee",
+          "imageTag": "jvm-original",
+          "comparisonRole": "before"
+        },
+        {
+          "id": "guicedee-after",
+          "framework": "guicedee",
+          "discovery": "spi",
+          "runtime": "jre",
+          "imageArtifact": "guicedee",
+          "imageTag": "jvm-shared",
+          "comparisonRole": "after"
+        }
+      ],
+      "scope": "Docker 250m/500Mi; no Kubernetes scale-out; native only when explicitly selected",
+      "runs": [
+        {
+          "framework": "guicedee",
+          "variant": "guicedee-before",
+          "discovery": "spi",
+          "runtime": "jre",
+          "run": 1,
+          "checks": {
+            "business": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "available": 40,
+                  "project": "Fixture shop",
+                  "total": 250,
+                  "sku": "fixture",
+                  "quantity": 2
+                }
+              }
+            },
+            "vendorSdkOAuth": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/oauth/token",
+                  "status": 200
+                }
+              ]
+            },
+            "vendorSdkRest": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "GET",
+                  "path": "/benchmark",
+                  "status": 200
+                }
+              ]
+            },
+            "graphqlClient": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/benchmark/graphql",
+                  "status": 200
+                }
+              ]
+            },
+            "optionalPrimitiveQuery": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "available": 40,
+                  "project": "Fixture shop",
+                  "total": 250,
+                  "sku": "fixture",
+                  "quantity": 2
+                }
+              }
+            },
+            "validationError": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "code": "INVALID_ORDER",
+                    "status": 400
+                  }
+                }
+              }
+            },
+            "malformedJson": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "code": "INVALID_ORDER",
+                    "status": 400
+                  }
+                }
+              }
+            },
+            "unsupportedMedia": {
+              "passed": true,
+              "observed": {
+                "status": 415,
+                "body": "Unsupported Media Type"
+              }
+            },
+            "reactiveRetry": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "result": "ok"
+                },
+                "attempts": 3
+              }
+            },
+            "retryExhaustion": {
+              "passed": true,
+              "observed": {
+                "status": 502,
+                "body": {
+                  "error": {
+                    "code": "UPSTREAM_FAILURE",
+                    "status": 502
+                  }
+                },
+                "attempts": 3
+              }
+            },
+            "reactiveTimeout": {
+              "passed": true,
+              "observed": {
+                "status": 504,
+                "body": {
+                  "error": {
+                    "code": "UPSTREAM_TIMEOUT",
+                    "status": 504
+                  }
+                },
+                "elapsedMs": 57.39029999676859,
+                "concurrentReadyMs": 16.984199995931704
+              }
+            },
+            "metrics": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "before": {
+                  "benchmark_quotes": 2.0
+                },
+                "after": {
+                  "benchmark_quotes": 3.0
+                }
+              }
+            },
+            "openapi": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "paths": [
+                  "/firebase/{id}",
+                  "/quote",
+                  "/ready",
+                  "/retry/{id}",
+                  "/timeout"
+                ]
+              }
+            },
+            "swagger": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "assets": {
+                  "swagger-ui-bundle.js": {
+                    "status": 200,
+                    "contentLength": 1525473,
+                    "valid": true
+                  },
+                  "swagger-ui.css": {
+                    "status": 200,
+                    "contentLength": 178976,
+                    "valid": true
+                  }
+                }
+              }
+            },
+            "firebaseFirestore": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "total": 250,
+                  "sku": "fixture",
+                  "id": "guicedee-before-1"
+                }
+              }
+            }
+          },
+          "samples": [
+            {
+              "ms": 15.31240000622347,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.42019999935292,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 97.0993000009912,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.22079999744892,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 98.42379999463446,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 15.224700000544544,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 91.73390000069048,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 100.68750000209548,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.95209999982035,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 14.075599996431265,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 88.74389999982668,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 100.267800000438,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.86420000414364,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.593300005595665,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.24510000058217,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.80920000351034,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 34.73120000126073,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 69.36490000225604,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 98.8774000070407,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.425099998130463,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 88.48469999793451,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 91.38900000107242,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 15.149800005019642,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.95880000072066,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.05069999775151,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.62620000017341,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.543100001697894,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.29300000192598,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.80110000388231,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 16.131399999721907,
+              "ok": true,
+              "status": 200
+            }
+          ],
+          "runtimeFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlagsSource": "arguments",
+          "launch": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2",
+            "--module-path",
+            "/app/app.jar:/app/lib",
+            "-m",
+            "bench.guicedee/bench.guicedee.Main"
+          ],
+          "dependencyMode": "wrapped",
+          "launchToReadyMs": 11466.657999997551,
+          "firstBusinessStatus": 200,
+          "firstBusinessMs": 15892.250500000955,
+          "launchToFirstBusinessMs": 27358.9776000008,
+          "firstOpenApiJsonMs": 102.1550000004936,
+          "warm": {
+            "p50Ms": 92.23294999901555,
+            "p95Ms": 98.8774000070407,
+            "p99Ms": 100.267800000438,
+            "failures": 0,
+            "requests": 30,
+            "concurrency": 1
+          },
+          "eligible": true,
+          "container": {
+            "image": "sha256:b47693c3021f039b5952173e822df3a55711e8d05d763e8e1db6fcdb8282c6ef",
+            "state": {
+              "OOMKilled": false,
+              "ExitCode": 0,
+              "Error": ""
+            },
+            "nanoCpus": 250000000,
+            "memoryBytes": 524288000,
+            "memorySwapBytes": 524288000
+          },
+          "containerStats": "usage_usec 7904308\nuser_usec 7293271\nsystem_usec 611036\nnr_periods 320\nnr_throttled 314\nthrottled_usec 50284136\nnr_bursts 0\nburst_usec 0\n397733888\n393904128\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "discoveryEvidence": {
+            "classGraphInitialized": false,
+            "verticleDeployments": {
+              "bench.guicedee.rest": true,
+              "bench.guicedee.service": true
+            },
+            "verified": true
+          }
+        },
+        {
+          "framework": "guicedee",
+          "variant": "guicedee-after",
+          "discovery": "spi",
+          "runtime": "jre",
+          "run": 1,
+          "checks": {
+            "business": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "project": "Fixture shop",
+                  "available": 40,
+                  "quantity": 2,
+                  "sku": "fixture",
+                  "total": 250
+                }
+              }
+            },
+            "vendorSdkOAuth": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/oauth/token",
+                  "status": 200
+                }
+              ]
+            },
+            "vendorSdkRest": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "GET",
+                  "path": "/benchmark",
+                  "status": 200
+                }
+              ]
+            },
+            "graphqlClient": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/benchmark/graphql",
+                  "status": 200
+                }
+              ]
+            },
+            "optionalPrimitiveQuery": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "project": "Fixture shop",
+                  "available": 40,
+                  "quantity": 2,
+                  "sku": "fixture",
+                  "total": 250
+                }
+              }
+            },
+            "validationError": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "status": 400,
+                    "code": "INVALID_ORDER"
+                  }
+                }
+              }
+            },
+            "malformedJson": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "status": 400,
+                    "code": "INVALID_ORDER"
+                  }
+                }
+              }
+            },
+            "unsupportedMedia": {
+              "passed": true,
+              "observed": {
+                "status": 415,
+                "body": "Unsupported Media Type"
+              }
+            },
+            "reactiveRetry": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "result": "ok"
+                },
+                "attempts": 3
+              }
+            },
+            "retryExhaustion": {
+              "passed": true,
+              "observed": {
+                "status": 502,
+                "body": {
+                  "error": {
+                    "status": 502,
+                    "code": "UPSTREAM_FAILURE"
+                  }
+                },
+                "attempts": 3
+              }
+            },
+            "reactiveTimeout": {
+              "passed": true,
+              "observed": {
+                "status": 504,
+                "body": {
+                  "error": {
+                    "status": 504,
+                    "code": "UPSTREAM_TIMEOUT"
+                  }
+                },
+                "elapsedMs": 55.71140000392916,
+                "concurrentReadyMs": 3.4757000030367635
+              }
+            },
+            "metrics": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "before": {
+                  "benchmark_quotes": 2.0
+                },
+                "after": {
+                  "benchmark_quotes": 3.0
+                }
+              }
+            },
+            "openapi": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "paths": [
+                  "/firebase/{id}",
+                  "/quote",
+                  "/ready",
+                  "/retry/{id}",
+                  "/timeout"
+                ]
+              }
+            },
+            "swagger": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "assets": {
+                  "swagger-ui-bundle.js": {
+                    "status": 200,
+                    "contentLength": 1525473,
+                    "valid": true
+                  },
+                  "swagger-ui.css": {
+                    "status": 200,
+                    "contentLength": 178976,
+                    "valid": true
+                  }
+                }
+              }
+            },
+            "firebaseFirestore": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "sku": "fixture",
+                  "total": 250,
+                  "id": "guicedee-after-1"
+                }
+              }
+            }
+          },
+          "samples": [
+            {
+              "ms": 71.73649999458576,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 90.5034000024898,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 104.04830000334186,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.64010000030976,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 18.258800002513453,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 88.54959999735001,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 97.02139999717474,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 18.01540000451496,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 89.69079999951646,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.44340000138618,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 91.96260000317125,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 38.37210000347113,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 68.98050000017975,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.98180000041611,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 39.242600003490224,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 67.25570000708103,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.05980000115233,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 104.10029999911785,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 101.89389999868581,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 104.7139000002062,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.36699999828124,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.59920000476995,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 34.208099998068064,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 77.28659999702359,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 97.31630000169389,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 93.59010000480339,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 12.982100000954233,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 91.993400004867,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.99539999483386,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 15.867400004935917,
+              "ok": true,
+              "status": 200
+            }
+          ],
+          "runtimeFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlagsSource": "arguments",
+          "launch": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2",
+            "--module-path",
+            "/app/app.jar:/app/lib",
+            "-m",
+            "bench.guicedee/bench.guicedee.Main"
+          ],
+          "dependencyMode": "wrapped",
+          "launchToReadyMs": 10443.513999998686,
+          "firstBusinessStatus": 200,
+          "firstBusinessMs": 13501.83939999988,
+          "launchToFirstBusinessMs": 23945.431699998153,
+          "firstOpenApiJsonMs": 99.80129999894416,
+          "warm": {
+            "p50Ms": 91.97800000401912,
+            "p95Ms": 104.04830000334186,
+            "p99Ms": 104.10029999911785,
+            "failures": 0,
+            "requests": 30,
+            "concurrency": 1
+          },
+          "eligible": true,
+          "container": {
+            "image": "sha256:7440c418329effd517793eaf93e7d018c633ddcd9f40f241877acabdefc8409f",
+            "state": {
+              "OOMKilled": false,
+              "ExitCode": 0,
+              "Error": ""
+            },
+            "nanoCpus": 250000000,
+            "memoryBytes": 524288000,
+            "memorySwapBytes": 524288000
+          },
+          "containerStats": "usage_usec 7060697\nuser_usec 6616531\nsystem_usec 444165\nnr_periods 284\nnr_throttled 281\nthrottled_usec 46965158\nnr_bursts 0\nburst_usec 0\n338345984\n334692352\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "discoveryEvidence": {
+            "classGraphInitialized": false,
+            "verticleDeployments": {
+              "bench.guicedee.rest": true,
+              "bench.guicedee.service": true
+            },
+            "verified": true
+          }
+        },
+        {
+          "framework": "guicedee",
+          "variant": "guicedee-after",
+          "discovery": "spi",
+          "runtime": "jre",
+          "run": 2,
+          "checks": {
+            "business": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "project": "Fixture shop",
+                  "available": 40,
+                  "quantity": 2,
+                  "sku": "fixture",
+                  "total": 250
+                }
+              }
+            },
+            "vendorSdkOAuth": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/oauth/token",
+                  "status": 200
+                }
+              ]
+            },
+            "vendorSdkRest": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "GET",
+                  "path": "/benchmark",
+                  "status": 200
+                }
+              ]
+            },
+            "graphqlClient": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/benchmark/graphql",
+                  "status": 200
+                }
+              ]
+            },
+            "optionalPrimitiveQuery": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "project": "Fixture shop",
+                  "available": 40,
+                  "quantity": 2,
+                  "sku": "fixture",
+                  "total": 250
+                }
+              }
+            },
+            "validationError": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "status": 400,
+                    "code": "INVALID_ORDER"
+                  }
+                }
+              }
+            },
+            "malformedJson": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "status": 400,
+                    "code": "INVALID_ORDER"
+                  }
+                }
+              }
+            },
+            "unsupportedMedia": {
+              "passed": true,
+              "observed": {
+                "status": 415,
+                "body": "Unsupported Media Type"
+              }
+            },
+            "reactiveRetry": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "result": "ok"
+                },
+                "attempts": 3
+              }
+            },
+            "retryExhaustion": {
+              "passed": true,
+              "observed": {
+                "status": 502,
+                "body": {
+                  "error": {
+                    "status": 502,
+                    "code": "UPSTREAM_FAILURE"
+                  }
+                },
+                "attempts": 3
+              }
+            },
+            "reactiveTimeout": {
+              "passed": true,
+              "observed": {
+                "status": 504,
+                "body": {
+                  "error": {
+                    "status": 504,
+                    "code": "UPSTREAM_TIMEOUT"
+                  }
+                },
+                "elapsedMs": 73.84340000135126,
+                "concurrentReadyMs": 2.9237000053399242
+              }
+            },
+            "metrics": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "before": {
+                  "benchmark_quotes": 2.0
+                },
+                "after": {
+                  "benchmark_quotes": 3.0
+                }
+              }
+            },
+            "openapi": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "paths": [
+                  "/firebase/{id}",
+                  "/quote",
+                  "/ready",
+                  "/retry/{id}",
+                  "/timeout"
+                ]
+              }
+            },
+            "swagger": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "assets": {
+                  "swagger-ui-bundle.js": {
+                    "status": 200,
+                    "contentLength": 1525473,
+                    "valid": true
+                  },
+                  "swagger-ui.css": {
+                    "status": 200,
+                    "contentLength": 178976,
+                    "valid": true
+                  }
+                }
+              }
+            },
+            "firebaseFirestore": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "sku": "fixture",
+                  "total": 250,
+                  "id": "guicedee-after-2"
+                }
+              }
+            }
+          },
+          "samples": [
+            {
+              "ms": 27.844200005347375,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 77.77609999902779,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 91.84030000324128,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 99.62780000205385,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 40.65409999748226,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 66.82039999577682,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.16700000333367,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.62819999700878,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 14.683000001241453,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 89.74799999850802,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.24600000440842,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.576899997133296,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 91.79189999849768,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.19130000262521,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.59259999898495,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 109.25469999347115,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.42940000008093,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.749300000199582,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.52839999680873,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.70529999776045,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 33.52830000221729,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 72.70140000036918,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 93.64320000167936,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.414499997452367,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 93.13110000221059,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.65150000283029,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 33.269599996856414,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 77.04180000291672,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.37559999828227,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 93.00049999728799,
+              "ok": true,
+              "status": 200
+            }
+          ],
+          "runtimeFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlagsSource": "arguments",
+          "launch": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2",
+            "--module-path",
+            "/app/app.jar:/app/lib",
+            "-m",
+            "bench.guicedee/bench.guicedee.Main"
+          ],
+          "dependencyMode": "wrapped",
+          "launchToReadyMs": 10504.167700004473,
+          "firstBusinessStatus": 200,
+          "firstBusinessMs": 12706.398700000136,
+          "launchToFirstBusinessMs": 23210.607300003176,
+          "firstOpenApiJsonMs": 192.5450999988243,
+          "warm": {
+            "p50Ms": 92.184350000025,
+            "p95Ms": 96.59259999898495,
+            "p99Ms": 99.62780000205385,
+            "failures": 0,
+            "requests": 30,
+            "concurrency": 1
+          },
+          "eligible": true,
+          "container": {
+            "image": "sha256:7440c418329effd517793eaf93e7d018c633ddcd9f40f241877acabdefc8409f",
+            "state": {
+              "OOMKilled": false,
+              "ExitCode": 0,
+              "Error": ""
+            },
+            "nanoCpus": 250000000,
+            "memoryBytes": 524288000,
+            "memorySwapBytes": 524288000
+          },
+          "containerStats": "usage_usec 6895265\nuser_usec 6490115\nsystem_usec 405149\nnr_periods 277\nnr_throttled 275\nthrottled_usec 46427573\nnr_bursts 0\nburst_usec 0\n300814336\n297799680\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "discoveryEvidence": {
+            "classGraphInitialized": false,
+            "verticleDeployments": {
+              "bench.guicedee.rest": true,
+              "bench.guicedee.service": true
+            },
+            "verified": true
+          }
+        },
+        {
+          "framework": "guicedee",
+          "variant": "guicedee-before",
+          "discovery": "spi",
+          "runtime": "jre",
+          "run": 2,
+          "checks": {
+            "business": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "available": 40,
+                  "quantity": 2,
+                  "sku": "fixture",
+                  "total": 250,
+                  "project": "Fixture shop"
+                }
+              }
+            },
+            "vendorSdkOAuth": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/oauth/token",
+                  "status": 200
+                }
+              ]
+            },
+            "vendorSdkRest": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "GET",
+                  "path": "/benchmark",
+                  "status": 200
+                }
+              ]
+            },
+            "graphqlClient": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/benchmark/graphql",
+                  "status": 200
+                }
+              ]
+            },
+            "optionalPrimitiveQuery": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "available": 40,
+                  "quantity": 2,
+                  "sku": "fixture",
+                  "total": 250,
+                  "project": "Fixture shop"
+                }
+              }
+            },
+            "validationError": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "code": "INVALID_ORDER",
+                    "status": 400
+                  }
+                }
+              }
+            },
+            "malformedJson": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "code": "INVALID_ORDER",
+                    "status": 400
+                  }
+                }
+              }
+            },
+            "unsupportedMedia": {
+              "passed": true,
+              "observed": {
+                "status": 415,
+                "body": "Unsupported Media Type"
+              }
+            },
+            "reactiveRetry": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "result": "ok"
+                },
+                "attempts": 3
+              }
+            },
+            "retryExhaustion": {
+              "passed": true,
+              "observed": {
+                "status": 502,
+                "body": {
+                  "error": {
+                    "code": "UPSTREAM_FAILURE",
+                    "status": 502
+                  }
+                },
+                "attempts": 3
+              }
+            },
+            "reactiveTimeout": {
+              "passed": true,
+              "observed": {
+                "status": 504,
+                "body": {
+                  "error": {
+                    "code": "UPSTREAM_TIMEOUT",
+                    "status": 504
+                  }
+                },
+                "elapsedMs": 105.6070999984513,
+                "concurrentReadyMs": 34.01040000608191
+              }
+            },
+            "metrics": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "before": {
+                  "benchmark_quotes": 2.0
+                },
+                "after": {
+                  "benchmark_quotes": 3.0
+                }
+              }
+            },
+            "openapi": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "paths": [
+                  "/firebase/{id}",
+                  "/quote",
+                  "/ready",
+                  "/retry/{id}",
+                  "/timeout"
+                ]
+              }
+            },
+            "swagger": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "assets": {
+                  "swagger-ui-bundle.js": {
+                    "status": 200,
+                    "contentLength": 1525473,
+                    "valid": true
+                  },
+                  "swagger-ui.css": {
+                    "status": 200,
+                    "contentLength": 178976,
+                    "valid": true
+                  }
+                }
+              }
+            },
+            "firebaseFirestore": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "total": 250,
+                  "id": "guicedee-before-2",
+                  "sku": "fixture"
+                }
+              }
+            }
+          },
+          "samples": [
+            {
+              "ms": 94.92409999802476,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 38.43150000466267,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 66.57080000150017,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 99.68710000248393,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.7463999982574,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 101.2786999999662,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 11.217500003112946,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 97.26980000414187,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.37369999452494,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.0919999993639,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 11.595299998589326,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.42539999872679,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 100.2264999988256,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 91.55080000346061,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 36.51309999986552,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 74.49970000016037,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 91.84649999951944,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 31.846999998379033,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 77.13360000343528,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.79090000625001,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.10339999845019,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 102.04430000158027,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 11.458299995865673,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 88.69379999669036,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 25.99729999928968,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 81.20670000062091,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.37920000002487,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.53919999982463,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.013499999942724,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.61479999986477,
+              "ok": true,
+              "status": 200
+            }
+          ],
+          "runtimeFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlagsSource": "arguments",
+          "launch": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2",
+            "--module-path",
+            "/app/app.jar:/app/lib",
+            "-m",
+            "bench.guicedee/bench.guicedee.Main"
+          ],
+          "dependencyMode": "wrapped",
+          "launchToReadyMs": 10787.729900002887,
+          "firstBusinessStatus": 200,
+          "firstBusinessMs": 15793.198800005484,
+          "launchToFirstBusinessMs": 26580.973000003723,
+          "firstOpenApiJsonMs": 96.40529999887804,
+          "warm": {
+            "p50Ms": 91.97494999898481,
+            "p95Ms": 100.2264999988256,
+            "p99Ms": 101.2786999999662,
+            "failures": 0,
+            "requests": 30,
+            "concurrency": 1
+          },
+          "eligible": true,
+          "container": {
+            "image": "sha256:b47693c3021f039b5952173e822df3a55711e8d05d763e8e1db6fcdb8282c6ef",
+            "state": {
+              "OOMKilled": false,
+              "ExitCode": 0,
+              "Error": ""
+            },
+            "nanoCpus": 250000000,
+            "memoryBytes": 524288000,
+            "memorySwapBytes": 524288000
+          },
+          "containerStats": "usage_usec 7764930\nuser_usec 7405768\nsystem_usec 359162\nnr_periods 311\nnr_throttled 309\nthrottled_usec 50827278\nnr_bursts 0\nburst_usec 0\n318791680\n314736640\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "discoveryEvidence": {
+            "classGraphInitialized": false,
+            "verticleDeployments": {
+              "bench.guicedee.rest": true,
+              "bench.guicedee.service": true
+            },
+            "verified": true
+          }
+        },
+        {
+          "framework": "guicedee",
+          "variant": "guicedee-after",
+          "discovery": "spi",
+          "runtime": "jre",
+          "run": 3,
+          "checks": {
+            "business": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "total": 250,
+                  "project": "Fixture shop",
+                  "available": 40,
+                  "quantity": 2,
+                  "sku": "fixture"
+                }
+              }
+            },
+            "vendorSdkOAuth": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/oauth/token",
+                  "status": 200
+                }
+              ]
+            },
+            "vendorSdkRest": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "GET",
+                  "path": "/benchmark",
+                  "status": 200
+                }
+              ]
+            },
+            "graphqlClient": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/benchmark/graphql",
+                  "status": 200
+                }
+              ]
+            },
+            "optionalPrimitiveQuery": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "total": 250,
+                  "project": "Fixture shop",
+                  "available": 40,
+                  "quantity": 2,
+                  "sku": "fixture"
+                }
+              }
+            },
+            "validationError": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "status": 400,
+                    "code": "INVALID_ORDER"
+                  }
+                }
+              }
+            },
+            "malformedJson": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "status": 400,
+                    "code": "INVALID_ORDER"
+                  }
+                }
+              }
+            },
+            "unsupportedMedia": {
+              "passed": true,
+              "observed": {
+                "status": 415,
+                "body": "Unsupported Media Type"
+              }
+            },
+            "reactiveRetry": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "result": "ok"
+                },
+                "attempts": 3
+              }
+            },
+            "retryExhaustion": {
+              "passed": true,
+              "observed": {
+                "status": 502,
+                "body": {
+                  "error": {
+                    "status": 502,
+                    "code": "UPSTREAM_FAILURE"
+                  }
+                },
+                "attempts": 3
+              }
+            },
+            "reactiveTimeout": {
+              "passed": true,
+              "observed": {
+                "status": 504,
+                "body": {
+                  "error": {
+                    "status": 504,
+                    "code": "UPSTREAM_TIMEOUT"
+                  }
+                },
+                "elapsedMs": 73.29590000153985,
+                "concurrentReadyMs": 3.3102999950642698
+              }
+            },
+            "metrics": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "before": {
+                  "benchmark_quotes": 2.0
+                },
+                "after": {
+                  "benchmark_quotes": 3.0
+                }
+              }
+            },
+            "openapi": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "paths": [
+                  "/firebase/{id}",
+                  "/quote",
+                  "/ready",
+                  "/retry/{id}",
+                  "/timeout"
+                ]
+              }
+            },
+            "swagger": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "assets": {
+                  "swagger-ui-bundle.js": {
+                    "status": 200,
+                    "contentLength": 1525473,
+                    "valid": true
+                  },
+                  "swagger-ui.css": {
+                    "status": 200,
+                    "contentLength": 178976,
+                    "valid": true
+                  }
+                }
+              }
+            },
+            "firebaseFirestore": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "sku": "fixture",
+                  "total": 250,
+                  "id": "guicedee-after-3"
+                }
+              }
+            }
+          },
+          "samples": [
+            {
+              "ms": 93.5405999989598,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 14.310400001704693,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.4794999959413,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.3775000050664,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.821699998516124,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 90.47999999893364,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 101.7645999963861,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 98.61970000201836,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 91.94879999995464,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 97.0270999969216,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.14950000232784,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.85060000244994,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 93.66900000168243,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 14.73950000217883,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 93.37329999834765,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.6743999995524,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 97.21139999601291,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.182199996663257,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.15160000167089,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 101.1475999985123,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.495399995008484,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 86.86450000095647,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.29519999725744,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 95.17649999907007,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 97.65820000029635,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 13.04849999723956,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 89.0889000002062,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 14.578499998606276,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 85.83419999922626,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 97.17000000091502,
+              "ok": true,
+              "status": 200
+            }
+          ],
+          "runtimeFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlagsSource": "arguments",
+          "launch": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2",
+            "--module-path",
+            "/app/app.jar:/app/lib",
+            "-m",
+            "bench.guicedee/bench.guicedee.Main"
+          ],
+          "dependencyMode": "wrapped",
+          "launchToReadyMs": 10455.840100003115,
+          "firstBusinessStatus": 200,
+          "firstBusinessMs": 12495.672099998046,
+          "launchToFirstBusinessMs": 22951.562000002014,
+          "firstOpenApiJsonMs": 187.38489999668673,
+          "warm": {
+            "p50Ms": 93.45694999865373,
+            "p95Ms": 98.61970000201836,
+            "p99Ms": 101.1475999985123,
+            "failures": 0,
+            "requests": 30,
+            "concurrency": 1
+          },
+          "eligible": true,
+          "container": {
+            "image": "sha256:7440c418329effd517793eaf93e7d018c633ddcd9f40f241877acabdefc8409f",
+            "state": {
+              "OOMKilled": false,
+              "ExitCode": 0,
+              "Error": ""
+            },
+            "nanoCpus": 250000000,
+            "memoryBytes": 524288000,
+            "memorySwapBytes": 524288000
+          },
+          "containerStats": "usage_usec 6873734\nuser_usec 6453060\nsystem_usec 420674\nnr_periods 276\nnr_throttled 273\nthrottled_usec 44979040\nnr_bursts 0\nburst_usec 0\n302321664\n297979904\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "discoveryEvidence": {
+            "classGraphInitialized": false,
+            "verticleDeployments": {
+              "bench.guicedee.rest": true,
+              "bench.guicedee.service": true
+            },
+            "verified": true
+          }
+        },
+        {
+          "framework": "guicedee",
+          "variant": "guicedee-before",
+          "discovery": "spi",
+          "runtime": "jre",
+          "run": 3,
+          "checks": {
+            "business": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "total": 250,
+                  "project": "Fixture shop",
+                  "available": 40,
+                  "quantity": 2,
+                  "sku": "fixture"
+                }
+              }
+            },
+            "vendorSdkOAuth": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/oauth/token",
+                  "status": 200
+                }
+              ]
+            },
+            "vendorSdkRest": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "GET",
+                  "path": "/benchmark",
+                  "status": 200
+                }
+              ]
+            },
+            "graphqlClient": {
+              "passed": true,
+              "observed": [
+                {
+                  "method": "POST",
+                  "path": "/benchmark/graphql",
+                  "status": 200
+                }
+              ]
+            },
+            "optionalPrimitiveQuery": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "total": 250,
+                  "project": "Fixture shop",
+                  "available": 40,
+                  "quantity": 2,
+                  "sku": "fixture"
+                }
+              }
+            },
+            "validationError": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "status": 400,
+                    "code": "INVALID_ORDER"
+                  }
+                }
+              }
+            },
+            "malformedJson": {
+              "passed": true,
+              "observed": {
+                "status": 400,
+                "body": {
+                  "error": {
+                    "status": 400,
+                    "code": "INVALID_ORDER"
+                  }
+                }
+              }
+            },
+            "unsupportedMedia": {
+              "passed": true,
+              "observed": {
+                "status": 415,
+                "body": "Unsupported Media Type"
+              }
+            },
+            "reactiveRetry": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "result": "ok"
+                },
+                "attempts": 3
+              }
+            },
+            "retryExhaustion": {
+              "passed": true,
+              "observed": {
+                "status": 502,
+                "body": {
+                  "error": {
+                    "status": 502,
+                    "code": "UPSTREAM_FAILURE"
+                  }
+                },
+                "attempts": 3
+              }
+            },
+            "reactiveTimeout": {
+              "passed": true,
+              "observed": {
+                "status": 504,
+                "body": {
+                  "error": {
+                    "status": 504,
+                    "code": "UPSTREAM_TIMEOUT"
+                  }
+                },
+                "elapsedMs": 56.32060000061756,
+                "concurrentReadyMs": 2.9348000025493093
+              }
+            },
+            "metrics": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "before": {
+                  "benchmark_quotes": 2.0
+                },
+                "after": {
+                  "benchmark_quotes": 3.0
+                }
+              }
+            },
+            "openapi": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "paths": [
+                  "/firebase/{id}",
+                  "/quote",
+                  "/ready",
+                  "/retry/{id}",
+                  "/timeout"
+                ]
+              }
+            },
+            "swagger": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "assets": {
+                  "swagger-ui-bundle.js": {
+                    "status": 200,
+                    "contentLength": 1525473,
+                    "valid": true
+                  },
+                  "swagger-ui.css": {
+                    "status": 200,
+                    "contentLength": 178976,
+                    "valid": true
+                  }
+                }
+              }
+            },
+            "firebaseFirestore": {
+              "passed": true,
+              "observed": {
+                "status": 200,
+                "body": {
+                  "sku": "fixture",
+                  "total": 250,
+                  "id": "guicedee-before-3"
+                }
+              }
+            }
+          },
+          "samples": [
+            {
+              "ms": 94.45490000507561,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 12.62470000074245,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 89.60349999688333,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 103.7335000000894,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.7705999937607,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.14509999664733,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 12.179800003650598,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 93.35860000282992,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 101.63179999653948,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 93.2128000058583,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 11.729700003343169,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.41920000244863,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 96.31000000081258,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.74590000172611,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 23.376599994662683,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 83.91799999662908,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 11.003499996149912,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 86.06549999967683,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 11.936599999899045,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 91.49559999787016,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 93.9615999959642,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 11.522000000695698,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 92.93220000108704,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 102.08779999811668,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 101.92839999945136,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 98.12809999857564,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 93.7530999945011,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 16.998599996441044,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 90.70559999963734,
+              "ok": true,
+              "status": 200
+            },
+            {
+              "ms": 94.09839999716496,
+              "ok": true,
+              "status": 200
+            }
+          ],
+          "runtimeFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlags": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2"
+          ],
+          "jvmFlagsSource": "arguments",
+          "launch": [
+            "-Xms128m",
+            "-Xmx384m",
+            "-XX:ActiveProcessorCount=2",
+            "--module-path",
+            "/app/app.jar:/app/lib",
+            "-m",
+            "bench.guicedee/bench.guicedee.Main"
+          ],
+          "dependencyMode": "wrapped",
+          "launchToReadyMs": 10771.34500000102,
+          "firstBusinessStatus": 200,
+          "firstBusinessMs": 15192.573399996036,
+          "launchToFirstBusinessMs": 25963.960000000952,
+          "firstOpenApiJsonMs": 102.50339999765856,
+          "warm": {
+            "p50Ms": 93.28570000434411,
+            "p95Ms": 101.92839999945136,
+            "p99Ms": 102.08779999811668,
+            "failures": 0,
+            "requests": 30,
+            "concurrency": 1
+          },
+          "eligible": true,
+          "container": {
+            "image": "sha256:b47693c3021f039b5952173e822df3a55711e8d05d763e8e1db6fcdb8282c6ef",
+            "state": {
+              "OOMKilled": false,
+              "ExitCode": 0,
+              "Error": ""
+            },
+            "nanoCpus": 250000000,
+            "memoryBytes": 524288000,
+            "memorySwapBytes": 524288000
+          },
+          "containerStats": "usage_usec 7552610\nuser_usec 7070738\nsystem_usec 481872\nnr_periods 303\nnr_throttled 301\nthrottled_usec 51072402\nnr_bursts 0\nburst_usec 0\n309125120\n305254400\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "discoveryEvidence": {
+            "classGraphInitialized": false,
+            "verticleDeployments": {
+              "bench.guicedee.rest": true,
+              "bench.guicedee.service": true
+            },
+            "verified": true
+          }
+        }
+      ]
+    },
+    "environment": {
+      "platform": "Windows-11-10.0.26300-SP0",
+      "java": "java version \"25\" 2025-09-16 LTS\nJava(TM) SE Runtime Environment (build 25+37-LTS-3491)\nJava HotSpot(TM) 64-Bit Server VM (build 25+37-LTS-3491, mixed mode, sharing)\n",
+      "flags": [
+        "-Xms128m",
+        "-Xmx384m",
+        "-XX:ActiveProcessorCount=2"
+      ],
+      "cpuQuota": "Docker 0.25 CPU / 500Mi RAM",
+      "profile": "firebase-full",
+      "executionModel": "application-module-path-native-v2",
+      "arguments": {
+        "runs": 3,
+        "requests": 30,
+        "warmup": 10,
+        "docker": true,
+        "tiered": false
+      },
+      "images": {
+        "guicedee-before": "sha256:b47693c3021f039b5952173e822df3a55711e8d05d763e8e1db6fcdb8282c6ef",
+        "guicedee-after": "sha256:7440c418329effd517793eaf93e7d018c633ddcd9f40f241877acabdefc8409f"
+      },
+      "imageSizeBytes": {
+        "guicedee-before": 1135574799,
+        "guicedee-after": 1135580175
+      },
+      "nativeRuntimeDetailsByVariant": {}
+    }
+  },
+  "changedClassSha256": {
+    "com/commercetools/api/json/ApiModule.class": {
+      "original": "f10f37725a834f4e65ba7783ab29938844dba819406cd1f32c4212e92357ea4f",
+      "shared": "f8861ad082ae7ae7bb90d9b53d241e16f1f1a51f92867f66fe6fa08e8478699e"
+    },
+    "io/vrap/rmf/base/client/utils/json/JsonUtils$ObjectMapperHolder.class": {
+      "original": "9129eaa313298042463b96d70d9eb696f511a8de4ab9e9026aef9cd0805afba9",
+      "shared": "c803969bfa868a8ace41b6b08ea6c7358057e85d7284066b68b8f5b25e3668c7"
+    },
+    "io/vrap/rmf/base/client/utils/json/JsonUtils.class": {
+      "original": "34eab09c4804d9ff013a53f87defa6c40a3638c19c7e1aa12e3a136306ff5454",
+      "shared": "d37153d8e55541afccfcfbb25304401ccb01099030396f39cc1eca3c1b1052ac"
+    },
+    "io/vrap/rmf/base/client/utils/json/modules/SubTypeModule.class": {
+      "original": "6b2e0717e5f98218678811eb956f536970d88f71448f0e806e72f1f04fd987e4",
+      "shared": "bc6bc7b70f0ea5fb28d276ad1dbc20ab8c15f6eaea10d93284754a890a2d6644"
+    }
+  },
+  "moduleDescriptorSha256": "5121ef45214459d0b3217040d99d5bd538b0baf57e6f76a29c8e49499974de81",
+  "candidateMatchesCurrentEntryBytes": true,
+  "scanCounts": [
+    {
+      "variant": "guicedee-before",
+      "run": 1,
+      "scans": 2,
+      "lines": [
+        "[2026-11-15 12:19:26.852] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5104 ms to scan 1 urls, producing 3140 keys and 35877 values",
+        "[2026-11-15 12:19:30.145] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 2596 ms to scan 1 urls, producing 3140 keys and 35877 values"
+      ],
+      "logSha256": "7ed76034993486506b2acfad5a4e0a0323be889629a38ccda779046243e62a01"
+    },
+    {
+      "variant": "guicedee-after",
+      "run": 1,
+      "scans": 1,
+      "lines": [
+        "[2026-11-15 12:19:58.436] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5101 ms to scan 1 urls, producing 3140 keys and 35877 values"
+      ],
+      "logSha256": "c9c10cc7c28ed237bf8257f2fdbbc7e4bcfda4c7b945d8c47cea41144d8b4032"
+    },
+    {
+      "variant": "guicedee-after",
+      "run": 2,
+      "scans": 1,
+      "lines": [
+        "[2026-11-15 12:20:27.473] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5207 ms to scan 1 urls, producing 3140 keys and 35877 values"
+      ],
+      "logSha256": "f433c8a73586b50916839276d4af834151a9892cd3672159d6aee6d08c139b23"
+    },
+    {
+      "variant": "guicedee-before",
+      "run": 2,
+      "scans": 2,
+      "lines": [
+        "[2026-11-15 12:20:56.021] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5092 ms to scan 1 urls, producing 3140 keys and 35877 values",
+        "[2026-11-15 12:20:59.631] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 3005 ms to scan 1 urls, producing 3140 keys and 35877 values"
+      ],
+      "logSha256": "d6c3811243b8d32d69b4a5ee4dff20a6df6a8e8aede54836885e329019c736b3"
+    },
+    {
+      "variant": "guicedee-after",
+      "run": 3,
+      "scans": 1,
+      "lines": [
+        "[2026-11-15 12:21:27.345] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5001 ms to scan 1 urls, producing 3140 keys and 35877 values"
+      ],
+      "logSha256": "32a7102e8e522e6c3d360734333b2687f10dc750356f8905a1291db9c0139bfb"
+    },
+    {
+      "variant": "guicedee-before",
+      "run": 3,
+      "scans": 2,
+      "lines": [
+        "[2026-11-15 12:21:55.751] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5004 ms to scan 1 urls, producing 3140 keys and 35877 values",
+        "[2026-11-15 12:21:59.341] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 2801 ms to scan 1 urls, producing 3140 keys and 35877 values"
+      ],
+      "logSha256": "ee9db9d82fcb2733cf7847bb4bf06f04a2e67b132b4ecbf2a06453e1ca7be3bc"
+    }
+  ],
+  "inputSha256": {
+    "summary.json": "50347d0714627ea56236710606b6cb9972dad7b226c019726ccb9ae34018c649",
+    "environment.json": "b552af1b69bdb0d352442d1c3592c33bbbd56ed90869f398d6d977cbb790608b"
+  },
+  "sdkControls": {
+    "guicedee-before": {
+      "role": "original",
+      "upstreamVersion": "20.4.0",
+      "note": "Same current dependency graph; both JARs repacked identically. Only the three mapper/discovery definitions differ. Module descriptor and all other entries retained.",
+      "sdkSha256": "3fe8d4c4488b9b124e0dd11f1d6ccf81c06a46327d27a2f777e87f7005824a92",
+      "upstreamRestorationSourceSha256": {
+        "io\\vrap\\rmf\\base\\client\\utils\\json\\JsonUtils.java": "6910373e153997d4097acba7b7b732df57badca58f5e52c977f7757c3b02e2b3",
+        "io\\vrap\\rmf\\base\\client\\utils\\json\\modules\\SubTypeModule.java": "ecdc2408961d199838ba55fa04501eebc453f29b8bac0de40911ef64976061fb",
+        "com\\commercetools\\api\\json\\ApiModule.java": "3a6f0b2c811e3f54557bc713d5f3528c0eb2a113956b7351c09639008f15b87d"
+      },
+      "sourceHashScope": "Sources used to restore the original SDK definitions in the original control; shared definitions match the current wrapper entry bytes."
+    },
+    "guicedee-after": {
+      "role": "shared",
+      "upstreamVersion": "20.4.0",
+      "note": "Same current dependency graph; both JARs repacked identically. Only the three mapper/discovery definitions differ. Module descriptor and all other entries retained.",
+      "sdkSha256": "fcfbbc4b05ca3689fe248aa553881f2c4643ac0f981e942fc80e185de3a77666",
+      "upstreamRestorationSourceSha256": {
+        "io\\vrap\\rmf\\base\\client\\utils\\json\\JsonUtils.java": "6910373e153997d4097acba7b7b732df57badca58f5e52c977f7757c3b02e2b3",
+        "io\\vrap\\rmf\\base\\client\\utils\\json\\modules\\SubTypeModule.java": "ecdc2408961d199838ba55fa04501eebc453f29b8bac0de40911ef64976061fb",
+        "com\\commercetools\\api\\json\\ApiModule.java": "3a6f0b2c811e3f54557bc713d5f3528c0eb2a113956b7351c09639008f15b87d"
+      },
+      "sourceHashScope": "Sources used to restore the original SDK definitions in the original control; shared definitions match the current wrapper entry bytes."
+    }
+  }
+}

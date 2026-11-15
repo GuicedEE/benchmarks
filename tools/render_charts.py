@@ -48,7 +48,8 @@ def build_chart(data):
             ax.text(values[name][goal]['maximum']+maximum*.02, index, f'{value:.2f} s', va='center', fontsize=9)
     fig.suptitle('Build cost by artifact type', x=.02, ha='left', fontsize=15, fontweight='bold')
     fig.text(.02,.02, f"Medians and min–max of {data['builds']['runs']} clean, offline builds per task · warm dependency cache · new Maven process each time\n"
-             'Same Linux JDK 25 / Maven 4 toolchain · no runtime CPU quota · package includes compilation; do not add columns. Panels use different scales.', fontsize=9)
+             'Same Linux JDK 25 / Maven 4 toolchain · no runtime CPU quota · package includes compilation; do not add columns. Panels use different scales.\n'
+             'Retained build cohort; newer JVM wrapper runtime measurements are separate.', fontsize=9)
     fig.tight_layout(rect=(0,.13,1,.94))
     save(fig, 'builds')
 
@@ -60,11 +61,13 @@ def main():
     labels = ['GuicedEE SPI / JVM','GuicedEE scanner / JVM','Quarkus / JVM',
               'GuicedEE SPI / jlink','GuicedEE scanner / jlink','GuicedEE SPI / native','Quarkus / native']
     plt.rcParams.update({'font.family':'DejaVu Sans', 'font.size':10, 'svg.hashsalt':'guicedee-benchmarks'})
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5), sharey=True, sharex=True)
-    maximum = max(data['groups'][group]['variants'][name]['launchToFirstBusinessMs']['median']/1000
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5.4), sharey=True, sharex=True)
+    def profile(group):
+        return {**data['groups'][group]['variants'], **data['groups']['native-standard']['variants']}
+    maximum = max(profile(group)[name]['launchToFirstBusinessMs']['median']/1000
                   for group in ['jvm-default','jvm-c1'] for name in names)
     for ax, group, title in zip(axes, ['jvm-default','jvm-c1'], ['Default JVM profile','Equal C1 JVM profile']):
-        values = data['groups'][group]['variants']
+        values = profile(group)
         seconds = [values[name]['launchToFirstBusinessMs']['median']/1000 for name in names]
         colors = ['#167c80' if name.startswith('guicedee') else '#5950a3' for name in names]
         ax.barh(range(len(names)), seconds, color=colors, height=.65)
@@ -79,9 +82,11 @@ def main():
             ax.text(value+maximum*.02, index, f'{value:.3f} s', va='center', fontsize=9)
     axes[0].invert_yaxis()
     fig.suptitle('GuicedEE and normal-dependency Quarkus', x=.02, ha='left', fontsize=15, fontweight='bold')
-    fig.text(.02,.02,'250m CPU / 500 MiB · 3 fresh starts per mode/profile · commercetools + GraphQL + Firestore\n'
-             'Native repeats the same binaries without a JIT flag. Medians; all starts and capability checks retained.', fontsize=9)
-    fig.tight_layout(rect=(0,.11,1,.94))
+    native_starts = data['groups']['native-standard']['variants']['guicedee-native']['starts']
+    fig.text(.02,.02,'250m CPU / 500 MiB · 3 JVM starts per mode/profile · commercetools + GraphQL + Firestore\n'
+             f'Native reference rows repeat the separate retained cohort ({native_starts} starts/variant); native has no JIT.\n'
+             'jlink workload passes, but the SDK scanner finds zero URLs: full SDK model discovery is not established.', fontsize=9)
+    fig.tight_layout(rect=(0,.16,1,.94))
     save(fig, 'startup')
     build_chart(data)
 
