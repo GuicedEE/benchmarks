@@ -67,3 +67,21 @@ on the executable:
 
 These defaults apply only to this native application; the JVM modes keep their existing
 configuration. The normal Quarkus application and its dependency graph are unchanged.
+
+The native metadata helper derives a GuicedEE-only configuration from the committed traces.
+Class-query-only commercetools model entries become conditional on that model being reachable;
+member queries and annotations remain available for retained models. Entries that record actual
+member invocation stay unchanged. Generated protobuf field accessors retain invocation metadata,
+while static `parseFrom`/`parseDelimitedFrom` convenience overloads retain query metadata and
+remain available to ordinary Java calls without becoming reflection roots. The SDK JARs, their
+module descriptors and normal Quarkus configuration remain unchanged.
+
+Use `--full-sdk-reflection` (or `NATIVE_FULL_REFLECTION=true` for the shell build) to retain
+all original model and protobuf reflection entries. This restores the traced metadata; it does
+not replace tracing and validation for additional SDK operations. The helper fails if an expected
+trace/schema is missing instead of silently dropping metadata.
+
+The Linux x86-64 recipe also excludes embedded Windows, macOS and ARM native-library
+resources. It retains Linux x86-64 Conscrypt, gRPC TLS and epoll binaries. This is target
+platform selection, not removal of TLS or a security provider; a future architecture-specific
+recipe must select its own matching binaries alongside its compiler architecture.

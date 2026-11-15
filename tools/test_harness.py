@@ -1,4 +1,5 @@
 import json
+import re
 import io
 import threading
 import unittest
@@ -20,10 +21,34 @@ from prepare_jlink import verify_scanner_artifact, DISCOVERY_ENTRIES
 from prepare_native import verify_quarkus_adapter
 from prepare_native_metadata import relocate, transform, conditional_protobuf, rules
 from import_native_trace import verify_sdk_inputs
+from publish_native_audit import verify_override_settings
 from summarize_native import sdk_evidence
 
 
 class HarnessTest(unittest.TestCase):
+    def test_native_platform_filter_preserves_linux_x64_tls_and_transport(self):
+        recipe = (Path(__file__).resolve().parents[1]/'guicedee-native/build-native.sh').read_text()
+        pattern = re.search(r"'-H:ExcludeResources=([^']+)'", recipe)[1]
+        for name in ['conscrypt_openjdk_jni-windows-x86_64.dll',
+                     'libconscrypt_openjdk_jni-linux-aarch_64.so',
+                     'libconscrypt_openjdk_jni-osx-x86_64.dylib']:
+            self.assertRegex('META-INF/native/'+name, pattern)
+        for name in ['libconscrypt_openjdk_jni-linux-x86_64.so',
+                     'libio_grpc_netty_shaded_netty_tcnative_linux_x86_64.so',
+                     'libnetty_transport_native_epoll_x86_64.so']:
+            self.assertNotRegex('META-INF/native/'+name, pattern)
+        self.assertNotRegex('bench/windows-support.json', pattern)
+
+    def test_sdk_override_publication_requires_both_actual_build_settings(self):
+        roles = dict(before='candidate', after='override')
+        details = dict(candidate='NATIVE_FULL_REFLECTION=false\nNATIVE_CLOUD_CONTROL_PLANE=false',
+                       override='NATIVE_FULL_REFLECTION=true\nNATIVE_CLOUD_CONTROL_PLANE=true')
+        environment = dict(nativeRuntimeDetailsByVariant=details)
+        verify_override_settings(environment, roles)
+        details['override'] = details['override'].replace('NATIVE_FULL_REFLECTION=true', 'NATIVE_FULL_REFLECTION=false')
+        with self.assertRaisesRegex(ValueError, 'NATIVE_FULL_REFLECTION=true'):
+            verify_override_settings(environment, roles)
+
     def test_published_diagnostics_keep_instrumentation_status(self):
         summary = dict(eligibleComparison=False, instrumented=True, performanceComparison=False,
                        allDiagnosticsPassed=True, scope='diagnostic', variants=[dict(id='guicedee')],

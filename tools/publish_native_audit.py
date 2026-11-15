@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -33,6 +34,16 @@ def read_batch(directory):
                              for name in ['summary.json', 'environment.json']}), environment, roles
 
 
+def verify_override_settings(environment, roles):
+    details = environment['nativeRuntimeDetailsByVariant']
+    expected = {'before': 'false', 'after': 'true'}
+    for role, value in expected.items():
+        lines = details[roles[role]].splitlines()
+        for key in ['NATIVE_FULL_REFLECTION', 'NATIVE_CLOUD_CONTROL_PLANE']:
+            if f'{key}={value}' not in lines:
+                raise ValueError(f'Override evidence is missing {key}={value} for {role}')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('comparison', type=Path)
@@ -42,6 +53,7 @@ def main():
     args = parser.parse_args()
     comparison, environment, roles = read_batch(args.comparison)
     override, override_environment, override_roles = read_batch(args.provider_override)
+    verify_override_settings(override_environment, override_roles)
     current = environment['images'][roles['after']]
     if override_environment['images'][override_roles['before']] != current:
         raise ValueError('Provider override must be compared against the audited candidate image')
@@ -49,6 +61,9 @@ def main():
         ['docker','run','--rm','--entrypoint','cat',environment['images'][name],
          '/app/native-build-statistics.json'], text=True)) for role,name in roles.items()}
     build_log = args.artifact_build_log.read_text(encoding='utf-8')
+    parse_counts = re.findall(r'full reflection=false; unrooted static protobuf parse overloads=(\d+)', build_log)
+    if len(parse_counts) != 1:
+        raise ValueError('Expected one completed SDK metadata preparation in the artifact build')
     analysis = statistics['after']['analysis_results']
     if (f"{analysis['types']['reachable']:,} types" not in build_log
             or f"{analysis['methods']['reachable']:,} methods found reachable" not in build_log):
@@ -68,7 +83,15 @@ def main():
                   sourceSha256={s['path']:s['sha256'] for s in sources
                                 if s['path'].startswith('guicedee-native/')},
                   scope='Application native policy; original SDK JARs and module descriptors retained. '
-                        'The override validation exercises the existing workload, not an xDS control plane.',
+                        'The override validation exercises the existing workload, not an xDS control plane or additional SDK APIs.',
+                  sdkReflection=dict(conditionalModelQueries=True,
+                      staticProtobufParseRegistrationEntriesOmitted=int(parse_counts[0]),
+                      parseCountScope='Metadata occurrences across three schemas; not unique methods.',
+                      fullReflectionOverrideValidated=True,
+                      sdkJarBytesUnchanged=True),
+                  nativeResourceTarget=dict(os='linux', architecture='x86-64',
+                      excludedForeignPlatforms=['Windows', 'macOS', 'Linux AArch64'],
+                      retainedLibraries=['Conscrypt Linux x86-64', 'gRPC TLS Linux x86-64', 'epoll x86-64']),
                   allocatorDefaults=dict(type='pooled', maxOrder=3, defaultPageBytes=8192,
                       propertyPrefixes=['io.netty','com.commercetools.internal.shaded.io.netty',
                           'com.google.firebase.internal.shaded.io.netty',

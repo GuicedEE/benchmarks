@@ -101,7 +101,8 @@ COPY guicedee-native/native-excluded-providers.txt guicedee-native/native-exclud
 ARG NATIVE_AUDIT=false
 ARG NATIVE_DESKTOP=false
 ARG NATIVE_CLOUD_CONTROL_PLANE=false
-RUN NATIVE_AUDIT=$NATIVE_AUDIT NATIVE_DESKTOP=$NATIVE_DESKTOP NATIVE_CLOUD_CONTROL_PLANE=$NATIVE_CLOUD_CONTROL_PLANE /opt/maven/bin/mvn -B -ntp -pl guicedee-native -am package -Pnative,native-app -Dguicedee.version=$GUICEDEE_VERSION -DskipTests
+ARG NATIVE_FULL_REFLECTION=false
+RUN NATIVE_AUDIT=$NATIVE_AUDIT NATIVE_DESKTOP=$NATIVE_DESKTOP NATIVE_CLOUD_CONTROL_PLANE=$NATIVE_CLOUD_CONTROL_PLANE NATIVE_FULL_REFLECTION=$NATIVE_FULL_REFLECTION /opt/maven/bin/mvn -B -ntp -pl guicedee-native -am package -Pnative,native-app -Dguicedee.version=$GUICEDEE_VERSION -DskipTests
 
 FROM common-os AS guicedee-native
 COPY --from=guicedee-native-build /src/guicedee-native/target/application /app/application

@@ -21,7 +21,8 @@ build costs from runtime measurements. Full Maven logs stay in the ignored local
 log hashes, all timing samples and extracted completion evidence are retained here.
 
 `latest/native-audit.json` retains the paired previous/current native artifact comparison,
-compiler inclusion counts, allocation policy, and full-provider override validation. Only
+compiler inclusion counts, SDK reflection/allocation policy, and full-reflection/full-provider
+override validation. Only
 the accepted final configuration is published; exploratory and failed candidates remain
 in ignored local output. The extended native cohort retains all 1,000 requests per start.
 

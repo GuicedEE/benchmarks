@@ -171,6 +171,13 @@ def build_sections(data):
         f"The complete GuicedEE native build takes **{native_g:.2f} s** versus **{native_q:.2f} s**, "
         f"or **{difference(native_g, native_q)}**. jlink produces a bundled JVM runtime; native builds produce "
         'ahead-of-time executables. The runtime grid shows the startup and request-latency tradeoffs for each artifact.')
+    native_g_range = values['guicedee-native']['package']
+    native_q_range = values['quarkus-standard-native']['package']
+    if max(native_g_range['minimum'], native_q_range['minimum']) <= min(native_g_range['maximum'], native_q_range['maximum']):
+        interpretation += (
+            f"\n\nNative build ranges overlap: **{native_g_range['minimum']:.2f}–{native_g_range['maximum']:.2f} s** "
+            f"for GuicedEE and **{native_q_range['minimum']:.2f}–{native_q_range['maximum']:.2f} s** for Quarkus. "
+            f"With {data['builds']['runs']} samples each, the median difference does not establish a consistent build-time lead.")
     sections = {'build-headline': headline, 'build-grid': grid, 'build-findings': interpretation, 'build-runtime': table(
         ['Artifact', 'Complete package (s)', 'Full-business startup (s)', 'Warm p50 (ms)'], tradeoffs),
         'sdk-headline': sdk}
@@ -380,8 +387,11 @@ def render(data):
         rows = []
         for label, av, bv, unit in [
             ('Executable', before['executableMiB'], after['executableMiB'], 'MiB'),
+            ('Reachable types', old['analysis_results']['types']['reachable'], new['analysis_results']['types']['reachable'], 'count'),
+            ('Methods registered for reflection', old['analysis_results']['methods']['reflection'], new['analysis_results']['methods']['reflection'], 'count'),
             ('Reachable methods', old['analysis_results']['methods']['reachable'], new['analysis_results']['methods']['reachable'], 'count'),
             ('Compiled code area', old['image_details']['code_area']['bytes']/MIB, new['image_details']['code_area']['bytes']/MIB, 'MiB'),
+            ('Embedded resources', old['image_details']['image_heap']['resources']['count'], new['image_details']['image_heap']['resources']['count'], 'count'),
             ('Image heap', old['image_details']['image_heap']['bytes']/MIB, new['image_details']['image_heap']['bytes']/MIB, 'MiB'),
             ('Artifact compiler peak RSS', old['resource_usage']['memory']['peak_rss_bytes']/MIB, new['resource_usage']['memory']['peak_rss_bytes']/MIB, 'MiB'),
             ('Full-business startup', before['launchToFirstBusinessMs']['median'], after['launchToFirstBusinessMs']['median'], 'ms'),
@@ -393,9 +403,9 @@ def render(data):
             f"\n\nRuntime rows use {before['starts']} alternating starts per artifact, with the same CPU, memory, "
             'heap and request settings. Compiler counts and peak RSS describe the single builds that produced the two artifacts; clean-build time is measured '
             'separately in the build grid. '
-            f"The full-provider override also passed **{audit['providerOverride']['batchCapabilityChecks']} capability checks** "
+            f"The full-provider and full-SDK-reflection override also passed **{audit['providerOverride']['batchCapabilityChecks']} capability checks** "
             f"across {audit['providerOverride']['batchStarts']} starts. This validates the existing workload with the override, "
-            'not connectivity to a real xDS control plane. [Raw audit evidence](results/latest/native-audit.json).')
+            'not connectivity to a real xDS control plane or coverage of additional SDK APIs. [Raw audit evidence](results/latest/native-audit.json).')
     memory = []
     for label in ['GuicedEE native', 'Quarkus upstream native']:
         phase = data['phases'][label]
@@ -563,7 +573,7 @@ def main():
             if preparation and runtime else '')
         sections['host-condition'] = (
             f"All timing profiles were rerun after the host boot at **{host['bootTimeUtc']}**. "
-            f"Across {host['samples']} retained one-second preflight samples, host CPU utilization "
+            f"Across {host['samples']} retained one-second host samples, CPU utilization "
             f"ranged **{cpu['minimum']:.1f}–{cpu['maximum']:.1f}%**, available physical memory "
             f"**{memory['minimum']/1024:.1f}–{memory['maximum']/1024:.1f} GiB**. "
             + preparation_note + 'Build, runtime and diagnostic stages ran sequentially. '

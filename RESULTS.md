@@ -5,11 +5,11 @@ The complete default/C1 matrices were rerun together for this report; diagnostic
 profiles have their own recorded batch identities.
 
 <!-- BEGIN GENERATED: host-condition -->
-All timing profiles were rerun after the host boot at **2026-11-15T00:45:50.5000000Z**. Across 3 retained one-second preflight samples, host CPU utilization ranged **9.4–13.5%**, available physical memory **32.0–32.3 GiB**. Build, runtime and diagnostic stages ran sequentially. Host observations have partial coverage and are boundary snapshots, not continuous measurements of background load during each run. Available observations and their coverage are included in the latest measurement dataset.
+All timing profiles were rerun after the host boot at **2026-11-15T00:45:50.5000000Z**. Across 6 retained one-second host samples, CPU utilization ranged **5.8–13.0%**, available physical memory **22.2–26.9 GiB**. Build, runtime and diagnostic stages ran sequentially. Host observations have partial coverage and are boundary snapshots, not continuous measurements of background load during each run. Available observations and their coverage are included in the latest measurement dataset.
 <!-- END GENERATED: host-condition -->
 
 <!-- BEGIN GENERATED: headline -->
-GuicedEE native completes the first full business request in **654 ms**, versus **678 ms** for Quarkus native (**3.6% less time**). Warm p50 is **5.96 / 5.85 ms** (GuicedEE / Quarkus). Peak charged memory is **68.77 / 55.04 MiB**; executables are **166.93 / 143.31 MiB**. The native sample contains **28 starts and 420 passing capability checks**.
+GuicedEE native completes the first full business request in **656 ms**, versus **678 ms** for Quarkus native (**3.2% less time**). Warm p50 is **5.21 / 5.11 ms** (GuicedEE / Quarkus). Peak charged memory is **68.47 / 55.30 MiB**; executables are **142.35 / 143.31 MiB**. The native sample contains **28 starts and 420 passing capability checks**.
 <!-- END GENERATED: headline -->
 
 <!-- BEGIN GENERATED: runtime-findings -->
@@ -19,21 +19,21 @@ GuicedEE native records the lower median full-business startup; Quarkus native r
 ## Build performance
 
 <!-- BEGIN GENERATED: build-headline -->
-**Clean JVM build:** GuicedEE SPI compiles in **3.31 s** versus **3.92 s** for Quarkus (**15.6% less time**). Complete runnable JVM packaging takes **3.89 / 6.68 s** (GuicedEE / Quarkus), **41.8% less time**. Medians of 3 clean, offline builds per task; dependency preparation is excluded.
+**Clean JVM build:** GuicedEE SPI compiles in **3.14 s** versus **3.66 s** for Quarkus (**14.1% less time**). Complete runnable JVM packaging takes **3.61 / 6.29 s** (GuicedEE / Quarkus), **42.6% less time**. Medians of 3 clean, offline builds per task; dependency preparation is excluded.
 
-**jlink versus native build:** GuicedEE SPI/scanner jlink packages in **18.11 / 17.95 s**, versus **69.77 s** for Quarkus native (**74.0% less time / 74.3% less time**).
+**jlink versus native build:** GuicedEE SPI/scanner jlink packages in **17.68 / 17.34 s**, versus **66.36 s** for Quarkus native (**73.4% less time / 73.9% less time**).
 <!-- END GENERATED: build-headline -->
 
 <!-- BEGIN GENERATED: build-grid -->
 | Artifact | Clean compile (s) | Compile min–max (s) | Complete package (s) | Package min–max (s) | Build baseline | Package difference |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 3.31 | 3.28–3.39 | 3.89 | 3.81–3.92 | Quarkus fast-JAR | -41.8% |
-| GuicedEE scanner / full JDK | 3.28 | 3.21–3.33 | 3.81 | 3.77–3.89 | Quarkus fast-JAR | -43.0% |
-| Quarkus upstream SDKs / fast-JAR | 3.92 | 3.69–4.02 | 6.68 | 6.54–6.85 | Quarkus fast-JAR | Baseline |
-| GuicedEE SPI / application jlink | — | — | 18.11 | 18.11–18.20 | Quarkus native | -74.0% |
-| GuicedEE scanner / application jlink | — | — | 17.95 | 17.90–18.01 | Quarkus native | -74.3% |
-| GuicedEE SPI / native | — | — | 71.17 | 70.04–71.56 | Quarkus native | +2.0% |
-| Quarkus upstream SDKs / native | — | — | 69.77 | 69.31–72.51 | Quarkus native | Baseline |
+| GuicedEE SPI / full JDK | 3.14 | 3.13–3.32 | 3.61 | 3.54–3.79 | Quarkus fast-JAR | -42.6% |
+| GuicedEE scanner / full JDK | 3.05 | 3.02–3.26 | 3.68 | 3.63–3.69 | Quarkus fast-JAR | -41.5% |
+| Quarkus upstream SDKs / fast-JAR | 3.66 | 3.59–3.81 | 6.29 | 6.19–6.32 | Quarkus fast-JAR | Baseline |
+| GuicedEE SPI / application jlink | — | — | 17.68 | 17.42–17.71 | Quarkus native | -73.4% |
+| GuicedEE scanner / application jlink | — | — | 17.34 | 17.24–17.35 | Quarkus native | -73.9% |
+| GuicedEE SPI / native | — | — | 65.05 | 64.97–80.24 | Quarkus native | -2.0% |
+| Quarkus upstream SDKs / native | — | — | 66.36 | 66.07–66.67 | Quarkus native | Baseline |
 <!-- END GENERATED: build-grid -->
 
 ![Clean compilation and complete packaging](docs/builds.svg)
@@ -70,8 +70,8 @@ the build cohort before it renders the combined comparison.
 <!-- BEGIN GENERATED: build-memory -->
 | Native compiler | Builds | Median peak RSS (GB) | Min–max (GB) |
 | --- | ---: | ---: | ---: |
-| GuicedEE SPI / native | 3 | 8.70 | 8.66–8.89 |
-| Quarkus upstream SDKs / native | 3 | 8.04 | 7.97–8.11 |
+| GuicedEE SPI / native | 3 | 8.50 | 8.35–8.59 |
+| Quarkus upstream SDKs / native | 3 | 7.97 | 7.95–8.01 |
 <!-- END GENERATED: build-memory -->
 
 These are the compiler-reported peak RSS values from each timed native build, in the
@@ -92,21 +92,23 @@ indicates there is no separate compile-only measurement for that project.
 <!-- BEGIN GENERATED: build-runtime -->
 | Artifact | Complete package (s) | Full-business startup (s) | Warm p50 (ms) |
 | --- | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 3.89 | 26.533 | 91.64 |
-| GuicedEE scanner / full JDK | 3.81 | 26.758 | 92.00 |
-| Quarkus upstream SDKs / fast-JAR | 6.68 | 21.882 | 87.02 |
-| GuicedEE SPI / application jlink | 18.11 | 13.103 | 90.05 |
-| GuicedEE scanner / application jlink | 17.95 | 13.844 | 91.41 |
-| GuicedEE SPI / native | 71.17 | 0.654 | 5.96 |
-| Quarkus upstream SDKs / native | 69.77 | 0.678 | 5.85 |
+| GuicedEE SPI / full JDK | 3.61 | 25.375 | 89.88 |
+| GuicedEE scanner / full JDK | 3.68 | 26.062 | 91.11 |
+| Quarkus upstream SDKs / fast-JAR | 6.29 | 21.919 | 80.56 |
+| GuicedEE SPI / application jlink | 17.68 | 12.870 | 92.32 |
+| GuicedEE scanner / application jlink | 17.34 | 13.279 | 89.26 |
+| GuicedEE SPI / native | 65.05 | 0.656 | 5.21 |
+| Quarkus upstream SDKs / native | 66.36 | 0.678 | 5.11 |
 <!-- END GENERATED: build-runtime -->
 
 <!-- BEGIN GENERATED: build-findings -->
-GuicedEE's JVM package requires **41.8% less time** than Quarkus fast-JAR.
+GuicedEE's JVM package requires **42.6% less time** than Quarkus fast-JAR.
 
-**jlink versus native:** SPI/scanner jlink take **18.11 / 17.95 s**. Against Quarkus native's **69.77 s**, that is **74.0% less time / 74.3% less time**; against GuicedEE native's **71.17 s**, it is **74.6% less time / 74.8% less time**.
+**jlink versus native:** SPI/scanner jlink take **17.68 / 17.34 s**. Against Quarkus native's **66.36 s**, that is **73.4% less time / 73.9% less time**; against GuicedEE native's **65.05 s**, it is **72.8% less time / 73.3% less time**.
 
-The complete GuicedEE native build takes **71.17 s** versus **69.77 s**, or **2.0% more time**. jlink produces a bundled JVM runtime; native builds produce ahead-of-time executables. The runtime grid shows the startup and request-latency tradeoffs for each artifact.
+The complete GuicedEE native build takes **65.05 s** versus **66.36 s**, or **2.0% less time**. jlink produces a bundled JVM runtime; native builds produce ahead-of-time executables. The runtime grid shows the startup and request-latency tradeoffs for each artifact.
+
+Native build ranges overlap: **64.97–80.24 s** for GuicedEE and **66.07–66.67 s** for Quarkus. With 3 samples each, the median difference does not establish a consistent build-time lead.
 <!-- END GENERATED: build-findings -->
 
 Runtime columns use the default-JVM cohort and the larger native-only cohort, each under
@@ -124,9 +126,9 @@ a larger counterbalanced sample. Full grids retain every start and measured requ
 <!-- BEGIN GENERATED: overview -->
 | Application | Full JDK default (s) | Full JDK C1 (s) | Application jlink default (s) | Application jlink C1 (s) | Native (s) |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI | [26.533](RESULTS.md#jvm-default) | [16.769](RESULTS.md#jvm-c1) | [13.103](RESULTS.md#jvm-default) | [7.875](RESULTS.md#jvm-c1) | [0.654](RESULTS.md#native-standard) |
-| GuicedEE scanner | [26.758](RESULTS.md#jvm-default) | [16.885](RESULTS.md#jvm-c1) | [13.844](RESULTS.md#jvm-default) | [7.975](RESULTS.md#jvm-c1) | SPI only |
-| Quarkus / upstream SDKs | [21.882](RESULTS.md#jvm-default) | [14.138](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.678](RESULTS.md#native-standard) |
+| GuicedEE SPI | [25.375](RESULTS.md#jvm-default) | [16.402](RESULTS.md#jvm-c1) | [12.870](RESULTS.md#jvm-default) | [7.488](RESULTS.md#jvm-c1) | [0.656](RESULTS.md#native-standard) |
+| GuicedEE scanner | [26.062](RESULTS.md#jvm-default) | [16.491](RESULTS.md#jvm-c1) | [13.279](RESULTS.md#jvm-default) | [7.758](RESULTS.md#jvm-c1) | SPI only |
+| Quarkus / upstream SDKs | [21.919](RESULTS.md#jvm-default) | [13.620](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.678](RESULTS.md#native-standard) |
 <!-- END GENERATED: overview -->
 
 ![Startup by execution mode](docs/startup.svg)
@@ -172,30 +174,30 @@ Business sources match; dependency packaging and transitive graphs deliberately 
 The two batches reverse their initial framework order and use identical image IDs and flags.
 
 <!-- BEGIN GENERATED: native-standard -->
-Displayed rows: **28 starts / 420 passing checks / 840 successful measured requests**. Each start: 10 warmups, 30 measured requests. Batch IDs in [latest measurements](results/latest/measurements.json): `20261115-103846`, `20261115-103923`.
+Displayed rows: **28 starts / 420 passing checks / 840 successful measured requests**. Each start: 10 warmups, 30 measured requests. Batch IDs in [latest measurements](results/latest/measurements.json): `20261115-124931`, `20261115-125007`.
 
 | Variant | Starts | Ready (s) | First request (ms) | Full business (s) | Full business min–max (s) | First OpenAPI (ms) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / native | 14 | 0.577 | 80.03 | 0.654 | 0.639–1.057 | 3.51 |
-| Quarkus upstream SDKs / native | 14 | 0.569 | 104.93 | 0.678 | 0.656–0.995 | 2.12 |
+| GuicedEE SPI / native | 14 | 0.576 | 77.70 | 0.656 | 0.614–0.950 | 3.52 |
+| Quarkus upstream SDKs / native | 14 | 0.573 | 105.04 | 0.678 | 0.658–1.005 | 2.39 |
 
 | Variant | Warm p50 (ms) | Warm p95 (ms) | Warm p99 (ms) | Peak memory median (MiB) | Peak memory min–max (MiB) | End memory median (MiB) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / native | 5.96 | 26.27 | 29.99 | 68.77 | 68.35–69.64 | 65.36 |
-| Quarkus upstream SDKs / native | 5.85 | 30.39 | 31.25 | 55.04 | 54.43–56.26 | 51.58 |
+| GuicedEE SPI / native | 5.21 | 27.40 | 29.93 | 68.47 | 67.91–69.38 | 65.06 |
+| Quarkus upstream SDKs / native | 5.11 | 26.02 | 28.22 | 55.30 | 54.41–55.87 | 52.00 |
 <!-- END GENERATED: native-standard -->
 
 <!-- BEGIN GENERATED: native-deltas -->
 | Metric | GuicedEE native | Quarkus upstream native | GuicedEE difference |
 | --- | ---: | ---: | ---: |
-| Full-business startup | 653.70 ms | 678.38 ms | -3.6% |
-| First business request | 80.03 ms | 104.93 ms | -23.7% |
-| Warm p50 | 5.96 ms | 5.85 ms | +2.0% |
-| Warm p95 | 26.27 ms | 30.39 ms | -13.6% |
-| Warm p99 | 29.99 ms | 31.25 ms | -4.0% |
-| Peak container memory | 68.77 MiB | 55.04 MiB | +25.0% |
-| Executable size | 166.93 MiB | 143.31 MiB | +16.5% |
-| Docker local image size | 389.03 MiB | 353.04 MiB | +10.2% |
+| Full-business startup | 656.09 ms | 677.71 ms | -3.2% |
+| First business request | 77.70 ms | 105.04 ms | -26.0% |
+| Warm p50 | 5.21 ms | 5.11 ms | +1.9% |
+| Warm p95 | 27.40 ms | 26.02 ms | +5.3% |
+| Warm p99 | 29.93 ms | 28.22 ms | +6.1% |
+| Peak container memory | 68.47 MiB | 55.30 MiB | +23.8% |
+| Executable size | 142.35 MiB | 143.31 MiB | -0.7% |
+| Docker local image size | 357.23 MiB | 353.04 MiB | +1.2% |
 <!-- END GENERATED: native-deltas -->
 
 Negative differences mean GuicedEE uses less time or space. Readiness polling is 50 ms,
@@ -211,21 +213,21 @@ with **1,000 measured requests per start**. It checks behavior beyond the shorte
 sample. Requests remain sequential; this is not a concurrent throughput or soak benchmark.
 
 <!-- BEGIN GENERATED: native-extended -->
-Displayed rows: **6 starts / 90 passing checks / 6000 successful measured requests**. Each start: 20 warmups, 1000 measured requests. Batch IDs in [latest measurements](results/latest/measurements.json): `20261115-104001`.
+Displayed rows: **6 starts / 90 passing checks / 6000 successful measured requests**. Each start: 20 warmups, 1000 measured requests. Batch IDs in [latest measurements](results/latest/measurements.json): `20261115-125042`.
 
 | Variant | Starts | Ready (s) | First request (ms) | Full business (s) | Full business min–max (s) | First OpenAPI (ms) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / native | 3 | 0.580 | 104.23 | 0.685 | 0.669–0.977 | 3.30 |
-| Quarkus upstream SDKs / native | 3 | 0.572 | 80.37 | 0.658 | 0.648–0.661 | 1.88 |
+| GuicedEE SPI / native | 3 | 0.578 | 92.65 | 0.669 | 0.651–0.944 | 3.34 |
+| Quarkus upstream SDKs / native | 3 | 0.586 | 125.92 | 0.712 | 0.701–0.717 | 2.13 |
 
 | Variant | Warm p50 (ms) | Warm p95 (ms) | Warm p99 (ms) | Peak memory median (MiB) | Peak memory min–max (MiB) | End memory median (MiB) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / native | 4.79 | 29.97 | 40.95 | 77.51 | 76.62–83.37 | 74.09 |
-| Quarkus upstream SDKs / native | 4.49 | 28.03 | 33.61 | 81.00 | 78.87–84.44 | 77.21 |
+| GuicedEE SPI / native | 4.07 | 28.01 | 40.42 | 78.88 | 77.14–118.12 | 75.04 |
+| Quarkus upstream SDKs / native | 4.12 | 27.73 | 41.72 | 80.09 | 79.62–81.73 | 76.65 |
 <!-- END GENERATED: native-extended -->
 
 <!-- BEGIN GENERATED: extended-findings -->
-In this separate 3-start-per-framework cohort, median peak charged memory is **77.51 / 81.00 MiB** (GuicedEE / Quarkus), a GuicedEE difference of **-4.3%**. Its full-business startup medians are **685 / 658 ms**. Keep this smaller startup sample separate from the primary counterbalanced comparison; longer request sequences also change allocation and GC behavior.
+In this separate 3-start-per-framework cohort, median peak charged memory is **78.88 / 80.09 MiB** (GuicedEE / Quarkus), a GuicedEE difference of **-1.5%**. Its full-business startup medians are **669 / 712 ms**. Keep this smaller startup sample separate from the primary counterbalanced comparison; longer request sequences also change allocation and GC behavior.
 <!-- END GENERATED: extended-findings -->
 
 ### Native inclusion and allocation audit
@@ -234,6 +236,16 @@ The current application excludes 15 unused xDS, RLS, legacy grpclb and Google C2
 providers from native compilation. DNS, ordinary load balancing, transports and TLS
 providers remain registered. SDK JARs and JPMS descriptors are preserved. The optional
 control-plane providers can be restored with `--include-cloud-control-plane`.
+
+The Linux x86-64 recipe excludes native-library resources for Windows, macOS and ARM,
+while retaining Linux x86-64 Conscrypt, gRPC TLS and epoll libraries.
+
+Class-query-only commercetools model metadata is conditional on the model being reachable.
+Retained models keep member queries and annotations; actual traced invocation entries remain.
+Protobuf accessors keep reflection invocation support, while static parsing convenience overloads
+remain callable directly without becoming reflection roots. `--full-sdk-reflection` restores the
+original traced model/protobuf metadata. This policy covers the verified workload; additional
+SDK operations still require their own native trace and capability checks.
 
 The application's native SPI sets pooled Netty allocators to 64 KiB chunks, including the
 relocated SDK copies with their own property names. Runtime `-D` overrides are supported.
@@ -244,15 +256,18 @@ native compilers still use O2, Serial GC, x86-64-v3 and an 8 GiB builder heap.
 <!-- BEGIN GENERATED: native-audit -->
 | Metric | Previous GuicedEE artifact | Current GuicedEE artifact | Difference |
 | --- | ---: | ---: | ---: |
-| Executable | 191.83 MiB | 166.93 MiB | -13.0% |
-| Reachable methods | 232,581 | 175,092 | -24.7% |
-| Compiled code area | 83.13 MiB | 67.74 MiB | -18.5% |
-| Image heap | 108.31 MiB | 98.81 MiB | -8.8% |
-| Artifact compiler peak RSS | 9856.12 MiB | 8697.71 MiB | -11.8% |
-| Full-business startup | 670.27 ms | 650.51 ms | -2.9% |
-| Peak charged memory | 79.89 MiB | 68.95 MiB | -13.7% |
+| Executable | 166.93 MiB | 142.35 MiB | -14.7% |
+| Reachable types | 42,163 | 33,493 | -20.6% |
+| Methods registered for reflection | 108,810 | 53,073 | -51.2% |
+| Reachable methods | 175,092 | 172,953 | -1.2% |
+| Compiled code area | 67.74 MiB | 67.41 MiB | -0.5% |
+| Embedded resources | 285 | 281 | -1.4% |
+| Image heap | 98.81 MiB | 74.56 MiB | -24.5% |
+| Artifact compiler peak RSS | 8697.71 MiB | 7969.84 MiB | -8.4% |
+| Full-business startup | 654.03 ms | 647.34 ms | -1.0% |
+| Peak charged memory | 69.05 MiB | 68.71 MiB | -0.5% |
 
-Runtime rows use 7 alternating starts per artifact, with the same CPU, memory, heap and request settings. Compiler counts and peak RSS describe the single builds that produced the two artifacts; clean-build time is measured separately in the build grid. The full-provider override also passed **90 capability checks** across 6 starts. This validates the existing workload with the override, not connectivity to a real xDS control plane. [Raw audit evidence](results/latest/native-audit.json).
+Runtime rows use 7 alternating starts per artifact, with the same CPU, memory, heap and request settings. Compiler counts and peak RSS describe the single builds that produced the two artifacts; clean-build time is measured separately in the build grid. The full-provider and full-SDK-reflection override also passed **90 capability checks** across 6 starts. This validates the existing workload with the override, not connectivity to a real xDS control plane or coverage of additional SDK APIs. [Raw audit evidence](results/latest/native-audit.json).
 <!-- END GENERATED: native-audit -->
 
 The retained compiler breakdown identifies `java.base`, Firebase and commercetools as the
@@ -271,8 +286,8 @@ and diagnostic overhead and must not be substituted for the uninstrumented peak 
 <!-- BEGIN GENERATED: native-memory -->
 | Instrumented native process | Starts | End RSS (MiB) | End PSS (MiB) | Anonymous PSS (MiB) | File-backed PSS (MiB) |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE native | 3 | 167.67 | 166.96 | 59.68 | 107.28 |
-| Quarkus upstream native | 3 | 129.90 | 129.16 | 42.49 | 86.66 |
+| GuicedEE native | 3 | 160.59 | 159.86 | 59.57 | 100.28 |
+| Quarkus upstream native | 3 | 129.89 | 129.17 | 42.46 | 86.71 |
 <!-- END GENERATED: native-memory -->
 
 <a id="jvm-default"></a>
@@ -284,27 +299,27 @@ baseline. Every image passes the same business and capability checks. The native
 show the alternative compilation strategy within this matched batch.
 
 <!-- BEGIN GENERATED: jvm-default -->
-Displayed rows: **21 starts / 315 passing checks / 630 successful measured requests**. Each start: 10 warmups, 30 measured requests. Batch IDs in [latest measurements](results/latest/measurements.json): `20261115-104139`.
+Displayed rows: **21 starts / 315 passing checks / 630 successful measured requests**. Each start: 10 warmups, 30 measured requests. Batch IDs in [latest measurements](results/latest/measurements.json): `20261115-125214`.
 
 | Variant | Starts | Ready (s) | First request (ms) | Full business (s) | Full business min–max (s) | First OpenAPI (ms) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 3 | 8.305 | 18,259.12 | 26.533 | 25.912–28.290 | 103.38 |
-| GuicedEE scanner / full JDK | 3 | 8.750 | 17,997.57 | 26.758 | 26.707–27.642 | 198.72 |
-| Quarkus upstream SDKs / fast-JAR | 3 | 6.384 | 15,497.65 | 21.882 | 21.080–24.007 | 410.48 |
-| GuicedEE SPI / application jlink | 3 | 7.411 | 5,707.80 | 13.103 | 13.091–13.198 | 188.00 |
-| GuicedEE scanner / application jlink | 3 | 8.161 | 5,801.08 | 13.844 | 13.160–13.962 | 173.80 |
-| GuicedEE SPI / native | 3 | 0.577 | 77.07 | 0.654 | 0.653–0.655 | 25.30 |
-| Quarkus upstream SDKs / native | 3 | 0.574 | 113.76 | 0.688 | 0.679–0.705 | 2.05 |
+| GuicedEE SPI / full JDK | 3 | 7.984 | 17,400.07 | 25.375 | 25.322–25.384 | 173.71 |
+| GuicedEE scanner / full JDK | 3 | 8.493 | 17,493.73 | 26.062 | 25.323–26.736 | 101.20 |
+| Quarkus upstream SDKs / fast-JAR | 3 | 6.266 | 15,598.12 | 21.919 | 20.279–22.548 | 502.52 |
+| GuicedEE SPI / application jlink | 3 | 6.974 | 5,704.93 | 12.870 | 12.662–12.974 | 192.66 |
+| GuicedEE scanner / application jlink | 3 | 7.677 | 5,506.03 | 13.279 | 12.982–13.569 | 192.49 |
+| GuicedEE SPI / native | 3 | 0.575 | 80.99 | 0.651 | 0.651–0.669 | 3.25 |
+| Quarkus upstream SDKs / native | 3 | 0.571 | 97.65 | 0.669 | 0.660–0.675 | 1.95 |
 
 | Variant | Warm p50 (ms) | Warm p95 (ms) | Warm p99 (ms) | Peak memory median (MiB) | Peak memory min–max (MiB) | End memory median (MiB) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 91.64 | 97.89 | 98.55 | 299.10 | 294.73–375.63 | 295.64 |
-| GuicedEE scanner / full JDK | 92.00 | 98.88 | 99.43 | 307.20 | 300.46–381.36 | 298.01 |
-| Quarkus upstream SDKs / fast-JAR | 87.02 | 96.67 | 97.61 | 275.88 | 273.81–357.88 | 272.45 |
-| GuicedEE SPI / application jlink | 90.05 | 97.68 | 98.66 | 235.65 | 233.33–241.33 | 232.45 |
-| GuicedEE scanner / application jlink | 91.41 | 97.63 | 100.16 | 232.79 | 222.28–239.10 | 229.66 |
-| GuicedEE SPI / native | 5.21 | 30.45 | 31.11 | 69.57 | 69.45–70.11 | 66.81 |
-| Quarkus upstream SDKs / native | 5.27 | 25.54 | 26.50 | 55.44 | 54.75–55.70 | 51.71 |
+| GuicedEE SPI / full JDK | 89.88 | 96.83 | 98.13 | 297.61 | 297.12–300.74 | 293.73 |
+| GuicedEE scanner / full JDK | 91.11 | 96.91 | 99.45 | 305.35 | 299.72–306.85 | 302.29 |
+| Quarkus upstream SDKs / fast-JAR | 80.56 | 95.12 | 95.58 | 271.82 | 271.40–277.59 | 268.59 |
+| GuicedEE SPI / application jlink | 92.32 | 97.08 | 99.10 | 240.88 | 239.76–245.25 | 237.55 |
+| GuicedEE scanner / application jlink | 89.26 | 96.04 | 97.58 | 242.37 | 238.01–247.01 | 238.43 |
+| GuicedEE SPI / native | 4.58 | 30.20 | 30.39 | 68.79 | 68.64–69.01 | 65.45 |
+| Quarkus upstream SDKs / native | 4.57 | 22.11 | 24.99 | 55.18 | 55.01–55.97 | 51.58 |
 <!-- END GENERATED: jvm-default -->
 
 <a id="jvm-c1"></a>
@@ -314,27 +329,27 @@ These are the **same immutable images** as the default matrix, with C1 applied e
 all JVMs. Quarkus native is repeated as a batch reference using the same binary and no JIT flag.
 
 <!-- BEGIN GENERATED: jvm-c1 -->
-Displayed rows: **21 starts / 315 passing checks / 630 successful measured requests**. Each start: 10 warmups, 30 measured requests. Batch IDs in [latest measurements](results/latest/measurements.json): `20261115-104831`.
+Displayed rows: **21 starts / 315 passing checks / 630 successful measured requests**. Each start: 10 warmups, 30 measured requests. Batch IDs in [latest measurements](results/latest/measurements.json): `20261115-125853`.
 
 | Variant | Starts | Ready (s) | First request (ms) | Full business (s) | Full business min–max (s) | First OpenAPI (ms) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 3 | 5.065 | 11,703.39 | 16.769 | 16.479–22.637 | 21.92 |
-| GuicedEE scanner / full JDK | 3 | 5.234 | 11,698.60 | 16.885 | 16.831–17.201 | 99.30 |
-| Quarkus upstream SDKs / fast-JAR | 3 | 4.117 | 10,000.39 | 14.138 | 14.017–14.292 | 296.86 |
-| GuicedEE SPI / application jlink | 3 | 4.683 | 3,192.39 | 7.875 | 7.839–7.898 | 81.71 |
-| GuicedEE scanner / application jlink | 3 | 4.862 | 3,113.56 | 7.975 | 7.948–8.227 | 91.79 |
-| GuicedEE SPI / native | 3 | 0.582 | 80.45 | 0.663 | 0.634–0.688 | 3.53 |
-| Quarkus upstream SDKs / native | 3 | 0.579 | 118.21 | 0.691 | 0.689–0.712 | 2.18 |
+| GuicedEE SPI / full JDK | 3 | 4.865 | 11,510.02 | 16.402 | 16.365–16.517 | 94.01 |
+| GuicedEE scanner / full JDK | 3 | 4.999 | 11,491.92 | 16.491 | 16.463–16.624 | 11.98 |
+| Quarkus upstream SDKs / fast-JAR | 3 | 3.824 | 9,809.14 | 13.620 | 13.573–13.867 | 293.65 |
+| GuicedEE SPI / application jlink | 3 | 4.519 | 2,993.39 | 7.488 | 7.309–7.625 | 66.89 |
+| GuicedEE scanner / application jlink | 3 | 4.715 | 3,005.51 | 7.758 | 7.669–7.777 | 79.91 |
+| GuicedEE SPI / native | 3 | 0.567 | 83.31 | 0.651 | 0.649–0.660 | 3.30 |
+| Quarkus upstream SDKs / native | 3 | 0.571 | 98.16 | 0.669 | 0.660–0.702 | 2.09 |
 
 | Variant | Warm p50 (ms) | Warm p95 (ms) | Warm p99 (ms) | Peak memory median (MiB) | Peak memory min–max (MiB) | End memory median (MiB) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 19.60 | 89.55 | 89.62 | 262.79 | 262.24–262.80 | 258.71 |
-| GuicedEE scanner / full JDK | 34.96 | 89.73 | 89.86 | 265.22 | 265.21–265.35 | 262.05 |
-| Quarkus upstream SDKs / fast-JAR | 18.01 | 89.75 | 89.80 | 241.42 | 240.41–241.76 | 237.76 |
-| GuicedEE SPI / application jlink | 30.67 | 91.34 | 91.60 | 188.64 | 187.61–188.88 | 185.06 |
-| GuicedEE scanner / application jlink | 50.22 | 90.29 | 90.85 | 191.35 | 187.82–192.31 | 187.52 |
-| GuicedEE SPI / native | 5.82 | 28.83 | 29.83 | 69.11 | 68.92–69.39 | 65.50 |
-| Quarkus upstream SDKs / native | 5.06 | 28.97 | 30.12 | 54.96 | 54.46–55.27 | 51.82 |
+| GuicedEE SPI / full JDK | 31.01 | 90.06 | 90.25 | 262.50 | 262.21–263.40 | 259.53 |
+| GuicedEE scanner / full JDK | 22.80 | 90.43 | 91.28 | 265.04 | 264.57–265.81 | 261.83 |
+| Quarkus upstream SDKs / fast-JAR | 12.88 | 88.87 | 89.25 | 241.03 | 240.64–241.73 | 238.00 |
+| GuicedEE SPI / application jlink | 11.04 | 89.39 | 91.59 | 189.11 | 188.89–189.33 | 185.43 |
+| GuicedEE scanner / application jlink | 31.45 | 89.20 | 90.86 | 189.74 | 189.72–190.80 | 186.04 |
+| GuicedEE SPI / native | 4.65 | 27.61 | 29.75 | 69.26 | 68.66–69.67 | 65.53 |
+| Quarkus upstream SDKs / native | 4.91 | 29.12 | 30.30 | 55.14 | 54.92–55.14 | 51.71 |
 <!-- END GENERATED: jvm-c1 -->
 
 <a id="relative-differences"></a>
@@ -348,22 +363,22 @@ implied. The byte sizes are compared separately below.
 <!-- BEGIN GENERATED: relative -->
 | Profile | GuicedEE mode | Quarkus baseline | Ready | Full business | Warm p50 | Warm p95 | Peak memory |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| jvm-default | GuicedEE SPI / full JDK | JVM | +30.1% | +21.3% | +5.3% | +1.3% | +8.4% |
-| jvm-default | GuicedEE scanner / full JDK | JVM | +37.1% | +22.3% | +5.7% | +2.3% | +11.4% |
-| jvm-default | GuicedEE SPI / application jlink | JVM | +16.1% | -40.1% | +3.5% | +1.0% | -14.6% |
-| jvm-default | GuicedEE scanner / application jlink | JVM | +27.8% | -36.7% | +5.1% | +1.0% | -15.6% |
-| jvm-default | GuicedEE SPI / native | Native | +0.5% | -4.9% | -1.2% | +19.2% | +25.5% |
-| jvm-c1 | GuicedEE SPI / full JDK | JVM | +23.0% | +18.6% | +8.8% | -0.2% | +8.9% |
-| jvm-c1 | GuicedEE scanner / full JDK | JVM | +27.1% | +19.4% | +94.1% | -0.0% | +9.9% |
-| jvm-c1 | GuicedEE SPI / application jlink | JVM | +13.8% | -44.3% | +70.2% | +1.8% | -21.9% |
-| jvm-c1 | GuicedEE scanner / application jlink | JVM | +18.1% | -43.6% | +178.7% | +0.6% | -20.7% |
-| jvm-c1 | GuicedEE SPI / native | Native | +0.6% | -4.0% | +15.0% | -0.5% | +25.8% |
+| jvm-default | GuicedEE SPI / full JDK | JVM | +27.4% | +15.8% | +11.6% | +1.8% | +9.5% |
+| jvm-default | GuicedEE scanner / full JDK | JVM | +35.5% | +18.9% | +13.1% | +1.9% | +12.3% |
+| jvm-default | GuicedEE SPI / application jlink | JVM | +11.3% | -41.3% | +14.6% | +2.1% | -11.4% |
+| jvm-default | GuicedEE scanner / application jlink | JVM | +22.5% | -39.4% | +10.8% | +1.0% | -10.8% |
+| jvm-default | GuicedEE SPI / native | Native | +0.7% | -2.7% | +0.0% | +36.6% | +24.7% |
+| jvm-c1 | GuicedEE SPI / full JDK | JVM | +27.2% | +20.4% | +140.9% | +1.3% | +8.9% |
+| jvm-c1 | GuicedEE scanner / full JDK | JVM | +30.7% | +21.1% | +77.1% | +1.8% | +10.0% |
+| jvm-c1 | GuicedEE SPI / application jlink | JVM | +18.2% | -45.0% | -14.2% | +0.6% | -21.5% |
+| jvm-c1 | GuicedEE scanner / application jlink | JVM | +23.3% | -43.0% | +144.3% | +0.4% | -21.3% |
+| jvm-c1 | GuicedEE SPI / native | Native | -0.8% | -2.7% | -5.3% | -5.2% | +25.6% |
 <!-- END GENERATED: relative -->
 
 <!-- BEGIN GENERATED: findings -->
-**Default JVM:** linked SPI/scanner complete the first business response in **13.103/13.844 s**, versus **21.882 s** for Quarkus JVM. SPI jlink uses **40.1% less time**. The separate readiness and first-request columns show where that difference occurs.
+**Default JVM:** linked SPI/scanner complete the first business response in **12.870/13.279 s**, versus **21.919 s** for Quarkus JVM. SPI jlink uses **41.3% less time**. The separate readiness and first-request columns show where that difference occurs.
 
-**C1 JVM:** linked SPI/scanner complete the first business response in **7.875/7.975 s**, versus **14.138 s** for Quarkus JVM. SPI jlink uses **44.3% less time**. The separate readiness and first-request columns show where that difference occurs.
+**C1 JVM:** linked SPI/scanner complete the first business response in **7.488/7.758 s**, versus **13.620 s** for Quarkus JVM. SPI jlink uses **45.0% less time**. The separate readiness and first-request columns show where that difference occurs.
 <!-- END GENERATED: findings -->
 
 <a id="local-windows"></a>
@@ -402,7 +417,7 @@ grids above; it is not the same quantity as disk size.
 <!-- BEGIN GENERATED: packaging -->
 | Variant | Evidence group | Docker local image (MiB) | Executable (MiB) | Image ID prefix |
 | --- | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / native | native-standard | 389.03 | 166.93 | `22c33c17f637` |
+| GuicedEE SPI / native | native-standard | 357.23 | 142.35 | `cba41d26ee56` |
 | Quarkus upstream SDKs / native | native-standard | 353.04 | 143.31 | `32153f649fea` |
 | GuicedEE SPI / full JDK | jvm-default | 1,005.17 | — | `fad5ba9c3150` |
 | GuicedEE scanner / full JDK | jvm-default | 1,005.17 | — | `a9817e6465b0` |
@@ -447,8 +462,8 @@ not zero cost.
 | Scanner jlink | 3 | `20261115-033737` | `b8ea0ab4aef0` |
 | Quarkus wrapped JVM | 3 | `20261115-034350` | `8bb83742f618` |
 | Quarkus upstream JVM | 3 | `20261115-033737` | `ff1c796950c8` |
-| GuicedEE native | 3 | `20261115-104115` | `22c33c17f637` |
-| Quarkus upstream native | 3 | `20261115-104115` | `32153f649fea` |
+| GuicedEE native | 3 | `20261115-125151` | `cba41d26ee56` |
+| Quarkus upstream native | 3 | `20261115-125151` | `32153f649fea` |
 <!-- END GENERATED: phase-sources -->
 
 ### Framework startup phases
@@ -456,14 +471,14 @@ not zero cost.
 <!-- BEGIN GENERATED: phase-startup -->
 | Inclusive phase (ms) | SPI jlink | Scanner jlink | GuicedEE native |
 | --- | ---: | ---: | ---: |
-| Context discovery | 497.27 | 496.40 | 5.21 |
+| Context discovery | 497.27 | 496.40 | 4.60 |
 | Discovery | 0.29 | 589.98 | 0.00 |
 | ClassGraph scan | — | 491.63 | — |
-| Pre-startup hooks | 994.13 | 899.58 | 5.24 |
-| Guice module discovery | 403.11 | 408.97 | 1.04 |
-| Guice injector creation | 1,602.63 | 1,792.87 | 60.10 |
-| OpenAPI provider (within injector) | 897.98 | 994.18 | 5.40 |
-| Post-startup hooks | 998.05 | 1,095.50 | 93.15 |
+| Pre-startup hooks | 994.13 | 899.58 | 4.51 |
+| Guice module discovery | 403.11 | 408.97 | 0.88 |
+| Guice injector creation | 1,602.63 | 1,792.87 | 17.14 |
+| OpenAPI provider (within injector) | 897.98 | 994.18 | 5.02 |
+| Post-startup hooks | 998.05 | 1,095.50 | 92.42 |
 <!-- END GENERATED: phase-startup -->
 
 Phases are inclusive wall time, with nested work, class loading, CPU throttling and scheduling.
@@ -485,13 +500,13 @@ headline native comparison, with instrumentation enabled for the phase capture.
 <!-- BEGIN GENERATED: phase-workload -->
 | Inclusive phase (ms) | SPI jlink | Scanner jlink | Quarkus wrapped JVM | Quarkus upstream JVM | GuicedEE native | Quarkus upstream native |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| JDK HTTP client construction | 707.13 | 598.80 | 701.20 | 793.40 | 0.40 | 0.56 |
-| Commercetools client initialization | 996.40 | 909.83 | 13,811.62 | 10,999.41 | 33.64 | 44.63 |
-| Commercetools REST + first OAuth | 1,398.72 | 1,502.63 | 1,497.84 | 1,394.96 | 9.70 | 11.04 |
-| GraphQL completion | 202.51 | 201.64 | 203.84 | 200.61 | 2.33 | 2.63 |
-| Firestore client initialization | 1,797.49 | 1,699.99 | 1,603.51 | 1,219.99 | 5.43 | 37.80 |
-| Firestore write completion | 1,016.13 | 1,202.90 | 1,211.78 | 795.10 | 86.15 | 8.78 |
-| Firestore read completion | 93.23 | 7.31 | 13.11 | 12.64 | 1.70 | 1.41 |
+| JDK HTTP client construction | 707.13 | 598.80 | 701.20 | 793.40 | 0.35 | 0.60 |
+| Commercetools client initialization | 996.40 | 909.83 | 13,811.62 | 10,999.41 | 42.15 | 38.85 |
+| Commercetools REST + first OAuth | 1,398.72 | 1,502.63 | 1,497.84 | 1,394.96 | 8.17 | 10.54 |
+| GraphQL completion | 202.51 | 201.64 | 203.84 | 200.61 | 1.43 | 2.15 |
+| Firestore client initialization | 1,797.49 | 1,699.99 | 1,603.51 | 1,219.99 | 4.95 | 31.35 |
+| Firestore write completion | 1,016.13 | 1,202.90 | 1,211.78 | 795.10 | 9.97 | 8.01 |
+| Firestore read completion | 93.23 | 7.31 | 13.11 | 12.64 | 1.33 | 1.39 |
 <!-- END GENERATED: phase-workload -->
 
 The commercetools initialization phase is distinct from the first REST/OAuth request.
@@ -560,22 +575,22 @@ The same image can legitimately appear in more than one profile or dependency ex
 <!-- BEGIN GENERATED: image-identities -->
 | Group | Variant | Immutable Docker image ID |
 | --- | ---: | ---: |
-| native-standard | GuicedEE SPI / native | `sha256:22c33c17f6378602a853a4e869dcbe40f8f9152a6622a6348e572c18347b59ee` |
+| native-standard | GuicedEE SPI / native | `sha256:cba41d26ee568443fc067010e607b07b6ddc858fd47599402d0190fd9fb96132` |
 | native-standard | Quarkus upstream SDKs / native | `sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69` |
 | jvm-default | GuicedEE SPI / full JDK | `sha256:fad5ba9c31502a0d22bc8a2ddb31c8de9d7d49b05e773eb40de43a5ff9ee4cfb` |
 | jvm-default | GuicedEE scanner / full JDK | `sha256:a9817e6465b054e8d2419cc03883ce6b81f4ec1bbaeedaa3631a0a5ec6a4ec8f` |
 | jvm-default | Quarkus upstream SDKs / fast-JAR | `sha256:ff1c796950c84a86c8bc4f833fb17794bf4d4343ab52b98b51ffc0df436d45a8` |
 | jvm-default | GuicedEE SPI / application jlink | `sha256:867a886a5d8cf020d5d9320b93d521acf995535480c7f18d259620f031d7f86a` |
 | jvm-default | GuicedEE scanner / application jlink | `sha256:b8ea0ab4aef0522b489a9ab6e42a4944a996758f813c5395c4c66af4703df2ac` |
-| jvm-default | GuicedEE SPI / native | `sha256:22c33c17f6378602a853a4e869dcbe40f8f9152a6622a6348e572c18347b59ee` |
+| jvm-default | GuicedEE SPI / native | `sha256:cba41d26ee568443fc067010e607b07b6ddc858fd47599402d0190fd9fb96132` |
 | jvm-default | Quarkus upstream SDKs / native | `sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69` |
 | jvm-c1 | GuicedEE SPI / full JDK | `sha256:fad5ba9c31502a0d22bc8a2ddb31c8de9d7d49b05e773eb40de43a5ff9ee4cfb` |
 | jvm-c1 | GuicedEE scanner / full JDK | `sha256:a9817e6465b054e8d2419cc03883ce6b81f4ec1bbaeedaa3631a0a5ec6a4ec8f` |
 | jvm-c1 | Quarkus upstream SDKs / fast-JAR | `sha256:ff1c796950c84a86c8bc4f833fb17794bf4d4343ab52b98b51ffc0df436d45a8` |
 | jvm-c1 | GuicedEE SPI / application jlink | `sha256:867a886a5d8cf020d5d9320b93d521acf995535480c7f18d259620f031d7f86a` |
 | jvm-c1 | GuicedEE scanner / application jlink | `sha256:b8ea0ab4aef0522b489a9ab6e42a4944a996758f813c5395c4c66af4703df2ac` |
-| jvm-c1 | GuicedEE SPI / native | `sha256:22c33c17f6378602a853a4e869dcbe40f8f9152a6622a6348e572c18347b59ee` |
+| jvm-c1 | GuicedEE SPI / native | `sha256:cba41d26ee568443fc067010e607b07b6ddc858fd47599402d0190fd9fb96132` |
 | jvm-c1 | Quarkus upstream SDKs / native | `sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69` |
-| native-extended | GuicedEE SPI / native | `sha256:22c33c17f6378602a853a4e869dcbe40f8f9152a6622a6348e572c18347b59ee` |
+| native-extended | GuicedEE SPI / native | `sha256:cba41d26ee568443fc067010e607b07b6ddc858fd47599402d0190fd9fb96132` |
 | native-extended | Quarkus upstream SDKs / native | `sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69` |
 <!-- END GENERATED: image-identities -->

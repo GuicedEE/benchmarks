@@ -58,6 +58,8 @@ def main():
     parser.add_argument('--include-desktop', action='store_true')
     parser.add_argument('--include-cloud-control-plane', action='store_true',
                         help='Retain optional Firebase gRPC xDS/RLS/grpclb/Google C2P providers in GuicedEE native')
+    parser.add_argument('--full-sdk-reflection', action='store_true',
+                        help='Retain all traced SDK model queries and protobuf parse reflection roots in GuicedEE native')
     args = parser.parse_args()
     variants = select_variants(args.framework, 'both', args.runtime, args.native, args.quarkus_dependencies)
     if not variants:
@@ -134,6 +136,7 @@ def main():
                  '--build-arg', f'NATIVE_AUDIT={str(args.audit_native).lower()}',
                  '--build-arg', f'NATIVE_DESKTOP={str(args.include_desktop).lower()}',
                  '--build-arg', f'NATIVE_CLOUD_CONTROL_PLANE={str(args.include_cloud_control_plane).lower()}',
+                 '--build-arg', f'NATIVE_FULL_REFLECTION={str(args.full_sdk_reflection).lower()}',
                  '-f', ROOT/'docker/Dockerfile', ROOT])
     if not args.skip_emulator:
         npm = shutil.which('npm')
