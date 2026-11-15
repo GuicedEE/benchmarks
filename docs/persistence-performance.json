@@ -1,0 +1,133 @@
+{
+  "measuredAt": "2026-11-15T16:16:17.416279+00:00",
+  "batch": "20261115-161617",
+  "profile": "default",
+  "runs": 3,
+  "requests": 30,
+  "warmup": 10,
+  "variants": {
+    "guicedee": {
+      "label": "GuicedEE reactive stateless",
+      "image": "sha256:fd54493f513ea07352dad411eba6599998eedcefeec0713c965545b9982285e8",
+      "checks": 42,
+      "ormVersion": "7.4.15.Final",
+      "launchToReadyMs": {
+        "median": 16269.731200001843,
+        "minimum": 14932.993999995233,
+        "maximum": 16719.490700001188
+      },
+      "firstTransactionMs": {
+        "median": 2099.3906000003335,
+        "minimum": 1783.2892000005813,
+        "maximum": 2299.0267999994103
+      },
+      "launchToFirstTransactionMs": {
+        "median": 18053.04579999938,
+        "minimum": 17032.400499992946,
+        "maximum": 19018.536399998993
+      },
+      "peakMemoryBytes": {
+        "median": 246153216,
+        "minimum": 244957184,
+        "maximum": 260669440
+      },
+      "endMemoryBytes": {
+        "median": 243539968,
+        "minimum": 242933760,
+        "maximum": 258519040
+      },
+      "read": {
+        "p50Ms": 3.073300002142787,
+        "p95Ms": 86.51670000108425,
+        "p99Ms": 87.16509999794653,
+        "samples": 90
+      },
+      "create": {
+        "p50Ms": 8.46560000354657,
+        "p95Ms": 93.7850000045728,
+        "p99Ms": 96.54720000253292,
+        "samples": 90
+      },
+      "update": {
+        "p50Ms": 64.3495000040275,
+        "p95Ms": 97.88759999355534,
+        "p99Ms": 103.35250000207452,
+        "samples": 90
+      },
+      "delete": {
+        "p50Ms": 9.25709999864921,
+        "p95Ms": 96.98469999420922,
+        "p99Ms": 97.6239000010537,
+        "samples": 90
+      },
+      "cycle": {
+        "p50Ms": 107.86020000523422,
+        "p95Ms": 200.87040000362322,
+        "p99Ms": 291.35040000255685,
+        "samples": 90
+      }
+    },
+    "quarkus": {
+      "label": "Quarkus ORM / Narayana",
+      "image": "sha256:192b4c4543d4bcd149ec8bc5592b769dcbb17fdcd352b5ec5dc866fbea8ab489",
+      "checks": 42,
+      "ormVersion": "7.4.9.Final",
+      "launchToReadyMs": {
+        "median": 11197.211500002595,
+        "minimum": 9988.322099998186,
+        "maximum": 12431.604199999128
+      },
+      "firstTransactionMs": {
+        "median": 1898.6224999971455,
+        "minimum": 1896.1504000035347,
+        "maximum": 2106.2453000049572
+      },
+      "launchToFirstTransactionMs": {
+        "median": 13095.851500002027,
+        "minimum": 11884.486599999946,
+        "maximum": 14537.865999998758
+      },
+      "peakMemoryBytes": {
+        "median": 232505344,
+        "minimum": 219951104,
+        "maximum": 253710336
+      },
+      "endMemoryBytes": {
+        "median": 230608896,
+        "minimum": 217780224,
+        "maximum": 250953728
+      },
+      "read": {
+        "p50Ms": 3.12580000172602,
+        "p95Ms": 80.3105000013602,
+        "p99Ms": 81.90399999875808,
+        "samples": 90
+      },
+      "create": {
+        "p50Ms": 8.351199998287484,
+        "p95Ms": 88.52420000039274,
+        "p99Ms": 91.77679999993416,
+        "samples": 90
+      },
+      "update": {
+        "p50Ms": 9.371499996632338,
+        "p95Ms": 94.40569999424042,
+        "p99Ms": 96.20420000283048,
+        "samples": 90
+      },
+      "delete": {
+        "p50Ms": 7.073400003719144,
+        "p95Ms": 93.83859999798005,
+        "p99Ms": 94.04989999893587,
+        "samples": 90
+      },
+      "cycle": {
+        "p50Ms": 102.66019999835407,
+        "p95Ms": 202.25680000294233,
+        "p99Ms": 203.98430000204826,
+        "samples": 90
+      }
+    }
+  },
+  "inputSha256": "28a24712653c9844bac2afd65e2c6339523246efcf75cbfee9944d2c35da3726"
+}

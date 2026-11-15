@@ -15,6 +15,11 @@
       "path": "native-profile.json",
       "bytes": 6022,
       "sha256": "582443bc56a2787e5718ebb3e15d56dcc2699f6901ba6826b16cc2cd313dd13b"
+    },
+    {
+      "path": "persistence.json",
+      "bytes": 99344,
+      "sha256": "28a24712653c9844bac2afd65e2c6339523246efcf75cbfee9944d2c35da3726"
     }
   ]
 }

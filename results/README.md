@@ -24,6 +24,12 @@ log hashes, all timing samples and extracted completion evidence are retained he
 counts, code origins, SDK reflection/allocation policy and source hashes. Runtime timings
 come from the current comparison groups in `measurements.json`.
 
+`latest/persistence.json` contains the separate current PostgreSQL comparison: complete
+fresh starts, all raw read and CRUD-cycle latencies, fourteen correctness checks per start,
+independent database verification, image identities and source/JAR hashes. Its shared
+15-entity workload is not mixed into the vendor SDK comparison. Historical persistence runs
+and smoke checks stay under ignored `target/persistence-runs/`.
+
 Keep the latest complete cohort for each published execution mode and diagnostic profile.
 All repeated starts and request samples within that cohort remain available; "latest" does
 not mean selecting the last or fastest individual run. Before/after optimization experiments,
@@ -44,9 +50,11 @@ python tools/publish_results.py jvm-default target/runs/<batch>
 python tools/publish_results.py phases target/runs/<diagnostic-batch>
 python tools/publish_builds.py target/build-runs/<build-batch>
 python tools/publish_native_profile.py target/runs/<current-native-batch> --artifact-build-log target/<native-build.log>
+python tools/render_persistence.py --publish target/persistence-runs/<batch>/summary.json
 python tools/render_performance.py
 python tools/render_charts.py
 python tools/verify_latest.py
+python tools/render_persistence.py --check
 ```
 
 For counterbalanced native batches, pass both directories to `native-standard`. Publishing

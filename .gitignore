@@ -6,6 +6,7 @@
 **/.env*
 !guicedee/.env
 !guicedee-scan/.env
+!persistence/guicedee/.env
 **/logs/
 **/.vscode/
 **/*.iml
@@ -24,6 +25,7 @@ results/**
 !results/latest/measurements.json
 !results/latest/builds.json
 !results/latest/native-profile.json
+!results/latest/persistence.json
 !results/latest/manifest.json
 docker/build-provenance.json
 docker/analysis/

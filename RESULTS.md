@@ -1,7 +1,7 @@
 # Current performance state
 
 **Report: 15 November 2026.** All tables are generated from the latest retained samples.
-The complete default/C1 matrices were rerun together for this report; diagnostic and local
+The complete default/C1 matrices were rerun together for this report; diagnostic
 profiles have their own recorded batch identities.
 
 <!-- BEGIN GENERATED: host-condition -->
@@ -24,6 +24,8 @@ GuicedEE native records the lower median full-business startup; Quarkus native r
 **jlink versus native build:** GuicedEE SPI/scanner jlink packages in **17.68 / 17.34 s**, versus **66.36 s** for Quarkus native (**73.4% less time / 73.9% less time**).
 <!-- END GENERATED: build-headline -->
 
+![Clean compilation and complete packaging](docs/builds.svg)
+
 <!-- BEGIN GENERATED: build-grid -->
 | Artifact | Clean compile (s) | Compile min–max (s) | Complete package (s) | Package min–max (s) | Build baseline | Package difference |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -35,8 +37,6 @@ GuicedEE native records the lower median full-business startup; Quarkus native r
 | GuicedEE SPI / native | — | — | 65.05 | 64.97–80.24 | Quarkus native | -2.0% |
 | Quarkus upstream SDKs / native | — | — | 66.36 | 66.07–66.67 | Quarkus native | Baseline |
 <!-- END GENERATED: build-grid -->
-
-![Clean compilation and complete packaging](docs/builds.svg)
 
 **Timing boundary:** wall time from launching a new Maven process to its successful exit.
 `clean compile` measures the complete source-to-classes lifecycle, including Maven setup and
@@ -123,6 +123,8 @@ Values are median launch to completed business response in seconds. The default 
 matrices measure the same five immutable JVM/jlink images. The primary native-only comparison has
 a larger counterbalanced sample. Full grids retain every start and measured request.
 
+![Startup by execution mode](docs/startup.svg)
+
 <!-- BEGIN GENERATED: overview -->
 | Application | Full JDK default (s) | Full JDK C1 (s) | Application jlink default (s) | Application jlink C1 (s) | Native (s) |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -130,8 +132,6 @@ a larger counterbalanced sample. Full grids retain every start and measured requ
 | GuicedEE scanner | [23.706](RESULTS.md#jvm-default) | [13.364](RESULTS.md#jvm-c1) | [13.556](RESULTS.md#jvm-default) | [7.874](RESULTS.md#jvm-c1) | SPI only |
 | Quarkus / upstream SDKs | [23.387](RESULTS.md#jvm-default) | [14.311](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.678](RESULTS.md#native-standard) |
 <!-- END GENERATED: overview -->
-
-![Startup by execution mode](docs/startup.svg)
 
 Read the [native comparison](#native-standard), [default JVM matrix](#jvm-default),
 [C1 matrix](#jvm-c1), [percentage differences](#relative-differences),
@@ -506,6 +506,58 @@ wait for it, so the work is timed, although that adapter is not fully nonblockin
 client construction phase sums repeated constructions within each start before taking its
 median. Quarkus CDI proxy/subclass construction can initialize the workload twice; a second
 construction is retained in the capture rather than counted as a second business operation.
+
+<a id="postgresql-persistence"></a>
+## PostgreSQL persistence
+
+This separate workload uses 15 related entities and 19 foreign keys, with the same graph
+and query in both applications. Readiness includes the database lifecycle; the first business
+response includes the committed graph. The graph precedes the detailed measurements below.
+
+<!-- BEGIN GENERATED: persistence -->
+Measured **2026-11-15**, **default JVM profile**, batch `20261115-161617`. **6 fresh starts / 84 passing checks**. Each start has 10 warmup reads and CRUD cycles, then 30 measured reads and 30 measured CRUD cycles. All samples are retained.
+
+![PostgreSQL startup and transaction latency](docs/persistence.svg)
+
+| Application | Starts | DB-ready (s) | First transaction (ms) | Launch to committed graph (s) | Full startup min–max (s) | Peak charged memory (MiB) | Hibernate ORM |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| GuicedEE reactive stateless | 3 | 16.270 | 2099.39 | 18.053 | 17.032–19.019 | 234.75 | 7.4.15.Final |
+| Quarkus ORM / Narayana | 3 | 11.197 | 1898.62 | 13.096 | 11.884–14.538 | 221.73 | 7.4.9.Final |
+
+| Operation | GuicedEE p50 (ms) | p95 | p99 | Quarkus p50 (ms) | p95 | p99 | GuicedEE p50 difference |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Joined graph read | 3.07 | 86.52 | 87.17 | 3.13 | 80.31 | 81.90 | -1.7% |
+| Create 15 rows | 8.47 | 93.79 | 96.55 | 8.35 | 88.52 | 91.78 | +1.4% |
+| Update 15 rows | 64.35 | 97.89 | 103.35 | 9.37 | 94.41 | 96.20 | +586.7% |
+| Delete 15 rows | 9.26 | 96.98 | 97.62 | 7.07 | 93.84 | 94.05 | +30.9% |
+| Complete CRUD cycle | 107.86 | 200.87 | 291.35 | 102.66 | 202.26 | 203.98 | +5.1% |
+
+Per-start warm medians expose the variation within this small, CPU-capped cohort. No individual start is dropped.
+
+| Application | Start | Read p50 (ms) | Create p50 (ms) | Update p50 (ms) | Delete p50 (ms) | CRUD cycle p50 (ms) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| GuicedEE reactive stateless | 1 | 3.11 | 7.32 | 8.39 | 10.73 | 107.83 |
+| Quarkus ORM / Narayana | 1 | 3.13 | 8.35 | 9.37 | 7.07 | 102.66 |
+| Quarkus ORM / Narayana | 2 | 3.44 | 8.95 | 11.66 | 8.07 | 105.32 |
+| GuicedEE reactive stateless | 2 | 2.96 | 8.47 | 66.63 | 9.26 | 107.86 |
+| GuicedEE reactive stateless | 3 | 3.07 | 9.11 | 64.35 | 7.01 | 111.00 |
+| Quarkus ORM / Narayana | 3 | 2.71 | 5.98 | 7.83 | 6.72 | 99.06 |
+
+Update p50 spans **8.39–66.63 ms** for GuicedEE and **7.83–11.66 ms** for Quarkus across starts. Every container records CPU throttling; these measurements do not separate database work from quota waits. Individual operation medians do not add up to the median of a complete CRUD cycle.
+
+GuicedEE's launch-to-commit median differs by **+37.9%**; its peak charged container memory differs by **+5.9%**. Negative differences mean less time or memory. Warm percentiles are medians of per-start percentiles. A CRUD cycle includes four HTTP requests, three completed write transactions and one read without an explicit transaction; its latency is not one transaction. Database memory is separate from the application memory figures.
+
+Both full-JDK applications use the same immutable JDK base, schema, graph/query source and five-connection limit. The database runs separately at 2 CPU / 1 GiB with durable commit settings. Application limits are 250m CPU / 500 MiB. These are different persistence patterns: managed stateful JPA/Narayana versus explicit reactive stateless operations. This is not a distributed-transaction, saturation-throughput, native or jlink result.
+
+[Protocol and reproduction](persistence/README.md) · [All current raw samples](results/latest/persistence.json) · [CSV](docs/persistence-performance.csv)
+
+| Application | Immutable image |
+| --- | ---: |
+| GuicedEE reactive stateless | `sha256:fd54493f513ea07352dad411eba6599998eedcefeec0713c965545b9982285e8` |
+| Quarkus ORM / Narayana | `sha256:192b4c4543d4bcd149ec8bc5592b769dcbb17fdcd352b5ec5dc866fbea8ab489` |
+
+PostgreSQL image: `sha256:0d938e975177bef9f1f61f3f9dbcf2e0aa0a139568f66d3415ed8892eb97f6ac`. JDK base: `eclipse-temurin@sha256:b8705e936964c228dfce359e63dbf08f6c69cb380ed1d576b1f6b1064f15567d`.
+<!-- END GENERATED: persistence -->
 
 ## Capability and evidence coverage
 

@@ -5,7 +5,24 @@ full-JDK and application-jlink execution, and native executables against normal 
 applications. Both frameworks execute the same commercetools/GraphQL/Firestore business
 workload, with REST, retries, timeouts, metrics, OpenAPI and Swagger capability checks.
 
+## Repository layout
+
+| Path | Purpose |
+|---|---|
+| `guicedee`, `guicedee-scan` | Separate modular SPI and scanner applications |
+| `guicedee-jlink`, `guicedee-scan-jlink`, `guicedee-native` | Linked-runtime and native packaging |
+| `quarkus-standard` | Default Quarkus JVM/native comparison with upstream SDK dependencies |
+| `common`, `quarkus`, `quarkus-native` | Shared workload, Quarkus adapter and optional wrapped-SDK control/build support |
+| `persistence/model`, `persistence/guicedee`, `persistence/quarkus` | Shared 15-entity PostgreSQL workload, reactive stateless GuicedEE and Narayana Quarkus adapters |
+| `fixtures`, `docker`, `tools` | Local services, image recipes, build/measurement/report tools |
+| `results/latest` | Only the current published raw measurements and their manifest |
+| `target/runs` | Ignored output of new executions |
+
 ## Performance
+
+The SDK workload is reported below. The separate [PostgreSQL persistence comparison](persistence/README.md)
+measures transactions over 15 related entities; its [results](RESULTS.md#postgresql-persistence)
+include committed writes, joined reads, updates and rollbacks.
 
 <!-- BEGIN GENERATED: headline -->
 GuicedEE native completes the first full business request in **656 ms**, versus **678 ms** for Quarkus native (**3.2% less time**). Warm p50 is **5.21 / 5.11 ms** (GuicedEE / Quarkus). Peak charged memory is **68.47 / 55.30 MiB**; executables are **142.35 / 143.31 MiB**. The native sample contains **28 starts and 420 passing capability checks**.
@@ -104,26 +121,15 @@ emulator; the runner starts the deterministic vendor fixture and enforces contai
 See [RUNNING.md](RUNNING.md) for individual modes, configuration, explicit artifact repositories,
 native metadata and diagnostics.
 
-## Repository layout
-
-| Path | Purpose |
-|---|---|
-| `guicedee`, `guicedee-scan` | Separate modular SPI and scanner applications |
-| `guicedee-jlink`, `guicedee-scan-jlink`, `guicedee-native` | Linked-runtime and native packaging |
-| `quarkus-standard` | Default Quarkus JVM/native comparison with upstream SDK dependencies |
-| `common`, `quarkus`, `quarkus-native` | Shared workload, Quarkus adapter and optional wrapped-SDK control/build support |
-| `fixtures`, `docker`, `tools` | Local services, image recipes, build/measurement/report tools |
-| `results/latest` | Only the current published raw measurements and their manifest |
-| `target/runs` | Ignored output of new executions |
-
 [CSV](docs/current-performance.csv) and [JSON](docs/current-performance.json) expose the full
 numeric grids. [Publishing results](results/README.md) replaces current measurements without
 accumulating reports, source snapshots or experiment archives in the repository.
 
 ```shell
-python -m unittest discover -s tools -p test_harness.py
+python -m unittest discover -s tools -p "test_*.py"
 python tools/verify_latest.py
 python tools/render_performance.py --check
+python tools/render_persistence.py --check
 ```
 
 Measurements cover this local reference workload and its completed reactive flow. They are

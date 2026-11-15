@@ -28,6 +28,16 @@ wrappers under `docker/`.
 
 ## GuicedEE artifacts
 
+For the independent **15-entity PostgreSQL persistence comparison**, run
+`python tools/build_persistence.py`, then
+`python tools/compare_persistence.py --runs 3 --requests 30 --warmup 10`.
+The [persistence protocol](persistence/README.md) describes the shared schema, Narayana and
+reactive stateless adapters, checks, limits and publication commands. It uses Docker's
+PostgreSQL image and does not require the Firebase/Node.js fixture.
+Both JVMs receive `-Dlog4j.shutdownHookEnabled=false` so Log4j cannot stop logging
+before framework shutdown finishes. The runner verifies clean lifecycle completion
+and zero remaining database connections after each measured start.
+
 Maven resolves the framework release and its BOM normally. To benchmark a different version
 or an explicitly prepared Maven repository:
 

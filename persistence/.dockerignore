@@ -1,0 +1,13 @@
+**
+!guicedee/
+!guicedee/.env
+!guicedee/target/
+!guicedee/target/persistence-guicedee-1.0-SNAPSHOT.jar
+!guicedee/target/lib/
+!guicedee/target/lib/**
+!quarkus/
+!quarkus/target/
+!quarkus/target/quarkus-app/
+!quarkus/target/quarkus-app/**
+!target/
+!target/*-inputs.json

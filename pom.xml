@@ -11,6 +11,7 @@
         <module>quarkus-standard</module>
     </modules>
     <profiles>
+        <profile><id>persistence</id><modules><module>persistence/model</module><module>persistence/guicedee</module><module>persistence/quarkus</module></modules></profile>
         <profile><id>jlink</id><modules><module>guicedee-jlink</module><module>guicedee-scan-jlink</module></modules></profile>
         <profile><id>native-app</id><modules><module>guicedee-native</module></modules></profile>
         <profile><id>wrapped-control</id><modules><module>quarkus</module><module>quarkus-native</module></modules></profile>

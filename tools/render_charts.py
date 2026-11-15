@@ -13,7 +13,8 @@ def save(fig, name):
     svg = ROOT/f'docs/{name}.svg'
     fig.savefig(svg, metadata={'Date':None}, facecolor='white')
     plt.close(fig)
-    fingerprint = hashlib.sha256((ROOT/'docs/current-performance.json').read_bytes()).hexdigest()
+    dataset = 'persistence-performance.json' if name == 'persistence' else 'current-performance.json'
+    fingerprint = hashlib.sha256((ROOT/'docs'/dataset).read_bytes()).hexdigest()
     content = '\n'.join(line.rstrip() for line in svg.read_text(encoding='utf-8').splitlines())
     svg.write_text(content+'\n<!-- performance-data-sha256: '+fingerprint+' -->\n',
                    encoding='utf-8', newline='\n')
@@ -89,6 +90,32 @@ def main():
     fig.tight_layout(rect=(0,.16,1,.94))
     save(fig, 'startup')
     build_chart(data)
+    persistence_path = ROOT/'docs/persistence-performance.json'
+    if persistence_path.exists():
+        persistence_chart(json.loads(persistence_path.read_text()))
+
+
+def persistence_chart(data):
+    variants = data['variants']
+    names = ['guicedee','quarkus']
+    fig, axes = plt.subplots(1,3,figsize=(13,4.4))
+    metrics = [('Launch to committed graph','launchToFirstTransactionMs','median',1000,'Seconds'),
+               ('Joined read, warm p50','read','p50Ms',1,'Milliseconds'),
+               ('CRUD cycle, warm p50','cycle','p50Ms',1,'Milliseconds')]
+    for ax,(title,key,stat,scale,unit) in zip(axes,metrics):
+        values=[variants[n][key][stat]/scale for n in names]
+        ax.barh(range(2),values,color=['#167c80','#5950a3'],height=.5)
+        ax.set_yticks(range(2),['GuicedEE stateless','Quarkus Narayana'])
+        ax.invert_yaxis();ax.set_xlim(0,max(values)*1.35)
+        ax.set_title(title+f'\nGuicedEE {(values[0]/values[1]-1)*100:+.1f}% time',loc='left',fontsize=11,fontweight='bold');ax.set_xlabel(unit)
+        ax.spines[['top','right','left']].set_visible(False);ax.grid(axis='x',alpha=.15);ax.set_axisbelow(True)
+        for index,value in enumerate(values):ax.text(value+max(values)*.025,index,f'{value:.3f}',va='center',fontsize=9)
+    fig.suptitle('PostgreSQL: 15 entities, 19 foreign keys',x=.02,ha='left',fontsize=15,fontweight='bold')
+    fig.text(.02,.02,f"{data['runs']} fresh starts per application · {data['requests']} measured reads and CRUD cycles per start · {data['profile']} JVM profile\n"
+             'Apps: 250m CPU / 500 MiB · PostgreSQL: separate 2 CPU / 1 GiB · CRUD cycle = three write transactions and one read, over four HTTP requests\n'
+             'Shared schema, model and query · stateful ORM/JTA versus reactive stateless sessions · panels use different scales',fontsize=9)
+    fig.tight_layout(rect=(0,.17,1,.94))
+    save(fig,'persistence')
 
 
 if __name__ == '__main__':
