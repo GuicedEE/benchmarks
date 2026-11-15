@@ -19,7 +19,7 @@ LATEST = ROOT/'results/latest/measurements.json'
 ROW_KEYS = {'framework','variant','discovery','runtime','run','checks','samples','runtimeFlags',
             'jvmFlags','jvmFlagsSource','launch','dependencyMode','launchToReadyMs','firstBusinessStatus',
             'firstBusinessMs','launchToFirstBusinessMs','firstOpenApiJsonMs','warm','eligible',
-            'container','containerStats','discoveryEvidence','instrumented','phaseEvidence'}
+            'container','containerStats','discoveryEvidence','instrumented','phaseEvidence','memoryDiagnostics'}
 
 
 def compact(summary, environment, selected=None):

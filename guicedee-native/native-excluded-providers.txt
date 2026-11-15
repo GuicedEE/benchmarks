@@ -1,0 +1,17 @@
+# Optional cloud control-plane providers unused by this DNS-based HTTP/Firestore application.
+# NATIVE_CLOUD_CONTROL_PLANE=true restores the complete provider set at build time.
+com.google.firebase.internal.shaded.io.grpc.googleapis.GoogleCloudToProdExperimentalNameResolverProvider
+com.google.firebase.internal.shaded.io.grpc.googleapis.GoogleCloudToProdNameResolverProvider
+com.google.firebase.internal.shaded.io.grpc.grpclb.SecretGrpclbNameResolverProvider$Provider
+com.google.firebase.internal.shaded.io.grpc.grpclb.GrpclbLoadBalancerProvider
+com.google.firebase.internal.shaded.io.grpc.xds.XdsNameResolverProvider
+com.google.firebase.internal.shaded.io.grpc.xds.CdsLoadBalancerProvider
+com.google.firebase.internal.shaded.io.grpc.xds.PriorityLoadBalancerProvider
+com.google.firebase.internal.shaded.io.grpc.xds.WeightedTargetLoadBalancerProvider
+com.google.firebase.internal.shaded.io.grpc.xds.ClusterManagerLoadBalancerProvider
+com.google.firebase.internal.shaded.io.grpc.xds.ClusterImplLoadBalancerProvider
+com.google.firebase.internal.shaded.io.grpc.xds.LeastRequestLoadBalancerProvider
+com.google.firebase.internal.shaded.io.grpc.xds.RingHashLoadBalancerProvider
+com.google.firebase.internal.shaded.io.grpc.xds.WrrLocalityLoadBalancerProvider
+com.google.firebase.internal.shaded.io.grpc.xds.WeightedRoundRobinLoadBalancerProvider
+com.google.firebase.internal.shaded.io.grpc.rls.RlsLoadBalancerProvider

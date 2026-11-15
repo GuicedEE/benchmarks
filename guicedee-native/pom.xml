@@ -10,7 +10,12 @@
     </dependencies>
     <build>
         <resources>
-            <resource><directory>${project.basedir}/../quarkus-native/src/main/resources</directory></resource>
+            <resource>
+                <directory>${project.basedir}/../quarkus-native/src/main/resources</directory>
+                <!-- GuicedEE retains Native Image's ServiceLoader feature. The explicit
+                     provider constructors compensate for Quarkus disabling that feature. -->
+                <excludes><exclude>META-INF/native-image/dev.guicedee.benchmarks/*/sdk-services/reflect-config.json</exclude></excludes>
+            </resource>
             <resource><directory>src/main/resources</directory></resource>
         </resources>
         <plugins>

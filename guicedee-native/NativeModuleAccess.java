@@ -9,13 +9,32 @@ class NativeModuleAccess {
     public static void main(String[] args) throws Exception {
         var options = new TreeSet<String>();
         var resources = new TreeSet<String>();
+        var reflection = new TreeSet<String>();
+        var excluded = new HashSet<String>();
+        if (args.length > 4 && !args[4].equals("-")) {
+            for (String line : Files.readAllLines(Path.of(args[4]))) {
+                String provider = line.split("#", 2)[0].trim();
+                if (!provider.isEmpty()) excluded.add(provider);
+            }
+        }
         var requested = new HashSet<>(Files.readAllLines(Path.of(args[2])));
         List<Path> jars;
         try (var paths = Files.list(Path.of(args[0]))) {
             jars = paths.filter(path -> path.toString().endsWith(".jar")).toList();
         }
         for (Path path : jars) {
-            String module = ModuleFinder.of(path).findAll().iterator().next().descriptor().name();
+            var descriptor = ModuleFinder.of(path).findAll().iterator().next().descriptor();
+            String module = descriptor.name();
+            // When providers are excluded, Native Image removes them from the JPMS
+            // catalog but skips automatic reflection registration for that service.
+            // Preserve construction of the remaining providers without rooting exclusions.
+            for (var service : descriptor.provides()) {
+                if (Collections.disjoint(service.providers(), excluded)) continue;
+                for (String provider : service.providers()) if (!excluded.contains(provider)) {
+                    reflection.add("{\"name\":\"" + provider + "\",\"condition\":{\"typeReachable\":\""
+                            + service.service() + "\"},\"methods\":[{\"name\":\"<init>\",\"parameterTypes\":[]}]}");
+                }
+            }
             try (var jar = new JarFile(path.toFile())) {
                 var entries = jar.entries();
                 while (entries.hasMoreElements()) {
@@ -44,5 +63,8 @@ class NativeModuleAccess {
         Files.createDirectories(metadata);
         Files.writeString(metadata.resolve("reachability-metadata.json"),
                 "{\"resources\":[" + String.join(",", resources) + "]}\n");
+        // The SPI can be queried before the service type is initialized. Use an
+        // analysis-time condition, not a runtime typeReached guard on constructors.
+        Files.writeString(metadata.resolve("reflect-config.json"), "[" + String.join(",", reflection) + "]\n");
     }
 }

@@ -55,6 +55,8 @@ def collect_builds(evidence):
     result['container'] = raw.get('container')
     result['sharedSources'] = {key:value for key, value in raw['sourceFiles'].items()
                                if key.startswith('common/src/main/java/bench/')}
+    result['nativeSources'] = {key:value for key, value in raw['sourceFiles'].items()
+                               if key.startswith('guicedee-native/')}
     result['variants'] = {}
     for name in raw['variants']:
         values = {}
@@ -62,6 +64,8 @@ def collect_builds(evidence):
             rows = [r for r in raw['samples'] if r['variant'] == name and r['goal'] == goal]
             if rows:
                 values[goal] = dict(stats([r['wallSeconds'] for r in rows]), samples=len(rows))
+                if all('nativeCompilerPeakRssGB' in row for row in rows):
+                    values[goal]['nativeCompilerPeakRssGB'] = stats([row['nativeCompilerPeakRssGB'] for row in rows])
         result['variants'][name] = values
     for name, values in result['variants'].items():
         baseline = 'quarkus-standard-native' if name.endswith(('-native', '-jlink')) else 'quarkus-standard'
@@ -84,6 +88,28 @@ def verify_build_runtime_sources(data, image_inputs):
             actual = {e['path']:e['sha256'] for e in image_inputs.get(item['image'], {}).get('sharedSourceHashes', [])}
             if actual != expected:
                 raise ValueError(f'Build/runtime workload source mismatch: {group}/{name}')
+    if data.get('nativeAudit'):
+        native_sources = data['builds']['nativeSources']
+        for path, digest in data['nativeAudit']['sourceSha256'].items():
+            if native_sources.get(path) != digest:
+                raise ValueError(f'Build/runtime native policy source mismatch: {path}')
+
+
+def collect_native_audit(path, current_image):
+    global LATEST
+    raw = json.loads(path.read_text(encoding='utf-8'))
+    if raw['currentImage'] != current_image:
+        raise ValueError('Native audit does not describe the current executable')
+    saved = LATEST
+    cohorts = {}
+    try:
+        for key in ['comparison', 'providerOverride']:
+            batch = raw[key]
+            LATEST = {'batches': {batch['batch']: batch}}
+            cohorts[key] = collect_group([batch['batch']], None)
+    finally:
+        LATEST = saved
+    return {**{k:v for k,v in raw.items() if k not in ['comparison', 'providerOverride']}, **cohorts}
 
 
 def build_sections(data):
@@ -145,9 +171,19 @@ def build_sections(data):
         f"The complete GuicedEE native build takes **{native_g:.2f} s** versus **{native_q:.2f} s**, "
         f"or **{difference(native_g, native_q)}**. jlink produces a bundled JVM runtime; native builds produce "
         'ahead-of-time executables. The runtime grid shows the startup and request-latency tradeoffs for each artifact.')
-    return {'build-headline': headline, 'build-grid': grid, 'build-findings': interpretation, 'build-runtime': table(
+    sections = {'build-headline': headline, 'build-grid': grid, 'build-findings': interpretation, 'build-runtime': table(
         ['Artifact', 'Complete package (s)', 'Full-business startup (s)', 'Warm p50 (ms)'], tradeoffs),
         'sdk-headline': sdk}
+    memory = []
+    for name in ['guicedee-native', 'quarkus-standard-native']:
+        item = values[name]['package']
+        if item.get('nativeCompilerPeakRssGB'):
+            rss = item['nativeCompilerPeakRssGB']
+            memory.append([LABELS[name], item['samples'], f"{rss['median']:.2f}",
+                           f"{rss['minimum']:.2f}–{rss['maximum']:.2f}"])
+    if memory:
+        sections['build-memory'] = table(['Native compiler', 'Builds', 'Median peak RSS (GB)', 'Min–max (GB)'], memory)
+    return sections
 
 
 def collect_group(batches, selected):
@@ -244,6 +280,12 @@ def collect_phases():
                              image=rows[0]['container']['image'],
                              startup={k: statistics.median(v) for k, v in startup.items()},
                              workload={k: statistics.median(v) for k, v in workload.items()})
+        if all(row.get('memoryDiagnostics') for row in rows):
+            snapshots = [dict((key, int(value)/1024) for key,value in re.findall(
+                r'^(Rss|Pss|Pss_Anon|Pss_File):\s+(\d+) kB', row['memoryDiagnostics']['processSmaps'], re.M))
+                for row in rows]
+            result[label]['processMemoryMiB'] = {key:statistics.median(s[key] for s in snapshots)
+                                                 for key in ['Rss','Pss','Pss_Anon','Pss_File']}
     return result
 
 
@@ -320,6 +362,49 @@ def render(data):
     ]:
         delta.append([label, f'{av:.2f} {unit}', f'{bv:.2f} {unit}', f'{(av / bv - 1) * 100:+.1f}%'])
     sections['native-deltas'] = table(['Metric', 'GuicedEE native', 'Quarkus upstream native', 'GuicedEE difference'], delta)
+    if 'native-extended' in groups:
+        extended = groups['native-extended']['variants']
+        eg, eq = extended['guicedee-native'], extended['quarkus-standard-native']
+        sections['extended-findings'] = (
+            f"In this separate {eg['starts']}-start-per-framework cohort, median peak charged memory is "
+            f"**{eg['peakMiB']['median']:.2f} / {eq['peakMiB']['median']:.2f} MiB** (GuicedEE / Quarkus), "
+            f"a GuicedEE difference of **{(eg['peakMiB']['median']/eq['peakMiB']['median']-1)*100:+.1f}%**. "
+            f"Its full-business startup medians are **{eg['launchToFirstBusinessMs']['median']:.0f} / "
+            f"{eq['launchToFirstBusinessMs']['median']:.0f} ms**. Keep this smaller startup sample separate "
+            'from the primary counterbalanced comparison; longer request sequences also change allocation and GC behavior.')
+    if data.get('nativeAudit'):
+        audit = data['nativeAudit']
+        before = audit['comparison']['variants']['guicedee-native-before']
+        after = audit['comparison']['variants']['guicedee-native-after']
+        old, new = (audit['compilerStatistics'][key] for key in ['before', 'after'])
+        rows = []
+        for label, av, bv, unit in [
+            ('Executable', before['executableMiB'], after['executableMiB'], 'MiB'),
+            ('Reachable methods', old['analysis_results']['methods']['reachable'], new['analysis_results']['methods']['reachable'], 'count'),
+            ('Compiled code area', old['image_details']['code_area']['bytes']/MIB, new['image_details']['code_area']['bytes']/MIB, 'MiB'),
+            ('Image heap', old['image_details']['image_heap']['bytes']/MIB, new['image_details']['image_heap']['bytes']/MIB, 'MiB'),
+            ('Artifact compiler peak RSS', old['resource_usage']['memory']['peak_rss_bytes']/MIB, new['resource_usage']['memory']['peak_rss_bytes']/MIB, 'MiB'),
+            ('Full-business startup', before['launchToFirstBusinessMs']['median'], after['launchToFirstBusinessMs']['median'], 'ms'),
+            ('Peak charged memory', before['peakMiB']['median'], after['peakMiB']['median'], 'MiB')]:
+            values = [f'{v:,.0f}' if unit=='count' else f'{v:.2f} {unit}' for v in [av,bv]]
+            rows.append([label,*values,f'{(bv/av-1)*100:+.1f}%'])
+        sections['native-audit'] = table(['Metric','Previous GuicedEE artifact','Current GuicedEE artifact','Difference'],rows)
+        sections['native-audit'] += (
+            f"\n\nRuntime rows use {before['starts']} alternating starts per artifact, with the same CPU, memory, "
+            'heap and request settings. Compiler counts and peak RSS describe the single builds that produced the two artifacts; clean-build time is measured '
+            'separately in the build grid. '
+            f"The full-provider override also passed **{audit['providerOverride']['batchCapabilityChecks']} capability checks** "
+            f"across {audit['providerOverride']['batchStarts']} starts. This validates the existing workload with the override, "
+            'not connectivity to a real xDS control plane. [Raw audit evidence](results/latest/native-audit.json).')
+    memory = []
+    for label in ['GuicedEE native', 'Quarkus upstream native']:
+        phase = data['phases'][label]
+        if phase.get('processMemoryMiB'):
+            memory.append([label,phase['starts'],*[f"{phase['processMemoryMiB'][key]:.2f}"
+                                                   for key in ['Rss','Pss','Pss_Anon','Pss_File']]])
+    if memory:
+        sections['native-memory'] = table(['Instrumented native process','Starts','End RSS (MiB)',
+            'End PSS (MiB)','Anonymous PSS (MiB)','File-backed PSS (MiB)'],memory)
     startup_change = (a['launchToFirstBusinessMs']['median'] / b['launchToFirstBusinessMs']['median'] - 1) * 100
     sections['headline'] = (
         f"GuicedEE native completes the first full business request in **{a['launchToFirstBusinessMs']['median']:.0f} ms**, "
@@ -435,6 +520,9 @@ def main():
     data = {'measuredOn': LATEST['measuredOn'], 'reportAsOf': LATEST['reportAsOf'],
             'aggregation': 'All starts retained; warm percentiles are medians of per-start percentiles.',
             'groups': {name: collect_group(*config) for name, config in GROUPS.items()}, 'phases': collect_phases()}
+    audit_path = EVIDENCE_ROOT/'results/latest/native-audit.json'
+    if audit_path.exists():
+        data['nativeAudit'] = collect_native_audit(audit_path, data['groups']['native-standard']['variants']['guicedee-native']['image'])
     if LATEST.get('hostObservations'):
         host = LATEST['hostObservations']
         before = [row for row in host['observations'] if row['stage'].endswith('-before')]
@@ -445,6 +533,8 @@ def main():
             recoveredBoundaryCpuPercent=host.get('recoveredBoundaryCpuPercent', {}),
             coverage=host['coverage'])
     data['inputSha256'] = {'results/latest/measurements.json': hashlib.sha256(evidence.read_bytes()).hexdigest()}
+    if audit_path.exists():
+        data['inputSha256']['results/latest/native-audit.json'] = hashlib.sha256(audit_path.read_bytes()).hexdigest()
     output = io.StringIO(newline='')
     writer = csv.writer(output, lineterminator='\n')
     writer.writerow(['group', 'variant', 'starts', 'ready_ms', 'first_request_ms', 'full_business_ms',
@@ -473,7 +563,7 @@ def main():
             if preparation and runtime else '')
         sections['host-condition'] = (
             f"All timing profiles were rerun after the host boot at **{host['bootTimeUtc']}**. "
-            f"Across {host['samples']} retained one-second preflight/local-start samples, host CPU utilization "
+            f"Across {host['samples']} retained one-second preflight samples, host CPU utilization "
             f"ranged **{cpu['minimum']:.1f}–{cpu['maximum']:.1f}%**, available physical memory "
             f"**{memory['minimum']/1024:.1f}–{memory['maximum']/1024:.1f} GiB**. "
             + preparation_note + 'Build, runtime and diagnostic stages ran sequentially. '

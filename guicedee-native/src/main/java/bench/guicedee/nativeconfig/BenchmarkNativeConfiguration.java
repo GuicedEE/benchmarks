@@ -4,10 +4,20 @@ import com.guicedee.nativeimage.GuiceNativeConfiguration;
 import com.guicedee.nativeimage.GuiceNativeRegistration;
 import java.util.Arrays;
 import java.util.Set;
+import org.graalvm.nativeimage.hosted.RuntimeSystemProperties;
 
 /** Metadata for the unchanged SPI application. No application instances are created during the build. */
 public final class BenchmarkNativeConfiguration implements GuiceNativeConfiguration {
     @Override public void configure(GuiceNativeRegistration registration) {
+        // Use 64 KiB pooled chunks for this small HTTP service (the normal Quarkus
+        // default). Relocated SDKs have distinct property names. These are runtime
+        // defaults: an application's -D settings still take precedence.
+        for (String prefix : new String[]{"io.netty", "com.commercetools.internal.shaded.io.netty",
+                "com.google.firebase.internal.shaded.io.netty",
+                "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty"}) {
+            RuntimeSystemProperties.register(prefix + ".allocator.maxOrder", "3");
+            RuntimeSystemProperties.register(prefix + ".allocator.type", "pooled");
+        }
         try {
             var loader = getClass().getClassLoader();
             for (String name : new String[]{"tools.jackson.databind.json.JsonMapper",

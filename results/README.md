@@ -17,10 +17,13 @@ untimed preparation, rather than continuous background load during every timed s
 
 `latest/builds.json` contains the current clean-build cohort: all compile/package samples,
 untimed cache preparation, exact commands, toolchain details and input hashes. It separates
-build costs from runtime measurements. New executions write full Maven logs to the ignored
-local run folder; log hashes and completion/timing lines accompany the compact published
-samples. The original full logs for the current build cohort are no longer retained locally;
-all timing samples and extracted completion evidence are retained here.
+build costs from runtime measurements. Full Maven logs stay in the ignored local run folder;
+log hashes, all timing samples and extracted completion evidence are retained here.
+
+`latest/native-audit.json` retains the paired previous/current native artifact comparison,
+compiler inclusion counts, allocation policy, and full-provider override validation. Only
+the accepted final configuration is published; exploratory and failed candidates remain
+in ignored local output. The extended native cohort retains all 1,000 requests per start.
 
 New executions write to ignored `target/runs/<timestamp>/`.
 The root Maven aggregator preserves this evidence directory during `clean`; application
@@ -32,6 +35,7 @@ To replace a published group:
 python tools/publish_results.py jvm-default target/runs/<batch>
 python tools/publish_results.py phases target/runs/<diagnostic-batch> target/runs/<wrapped-diagnostic-batch>
 python tools/publish_builds.py target/build-runs/<build-batch>
+python tools/publish_native_audit.py target/runs/<paired-native-batch> target/runs/<provider-override-batch> --artifact-build-log target/<native-build.log>
 python tools/render_performance.py
 python tools/render_charts.py
 python tools/verify_latest.py

@@ -281,6 +281,11 @@ def probe(variant, run, out, upstream, flags, args):
                 row['containerStats']=subprocess.run(['docker','exec',container,'sh','-c',
                     'cat /sys/fs/cgroup/cpu.stat /sys/fs/cgroup/memory.peak /sys/fs/cgroup/memory.current /sys/fs/cgroup/memory.events'],
                     capture_output=True,text=True).stdout
+                if diagnostics:
+                    row['memoryDiagnostics'] = {
+                        name: subprocess.run(['docker','exec',container,'cat',path], capture_output=True,text=True).stdout
+                        for name, path in [('processSmaps', '/proc/1/smaps_rollup'),
+                                           ('containerMemory', '/sys/fs/cgroup/memory.stat')]}
                 if row['container']['nanoCpus']!=250000000 or row['container']['memoryBytes']!=524288000 or details['State']['OOMKilled']:
                     row['eligible']=False
             else: row['eligible']=False

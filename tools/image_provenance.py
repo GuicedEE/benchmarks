@@ -13,7 +13,8 @@ def capture():
         if any(part in ['target', 'node_modules', 'repository', 'results', '.idea', '.git', '__pycache__', 'analysis'] for part in relative.parts):
             continue
         if path.is_file() and (path.suffix in ['.java', '.py', '.xml', '.properties', '.ps1', '.sh']
-                              or path.name in ['Dockerfile', '.env', 'jlink-modules.txt','native-metadata-inputs.json','native-trace-inputs.json'] or 'META-INF' in relative.parts):
+                              or path.name in ['Dockerfile', '.env', 'jlink-modules.txt','native-metadata-inputs.json','native-trace-inputs.json',
+                                               'native-resources.txt', 'native-excluded-providers.txt'] or 'META-INF' in relative.parts):
             data = path.read_bytes()
             sources.append({'path': relative.as_posix(), 'sha256': hashlib.sha256(data).hexdigest(),
                             'content': data.decode('utf-8')})

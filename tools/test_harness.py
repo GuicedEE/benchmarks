@@ -64,6 +64,16 @@ class HarnessTest(unittest.TestCase):
         evidence['sha256:image']['sharedSourceHashes'][0]['sha256'] = 'older'
         with self.assertRaises(ValueError): verify_build_runtime_sources(data, evidence)
 
+    def test_report_rejects_native_build_with_different_inclusion_policy(self):
+        path = 'guicedee-native/native-excluded-providers.txt'
+        data = dict(builds=dict(sharedSources={'common/src/main/java/bench/Workload.java':'same'},
+                                nativeSources={path:'measured-policy'}), groups={},
+                    nativeAudit=dict(sourceSha256={path:'measured-policy'}))
+        verify_build_runtime_sources(data, {})
+        data['builds']['nativeSources'][path] = 'different-policy'
+        with self.assertRaisesRegex(ValueError, 'native policy source mismatch'):
+            verify_build_runtime_sources(data, {})
+
     def test_build_comparison_includes_runnable_packaging_and_offline_clean(self):
         for variant in compare_builds.VARIANTS:
             invocation = compare_builds.command(variant, 'package', '2.6.0')

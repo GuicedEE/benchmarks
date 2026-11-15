@@ -31,6 +31,7 @@
 !guicedee-native/build-native.sh
 !guicedee-native/NativeModuleAccess.java
 !guicedee-native/native-resources.txt
+!guicedee-native/native-excluded-providers.txt
 !guicedee-native/native-trace-inputs.json
 !guicedee-native/src/
 !guicedee-native/src/**
