@@ -40,6 +40,8 @@ def main():
     base = json.loads(subprocess.check_output(['docker','image','inspect',args.java_image],text=True))[0]
     base_reference = base['RepoDigests'][0]
     provenance = dict(schemaVersion=1, sources=source_hashes(), javaImage=base_reference,
+                      modelArtifacts={p.name:hashlib.sha256(p.read_bytes()).hexdigest()
+                                      for p in (ROOT/'persistence/model/target').glob('persistence-model-*.jar')},
                       guicedeeVersion=args.guicedee_version,
                       maven=subprocess.check_output([args.maven,'-version'],text=True),
                       java=subprocess.check_output(['java','-version'],stderr=subprocess.STDOUT,text=True))

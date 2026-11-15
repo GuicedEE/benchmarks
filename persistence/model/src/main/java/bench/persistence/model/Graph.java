@@ -64,7 +64,7 @@ public final class Graph {
     }
     private static <T extends Row> T row(T value, long id) {
         value.id = id;
-        value.label = value.getClass().getSimpleName()+":"+id;
+        value.setLabel(value.getClass().getSimpleName()+":"+id);
         return value;
     }
     public static List<Row> rows(List<Object[]> result) {
@@ -100,12 +100,12 @@ public final class Graph {
         var rows = create(value.id());
         for (int i=0; i<rows.size(); i++) {
             String name = ENTITIES.get(i).getSimpleName();
-            rows.get(i).label = value.labels().get(name);
+            rows.get(i).setLabel(value.labels().get(name));
             rows.get(i).version = value.versions().get(name);
         }
         return rows;
     }
-    public static void update(List<Row> rows) { rows.forEach(row -> row.label += ":updated"); }
+    public static void update(List<Row> rows) { rows.forEach(row -> row.setLabel(row.getLabel() + ":updated")); }
     public static List<Row> reverse(List<Row> rows) { return rows.reversed(); }
     public static final class MissingGraph extends RuntimeException {}
     public static final class RollbackProbe extends RuntimeException {}

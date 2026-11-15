@@ -18,6 +18,7 @@ import urllib.error
 import urllib.request
 import uuid
 from compare import port, percentile
+from persistence_diagnostics import PersistenceDiagnostics, JFR_FLAG, PG_FLAGS
 
 ROOT = Path(__file__).resolve().parents[1]
 ENTITIES = ['Country','Region','Address','Customer','Supplier','Category','Product','Warehouse',
@@ -25,7 +26,7 @@ ENTITIES = ['Country','Region','Address','Customer','Supplier','Category','Produ
 TABLES = ['bench_'+re.sub(r'(?<!^)(?=[A-Z])','_',name).lower() for name in ENTITIES]
 VARIANTS = ['guicedee','quarkus']
 FLAGS = ['-Xms128m','-Xmx384m','-XX:ActiveProcessorCount=2','-Dlog4j.shutdownHookEnabled=false']
-CONTRACT = '15-entity-projection-read-stateless-write-v1'
+CONTRACT = '15-entity-projection-read-stateless-write-enhanced-v2'
 CHECKS = {'readinessAndTransactionMode','schemaAndRelationships','createGraph','committedFifteenRows',
           'joinedRead','updatesAndVersions','rollbackAfterFifteenInserts','rollbackInvisibleToNewTransaction',
           'duplicateKeyPreservesCommittedGraph','concurrentIndependentTransactions','foreignKeyEnforced',
@@ -95,6 +96,8 @@ def cycle(base, identifier):
 
 
 def validate(data):
+    if data.get('instrumented') or any('StartFlightRecording' in flag for flag in data.get('jvmFlags', [])):
+        raise ValueError('Instrumented persistence diagnostics cannot be published as performance measurements')
     if data.get('contract') != CONTRACT:
         raise ValueError('Persistence evidence does not describe the current projection/transaction contract')
     rows = data['starts']
@@ -118,10 +121,15 @@ def validate(data):
     inputs = data['buildInputs']
     if inputs['guicedee']['sources'] != inputs['quarkus']['sources'] or inputs['guicedee']['javaImage'] != inputs['quarkus']['javaImage']:
         raise ValueError('Persistence variants must share the source contract and JDK base')
-    model_hashes = [{digest for path,digest in inputs[name]['jarSha256'].items() if 'persistence-model-' in path}
-                    for name in VARIANTS]
-    if len(model_hashes[0]) != 1 or model_hashes[0] != model_hashes[1]:
-        raise ValueError('Persistence applications must package the identical shared entity model')
+    model = inputs['guicedee'].get('modelArtifacts', {})
+    if len(model) != 2 or model != inputs['quarkus'].get('modelArtifacts'):
+        raise ValueError('Persistence applications must use the same compiled source model and enhancement build')
+    for variant in VARIANTS:
+        expected_model = {name:digest for name,digest in model.items() if name.endswith('-enhanced.jar') == (variant=='guicedee')}
+        packaged_model = {Path(path).name.removeprefix('dev.guicedee.benchmarks.'):digest
+                          for path,digest in inputs[variant]['jarSha256'].items() if 'persistence-model-' in path}
+        if len(expected_model) != 1 or packaged_model != expected_model:
+            raise ValueError('Incorrect shared entity model artifact for framework enhancement')
     settings=data['postgres']['settings']
     if any(settings[key] != 'on' for key in ['fsync','synchronous_commit','full_page_writes']) or settings['isolation'] != 'read committed':
         raise ValueError('Persistence comparison requires durable READ COMMITTED transactions')
@@ -131,6 +139,7 @@ def run_start(args, data, output, db, network, variant, run):
     database = f'bench_{variant}_{run}'
     psql(db,f'create database {database};')
     psql(db,(ROOT/'persistence/schema.sql').read_text(),database)
+    if args.diagnostics: psql(db,'create extension pg_stat_statements;',database)
     # Confirm Hibernate is using fifteen relational tables and all nineteen declared FKs.
     counts = psql(db,"select count(*) from pg_tables where schemaname='public' and tablename like 'bench_%'; "
                      "select count(*) from pg_constraint where contype='f';",database).stdout.splitlines()
@@ -141,11 +150,14 @@ def run_start(args, data, output, db, network, variant, run):
     row = dict(variant=variant,run=run,image=data['images'][variant],jvmFlags=data['jvmFlags'],
                eligible=False,checks={},readsMs=[],cycles=[])
     data['starts'].append(row)
+    diagnostics = PersistenceDiagnostics(output,variant,run,app,db,database,docker,psql) if args.diagnostics else None
+    if diagnostics: diagnostics.mark('launch')
     started = time.perf_counter()
     try:
         docker('run','-d','--name',app,'--network',network,'--cpus','0.25','--memory','500m','--memory-swap','500m',
                '-p',f'127.0.0.1:{http_port}:8080','-e','DB_HOST=postgres','-e',f'DB_NAME={database}',
-               '-e','DB_USER=bench','-e','DB_PASSWORD=bench','-e','JAVA_TOOL_OPTIONS='+' '.join(data['jvmFlags']),data['images'][variant])
+               '-e','DB_USER=bench','-e','DB_PASSWORD=bench','-e','JAVA_TOOL_OPTIONS='+' '.join(data['jvmFlags']),
+               *(['-e','GUICEDEE_DIAGNOSTICS_DIR=/tmp/diagnostics'] if diagnostics and variant=='guicedee' else []),data['images'][variant])
         deadline = time.monotonic()+240
         ready = None
         while time.monotonic() < deadline:
@@ -159,6 +171,7 @@ def run_start(args, data, output, db, network, variant, run):
             time.sleep(.1)
         if ready is None: raise TimeoutError(f'{variant} did not reach database readiness')
         row['launchToReadyMs'] = (time.perf_counter()-started)*1000
+        if diagnostics: diagnostics.mark('ready')
         row['readiness'] = ready
         mode = 'hibernate-reactive-stateless' if variant == 'guicedee' else 'narayana-jta'
         if ready['entities'] != 15 or ready['transactionMode'] != mode: raise ValueError(f'Incorrect persistence wiring: {ready}')
@@ -166,6 +179,7 @@ def run_start(args, data, output, db, network, variant, run):
         row['checks']['schemaAndRelationships'] = True
         row['firstTransactionMs'] = expect(base,'POST','/graphs/1',expected(1))
         row['launchToFirstTransactionMs'] = (time.perf_counter()-started)*1000
+        if diagnostics: diagnostics.mark('first-transaction-complete',sql=True)
         row['checks']['createGraph'] = True
         row['databaseEvidence'] = dict(committed=check_database(db,database,1))
         row['checks']['committedFifteenRows'] = True
@@ -196,9 +210,11 @@ def run_start(args, data, output, db, network, variant, run):
         expect(base,'POST','/graphs/10',expected(10))
         for n in range(args.warmup):
             expect(base,'GET','/graphs/10',expected(10)); cycle(base,100+n)
+        if diagnostics: diagnostics.mark('warm-measurement-start',sql=True)
         for n in range(args.requests):
             row['readsMs'].append(expect(base,'GET','/graphs/10',expected(10)))
             row['cycles'].append(cycle(base,10000+n))
+        if diagnostics: diagnostics.mark('measurement-complete',sql=True)
         check_database(db,database,10)
         remaining = psql(db,'select '+ ' + '.join(f'(select count(*) from {t})' for t in TABLES)+';',database).stdout.strip()
         if remaining != '15': raise ValueError(f'Rows leaked from completed CRUD cycles: {remaining}')
@@ -214,6 +230,7 @@ def run_start(args, data, output, db, network, variant, run):
         # Shutdown is outside the timing/memory samples. Verify lifecycle ownership
         # instead of hiding a missing cleanup hook behind a forced container kill.
         docker('stop','--time','45',app)
+        if diagnostics: diagnostics.collect()
         stopped = json.loads(docker('inspect',app).stdout)[0]['State']
         logs = docker('logs',app)
         connections = int(psql(db,f"select count(*) from pg_stat_activity where datname='{database}' and backend_type='client backend';").stdout)
@@ -244,6 +261,7 @@ def main():
     parser.add_argument('--image-tag',default='local')
     parser.add_argument('--postgres-image',default='postgres:17')
     parser.add_argument('--tiered',action='store_true',help='Apply equal C1 tuning to both JVMs')
+    parser.add_argument('--diagnostics',action='store_true',help='Record JFR, GuicedEE phases and PostgreSQL query/plan statistics; ineligible for publication')
     args = parser.parse_args()
     if min(args.runs,args.requests)<1 or args.warmup<0: parser.error('Invalid sample counts')
     timestamp = datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')
@@ -253,7 +271,8 @@ def main():
     db,volume = network+'-db',network+'-data'
     data = dict(schemaVersion=1,contract=CONTRACT,measuredAt=datetime.now(timezone.utc).isoformat(),batch=timestamp,
         runs=args.runs,requests=args.requests,warmup=args.warmup,host=platform.platform(),
-        profile='c1' if args.tiered else 'default', jvmFlags=FLAGS+(['-XX:TieredStopAtLevel=1'] if args.tiered else []),
+        profile='c1' if args.tiered else 'default', instrumented=args.diagnostics,
+        jvmFlags=FLAGS+(['-XX:TieredStopAtLevel=1'] if args.tiered else [])+([JFR_FLAG] if args.diagnostics else []),
         protocol='Fresh JVM and database per start; sequential alternating variants; shared schema outside timing; '
                  'first business response includes 15 inserts, joined read and completed commit; '
                  'warm workload interleaves joined scalar-projection reads without explicit transactions with '
@@ -274,7 +293,8 @@ def main():
         docker('run','-d','--name',db,'--network',network,'--network-alias','postgres','--cpus','2',
                '--memory','1g','--memory-swap','1g','--shm-size','256m','-v',f'{volume}:/var/lib/postgresql/data',
                '-e','POSTGRES_USER=bench','-e','POSTGRES_PASSWORD=bench',pg['Id'],
-               '-c','shared_buffers=128MB','-c','max_connections=40','-c','fsync=on','-c','synchronous_commit=on')
+               '-c','shared_buffers=128MB','-c','max_connections=40','-c','fsync=on','-c','synchronous_commit=on',
+               *(PG_FLAGS if args.diagnostics else []))
         for _ in range(120):
             if docker('exec',db,'pg_isready','-h','127.0.0.1','-U','bench',check=False).returncode == 0: break
             time.sleep(.5)
@@ -285,8 +305,9 @@ def main():
         for run in range(1,args.runs+1):
             for variant in VARIANTS if run % 2 else list(reversed(VARIANTS)):
                 run_start(args,data,output,db,network,variant,run)
-        data['eligible'] = True
-        validate(data)
+        data['eligible'] = not args.diagnostics
+        if args.diagnostics: print('Instrumented diagnostics only; performance publication is disabled.',flush=True)
+        else: validate(data)
     finally:
         (output/'summary.json').write_text(json.dumps(data,indent=2)+'\n',encoding='utf-8')
         print('Evidence:',output,flush=True)

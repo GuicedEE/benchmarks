@@ -12,6 +12,7 @@
             <groupId>dev.guicedee.benchmarks</groupId>
             <artifactId>persistence-model</artifactId>
             <version>${project.version}</version>
+            <classifier>enhanced</classifier>
         </dependency>
         <dependency>
             <groupId>com.guicedee</groupId>

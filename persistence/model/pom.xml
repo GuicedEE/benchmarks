@@ -1,7 +1,37 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
   <groupId>dev.guicedee.benchmarks</groupId><artifactId>persistence-model</artifactId><version>1.0-SNAPSHOT</version>
-  <properties><maven.compiler.release>25</maven.compiler.release><project.build.sourceEncoding>UTF-8</project.build.sourceEncoding></properties>
-  <dependencies><dependency><groupId>jakarta.persistence</groupId><artifactId>jakarta.persistence-api</artifactId><version>3.2.0</version></dependency></dependencies>
-  <build><plugins><plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.1</version></plugin></plugins></build>
+  <properties>
+    <maven.compiler.release>25</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <hibernate.enhancement.version>7.4.15.Final</hibernate.enhancement.version>
+  </properties>
+  <dependencies>
+    <dependency><groupId>jakarta.persistence</groupId><artifactId>jakarta.persistence-api</artifactId><version>3.2.0</version></dependency>
+    <dependency><groupId>org.hibernate.orm</groupId><artifactId>hibernate-core</artifactId><version>${hibernate.enhancement.version}</version><scope>provided</scope></dependency>
+  </dependencies>
+  <build><plugins>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.1</version></plugin>
+    <!-- Keep the original model for Quarkus's own enhancement. GuicedEE uses an
+         enhanced copy of the same compiled classes, with its JPMS descriptor. -->
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId><artifactId>maven-resources-plugin</artifactId>
+      <executions><execution><id>copy-enhancement-input</id><phase>process-classes</phase><goals><goal>copy-resources</goal></goals>
+        <configuration><outputDirectory>${project.build.directory}/enhanced-classes</outputDirectory>
+          <resources><resource><directory>${project.build.outputDirectory}</directory><filtering>false</filtering></resource></resources>
+        </configuration>
+      </execution></executions>
+    </plugin>
+    <plugin>
+      <groupId>org.hibernate.orm</groupId><artifactId>hibernate-maven-plugin</artifactId><version>${hibernate.enhancement.version}</version>
+      <executions><execution><goals><goal>enhance</goal></goals></execution></executions>
+      <configuration><classesDirectory>${project.build.directory}/enhanced-classes</classesDirectory></configuration>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId><artifactId>maven-jar-plugin</artifactId>
+      <executions><execution><id>enhanced-model</id><goals><goal>jar</goal></goals>
+        <configuration><classifier>enhanced</classifier><classesDirectory>${project.build.directory}/enhanced-classes</classesDirectory></configuration>
+      </execution></executions>
+    </plugin>
+  </plugins></build>
 </project>

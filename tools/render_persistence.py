@@ -89,7 +89,7 @@ def render(data, raw):
                 'versus explicit reactive stateless operations. This is not a distributed-transaction, saturation-throughput, '
                 'native or jlink result.\n\n'
                 '[Protocol and reproduction](persistence/README.md) · [All current raw samples](results/latest/persistence.json) · '
-                '[CSV](docs/persistence-performance.csv)\n\n')
+                '[CSV](docs/persistence-performance.csv) · [Separate diagnostic profile](docs/PERSISTENCE_PROFILE.md)\n\n')
     content += table(['Application','Immutable image'],[[values[n]['label'],f"`{values[n]['image']}`"] for n in VARIANTS])
     content += f"\n\nPostgreSQL image: `{raw['postgres']['image']}`. JDK base: `{raw['buildInputs']['guicedee']['javaImage']}`."
     return content
@@ -129,6 +129,12 @@ def main():
         fingerprint=hashlib.sha256((ROOT/'docs/persistence-performance.json').read_bytes()).hexdigest()
         if f'performance-data-sha256: {fingerprint}' not in (ROOT/'docs/persistence.svg').read_text(encoding='utf-8'):
             raise ValueError('Stale persistence chart')
+        from profile_persistence import render as render_profile
+        profile=json.loads((ROOT/'docs/persistence-profile.json').read_text(encoding='utf-8'))
+        if profile['images'] != raw['images'] or not profile['instrumented'] or profile['performanceComparison']:
+            raise ValueError('Persistence diagnostic profile does not match current application builds')
+        if (ROOT/'docs/PERSISTENCE_PROFILE.md').read_text(encoding='utf-8') != render_profile(profile):
+            raise ValueError('Stale persistence diagnostic report')
     print(f"{'Verified' if args.check else 'Rendered'} current persistence comparison: {len(raw['starts'])} starts")
 
 

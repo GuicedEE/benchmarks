@@ -23,6 +23,8 @@ workload, with REST, retries, timeouts, metrics, OpenAPI and Swagger capability 
 The SDK workload is reported below. The separate [PostgreSQL persistence comparison](persistence/README.md)
 measures transactions over 15 related entities; its [results](RESULTS.md#postgresql-persistence)
 include committed writes, joined reads, updates and rollbacks.
+The [current persistence profile](docs/PERSISTENCE_PROFILE.md) separates Hibernate startup,
+reactive allocations and PostgreSQL work from the benchmark timings.
 
 <!-- BEGIN GENERATED: headline -->
 GuicedEE native completes the first full business request in **656 ms**, versus **678 ms** for Quarkus native (**3.2% less time**). Warm p50 is **5.21 / 5.11 ms** (GuicedEE / Quarkus). Peak charged memory is **68.47 / 55.30 MiB**; executables are **142.35 / 143.31 MiB**. The native sample contains **28 starts and 420 passing capability checks**.

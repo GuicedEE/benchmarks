@@ -3,6 +3,7 @@ import unittest
 from unittest.mock import patch
 from types import SimpleNamespace
 from compare_persistence import CHECKS, CONTRACT, validate, check_database
+from profile_persistence import sql_delta, summarize
 
 
 def complete():
@@ -16,11 +17,46 @@ def complete():
     return dict(eligible=True,contract=CONTRACT,runs=1,requests=1,starts=rows,jvmFlags=['same'],
         images={n:n for n in ['guicedee','quarkus']},
         buildInputs={n:dict(sources={'model.java':'same'},javaImage='same-jdk',
-                           jarSha256={'lib/persistence-model-1.0-SNAPSHOT.jar':'same-model'}) for n in ['guicedee','quarkus']},
+                           modelArtifacts={'persistence-model-1.0-SNAPSHOT.jar':'original','persistence-model-1.0-SNAPSHOT-enhanced.jar':'enhanced'},
+                           jarSha256={('lib/'+('' if n=='guicedee' else 'dev.guicedee.benchmarks.')+'persistence-model-1.0-SNAPSHOT'+('-enhanced' if n=='guicedee' else '')+'.jar'):
+                                      'enhanced' if n=='guicedee' else 'original'}) for n in ['guicedee','quarkus']},
         postgres=dict(settings=dict(fsync='on',synchronous_commit='on',full_page_writes='on',isolation='read committed')))
 
 
 class PersistenceTest(unittest.TestCase):
+    def test_sql_profile_subtracts_warmup_and_keeps_new_statements(self):
+        query=dict(queryid='1',query='select label',calls=10,plans=6,total_plan_time=3,total_exec_time=5,rows=10)
+        after=dict(query,calls=14,total_exec_time=7,rows=14)
+        new=dict(query,queryid='2',query='update label',calls=2,rows=2)
+        rows={r['queryid']:r for r in sql_delta([query],[after,new])}
+        self.assertEqual((rows['1']['calls'],rows['1']['plans'],rows['1']['total_exec_time']),(4,0,2))
+        self.assertEqual(rows['2']['calls'],2)
+        nested_before=dict(query,toplevel=False,calls=30)
+        nested_after=dict(nested_before,calls=36)
+        split={(r['queryid'],r['toplevel']):r['calls'] for r in sql_delta([query,nested_before],[after,nested_after])}
+        self.assertEqual(split,{('1',True):4,('1',False):6})
+
+    def test_jfr_profile_separates_intervals_and_does_not_count_wait_samples(self):
+        marks=[dict(event=name,at=f'2026-11-15T00:00:0{n}+00:00') for n,name in
+               [(0,'launch'),(2,'first-transaction-complete'),(4,'warm-measurement-start'),(6,'measurement-complete')]]
+        frame=dict(method=dict(type=dict(name='example/Work'),name='run'))
+        allocation=dict(startTime='2026-11-15T00:00:05Z',weight=100,objectClass=dict(name='byte[]'),
+                        stackTrace=dict(frames=[frame,frame]))
+        events=[dict(type='jdk.ObjectAllocationSample',values=allocation),
+                dict(type='jdk.ObjectAllocationSample',values=dict(allocation,startTime='2026-11-15T00:00:03Z')),
+                dict(type='jdk.NativeMethodSample',values=allocation)]
+        result=summarize(events,marks)
+        self.assertEqual(result['startup']['sampledAllocationBytes'],0)
+        self.assertEqual(result['warm']['sampledAllocationBytes'],100)
+        self.assertEqual(result['warm']['inclusiveAllocationBytes'],{'example.Work.run':100})
+        self.assertEqual(result['warm']['executionSamples'],0)
+
+    def test_publication_rejects_instrumented_runs_even_if_marked_eligible(self):
+        value=complete();value['instrumented']=True
+        with self.assertRaisesRegex(ValueError,'Instrumented'):validate(value)
+        value=complete();value['jvmFlags'].append('-XX:StartFlightRecording=filename=profile.jfr')
+        with self.assertRaisesRegex(ValueError,'Instrumented'):validate(value)
+
     def test_publication_rejects_incomplete_or_failed_transactions(self):
         baseline=complete();validate(baseline)
         mutations=[lambda d:d['starts'].pop(),
@@ -45,7 +81,7 @@ class PersistenceTest(unittest.TestCase):
         value=copy.deepcopy(baseline);value['postgres']['settings']['synchronous_commit']='off'
         with self.assertRaisesRegex(ValueError,'durable'):validate(value)
         value=copy.deepcopy(baseline);value['buildInputs']['quarkus']['jarSha256']['lib/persistence-model-1.0-SNAPSHOT.jar']='older-model'
-        with self.assertRaisesRegex(ValueError,'identical shared entity model'):validate(value)
+        with self.assertRaisesRegex(ValueError,'shared entity model'):validate(value)
 
     def test_rollback_gate_uses_independent_database_visibility(self):
         with patch('compare_persistence.psql',return_value=SimpleNamespace(stdout='')):

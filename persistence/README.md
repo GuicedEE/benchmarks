@@ -24,7 +24,13 @@ no cascades. Both adapters insert in dependency order and delete in reverse orde
 The modular GuicedEE launcher grants explicit read edges between Hibernate ORM and the
 model module for runtime proxy generation. The model package is opened to Hibernate, and
 the application resolves PostgreSQL's optional SCRAM module. All module descriptors remain
-intact; the shared model retains only a Jakarta Persistence compile-time dependency.
+intact. The model build attaches an `enhanced` classifier for GuicedEE using Hibernate's
+Maven enhancer, following ActivityMaster's parent POM. Quarkus receives the original
+compiled model and performs its normal enhancement. Pre-enhancing Quarkus's input would
+apply two enhancement pipelines to the same bytecode. Both artifacts come from the same
+compiled classes; their hashes and all source hashes are recorded and checked. Hibernate
+is a provided model dependency, so each application retains its own runtime ORM version.
+The shared entity setter preserves dirty tracking in both applications.
 
 ## Run
 
@@ -88,6 +94,12 @@ the projection for explicit updates/deletes, following ActivityMaster's lean sta
 pattern. Quarkus loads managed entities for dirty checking and removal. Their ORM/driver
 stacks can perform different hydration work; runtime versions and dependencies are recorded.
 
+GuicedEE uses `insertAll(0, ...)`, `updateAll(0, ...)` and `deleteAll(0, ...)` inside
+`withStatelessSession` / `withTransaction`. Hibernate executes the supplied rows in order;
+the explicit zero batch size preserves individual SQL statements. This avoids building a
+separate application-level reactive operator chain for every entity. All writes and the
+final commit are still awaited before responding.
+
 Pattern references: ActivityMaster's
 [SessionUtils](https://github.com/Activity-Master/Client/blob/master/src/main/java/com/guicedee/activitymaster/fsdm/client/services/SessionUtils.java)
 and [GeographyService](https://github.com/Activity-Master/GeographyMaster/blob/master/src/main/java/com/guicedee/activitymaster/geography/GeographyService.java).
@@ -97,6 +109,22 @@ used by Geography's import workload is not part of this CRUD workload.
 Only these two full-JDK persistence modes are measured here. The existing SDK comparison's
 SPI/scanner, jlink and native results remain a separate workload and cannot be used as
 persistence results.
+
+## Profile startup and CRUD
+
+```shell
+python tools/compare_persistence.py --diagnostics --runs 1 --requests 150 --warmup 20
+python tools/profile_persistence.py target/persistence-runs/<batch>
+```
+
+Diagnostics capture JFR in both JVMs, GuicedEE's inclusive startup phases and PostgreSQL
+`pg_stat_statements` execution/planning counters. The summary separates startup through
+the first committed graph from the warmed measurement interval. SQL counters are
+subtracted at the measurement boundaries. JFR allocation weights are estimates and
+inclusive stack totals overlap; they must not be summed. Native wait samples are excluded
+from execution-sample summaries. Diagnostic timings are affected by instrumentation and
+the publication gate rejects them, even if marked eligible. Full recordings and derived
+summaries stay in ignored `target/`; rerun without `--diagnostics` for comparison tables.
 
 ## Publish the latest complete comparison
 

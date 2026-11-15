@@ -28,15 +28,10 @@ public class Store {
         return factory.withStatelessSession(session -> session.withTransaction(tx -> work.apply(session)));
     }
 
-    // A session belongs to one composed stream. Every SQL operation and the final commit is awaited.
-    private Uni<Void> each(List<Row> rows, Function<Row,Uni<Void>> action) {
-        Uni<Void> result = Uni.createFrom().voidItem();
-        for (Row row : rows) result = result.chain(() -> action.apply(row));
-        return result;
-    }
-
     public Uni<Map<String,Object>> create(long id, boolean rollback) {
-        return transaction(session -> each(Graph.create(id), session::insert)
+        // Hibernate's ordered loop avoids a scoped Uni per entity. Explicit zero
+        // batch size preserves one SQL statement per row and the shared contract.
+        return transaction(session -> session.insertAll(0, Graph.create(id).toArray())
             .chain(() -> rollback ? Uni.createFrom().failure(new Graph.RollbackProbe())
                                  : select(session, id).map(Graph::project)));
     }
@@ -48,13 +43,13 @@ public class Store {
     public Uni<Map<String,Object>> update(long id) {
         return transaction(session -> select(session, id).map(Graph::detached).chain(values -> {
             Graph.update(values);
-            return each(values, session::update).chain(() -> select(session, id)).map(Graph::project);
+            return session.updateAll(0, values.toArray()).chain(() -> select(session, id)).map(Graph::project);
         }));
     }
 
     public Uni<Map<String,Object>> delete(long id) {
         return transaction(session -> select(session, id).map(Graph::detached)
-            .chain(values -> each(Graph.reverse(values), session::delete))
+            .chain(values -> session.deleteAll(0, Graph.reverse(values).toArray()))
             .replaceWith(Map.<String,Object>of("deleted", 15, "id", id)));
     }
 }
