@@ -35,6 +35,14 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <!-- The aggregator's target holds measurement evidence, not application output.
+                     Child modules still clean their own compilation and packaging directories. -->
+                <inherited>false</inherited>
+                <configuration><excludeDefaultDirectories>true</excludeDefaultDirectories></configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.1</version>
             </plugin>

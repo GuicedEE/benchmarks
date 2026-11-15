@@ -8,13 +8,13 @@ workload, with REST, retries, timeouts, metrics, OpenAPI and Swagger capability 
 ## Performance
 
 <!-- BEGIN GENERATED: headline -->
-GuicedEE native completes the first full business request in **657 ms**, versus **684 ms** for Quarkus native (**4.0% less time**). Warm p50 is **5.29 / 5.53 ms** (GuicedEE / Quarkus). Peak charged memory is **79.78 / 55.25 MiB**; executables are **191.83 / 143.31 MiB**. The native sample contains **28 starts and 420 passing capability checks**.
+GuicedEE native completes the first full business request in **655 ms**, versus **695 ms** for Quarkus native (**5.9% less time**). Warm p50 is **5.22 / 5.38 ms** (GuicedEE / Quarkus). Peak charged memory is **80.07 / 55.28 MiB**; executables are **191.83 / 143.31 MiB**. The native sample contains **28 starts and 420 passing capability checks**.
 <!-- END GENERATED: headline -->
 
 <!-- BEGIN GENERATED: build-headline -->
-**Clean JVM build:** GuicedEE SPI compiles in **3.01 s** versus **3.65 s** for Quarkus (**17.5% less time**). Complete runnable JVM packaging takes **3.69 / 6.17 s** (GuicedEE / Quarkus), **40.2% less time**. Medians of 3 clean, offline builds per task; dependency preparation is excluded.
+**Clean JVM build:** GuicedEE SPI compiles in **3.11 s** versus **3.61 s** for Quarkus (**13.8% less time**). Complete runnable JVM packaging takes **3.67 / 6.10 s** (GuicedEE / Quarkus), **39.9% less time**. Medians of 3 clean, offline builds per task; dependency preparation is excluded.
 
-**jlink versus native build:** GuicedEE SPI/scanner jlink packages in **17.82 / 17.70 s**, versus **66.44 s** for Quarkus native (**73.2% less time / 73.4% less time**).
+**jlink versus native build:** GuicedEE SPI/scanner jlink packages in **17.35 / 17.28 s**, versus **64.55 s** for Quarkus native (**73.1% less time / 73.2% less time**).
 <!-- END GENERATED: build-headline -->
 
 **Median launch to completed business response, seconds.** JVM/default and C1 columns use
@@ -24,9 +24,9 @@ counterbalanced native-only sample. Links open the full timing and memory grids.
 <!-- BEGIN GENERATED: overview -->
 | Application | Full JDK default (s) | Full JDK C1 (s) | Application jlink default (s) | Application jlink C1 (s) | Native (s) |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI | [27.917](RESULTS.md#jvm-default) | [17.191](RESULTS.md#jvm-c1) | [13.401](RESULTS.md#jvm-default) | [7.637](RESULTS.md#jvm-c1) | [0.657](RESULTS.md#native-standard) |
-| GuicedEE scanner | [29.629](RESULTS.md#jvm-default) | [17.641](RESULTS.md#jvm-c1) | [13.704](RESULTS.md#jvm-default) | [7.817](RESULTS.md#jvm-c1) | SPI only |
-| Quarkus / upstream SDKs | [23.879](RESULTS.md#jvm-default) | [14.015](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.684](RESULTS.md#native-standard) |
+| GuicedEE SPI | [29.351](RESULTS.md#jvm-default) | [16.311](RESULTS.md#jvm-c1) | [12.608](RESULTS.md#jvm-default) | [7.519](RESULTS.md#jvm-c1) | [0.655](RESULTS.md#native-standard) |
+| GuicedEE scanner | [28.792](RESULTS.md#jvm-default) | [16.789](RESULTS.md#jvm-c1) | [13.387](RESULTS.md#jvm-default) | [8.201](RESULTS.md#jvm-c1) | SPI only |
+| Quarkus / upstream SDKs | [23.553](RESULTS.md#jvm-default) | [13.782](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.695](RESULTS.md#native-standard) |
 <!-- END GENERATED: overview -->
 
 ![Startup by execution mode](docs/startup.svg)
@@ -42,13 +42,13 @@ all JVMs; native executables have no JIT tiering.
 <!-- BEGIN GENERATED: build-grid -->
 | Artifact | Clean compile (s) | Compile min–max (s) | Complete package (s) | Package min–max (s) | Build baseline | Package difference |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 3.01 | 2.93–3.05 | 3.69 | 3.65–3.74 | Quarkus fast-JAR | -40.2% |
-| GuicedEE scanner / full JDK | 3.05 | 3.02–3.10 | 3.64 | 3.57–3.68 | Quarkus fast-JAR | -41.1% |
-| Quarkus upstream SDKs / fast-JAR | 3.65 | 3.57–4.17 | 6.17 | 6.16–6.55 | Quarkus fast-JAR | Baseline |
-| GuicedEE SPI / application jlink | — | — | 17.82 | 17.46–17.91 | Quarkus native | -73.2% |
-| GuicedEE scanner / application jlink | — | — | 17.70 | 17.45–17.71 | Quarkus native | -73.4% |
-| GuicedEE SPI / native | — | — | 82.36 | 80.96–85.08 | Quarkus native | +24.0% |
-| Quarkus upstream SDKs / native | — | — | 66.44 | 66.34–69.67 | Quarkus native | Baseline |
+| GuicedEE SPI / full JDK | 3.11 | 3.10–3.23 | 3.67 | 3.64–3.85 | Quarkus fast-JAR | -39.9% |
+| GuicedEE scanner / full JDK | 3.06 | 2.99–3.19 | 3.57 | 3.51–3.59 | Quarkus fast-JAR | -41.6% |
+| Quarkus upstream SDKs / fast-JAR | 3.61 | 3.52–3.62 | 6.10 | 6.10–6.41 | Quarkus fast-JAR | Baseline |
+| GuicedEE SPI / application jlink | — | — | 17.35 | 17.26–17.53 | Quarkus native | -73.1% |
+| GuicedEE scanner / application jlink | — | — | 17.28 | 17.10–17.31 | Quarkus native | -73.2% |
+| GuicedEE SPI / native | — | — | 75.08 | 74.91–77.17 | Quarkus native | +16.3% |
+| Quarkus upstream SDKs / native | — | — | 64.55 | 64.01–65.18 | Quarkus native | Baseline |
 <!-- END GENERATED: build-grid -->
 
 ![Clean compilation and complete packaging](docs/builds.svg)
@@ -65,7 +65,7 @@ limits. [Build protocol, ranges and runtime tradeoffs](RESULTS.md#build-performa
 ## First-use SDK cost
 
 <!-- BEGIN GENERATED: sdk-headline -->
-**Commercetools first-use initialization:** GuicedEE SPI jlink records **1.287 s** versus **16.611 s** for standard Quarkus JVM: **15.325 s less** (**92.3% less time**). These are instrumented phase diagnostics (3 GuicedEE starts, 1 Quarkus start), separate from build time and the uninstrumented runtime rankings. The samples identify a first-use cost; they do not establish its cause or a general SDK performance ratio.
+**Commercetools first-use initialization:** GuicedEE SPI jlink records **0.996 s** versus **10.999 s** for standard Quarkus JVM: **10.003 s less** (**90.9% less time**). These are instrumented phase diagnostics (GuicedEE n=3, Quarkus n=3), separate from build time and the uninstrumented runtime rankings. The samples identify a first-use cost; they do not establish its cause or a general SDK performance ratio.
 <!-- END GENERATED: sdk-headline -->
 
 The [phase grid](RESULTS.md#first-use-business-phases) also includes scanner, wrapped-SDK

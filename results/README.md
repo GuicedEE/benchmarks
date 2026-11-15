@@ -11,16 +11,26 @@ capability result, phase capture and immutable image identity used by the report
 manifest records the byte count and SHA-256. It excludes source copies, logs, compiled
 artifacts and superseded experiments. Original input hashes and batch IDs remain available
 for provenance. Different profiles remain separate rather than pooling incomparable runs.
+Host restart and between-stage CPU, available-memory and disk-queue observations are
+retained with the measurements when recorded. They describe the stage boundaries, including
+untimed preparation, rather than continuous background load during every timed sample.
 
 `latest/builds.json` contains the current clean-build cohort: all compile/package samples,
 untimed cache preparation, exact commands, toolchain details and input hashes. It separates
-build costs from runtime measurements. Full Maven logs remain in the ignored local run folder;
-their hashes and completion/timing lines accompany the compact published samples.
+build costs from runtime measurements. New executions write full Maven logs to the ignored
+local run folder; log hashes and completion/timing lines accompany the compact published
+samples. The original full logs for the current build cohort are no longer retained locally;
+all timing samples and extracted completion evidence are retained here.
 
-New executions write to ignored `target/runs/<timestamp>/`. To replace a published group:
+New executions write to ignored `target/runs/<timestamp>/`.
+The root Maven aggregator preserves this evidence directory during `clean`; application
+modules still clean their own compiled outputs and packaged artifacts.
+
+To replace a published group:
 
 ```shell
 python tools/publish_results.py jvm-default target/runs/<batch>
+python tools/publish_results.py phases target/runs/<diagnostic-batch> target/runs/<wrapped-diagnostic-batch>
 python tools/publish_builds.py target/build-runs/<build-batch>
 python tools/render_performance.py
 python tools/render_charts.py

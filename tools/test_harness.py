@@ -12,7 +12,7 @@ from build import verify_framework
 import stage_link_repository
 import compare_builds
 from render_performance import verify_build_runtime_sources
-from publish_results import retained_images
+from publish_results import retained_images, compact
 from compare import request, eligible_comparison, metric_counts, discovery_evidence, phase_evidence
 from upstream import Upstream
 from variants import select_variants, ordered_variants, paired_image_variants, guicedee_jar, runtime_flags
@@ -24,6 +24,18 @@ from summarize_native import sdk_evidence
 
 
 class HarnessTest(unittest.TestCase):
+    def test_published_diagnostics_keep_instrumentation_status(self):
+        summary = dict(eligibleComparison=False, instrumented=True, performanceComparison=False,
+                       allDiagnosticsPassed=True, scope='diagnostic', variants=[dict(id='guicedee')],
+                       runs=[dict(variant='guicedee', run=1, instrumented=True, phaseEvidence=dict(verified=True))])
+        environment = dict(arguments=dict(runs=1, requests=1, warmup=0, docker=True, tiered=False))
+        published = compact(summary, environment)['summary']
+        self.assertTrue(published['instrumented'])
+        self.assertTrue(published['allDiagnosticsPassed'])
+        self.assertFalse(published['eligibleComparison'])
+        self.assertFalse(published['performanceComparison'])
+        self.assertTrue(published['runs'][0]['phaseEvidence']['verified'])
+
     def test_publication_keeps_images_from_summary_only_diagnostics(self):
         batches = dict(runtime=dict(environment=dict(images={'guicedee':'runtime-image'}), summary=dict(runs=[])),
                        diagnostic=dict(summary=dict(runs=[dict(container=dict(image='diagnostic-image'))])))

@@ -132,7 +132,7 @@ def build_sections(data):
     sdk = (f"**Commercetools first-use initialization:** GuicedEE SPI jlink records **{guice:.3f} s** "
            f"versus **{quarkus:.3f} s** for standard Quarkus JVM: **{quarkus-guice:.3f} s less** "
            f"(**{difference(guice, quarkus)}**). These are instrumented phase diagnostics "
-           f"({phases['SPI jlink']['starts']} GuicedEE starts, {phases['Quarkus upstream JVM']['starts']} Quarkus start), "
+           f"(GuicedEE n={phases['SPI jlink']['starts']}, Quarkus n={phases['Quarkus upstream JVM']['starts']}), "
            'separate from build time and the uninstrumented runtime rankings. The samples identify a first-use cost; '
            'they do not establish its cause or a general SDK performance ratio.')
     interpretation = (
@@ -330,6 +330,14 @@ def render(data):
         f"executables are **{a['executableMiB']:.2f} / {b['executableMiB']:.2f} MiB**. "
         f"The native sample contains **{a['starts'] + b['starts']} starts and "
         f"{a['capabilityChecks'] + b['capabilityChecks']} passing capability checks**.")
+    native_startup_winner = 'GuicedEE' if a['launchToFirstBusinessMs']['median'] < b['launchToFirstBusinessMs']['median'] else 'Quarkus'
+    native_latency_winner = 'GuicedEE' if a['warm']['p50Ms'] < b['warm']['p50Ms'] else 'Quarkus'
+    native_memory_winner = 'GuicedEE' if a['peakMiB']['median'] < b['peakMiB']['median'] else 'Quarkus'
+    sections['runtime-findings'] = (
+        f"{native_startup_winner} native records the lower median full-business startup; "
+        f"{native_latency_winner} native records the lower warm p50. {native_memory_winner} native has the lower "
+        'peak container memory. The JVM grids separately report HTTP readiness and completion of the cold '
+        'SDK/Firestore business request, so both startup costs remain visible.')
     relative = []
     for group in ['jvm-default', 'jvm-c1']:
         values = groups[group]['variants']
@@ -427,6 +435,15 @@ def main():
     data = {'measuredOn': LATEST['measuredOn'], 'reportAsOf': LATEST['reportAsOf'],
             'aggregation': 'All starts retained; warm percentiles are medians of per-start percentiles.',
             'groups': {name: collect_group(*config) for name, config in GROUPS.items()}, 'phases': collect_phases()}
+    if LATEST.get('hostObservations'):
+        host = LATEST['hostObservations']
+        before = [row for row in host['observations'] if row['stage'].endswith('-before')]
+        data['hostCondition'] = dict(bootTimeUtc=host['bootTimeUtc'], samples=len(before),
+            cpuPercent=stats([row['cpuPercent'] for row in before]),
+            availableMemoryMiB=stats([row['availableMemoryMiB'] for row in before]),
+            stages=sorted({row['stage'] for row in before}),
+            recoveredBoundaryCpuPercent=host.get('recoveredBoundaryCpuPercent', {}),
+            coverage=host['coverage'])
     data['inputSha256'] = {'results/latest/measurements.json': hashlib.sha256(evidence.read_bytes()).hexdigest()}
     output = io.StringIO(newline='')
     writer = csv.writer(output, lineterminator='\n')
@@ -443,6 +460,26 @@ def main():
                 *[item[k]['median'] if item[k] else '' for k in ['peakMiB', 'endMiB']],
                 item['imageMiB'], item['executableMiB'], item['image']])
     sections = render(data)
+    if data.get('hostCondition'):
+        host = data['hostCondition']
+        cpu, memory = host['cpuPercent'], host['availableMemoryMiB']
+        boundaries = host['recoveredBoundaryCpuPercent']
+        preparation = boundaries.get('builds-before', [])
+        runtime = boundaries.get('default-before', [])
+        preparation_note = (
+            f"The recovered build-stage CPU snapshots were **{min(preparation):.1f}–{max(preparation):.1f}%** "
+            'before untimed dependency preparation; '
+            f"the default-runtime stage began at **{min(runtime):.1f}–{max(runtime):.1f}%**. "
+            if preparation and runtime else '')
+        sections['host-condition'] = (
+            f"All timing profiles were rerun after the host boot at **{host['bootTimeUtc']}**. "
+            f"Across {host['samples']} retained one-second preflight/local-start samples, host CPU utilization "
+            f"ranged **{cpu['minimum']:.1f}–{cpu['maximum']:.1f}%**, available physical memory "
+            f"**{memory['minimum']/1024:.1f}–{memory['maximum']/1024:.1f} GiB**. "
+            + preparation_note + 'Build, runtime and diagnostic stages ran sequentially. '
+            'Host observations have partial coverage and are boundary snapshots, not continuous '
+            'measurements of background load during each run. Available observations and their '
+            'coverage are included in the latest measurement dataset.')
     build_evidence = EVIDENCE_ROOT/'results/latest/builds.json'
     data['builds'] = collect_builds(build_evidence)
     verify_build_runtime_sources(data, LATEST['imageInputs'])

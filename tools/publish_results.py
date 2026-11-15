@@ -31,6 +31,9 @@ def compact(summary, environment, selected=None):
     if selected and names != set(selected):
         raise ValueError('Selected variants are missing')
     result = {k: summary[k] for k in ['eligibleComparison','variants','scope']}
+    for key in ['instrumented', 'performanceComparison', 'allDiagnosticsPassed']:
+        if key in summary:
+            result[key] = summary[key]
     result['runs'] = [{k: v for k, v in r.items() if k in ROW_KEYS} for r in summary['runs']]
     for row in result['runs']:
         row.get('discoveryEvidence', {}).pop('logLines', None)
@@ -55,22 +58,31 @@ def compact(summary, environment, selected=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('group')
+    parser.add_argument('group', help='Performance group, or phases for instrumented diagnostic captures')
     parser.add_argument('directories', nargs='+', type=Path)
     parser.add_argument('--variants', nargs='+', help='Keep all starts of these variants; no per-start filtering')
     args = parser.parse_args()
     data = json.loads(LATEST.read_text(encoding='utf-8'))
+    diagnostics = args.group == 'phases'
     batches = []
     for directory in args.directories:
         summary = json.loads((directory/'summary.json').read_text())
         environment = json.loads((directory/'environment.json').read_text())
-        if not summary['eligibleComparison'] or summary.get('instrumented'):
+        if diagnostics:
+            if summary['eligibleComparison'] or not summary.get('instrumented') or not summary.get('allDiagnosticsPassed'):
+                raise ValueError('Phase publication requires a passing instrumented capture')
+        elif not summary['eligibleComparison'] or summary.get('instrumented'):
             raise ValueError('Only passing, uninstrumented complete comparisons can be published')
         batch = directory.name
         batches.append(batch)
         # A batch can back more than one current group. Keep it complete and select
         # whole variants in the group definition; never overwrite it with a subset.
         data['batches'][batch] = compact(summary, environment)
+        if diagnostics:
+            variants = {v['id'] for v in summary['variants']}
+            for phase in data['phases']:
+                if phase['variant'] in variants:
+                    phase['batch'] = batch
         for filename in ['summary.json','environment.json']:
             data['inputSha256'][f'{batch}/{filename}'] = hashlib.sha256((directory/filename).read_bytes()).hexdigest()
         for name, provenance in environment.get('imageBuildProvenance', {}).items():
@@ -83,7 +95,8 @@ def main():
                     for key in ['sdkJars','packagedJars','resolvedDependencies']
                     for entry in provenance.get(key, []) if 'sha256' in entry
                     and ('firebase-admin' in entry.get('path','') or 'commercetools' in entry.get('path',''))}}
-    data['groups'][args.group] = {'batches': batches, 'variants': args.variants}
+    if not diagnostics:
+        data['groups'][args.group] = {'batches': batches, 'variants': args.variants}
     used = {batch for group in data['groups'].values() for batch in group['batches']}
     used.update(phase['batch'] for phase in data.get('phases', []))
     data['batches'] = {k: v for k, v in data['batches'].items() if k in used}
@@ -99,6 +112,8 @@ def main():
     render_performance.LATEST = data
     for group in data['groups'].values():
         render_performance.collect_group(group['batches'], group['variants'])
+    render_performance.PHASES = [(v['label'], v['batch'], v['variant']) for v in data['phases']]
+    render_performance.collect_phases()
     LATEST.write_text(json.dumps(data, separators=(',',':'))+'\n', encoding='utf-8', newline='\n')
     subprocess.run([sys.executable, ROOT/'tools/verify_latest.py', '--refresh'], check=True)
     print('Updated latest evidence for', args.group, '; run tools/render_performance.py to update the report grids.')

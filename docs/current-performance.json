@@ -5,8 +5,8 @@
   "groups": {
     "native-standard": {
       "batches": [
-        "20261115-005208",
-        "20261115-005244"
+        "20261115-033613",
+        "20261115-033655"
       ],
       "batchStarts": 28,
       "batchCapabilityChecks": 420,
@@ -22,55 +22,55 @@
           "image": "sha256:79b8987c62a9eee01a6592332310c714031d75c986a98319a5f77ae9dcdb0868",
           "imageMiB": 421.16904640197754,
           "rowSources": [
-            "20261115-005208/guicedee-native/1",
-            "20261115-005208/guicedee-native/2",
-            "20261115-005208/guicedee-native/3",
-            "20261115-005208/guicedee-native/4",
-            "20261115-005208/guicedee-native/5",
-            "20261115-005208/guicedee-native/6",
-            "20261115-005208/guicedee-native/7",
-            "20261115-005244/guicedee-native/1",
-            "20261115-005244/guicedee-native/2",
-            "20261115-005244/guicedee-native/3",
-            "20261115-005244/guicedee-native/4",
-            "20261115-005244/guicedee-native/5",
-            "20261115-005244/guicedee-native/6",
-            "20261115-005244/guicedee-native/7"
+            "20261115-033613/guicedee-native/1",
+            "20261115-033613/guicedee-native/2",
+            "20261115-033613/guicedee-native/3",
+            "20261115-033613/guicedee-native/4",
+            "20261115-033613/guicedee-native/5",
+            "20261115-033613/guicedee-native/6",
+            "20261115-033613/guicedee-native/7",
+            "20261115-033655/guicedee-native/1",
+            "20261115-033655/guicedee-native/2",
+            "20261115-033655/guicedee-native/3",
+            "20261115-033655/guicedee-native/4",
+            "20261115-033655/guicedee-native/5",
+            "20261115-033655/guicedee-native/6",
+            "20261115-033655/guicedee-native/7"
           ],
           "launchToReadyMs": {
-            "median": 574.6281999963685,
-            "minimum": 511.29519999813056,
-            "maximum": 590.928099998564
+            "median": 576.498299999912,
+            "minimum": 564.9035999999796,
+            "maximum": 584.165700000085
           },
           "firstBusinessMs": {
-            "median": 82.52220000213129,
-            "minimum": 65.08100000064587,
-            "maximum": 470.4152000049362
+            "median": 84.53984999982822,
+            "minimum": 66.0370000000512,
+            "maximum": 391.7794000003596
           },
           "launchToFirstBusinessMs": {
-            "median": 656.9292999993195,
-            "minimum": 614.7860999990371,
-            "maximum": 1053.262800000084
+            "median": 654.5410500000344,
+            "minimum": 636.888099999851,
+            "maximum": 975.9880000001431
           },
           "firstOpenApiJsonMs": {
-            "median": 3.475600002275314,
-            "minimum": 3.123900001810398,
-            "maximum": 26.975599997967947
+            "median": 3.5628499999802443,
+            "minimum": 2.9491000000234635,
+            "maximum": 18.810300000041025
           },
           "warm": {
-            "p50Ms": 5.290499999318854,
-            "p95Ms": 21.95575000223471,
-            "p99Ms": 27.523750002728775
+            "p50Ms": 5.223050000154217,
+            "p95Ms": 18.981799999892246,
+            "p99Ms": 26.39239999984966
           },
           "peakMiB": {
-            "median": 79.779296875,
-            "minimum": 79.16796875,
-            "maximum": 80.46484375
+            "median": 80.07421875,
+            "minimum": 79.3828125,
+            "maximum": 80.50390625
           },
           "endMiB": {
-            "median": 76.345703125,
-            "minimum": 75.765625,
-            "maximum": 77.078125
+            "median": 76.494140625,
+            "minimum": 76.01171875,
+            "maximum": 77.35546875
           },
           "executableMiB": 191.8311538696289
         },
@@ -82,55 +82,55 @@
           "image": "sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69",
           "imageMiB": 353.04186820983887,
           "rowSources": [
-            "20261115-005208/quarkus-standard-native/1",
-            "20261115-005208/quarkus-standard-native/2",
-            "20261115-005208/quarkus-standard-native/3",
-            "20261115-005208/quarkus-standard-native/4",
-            "20261115-005208/quarkus-standard-native/5",
-            "20261115-005208/quarkus-standard-native/6",
-            "20261115-005208/quarkus-standard-native/7",
-            "20261115-005244/quarkus-standard-native/1",
-            "20261115-005244/quarkus-standard-native/2",
-            "20261115-005244/quarkus-standard-native/3",
-            "20261115-005244/quarkus-standard-native/4",
-            "20261115-005244/quarkus-standard-native/5",
-            "20261115-005244/quarkus-standard-native/6",
-            "20261115-005244/quarkus-standard-native/7"
+            "20261115-033613/quarkus-standard-native/1",
+            "20261115-033613/quarkus-standard-native/2",
+            "20261115-033613/quarkus-standard-native/3",
+            "20261115-033613/quarkus-standard-native/4",
+            "20261115-033613/quarkus-standard-native/5",
+            "20261115-033613/quarkus-standard-native/6",
+            "20261115-033613/quarkus-standard-native/7",
+            "20261115-033655/quarkus-standard-native/1",
+            "20261115-033655/quarkus-standard-native/2",
+            "20261115-033655/quarkus-standard-native/3",
+            "20261115-033655/quarkus-standard-native/4",
+            "20261115-033655/quarkus-standard-native/5",
+            "20261115-033655/quarkus-standard-native/6",
+            "20261115-033655/quarkus-standard-native/7"
           ],
           "launchToReadyMs": {
-            "median": 576.8462499981979,
-            "minimum": 563.9452000032179,
-            "maximum": 594.7197999994387
+            "median": 574.0918999997575,
+            "minimum": 567.371600000115,
+            "maximum": 590.0588999998035
           },
           "firstBusinessMs": {
-            "median": 99.44529999847873,
-            "minimum": 70.27070000185631,
-            "maximum": 397.2299999950337
+            "median": 119.69214999999167,
+            "minimum": 95.49250000009124,
+            "maximum": 416.18209999978717
           },
           "launchToFirstBusinessMs": {
-            "median": 684.2373500003305,
-            "minimum": 644.4354000050225,
-            "maximum": 975.8255000051577
+            "median": 695.2632500001528,
+            "minimum": 665.2628000001641,
+            "maximum": 991.5810999996211
           },
           "firstOpenApiJsonMs": {
-            "median": 2.248599997983547,
-            "minimum": 1.8531999958213419,
-            "maximum": 26.574700001219753
+            "median": 2.131549999830895,
+            "minimum": 1.851999999871623,
+            "maximum": 27.244700000210287
           },
           "warm": {
-            "p50Ms": 5.5271500004892005,
-            "p95Ms": 24.566199997934746,
-            "p99Ms": 28.504549998615403
+            "p50Ms": 5.3813250000303015,
+            "p95Ms": 25.92494999998962,
+            "p99Ms": 29.501050000135365
           },
           "peakMiB": {
-            "median": 55.251953125,
-            "minimum": 54.2109375,
-            "maximum": 56.19921875
+            "median": 55.279296875,
+            "minimum": 54.28515625,
+            "maximum": 56.32421875
           },
           "endMiB": {
-            "median": 51.87109375,
-            "minimum": 50.91015625,
-            "maximum": 52.72265625
+            "median": 51.740234375,
+            "minimum": 50.73046875,
+            "maximum": 52.4765625
           },
           "executableMiB": 143.3077163696289
         }
@@ -138,7 +138,7 @@
     },
     "jvm-default": {
       "batches": [
-        "20261115-013229"
+        "20261115-032428"
       ],
       "batchStarts": 21,
       "batchCapabilityChecks": 315,
@@ -154,44 +154,44 @@
           "image": "sha256:fad5ba9c31502a0d22bc8a2ddb31c8de9d7d49b05e773eb40de43a5ff9ee4cfb",
           "imageMiB": 1005.1721858978271,
           "rowSources": [
-            "20261115-013229/guicedee/1",
-            "20261115-013229/guicedee/2",
-            "20261115-013229/guicedee/3"
+            "20261115-032428/guicedee/1",
+            "20261115-032428/guicedee/2",
+            "20261115-032428/guicedee/3"
           ],
           "launchToReadyMs": {
-            "median": 8812.560500002292,
-            "minimum": 7745.964999994612,
-            "maximum": 9098.025899998902
+            "median": 9058.827300000303,
+            "minimum": 7844.417499999963,
+            "maximum": 12618.309500000123
           },
           "firstBusinessMs": {
-            "median": 19888.512400000764,
-            "minimum": 19104.806299998017,
-            "maximum": 20592.45329999976
+            "median": 19390.694600000188,
+            "minimum": 17108.43840000007,
+            "maximum": 20291.675599999962
           },
           "launchToFirstBusinessMs": {
-            "median": 27917.407599998114,
-            "minimum": 27634.518399994704,
-            "maximum": 29690.527899998415
+            "median": 29350.558300000102,
+            "minimum": 24952.895200000057,
+            "maximum": 32009.045300000253
           },
           "firstOpenApiJsonMs": {
-            "median": 103.25269999884767,
-            "minimum": 13.647499996295664,
-            "maximum": 194.03279999824008
+            "median": 193.30100000024686,
+            "minimum": 191.34289999965404,
+            "maximum": 195.0870999999097
           },
           "warm": {
-            "p50Ms": 90.37925000302494,
-            "p95Ms": 99.7776000003796,
-            "p99Ms": 99.80750000249827
+            "p50Ms": 90.66090000010263,
+            "p95Ms": 101.61329999982627,
+            "p99Ms": 101.97790000029272
           },
           "peakMiB": {
-            "median": 299.1875,
-            "minimum": 297.65625,
-            "maximum": 375.25
+            "median": 302.31640625,
+            "minimum": 294.35546875,
+            "maximum": 368.83203125
           },
           "endMiB": {
-            "median": 295.5390625,
-            "minimum": 294.02734375,
-            "maximum": 371.87109375
+            "median": 299.296875,
+            "minimum": 291.19140625,
+            "maximum": 365.80859375
           },
           "executableMiB": null
         },
@@ -203,44 +203,44 @@
           "image": "sha256:a9817e6465b054e8d2419cc03883ce6b81f4ec1bbaeedaa3631a0a5ec6a4ec8f",
           "imageMiB": 1005.167896270752,
           "rowSources": [
-            "20261115-013229/guicedee-scan/1",
-            "20261115-013229/guicedee-scan/2",
-            "20261115-013229/guicedee-scan/3"
+            "20261115-032428/guicedee-scan/1",
+            "20261115-032428/guicedee-scan/2",
+            "20261115-032428/guicedee-scan/3"
           ],
           "launchToReadyMs": {
-            "median": 9433.240000005753,
-            "minimum": 9121.646999999939,
-            "maximum": 9693.851200005156
+            "median": 9398.229800000081,
+            "minimum": 9190.213999999742,
+            "maximum": 9432.378900000003
           },
           "firstBusinessMs": {
-            "median": 19998.80970000231,
-            "minimum": 18407.02610000153,
-            "maximum": 20195.64609999361
+            "median": 19394.17420000018,
+            "minimum": 19386.14430000007,
+            "maximum": 20087.07689999983
           },
           "launchToFirstBusinessMs": {
-            "median": 29629.04050000361,
-            "minimum": 27528.729899997415,
-            "maximum": 29692.726500004937
+            "median": 28792.44299999982,
+            "minimum": 28576.401700000133,
+            "maximum": 29519.498800000292
           },
           "firstOpenApiJsonMs": {
-            "median": 192.06989999656798,
-            "minimum": 105.51319999649422,
-            "maximum": 295.39899999508634
+            "median": 190.09170000026643,
+            "minimum": 186.2381999999343,
+            "maximum": 201.36449999972683
           },
           "warm": {
-            "p50Ms": 91.80164999634144,
-            "p95Ms": 98.98660000180826,
-            "p99Ms": 101.62660000059986
+            "p50Ms": 93.82899999991423,
+            "p95Ms": 104.22029999972438,
+            "p99Ms": 104.60689999990791
           },
           "peakMiB": {
-            "median": 301.49609375,
-            "minimum": 295.8515625,
-            "maximum": 378.546875
+            "median": 310.34375,
+            "minimum": 304.23046875,
+            "maximum": 379.2578125
           },
           "endMiB": {
-            "median": 297.91015625,
-            "minimum": 291.8984375,
-            "maximum": 374.33984375
+            "median": 306.7734375,
+            "minimum": 300.265625,
+            "maximum": 375.9921875
           },
           "executableMiB": null
         },
@@ -252,44 +252,44 @@
           "image": "sha256:ff1c796950c84a86c8bc4f833fb17794bf4d4343ab52b98b51ffc0df436d45a8",
           "imageMiB": 976.7744750976562,
           "rowSources": [
-            "20261115-013229/quarkus-standard/1",
-            "20261115-013229/quarkus-standard/2",
-            "20261115-013229/quarkus-standard/3"
+            "20261115-032428/quarkus-standard/1",
+            "20261115-032428/quarkus-standard/2",
+            "20261115-032428/quarkus-standard/3"
           ],
           "launchToReadyMs": {
-            "median": 6976.052299993171,
-            "minimum": 6480.361100002483,
-            "maximum": 8783.822500001406
+            "median": 6942.258999999922,
+            "minimum": 6665.081399999963,
+            "maximum": 6967.002099999718
           },
           "firstBusinessMs": {
-            "median": 17399.014100003114,
-            "minimum": 16314.713600004325,
-            "maximum": 20794.392000003427
+            "median": 16610.622199999852,
+            "minimum": 14708.506700000271,
+            "maximum": 17004.404599999816
           },
           "launchToFirstBusinessMs": {
-            "median": 23879.41570000112,
-            "minimum": 23290.806400000292,
-            "maximum": 29578.276500003994
+            "median": 23552.920099999938,
+            "minimum": 21373.63120000009,
+            "maximum": 23971.460299999762
           },
           "firstOpenApiJsonMs": {
-            "median": 402.46990000014193,
-            "minimum": 389.449299997068,
-            "maximum": 698.2027999983984
+            "median": 496.1254999998346,
+            "minimum": 489.63069999990694,
+            "maximum": 501.9788999998127
           },
           "warm": {
-            "p50Ms": 87.05130000089412,
-            "p95Ms": 95.07259999372764,
-            "p99Ms": 95.8052000059979
+            "p50Ms": 83.3274500000698,
+            "p95Ms": 95.80090000008568,
+            "p99Ms": 96.58039999976609
           },
           "peakMiB": {
-            "median": 278.15234375,
-            "minimum": 271.42578125,
-            "maximum": 343.7109375
+            "median": 275.5625,
+            "minimum": 274.328125,
+            "maximum": 339.5078125
           },
           "endMiB": {
-            "median": 275.08203125,
-            "minimum": 268.21484375,
-            "maximum": 340.5390625
+            "median": 271.87890625,
+            "minimum": 271.0625,
+            "maximum": 336.54296875
           },
           "executableMiB": null
         },
@@ -301,44 +301,44 @@
           "image": "sha256:867a886a5d8cf020d5d9320b93d521acf995535480c7f18d259620f031d7f86a",
           "imageMiB": 473.2901554107666,
           "rowSources": [
-            "20261115-013229/guicedee-jlink/1",
-            "20261115-013229/guicedee-jlink/2",
-            "20261115-013229/guicedee-jlink/3"
+            "20261115-032428/guicedee-jlink/1",
+            "20261115-032428/guicedee-jlink/2",
+            "20261115-032428/guicedee-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 7522.26150000206,
-            "minimum": 7401.783099994645,
-            "maximum": 7548.167999993893
+            "median": 7113.895400000274,
+            "minimum": 6810.843899999782,
+            "maximum": 7253.82750000017
           },
           "firstBusinessMs": {
-            "median": 5895.651199993154,
-            "minimum": 5716.988699998183,
-            "maximum": 5998.681299999589
+            "median": 5796.615700000075,
+            "minimum": 5393.763600000057,
+            "maximum": 5998.2889000002615
           },
           "launchToFirstBusinessMs": {
-            "median": 13400.659599996288,
-            "minimum": 13265.206600000965,
-            "maximum": 13417.953300006047
+            "median": 12607.516999999916,
+            "minimum": 12507.69930000024,
+            "maximum": 13252.160600000025
           },
           "firstOpenApiJsonMs": {
-            "median": 201.0313999999198,
-            "minimum": 200.62390000384767,
-            "maximum": 287.56569999677595
+            "median": 190.91470000012123,
+            "minimum": 100.1510999999482,
+            "maximum": 191.0758999997597
           },
           "warm": {
-            "p50Ms": 91.76655000192113,
-            "p95Ms": 100.54740000487072,
-            "p99Ms": 105.25549999874784
+            "p50Ms": 87.64270000006036,
+            "p95Ms": 97.66720000015994,
+            "p99Ms": 98.56189999982234
           },
           "peakMiB": {
-            "median": 238.98046875,
-            "minimum": 236.0546875,
-            "maximum": 251.62890625
+            "median": 237.83984375,
+            "minimum": 215.66015625,
+            "maximum": 242.046875
           },
           "endMiB": {
-            "median": 235.26171875,
-            "minimum": 229.94140625,
-            "maximum": 248.078125
+            "median": 233.03125,
+            "minimum": 211.80078125,
+            "maximum": 238.29296875
           },
           "executableMiB": null
         },
@@ -350,44 +350,44 @@
           "image": "sha256:b8ea0ab4aef0522b489a9ab6e42a4944a996758f813c5395c4c66af4703df2ac",
           "imageMiB": 473.4251642227173,
           "rowSources": [
-            "20261115-013229/guicedee-scan-jlink/1",
-            "20261115-013229/guicedee-scan-jlink/2",
-            "20261115-013229/guicedee-scan-jlink/3"
+            "20261115-032428/guicedee-scan-jlink/1",
+            "20261115-032428/guicedee-scan-jlink/2",
+            "20261115-032428/guicedee-scan-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 8420.595800002047,
-            "minimum": 7713.67889999965,
-            "maximum": 8687.318999996933
+            "median": 7700.419400000101,
+            "minimum": 7480.766299999686,
+            "maximum": 7722.524399999656
           },
           "firstBusinessMs": {
-            "median": 5905.602699996962,
-            "minimum": 5283.433599994169,
-            "maximum": 6196.98100000096
+            "median": 5686.095399999886,
+            "minimum": 5010.166300000037,
+            "maximum": 5755.58060000003
           },
           "launchToFirstBusinessMs": {
-            "median": 13704.069400002481,
-            "minimum": 13619.322700003977,
-            "maximum": 14884.387899997819
+            "median": 13386.55749999998,
+            "minimum": 12490.972099999908,
+            "maximum": 13478.145699999914
           },
           "firstOpenApiJsonMs": {
-            "median": 188.2428000026266,
-            "minimum": 73.08929999999236,
-            "maximum": 188.94580000051064
+            "median": 108.00549999976283,
+            "minimum": 100.659899999755,
+            "maximum": 187.79429999995045
           },
           "warm": {
-            "p50Ms": 90.25589999873773,
-            "p95Ms": 100.94129999924917,
-            "p99Ms": 105.18069999670843
+            "p50Ms": 89.19719999994413,
+            "p95Ms": 97.79230000003736,
+            "p99Ms": 98.60960000014529
           },
           "peakMiB": {
-            "median": 243.87109375,
-            "minimum": 226.4453125,
-            "maximum": 244.70703125
+            "median": 238.0703125,
+            "minimum": 223.50390625,
+            "maximum": 239.66796875
           },
           "endMiB": {
-            "median": 240.234375,
-            "minimum": 223.0703125,
-            "maximum": 241.27734375
+            "median": 234.94921875,
+            "minimum": 219.9453125,
+            "maximum": 236.28125
           },
           "executableMiB": null
         },
@@ -399,44 +399,44 @@
           "image": "sha256:79b8987c62a9eee01a6592332310c714031d75c986a98319a5f77ae9dcdb0868",
           "imageMiB": 421.16904640197754,
           "rowSources": [
-            "20261115-013229/guicedee-native/1",
-            "20261115-013229/guicedee-native/2",
-            "20261115-013229/guicedee-native/3"
+            "20261115-032428/guicedee-native/1",
+            "20261115-032428/guicedee-native/2",
+            "20261115-032428/guicedee-native/3"
           ],
           "launchToReadyMs": {
-            "median": 568.5356999965734,
-            "minimum": 567.6800999935949,
-            "maximum": 569.320599999628
+            "median": 578.6008999998558,
+            "minimum": 564.4344000002093,
+            "maximum": 580.8748999997988
           },
           "firstBusinessMs": {
-            "median": 77.17609999963315,
-            "minimum": 72.10050000139745,
-            "maximum": 106.68079999595648
+            "median": 66.08000000005632,
+            "minimum": 62.88240000003498,
+            "maximum": 97.09659999998621
           },
           "launchToFirstBusinessMs": {
-            "median": 645.7492999979877,
-            "minimum": 639.8211999985506,
-            "maximum": 676.03919999965
+            "median": 646.9960999997966,
+            "minimum": 627.3532999998679,
+            "maximum": 675.7363000001533
           },
           "firstOpenApiJsonMs": {
-            "median": 3.7673999977414496,
-            "minimum": 3.322599994135089,
-            "maximum": 4.112800001166761
+            "median": 3.5278999998809013,
+            "minimum": 3.4799000000020897,
+            "maximum": 4.116500000236556
           },
           "warm": {
-            "p50Ms": 5.164500002138084,
-            "p95Ms": 30.787100004090462,
-            "p99Ms": 33.254499998292886
+            "p50Ms": 6.241750000071988,
+            "p95Ms": 24.023699999816017,
+            "p99Ms": 27.537999999822205
           },
           "peakMiB": {
-            "median": 80.01953125,
-            "minimum": 79.59765625,
-            "maximum": 80.2890625
+            "median": 80.15625,
+            "minimum": 80.03515625,
+            "maximum": 80.3828125
           },
           "endMiB": {
-            "median": 76.484375,
-            "minimum": 76.453125,
-            "maximum": 76.578125
+            "median": 76.8515625,
+            "minimum": 76.5703125,
+            "maximum": 77.26171875
           },
           "executableMiB": 191.8311538696289
         },
@@ -448,44 +448,44 @@
           "image": "sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69",
           "imageMiB": 353.04186820983887,
           "rowSources": [
-            "20261115-013229/quarkus-standard-native/1",
-            "20261115-013229/quarkus-standard-native/2",
-            "20261115-013229/quarkus-standard-native/3"
+            "20261115-032428/quarkus-standard-native/1",
+            "20261115-032428/quarkus-standard-native/2",
+            "20261115-032428/quarkus-standard-native/3"
           ],
           "launchToReadyMs": {
-            "median": 572.5808999995934,
-            "minimum": 564.3091000019922,
-            "maximum": 575.5357999951229
+            "median": 569.1274000000703,
+            "minimum": 567.7299999997558,
+            "maximum": 575.6734000001416
           },
           "firstBusinessMs": {
-            "median": 111.57509999611648,
-            "minimum": 87.58669999951962,
-            "maximum": 116.36150000413181
+            "median": 100.98790000029112,
+            "minimum": 99.33670000009442,
+            "maximum": 112.25260000037451
           },
           "launchToFirstBusinessMs": {
-            "median": 684.2321000003722,
-            "minimum": 651.9335000048159,
-            "maximum": 691.9362999979057
+            "median": 668.7563000000409,
+            "minimum": 668.4996000003594,
+            "maximum": 687.9635999998754
           },
           "firstOpenApiJsonMs": {
-            "median": 2.2447999945143238,
-            "minimum": 2.1873000005143695,
-            "maximum": 15.482700000575278
+            "median": 2.8013999999529915,
+            "minimum": 2.7618999997685023,
+            "maximum": 25.268100000175764
           },
           "warm": {
-            "p50Ms": 4.985100000340026,
-            "p95Ms": 21.694600000046194,
-            "p99Ms": 28.377200003887992
+            "p50Ms": 5.966750000197862,
+            "p95Ms": 8.793900000000576,
+            "p99Ms": 28.86949999992794
           },
           "peakMiB": {
-            "median": 54.83984375,
-            "minimum": 54.68359375,
-            "maximum": 55.00390625
+            "median": 55.14453125,
+            "minimum": 54.96484375,
+            "maximum": 55.25390625
           },
           "endMiB": {
-            "median": 51.65625,
-            "minimum": 50.984375,
-            "maximum": 51.8125
+            "median": 51.6171875,
+            "minimum": 51.609375,
+            "maximum": 51.76953125
           },
           "executableMiB": 143.3077163696289
         }
@@ -493,7 +493,7 @@
     },
     "jvm-c1": {
       "batches": [
-        "20261115-013945"
+        "20261115-033137"
       ],
       "batchStarts": 21,
       "batchCapabilityChecks": 315,
@@ -509,44 +509,44 @@
           "image": "sha256:fad5ba9c31502a0d22bc8a2ddb31c8de9d7d49b05e773eb40de43a5ff9ee4cfb",
           "imageMiB": 1005.1721858978271,
           "rowSources": [
-            "20261115-013945/guicedee/1",
-            "20261115-013945/guicedee/2",
-            "20261115-013945/guicedee/3"
+            "20261115-033137/guicedee/1",
+            "20261115-033137/guicedee/2",
+            "20261115-033137/guicedee/3"
           ],
           "launchToReadyMs": {
-            "median": 5187.79579999682,
-            "minimum": 4979.339600002277,
-            "maximum": 5247.368600001209
+            "median": 4809.839600000032,
+            "minimum": 4695.717200000217,
+            "maximum": 5108.952399999907
           },
           "firstBusinessMs": {
-            "median": 11999.364900002547,
-            "minimum": 11898.110100002668,
-            "maximum": 12003.610400002799
+            "median": 11500.882499999989,
+            "minimum": 11402.9601000002,
+            "maximum": 12785.560499999974
           },
           "launchToFirstBusinessMs": {
-            "median": 17191.478399996413,
-            "minimum": 16877.49079999776,
-            "maximum": 17246.772799997416
+            "median": 16310.760500000015,
+            "minimum": 16098.71639999983,
+            "maximum": 17894.558599999982
           },
           "firstOpenApiJsonMs": {
-            "median": 93.16930000204593,
-            "minimum": 12.37810000020545,
-            "maximum": 98.37030000198865
+            "median": 22.776100000100996,
+            "minimum": 11.993399999937537,
+            "maximum": 77.69400000006499
           },
           "warm": {
-            "p50Ms": 27.991349998046644,
-            "p95Ms": 92.01110000140034,
-            "p99Ms": 92.8598000027705
+            "p50Ms": 48.19680000014159,
+            "p95Ms": 90.86969999998473,
+            "p99Ms": 90.90779999996812
           },
           "peakMiB": {
-            "median": 262.93359375,
-            "minimum": 261.49609375,
-            "maximum": 263.1875
+            "median": 262.45703125,
+            "minimum": 261.05078125,
+            "maximum": 263.1796875
           },
           "endMiB": {
-            "median": 259.42578125,
-            "minimum": 258.234375,
-            "maximum": 259.828125
+            "median": 259.05078125,
+            "minimum": 257.5703125,
+            "maximum": 260.109375
           },
           "executableMiB": null
         },
@@ -558,44 +558,44 @@
           "image": "sha256:a9817e6465b054e8d2419cc03883ce6b81f4ec1bbaeedaa3631a0a5ec6a4ec8f",
           "imageMiB": 1005.167896270752,
           "rowSources": [
-            "20261115-013945/guicedee-scan/1",
-            "20261115-013945/guicedee-scan/2",
-            "20261115-013945/guicedee-scan/3"
+            "20261115-033137/guicedee-scan/1",
+            "20261115-033137/guicedee-scan/2",
+            "20261115-033137/guicedee-scan/3"
           ],
           "launchToReadyMs": {
-            "median": 5182.245399999374,
-            "minimum": 5143.793899995217,
-            "maximum": 5568.7334000031115
+            "median": 5198.809600000004,
+            "minimum": 5019.542799999726,
+            "maximum": 5216.115000000173
           },
           "firstBusinessMs": {
-            "median": 12469.686500000535,
-            "minimum": 11601.259499999287,
-            "maximum": 12496.807600000466
+            "median": 11589.791999999761,
+            "minimum": 11485.630599999695,
+            "maximum": 12112.21179999984
           },
           "launchToFirstBusinessMs": {
-            "median": 17640.642400001525,
-            "minimum": 17170.03670000122,
-            "maximum": 17651.973799998814
+            "median": 16788.640100000066,
+            "minimum": 16505.212199999733,
+            "maximum": 17328.429000000142
           },
           "firstOpenApiJsonMs": {
-            "median": 24.23819999967236,
-            "minimum": 15.549199997622054,
-            "maximum": 98.04209999856539
+            "median": 94.18809999988298,
+            "minimum": 25.115999999798078,
+            "maximum": 96.43359999972745
           },
           "warm": {
-            "p50Ms": 49.368499996489845,
-            "p95Ms": 89.5680999965407,
-            "p99Ms": 90.25209999526851
+            "p50Ms": 13.438749999750144,
+            "p95Ms": 90.10530000023209,
+            "p99Ms": 90.84050000001298
           },
           "peakMiB": {
-            "median": 264.04296875,
-            "minimum": 263.3984375,
-            "maximum": 265.49609375
+            "median": 264.7578125,
+            "minimum": 263.5078125,
+            "maximum": 265.0703125
           },
           "endMiB": {
-            "median": 260.32421875,
-            "minimum": 259.80078125,
-            "maximum": 262.203125
+            "median": 261.13671875,
+            "minimum": 260.05078125,
+            "maximum": 261.68359375
           },
           "executableMiB": null
         },
@@ -607,44 +607,44 @@
           "image": "sha256:ff1c796950c84a86c8bc4f833fb17794bf4d4343ab52b98b51ffc0df436d45a8",
           "imageMiB": 976.7744750976562,
           "rowSources": [
-            "20261115-013945/quarkus-standard/1",
-            "20261115-013945/quarkus-standard/2",
-            "20261115-013945/quarkus-standard/3"
+            "20261115-033137/quarkus-standard/1",
+            "20261115-033137/quarkus-standard/2",
+            "20261115-033137/quarkus-standard/3"
           ],
           "launchToReadyMs": {
-            "median": 3910.640299996885,
-            "minimum": 3903.4848000010243,
-            "maximum": 3948.8574999995762
+            "median": 3885.075600000164,
+            "minimum": 3855.9715999999753,
+            "maximum": 4070.5026999999063
           },
           "firstBusinessMs": {
-            "median": 10104.447500001697,
-            "minimum": 10049.456799999462,
-            "maximum": 10203.80699999805
+            "median": 9896.497900000213,
+            "minimum": 9803.325300000324,
+            "maximum": 10009.474200000113
           },
           "launchToFirstBusinessMs": {
-            "median": 14015.128699997149,
-            "minimum": 13998.365699997521,
-            "maximum": 14107.331899998826
+            "median": 13781.61450000016,
+            "minimum": 13659.33670000004,
+            "maximum": 14080.019500000162
           },
           "firstOpenApiJsonMs": {
-            "median": 296.28909999883035,
-            "minimum": 292.8959999990184,
-            "maximum": 384.30179999704706
+            "median": 288.39960000004794,
+            "minimum": 274.64659999986907,
+            "maximum": 293.41169999997874
           },
           "warm": {
-            "p50Ms": 21.03469999929075,
-            "p95Ms": 88.86390000407118,
-            "p99Ms": 92.32579999661539
+            "p50Ms": 25.301850000005288,
+            "p95Ms": 88.8873999997486,
+            "p99Ms": 90.35409999978583
           },
           "peakMiB": {
-            "median": 241.41015625,
-            "minimum": 240.93359375,
-            "maximum": 241.5234375
+            "median": 241.3671875,
+            "minimum": 241.296875,
+            "maximum": 242.28515625
           },
           "endMiB": {
-            "median": 237.45703125,
-            "minimum": 237.17578125,
-            "maximum": 238.2734375
+            "median": 237.68359375,
+            "minimum": 237.4609375,
+            "maximum": 238.625
           },
           "executableMiB": null
         },
@@ -656,44 +656,44 @@
           "image": "sha256:867a886a5d8cf020d5d9320b93d521acf995535480c7f18d259620f031d7f86a",
           "imageMiB": 473.2901554107666,
           "rowSources": [
-            "20261115-013945/guicedee-jlink/1",
-            "20261115-013945/guicedee-jlink/2",
-            "20261115-013945/guicedee-jlink/3"
+            "20261115-033137/guicedee-jlink/1",
+            "20261115-033137/guicedee-jlink/2",
+            "20261115-033137/guicedee-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 4614.5981999943615,
-            "minimum": 4575.967899996613,
-            "maximum": 4624.047899997095
+            "median": 4515.544800000043,
+            "minimum": 4442.342100000133,
+            "maximum": 4541.17320000023
           },
           "firstBusinessMs": {
-            "median": 3012.9172000015387,
-            "minimum": 3004.7743000031915,
-            "maximum": 3209.0846999999485
+            "median": 3014.2353000001094,
+            "minimum": 3003.1788999999662,
+            "maximum": 3195.1758000000154
           },
           "launchToFirstBusinessMs": {
-            "median": 7637.0126000038,
-            "minimum": 7619.412799998827,
-            "maximum": 7785.093099999358
+            "median": 7518.763300000046,
+            "minimum": 7456.637800000408,
+            "maximum": 7736.389099999997
           },
           "firstOpenApiJsonMs": {
-            "median": 12.143299994932022,
-            "minimum": 11.260800005402416,
-            "maximum": 96.66660000220872
+            "median": 92.77060000022175,
+            "minimum": 26.60429999968983,
+            "maximum": 97.40550000014991
           },
           "warm": {
-            "p50Ms": 20.337949998065596,
-            "p95Ms": 89.9308000007295,
-            "p99Ms": 91.5880999964429
+            "p50Ms": 33.03849999974773,
+            "p95Ms": 89.67029999985243,
+            "p99Ms": 90.3693000000203
           },
           "peakMiB": {
-            "median": 189.09375,
-            "minimum": 188.8359375,
-            "maximum": 189.7734375
+            "median": 187.75390625,
+            "minimum": 187.21484375,
+            "maximum": 189.73828125
           },
           "endMiB": {
-            "median": 185.984375,
-            "minimum": 185.65234375,
-            "maximum": 186.42578125
+            "median": 184.296875,
+            "minimum": 183.4453125,
+            "maximum": 186.46875
           },
           "executableMiB": null
         },
@@ -705,44 +705,44 @@
           "image": "sha256:b8ea0ab4aef0522b489a9ab6e42a4944a996758f813c5395c4c66af4703df2ac",
           "imageMiB": 473.4251642227173,
           "rowSources": [
-            "20261115-013945/guicedee-scan-jlink/1",
-            "20261115-013945/guicedee-scan-jlink/2",
-            "20261115-013945/guicedee-scan-jlink/3"
+            "20261115-033137/guicedee-scan-jlink/1",
+            "20261115-033137/guicedee-scan-jlink/2",
+            "20261115-033137/guicedee-scan-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 4816.379600000801,
-            "minimum": 4761.888600005477,
-            "maximum": 5038.353500000085
+            "median": 4894.486600000164,
+            "minimum": 4648.52959999962,
+            "maximum": 5028.032099999564
           },
           "firstBusinessMs": {
-            "median": 3010.9694999991916,
-            "minimum": 3000.7829000023776,
-            "maximum": 3094.636099995114
+            "median": 3306.1761999997543,
+            "minimum": 2916.0014000003684,
+            "maximum": 3385.0523000000976
           },
           "launchToFirstBusinessMs": {
-            "median": 7817.20349999523,
-            "minimum": 7772.898499999428,
-            "maximum": 8133.029800002987
+            "median": 8200.704400000177,
+            "minimum": 7564.5706999998765,
+            "maximum": 8413.127799999984
           },
           "firstOpenApiJsonMs": {
-            "median": 12.493700000050012,
-            "minimum": 12.086599999747705,
-            "maximum": 97.9760999980499
+            "median": 11.893200000031356,
+            "minimum": 10.842499999853317,
+            "maximum": 79.6040999998695
           },
           "warm": {
-            "p50Ms": 30.96345000085421,
-            "p95Ms": 90.15279999584891,
-            "p99Ms": 90.61130000191042
+            "p50Ms": 48.95084999998289,
+            "p95Ms": 92.29939999977432,
+            "p99Ms": 92.34920000017155
           },
           "peakMiB": {
-            "median": 191.2421875,
-            "minimum": 190.6484375,
-            "maximum": 191.29296875
+            "median": 191.48046875,
+            "minimum": 189.7578125,
+            "maximum": 191.8515625
           },
           "endMiB": {
-            "median": 187.37890625,
-            "minimum": 187.23046875,
-            "maximum": 187.8359375
+            "median": 188.171875,
+            "minimum": 186.36328125,
+            "maximum": 188.265625
           },
           "executableMiB": null
         },
@@ -754,44 +754,44 @@
           "image": "sha256:79b8987c62a9eee01a6592332310c714031d75c986a98319a5f77ae9dcdb0868",
           "imageMiB": 421.16904640197754,
           "rowSources": [
-            "20261115-013945/guicedee-native/1",
-            "20261115-013945/guicedee-native/2",
-            "20261115-013945/guicedee-native/3"
+            "20261115-033137/guicedee-native/1",
+            "20261115-033137/guicedee-native/2",
+            "20261115-033137/guicedee-native/3"
           ],
           "launchToReadyMs": {
-            "median": 577.8463000024203,
-            "minimum": 568.8336999955936,
-            "maximum": 587.2490000037942
+            "median": 572.949499999595,
+            "minimum": 562.8426999996918,
+            "maximum": 587.4170000001868
           },
           "firstBusinessMs": {
-            "median": 76.05200000398327,
-            "minimum": 62.667699996382,
-            "maximum": 97.96469999855617
+            "median": 66.90879999996469,
+            "minimum": 65.97770000007586,
+            "maximum": 72.51369999994495
           },
           "launchToFirstBusinessMs": {
-            "median": 653.9398000022629,
-            "minimum": 649.9573000037344,
-            "maximum": 666.8384999939008
+            "median": 645.498299999872,
+            "minimum": 629.7858999996606,
+            "maximum": 653.4401999997499
           },
           "firstOpenApiJsonMs": {
-            "median": 3.5814000002574176,
-            "minimum": 3.038900002138689,
-            "maximum": 3.668500001367647
+            "median": 3.209200000128476,
+            "minimum": 3.129199999875709,
+            "maximum": 3.3730000000105065
           },
           "warm": {
-            "p50Ms": 4.872199999226723,
-            "p95Ms": 24.897200004488695,
-            "p99Ms": 29.455900003085844
+            "p50Ms": 5.749449999939316,
+            "p95Ms": 26.077199999690492,
+            "p99Ms": 26.995799999895098
           },
           "peakMiB": {
-            "median": 79.43359375,
-            "minimum": 79.30859375,
-            "maximum": 79.484375
+            "median": 79.8125,
+            "minimum": 79.40625,
+            "maximum": 80.0
           },
           "endMiB": {
-            "median": 76.01171875,
-            "minimum": 75.984375,
-            "maximum": 76.296875
+            "median": 76.30859375,
+            "minimum": 75.46484375,
+            "maximum": 76.8984375
           },
           "executableMiB": 191.8311538696289
         },
@@ -803,44 +803,44 @@
           "image": "sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69",
           "imageMiB": 353.04186820983887,
           "rowSources": [
-            "20261115-013945/quarkus-standard-native/1",
-            "20261115-013945/quarkus-standard-native/2",
-            "20261115-013945/quarkus-standard-native/3"
+            "20261115-033137/quarkus-standard-native/1",
+            "20261115-033137/quarkus-standard-native/2",
+            "20261115-033137/quarkus-standard-native/3"
           ],
           "launchToReadyMs": {
-            "median": 573.753199998464,
-            "minimum": 570.5331999997725,
-            "maximum": 581.9307999990997
+            "median": 571.8830999999227,
+            "minimum": 562.3513999998977,
+            "maximum": 601.7977999999857
           },
           "firstBusinessMs": {
-            "median": 106.34589999972377,
-            "minimum": 98.38570000283653,
-            "maximum": 106.50100000202656
+            "median": 120.21079999976791,
+            "minimum": 101.71129999980622,
+            "maximum": 135.47020000032717
           },
           "launchToFirstBusinessMs": {
-            "median": 680.2945000017644,
-            "minimum": 676.9216999964556,
-            "maximum": 680.3579999977956
+            "median": 697.8593999997429,
+            "minimum": 692.1351999999388,
+            "maximum": 703.5476000000926
           },
           "firstOpenApiJsonMs": {
-            "median": 2.1143999983905815,
-            "minimum": 2.007199997024145,
-            "maximum": 2.56239999725949
+            "median": 2.587599999969825,
+            "minimum": 2.2947999996176804,
+            "maximum": 14.831000000413042
           },
           "warm": {
-            "p50Ms": 5.438549997052178,
-            "p95Ms": 28.618399999686517,
-            "p99Ms": 31.69060000072932
+            "p50Ms": 5.391749999716922,
+            "p95Ms": 24.487799999860727,
+            "p99Ms": 25.356699999974808
           },
           "peakMiB": {
-            "median": 54.890625,
-            "minimum": 54.88671875,
-            "maximum": 55.3984375
+            "median": 55.7421875,
+            "minimum": 55.375,
+            "maximum": 55.81640625
           },
           "endMiB": {
-            "median": 51.76953125,
-            "minimum": 51.31640625,
-            "maximum": 51.76953125
+            "median": 52.08984375,
+            "minimum": 52.03125,
+            "maximum": 52.4453125
           },
           "executableMiB": 143.3077163696289
         }
@@ -848,7 +848,7 @@
     },
     "local-windows": {
       "batches": [
-        "20261114-124721"
+        "20261115-035518"
       ],
       "batchStarts": 12,
       "batchCapabilityChecks": 180,
@@ -864,30 +864,34 @@
           "image": null,
           "imageMiB": null,
           "rowSources": [
-            "20261114-124721/guicedee/1",
-            "20261114-124721/guicedee/2",
-            "20261114-124721/guicedee/3"
+            "20261115-035518/guicedee/1",
+            "20261115-035518/guicedee/2",
+            "20261115-035518/guicedee/3"
           ],
           "launchToReadyMs": {
-            "median": 1240.591100002348,
-            "minimum": 1239.6799999987707,
-            "maximum": 1258.9174000022467
+            "median": 1241.9297000005827,
+            "minimum": 1235.4773999995814,
+            "maximum": 1266.313799999807
           },
           "firstBusinessMs": {
-            "median": 2797.8398999985075,
-            "minimum": 2661.388000000443,
-            "maximum": 2885.585300005914
+            "median": 2452.715299999909,
+            "minimum": 2430.3945000001477,
+            "maximum": 2771.6017000002466
           },
           "launchToFirstBusinessMs": {
-            "median": 4037.560700002359,
-            "minimum": 3902.018400003726,
-            "maximum": 4144.55160000216
+            "median": 3688.2316999999603,
+            "minimum": 3672.362900000735,
+            "maximum": 4037.9597999999532
           },
-          "firstOpenApiJsonMs": null,
+          "firstOpenApiJsonMs": {
+            "median": 25.005899999996473,
+            "minimum": 23.320199999943725,
+            "maximum": 31.91530000003695
+          },
           "warm": {
-            "p50Ms": 7.133449995308183,
-            "p95Ms": 31.541600001219194,
-            "p99Ms": 32.38919999421341
+            "p50Ms": 7.410649999656016,
+            "p95Ms": 31.37909999986732,
+            "p99Ms": 32.049999999799184
           },
           "peakMiB": null,
           "endMiB": null,
@@ -901,30 +905,34 @@
           "image": null,
           "imageMiB": null,
           "rowSources": [
-            "20261114-124721/guicedee-scan/1",
-            "20261114-124721/guicedee-scan/2",
-            "20261114-124721/guicedee-scan/3"
+            "20261115-035518/guicedee-scan/1",
+            "20261115-035518/guicedee-scan/2",
+            "20261115-035518/guicedee-scan/3"
           ],
           "launchToReadyMs": {
-            "median": 1256.93080000201,
-            "minimum": 1254.9598999976297,
-            "maximum": 1263.0561999976635
+            "median": 1255.3131999993639,
+            "minimum": 1249.0759000002072,
+            "maximum": 1269.1923000002134
           },
           "firstBusinessMs": {
-            "median": 2621.876400000474,
-            "minimum": 2534.131599997636,
-            "maximum": 2638.336799995159
+            "median": 2426.318500000889,
+            "minimum": 2408.129100000224,
+            "maximum": 2464.0497999998843
           },
           "launchToFirstBusinessMs": {
-            "median": 3878.8481000010506,
-            "minimum": 3789.130799996201,
-            "maximum": 3901.437200001965
+            "median": 3695.5502999999226,
+            "minimum": 3657.244800000626,
+            "maximum": 3719.401199999993
           },
-          "firstOpenApiJsonMs": null,
+          "firstOpenApiJsonMs": {
+            "median": 24.489499999617692,
+            "minimum": 11.73800000015035,
+            "maximum": 30.085999999755586
+          },
           "warm": {
-            "p50Ms": 11.56960000298568,
-            "p95Ms": 31.61769999860553,
-            "p99Ms": 34.00819999660598
+            "p50Ms": 7.239000000026863,
+            "p95Ms": 31.476800000746152,
+            "p99Ms": 32.670300000063435
           },
           "peakMiB": null,
           "endMiB": null,
@@ -938,30 +946,34 @@
           "image": null,
           "imageMiB": null,
           "rowSources": [
-            "20261114-124721/guicedee-jlink/1",
-            "20261114-124721/guicedee-jlink/2",
-            "20261114-124721/guicedee-jlink/3"
+            "20261115-035518/guicedee-jlink/1",
+            "20261115-035518/guicedee-jlink/2",
+            "20261115-035518/guicedee-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 1243.643100002373,
-            "minimum": 1242.2131000057561,
-            "maximum": 1405.3361999976914
+            "median": 1240.6252000000677,
+            "minimum": 1230.5312000007689,
+            "maximum": 1242.473900000732
           },
           "firstBusinessMs": {
-            "median": 645.1763000004576,
-            "minimum": 636.3568000015221,
-            "maximum": 675.5716999978176
+            "median": 598.3994999996867,
+            "minimum": 590.1204000001599,
+            "maximum": 626.7821999999796
           },
           "launchToFirstBusinessMs": {
-            "median": 1919.268199999351,
-            "minimum": 1887.428699999873,
-            "maximum": 2041.7333000004874
+            "median": 1840.9127000004446,
+            "minimum": 1830.7843000002322,
+            "maximum": 1857.3538999999073
           },
-          "firstOpenApiJsonMs": null,
+          "firstOpenApiJsonMs": {
+            "median": 24.827299999742536,
+            "minimum": 11.429600000155915,
+            "maximum": 31.455299999834097
+          },
           "warm": {
-            "p50Ms": 7.179749998613261,
-            "p95Ms": 31.33759999764152,
-            "p99Ms": 32.86140000273008
+            "p50Ms": 6.123099999513215,
+            "p95Ms": 31.10229999947478,
+            "p99Ms": 31.484899999668414
           },
           "peakMiB": null,
           "endMiB": null,
@@ -975,30 +987,34 @@
           "image": null,
           "imageMiB": null,
           "rowSources": [
-            "20261114-124721/guicedee-scan-jlink/1",
-            "20261114-124721/guicedee-scan-jlink/2",
-            "20261114-124721/guicedee-scan-jlink/3"
+            "20261115-035518/guicedee-scan-jlink/1",
+            "20261115-035518/guicedee-scan-jlink/2",
+            "20261115-035518/guicedee-scan-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 1260.251400002744,
-            "minimum": 1240.3865000014775,
-            "maximum": 1271.1408999966807
+            "median": 1241.6911000000255,
+            "minimum": 1234.317899999951,
+            "maximum": 1248.0922999993709
           },
           "firstBusinessMs": {
-            "median": 606.9260000003851,
-            "minimum": 599.5728999987477,
-            "maximum": 631.8268000031821
+            "median": 581.2848000005033,
+            "minimum": 576.2978000002477,
+            "maximum": 607.672499999353
           },
           "launchToFirstBusinessMs": {
-            "median": 1870.753799994418,
-            "minimum": 1847.3535000011907,
-            "maximum": 1892.1186000006855
+            "median": 1829.4151000000056,
+            "minimum": 1818.0274999995163,
+            "maximum": 1842.0286999999007
           },
-          "firstOpenApiJsonMs": null,
+          "firstOpenApiJsonMs": {
+            "median": 11.263399999734247,
+            "minimum": 10.740800000348827,
+            "maximum": 11.612799999966228
+          },
           "warm": {
-            "p50Ms": 7.431599999108585,
-            "p95Ms": 31.475800002226606,
-            "p99Ms": 32.390899999882095
+            "p50Ms": 6.0985499999333115,
+            "p95Ms": 30.606299999817566,
+            "p99Ms": 31.573400000524998
           },
           "peakMiB": null,
           "endMiB": null,
@@ -1009,270 +1025,306 @@
   },
   "phases": {
     "SPI jlink": {
-      "batch": "20261114-200341",
+      "batch": "20261115-033737",
       "variant": "guicedee-jlink",
       "starts": 3,
       "image": "sha256:867a886a5d8cf020d5d9320b93d521acf995535480c7f18d259620f031d7f86a",
       "startup": {
-        "application-startup": 4604.252961,
-        "context-discovery": 496.723179,
-        "application-preparation": 0.027035,
-        "configuration": 3.619505,
-        "discovery": 0.264059,
-        "pre-startup": 997.534472,
-        "pre-hook-complete:com.guicedee.client.implementations.GuicedEEClientStartup": 91.336728,
-        "pre-hook-prepare:com.guicedee.client.implementations.GuicedEEClientStartup": 85.894114,
-        "pre-hook-complete:com.guicedee.telemetry.implementations.TelemetryPreStartup": 102.318728,
-        "pre-hook-prepare:com.guicedee.telemetry.implementations.TelemetryPreStartup": 102.285763,
-        "pre-hook-complete:com.guicedee.metrics.implementations.MetricsPreStartup": 1.928567,
-        "pre-hook-prepare:com.guicedee.metrics.implementations.MetricsPreStartup": 1.906614,
-        "pre-hook-complete:com.guicedee.vertx.spi.VertXPreStartup": 707.126068,
-        "pre-hook-prepare:com.guicedee.vertx.spi.VertXPreStartup": 707.081924,
-        "pre-hook-complete:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.156669,
-        "pre-hook-prepare:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.137624,
-        "pre-hook-complete:com.guicedee.vertx.auth.VertxAuthPreStartup": 2.080706,
-        "pre-hook-prepare:com.guicedee.vertx.auth.VertxAuthPreStartup": 2.060345,
-        "pre-hook-prepare:com.guicedee.vertx.redis.RedisPreStartup": 0.808476,
-        "pre-hook-prepare:com.guicedee.vertx.grpc.GrpcPreStartup": 0.130731,
-        "pre-hook-prepare:com.guicedee.rest.services.GuicedRestPreStartup": 0.003002,
-        "guice-module-discovery": 404.722439,
-        "guice-create-injector": 1700.553204,
-        "provision:tools.jackson.databind.ObjectMapper": 0.004505,
+        "application-startup": 4591.526611,
+        "context-discovery": 497.268544,
+        "application-preparation": 0.025572,
+        "configuration": 3.287813,
+        "discovery": 0.291409,
+        "pre-startup": 994.127652,
+        "pre-hook-complete:com.guicedee.client.implementations.GuicedEEClientStartup": 99.416826,
+        "pre-hook-prepare:com.guicedee.client.implementations.GuicedEEClientStartup": 95.615995,
+        "pre-hook-complete:com.guicedee.telemetry.implementations.TelemetryPreStartup": 99.682346,
+        "pre-hook-prepare:com.guicedee.telemetry.implementations.TelemetryPreStartup": 99.647096,
+        "pre-hook-complete:com.guicedee.metrics.implementations.MetricsPreStartup": 2.514995,
+        "pre-hook-prepare:com.guicedee.metrics.implementations.MetricsPreStartup": 1.930522,
+        "pre-hook-complete:com.guicedee.vertx.spi.VertXPreStartup": 701.221187,
+        "pre-hook-prepare:com.guicedee.vertx.spi.VertXPreStartup": 701.179554,
+        "pre-hook-complete:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.216152,
+        "pre-hook-prepare:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.196084,
+        "pre-hook-complete:com.guicedee.vertx.auth.VertxAuthPreStartup": 2.140106,
+        "pre-hook-prepare:com.guicedee.vertx.auth.VertxAuthPreStartup": 2.119188,
+        "pre-hook-prepare:com.guicedee.vertx.redis.RedisPreStartup": 0.998306,
+        "pre-hook-prepare:com.guicedee.vertx.grpc.GrpcPreStartup": 0.182292,
+        "pre-hook-prepare:com.guicedee.rest.services.GuicedRestPreStartup": 0.003247,
+        "guice-module-discovery": 403.108095,
+        "guice-create-injector": 1602.62671,
+        "provision:tools.jackson.databind.ObjectMapper": 0.00398,
         "provision:io.vertx.core.Vertx": 0.000595,
-        "provision:com.codahale.metrics.MetricRegistry": 0.000503,
-        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider": 1000.151211,
-        "provision:io.swagger.v3.oas.models.OpenAPI": 0.004284,
-        "provision:com.guicedee.client.utils.GlobalProperties": 0.054849,
-        "post-startup": 898.539128,
-        "provision:com.guicedee.vertx.spi.VertxVerticlePostStartup": 0.006819,
-        "provision:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.006306,
-        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.005934,
-        "provision:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.006478,
-        "provision:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.008633,
-        "provision:com.guicedee.client.scopes.CallScoper": 0.011314,
-        "post-hook-prepare:com.guicedee.vertx.spi.VertxVerticlePostStartup": 97.47977,
-        "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup": 6.5774349999999995,
-        "post-hook-prepare:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.394469,
-        "post-hook-complete:com.guicedee.vertx.web.VertxWebServerPostStartup": 597.888618,
-        "provision:com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator": 0.00387,
-        "provision:com.guicedee.metrics.implementations.PrometheusMetricsConfigurator": 0.00423,
-        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter": 0.003458,
-        "provision:com.guicedee.rest.implementations.GuicedRestRouterConfigurator": 0.004196,
-        "provision:com.guicedee.rest.pathing.OperationRegistry": 0.052132,
-        "provision:com.guicedee.servlets.swaggerui.SwaggerUIRegistration": 0.004675,
-        "post-hook-prepare:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.493568,
-        "post-hook-complete:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.971636,
-        "post-hook-prepare:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.172001,
-        "post-hook-prepare:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.037923,
-        "post-hook-complete:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 2.906454,
-        "provision:com.guicedee.vertx.web.spi.ManagedHttpListenerGroup": 0.013145
+        "provision:com.codahale.metrics.MetricRegistry": 0.000502,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider": 897.979716,
+        "provision:io.swagger.v3.oas.models.OpenAPI": 0.004927,
+        "provision:com.guicedee.client.utils.GlobalProperties": 0.052889,
+        "post-startup": 998.050647,
+        "provision:com.guicedee.vertx.spi.VertxVerticlePostStartup": 0.006902999999999999,
+        "provision:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.006379,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.006078,
+        "provision:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.006906,
+        "provision:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.0073880000000000005,
+        "provision:com.guicedee.client.scopes.CallScoper": 0.010655,
+        "post-hook-prepare:com.guicedee.vertx.spi.VertxVerticlePostStartup": 98.236778,
+        "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup": 272.163126,
+        "post-hook-prepare:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.232484,
+        "post-hook-complete:com.guicedee.vertx.web.VertxWebServerPostStartup": 601.738525,
+        "provision:com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator": 0.003813,
+        "provision:com.guicedee.metrics.implementations.PrometheusMetricsConfigurator": 0.003742,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter": 0.004134,
+        "provision:com.guicedee.rest.implementations.GuicedRestRouterConfigurator": 0.004021,
+        "provision:com.guicedee.rest.pathing.OperationRegistry": 0.050842,
+        "provision:com.guicedee.servlets.swaggerui.SwaggerUIRegistration": 0.004662,
+        "post-hook-prepare:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.486637,
+        "post-hook-complete:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.877268,
+        "post-hook-prepare:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.194511,
+        "post-hook-prepare:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.035242,
+        "post-hook-complete:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 2.515692,
+        "provision:com.guicedee.vertx.web.spi.ManagedHttpListenerGroup": 0.013869
       },
       "workload": {
-        "jdk-http-client-initialization": 703.420389,
-        "vendor-client-initialization": 1286.550462,
-        "vendor-rest-including-oauth": 1405.647329,
-        "vendor-graphql": 197.447372,
-        "firestore-client-initialization": 1788.707817,
-        "firestore-write-await": 1196.631002,
-        "firestore-read-await": 7.581913
+        "jdk-http-client-initialization": 707.134959,
+        "vendor-client-initialization": 996.399315,
+        "vendor-rest-including-oauth": 1398.718291,
+        "vendor-graphql": 202.509964,
+        "firestore-client-initialization": 1797.486106,
+        "firestore-write-await": 1016.130432,
+        "firestore-read-await": 93.227413
       }
     },
     "Scanner jlink": {
-      "batch": "20261114-200341",
+      "batch": "20261115-033737",
       "variant": "guicedee-scan-jlink",
       "starts": 3,
       "image": "sha256:b8ea0ab4aef0522b489a9ab6e42a4944a996758f813c5395c4c66af4703df2ac",
       "startup": {
-        "application-startup": 5212.445465,
-        "context-discovery": 411.247235,
-        "application-preparation": 0.02357,
-        "configuration": 4.438286,
-        "discovery": 502.532782,
-        "scan-configuration": 96.696833,
-        "classgraph-scan": 401.427759,
-        "scan-resource-processing": 0.478612,
-        "pre-startup": 903.047441,
-        "pre-hook-complete:com.guicedee.client.implementations.GuicedEEClientStartup": 98.802703,
-        "pre-hook-prepare:com.guicedee.client.implementations.GuicedEEClientStartup": 97.326613,
-        "pre-hook-complete:com.guicedee.telemetry.implementations.TelemetryPreStartup": 91.574515,
-        "pre-hook-prepare:com.guicedee.telemetry.implementations.TelemetryPreStartup": 91.516612,
-        "pre-hook-complete:com.guicedee.metrics.implementations.MetricsPreStartup": 0.276656,
-        "pre-hook-prepare:com.guicedee.metrics.implementations.MetricsPreStartup": 0.260195,
-        "pre-hook-complete:com.guicedee.vertx.spi.VertXPreStartup": 700.937283,
-        "pre-hook-prepare:com.guicedee.vertx.spi.VertXPreStartup": 700.90037,
-        "pre-hook-complete:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.1602,
-        "pre-hook-prepare:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.146069,
-        "pre-hook-complete:com.guicedee.vertx.auth.VertxAuthPreStartup": 85.858174,
-        "pre-hook-prepare:com.guicedee.vertx.auth.VertxAuthPreStartup": 85.811386,
-        "pre-hook-prepare:com.guicedee.vertx.redis.RedisPreStartup": 0.816981,
-        "pre-hook-prepare:com.guicedee.vertx.grpc.GrpcPreStartup": 0.123634,
-        "pre-hook-prepare:com.guicedee.rest.services.GuicedRestPreStartup": 0.002991,
-        "guice-module-discovery": 407.620254,
-        "guice-create-injector": 1689.563545,
-        "provision:tools.jackson.databind.ObjectMapper": 0.004573,
-        "provision:io.vertx.core.Vertx": 0.000592,
-        "provision:com.codahale.metrics.MetricRegistry": 0.000519,
-        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider": 902.241778,
-        "provision:io.swagger.v3.oas.models.OpenAPI": 0.003974,
-        "provision:com.guicedee.client.utils.GlobalProperties": 0.054604,
-        "post-startup": 1004.523456,
-        "provision:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.007046,
-        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.007202,
-        "provision:com.guicedee.vertx.spi.VertxVerticlePostStartup": 0.00604,
-        "provision:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.007182,
-        "provision:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.006905,
-        "provision:com.guicedee.client.scopes.CallScoper": 0.010166,
-        "post-hook-prepare:com.guicedee.vertx.spi.VertxVerticlePostStartup": 105.559654,
-        "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup": 8.324342999999999,
-        "post-hook-prepare:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.232088,
-        "post-hook-complete:com.guicedee.vertx.web.VertxWebServerPostStartup": 706.303153,
-        "provision:com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator": 0.003889,
-        "provision:com.guicedee.metrics.implementations.PrometheusMetricsConfigurator": 0.003667,
-        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter": 0.003984,
-        "provision:com.guicedee.rest.implementations.GuicedRestRouterConfigurator": 0.006264,
-        "provision:com.guicedee.rest.pathing.OperationRegistry": 0.057875,
-        "provision:com.guicedee.servlets.swaggerui.SwaggerUIRegistration": 0.004444,
-        "post-hook-prepare:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.459815,
-        "post-hook-complete:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.856628,
-        "post-hook-prepare:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.204243,
-        "post-hook-prepare:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.03308,
-        "post-hook-complete:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 2.407132,
-        "provision:com.guicedee.vertx.web.spi.ManagedHttpListenerGroup": 0.012086
+        "application-startup": 5204.882106,
+        "context-discovery": 496.397542,
+        "application-preparation": 0.02437,
+        "configuration": 3.965338,
+        "discovery": 589.977679,
+        "scan-configuration": 97.885554,
+        "classgraph-scan": 491.631039,
+        "scan-resource-processing": 0.545056,
+        "pre-startup": 899.584948,
+        "pre-hook-complete:com.guicedee.client.implementations.GuicedEEClientStartup": 97.67455,
+        "pre-hook-prepare:com.guicedee.client.implementations.GuicedEEClientStartup": 6.458525,
+        "pre-hook-complete:com.guicedee.telemetry.implementations.TelemetryPreStartup": 5.196037,
+        "pre-hook-prepare:com.guicedee.telemetry.implementations.TelemetryPreStartup": 5.108455,
+        "pre-hook-complete:com.guicedee.metrics.implementations.MetricsPreStartup": 0.329842,
+        "pre-hook-prepare:com.guicedee.metrics.implementations.MetricsPreStartup": 0.293116,
+        "pre-hook-complete:com.guicedee.vertx.spi.VertXPreStartup": 697.089127,
+        "pre-hook-prepare:com.guicedee.vertx.spi.VertXPreStartup": 697.0521,
+        "pre-hook-complete:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.142169,
+        "pre-hook-prepare:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.128809,
+        "pre-hook-complete:com.guicedee.vertx.auth.VertxAuthPreStartup": 81.926115,
+        "pre-hook-prepare:com.guicedee.vertx.auth.VertxAuthPreStartup": 81.892576,
+        "pre-hook-prepare:com.guicedee.vertx.redis.RedisPreStartup": 0.997961,
+        "pre-hook-prepare:com.guicedee.vertx.grpc.GrpcPreStartup": 0.140124,
+        "pre-hook-prepare:com.guicedee.rest.services.GuicedRestPreStartup": 0.002512,
+        "guice-module-discovery": 408.968356,
+        "guice-create-injector": 1792.867814,
+        "provision:tools.jackson.databind.ObjectMapper": 0.004607,
+        "provision:io.vertx.core.Vertx": 0.000682,
+        "provision:com.codahale.metrics.MetricRegistry": 0.000525,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider": 994.17563,
+        "provision:io.swagger.v3.oas.models.OpenAPI": 0.004443,
+        "provision:com.guicedee.client.utils.GlobalProperties": 0.052713,
+        "post-startup": 1095.497418,
+        "provision:com.guicedee.vertx.spi.VertxVerticlePostStartup": 0.006388,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.006842,
+        "provision:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.006958000000000001,
+        "provision:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.0050160000000000005,
+        "provision:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.00718,
+        "provision:com.guicedee.client.scopes.CallScoper": 0.013617,
+        "post-hook-prepare:com.guicedee.vertx.spi.VertxVerticlePostStartup": 100.723611,
+        "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup": 6.109075,
+        "post-hook-prepare:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.237811,
+        "post-hook-complete:com.guicedee.vertx.web.VertxWebServerPostStartup": 702.639771,
+        "provision:com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator": 0.004007,
+        "provision:com.guicedee.metrics.implementations.PrometheusMetricsConfigurator": 0.004128,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter": 0.00432,
+        "provision:com.guicedee.rest.implementations.GuicedRestRouterConfigurator": 0.003907,
+        "provision:com.guicedee.rest.pathing.OperationRegistry": 0.049768,
+        "provision:com.guicedee.servlets.swaggerui.SwaggerUIRegistration": 0.004367,
+        "post-hook-prepare:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.444985,
+        "post-hook-complete:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.858268,
+        "post-hook-prepare:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.032394,
+        "post-hook-prepare:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.177895,
+        "post-hook-complete:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 2.579425,
+        "provision:com.guicedee.vertx.web.spi.ManagedHttpListenerGroup": 0.012321
       },
       "workload": {
-        "jdk-http-client-initialization": 598.287463,
-        "vendor-client-initialization": 910.694655,
-        "vendor-rest-including-oauth": 1391.936953,
-        "vendor-graphql": 206.461306,
-        "firestore-client-initialization": 1599.238662,
-        "firestore-write-await": 1292.218957,
-        "firestore-read-await": 7.225189
+        "jdk-http-client-initialization": 598.799159,
+        "vendor-client-initialization": 909.833818,
+        "vendor-rest-including-oauth": 1502.625377,
+        "vendor-graphql": 201.642468,
+        "firestore-client-initialization": 1699.98905,
+        "firestore-write-await": 1202.895763,
+        "firestore-read-await": 7.310215
       }
     },
     "Quarkus wrapped JVM": {
-      "batch": "20261114-192928",
+      "batch": "20261115-034350",
       "variant": "quarkus",
       "starts": 3,
       "image": "sha256:8bb83742f618f753100704ec251249db8f28cc941de34af2c016b14f32e50ff8",
       "startup": {},
       "workload": {
-        "jdk-http-client-initialization": 698.320215,
-        "vendor-client-initialization": 14299.594647,
-        "vendor-rest-including-oauth": 1595.760928,
-        "vendor-graphql": 209.482374,
-        "firestore-client-initialization": 1501.740748,
-        "firestore-write-await": 1406.619669,
-        "firestore-read-await": 8.405411
+        "jdk-http-client-initialization": 701.2006220000001,
+        "vendor-client-initialization": 13811.623185,
+        "vendor-rest-including-oauth": 1497.837883,
+        "vendor-graphql": 203.83665,
+        "firestore-client-initialization": 1603.505767,
+        "firestore-write-await": 1211.783052,
+        "firestore-read-await": 13.108935
       }
     },
     "Quarkus upstream JVM": {
-      "batch": "20261114-231541",
+      "batch": "20261115-033737",
       "variant": "quarkus-standard",
-      "starts": 1,
+      "starts": 3,
       "image": "sha256:ff1c796950c84a86c8bc4f833fb17794bf4d4343ab52b98b51ffc0df436d45a8",
       "startup": {},
       "workload": {
-        "jdk-http-client-initialization": 1198.449946,
-        "vendor-client-initialization": 16611.468876,
-        "vendor-rest-including-oauth": 2794.864759,
-        "vendor-graphql": 505.950121,
-        "firestore-client-initialization": 1485.398205,
-        "firestore-write-await": 1215.698835,
-        "firestore-read-await": 13.729914
+        "jdk-http-client-initialization": 793.400734,
+        "vendor-client-initialization": 10999.406465,
+        "vendor-rest-including-oauth": 1394.95977,
+        "vendor-graphql": 200.606686,
+        "firestore-client-initialization": 1219.990644,
+        "firestore-write-await": 795.099135,
+        "firestore-read-await": 12.635727
       }
     },
     "GuicedEE native": {
-      "batch": "20261114-221910",
+      "batch": "20261115-033737",
       "variant": "guicedee-native",
-      "starts": 2,
-      "image": "sha256:1fa99f53daf73ad7a241f606f73a16c01cde1c367fb2d74874e7f361daefcea1",
+      "starts": 3,
+      "image": "sha256:79b8987c62a9eee01a6592332310c714031d75c986a98319a5f77ae9dcdb0868",
       "startup": {
-        "application-startup": 122.030866,
-        "context-discovery": 4.974982,
-        "application-preparation": 0.0090865,
-        "configuration": 0.2019425,
-        "discovery": 0.0023235,
-        "pre-startup": 7.588472,
-        "pre-hook-complete:com.guicedee.client.implementations.GuicedEEClientStartup": 0.564068,
-        "pre-hook-prepare:com.guicedee.client.implementations.GuicedEEClientStartup": 0.55447,
-        "pre-hook-complete:com.guicedee.telemetry.implementations.TelemetryPreStartup": 0.3512115,
-        "pre-hook-prepare:com.guicedee.telemetry.implementations.TelemetryPreStartup": 0.34917750000000003,
-        "pre-hook-complete:com.guicedee.metrics.implementations.MetricsPreStartup": 0.0115645,
-        "pre-hook-prepare:com.guicedee.metrics.implementations.MetricsPreStartup": 0.010651,
-        "pre-hook-complete:com.guicedee.vertx.spi.VertXPreStartup": 3.1848045000000003,
-        "pre-hook-prepare:com.guicedee.vertx.spi.VertXPreStartup": 3.1822345,
-        "pre-hook-complete:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.016223500000000002,
-        "pre-hook-prepare:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.0123955,
-        "pre-hook-complete:com.guicedee.vertx.auth.VertxAuthPreStartup": 2.9701555,
-        "pre-hook-prepare:com.guicedee.vertx.auth.VertxAuthPreStartup": 2.967094,
-        "pre-hook-prepare:com.guicedee.vertx.redis.RedisPreStartup": 0.0397415,
-        "pre-hook-prepare:com.guicedee.vertx.grpc.GrpcPreStartup": 0.009159500000000001,
-        "pre-hook-prepare:com.guicedee.rest.services.GuicedRestPreStartup": 0.0036125000000000003,
-        "guice-module-discovery": 0.9382429999999999,
-        "guice-create-injector": 17.056010999999998,
-        "provision:tools.jackson.databind.ObjectMapper": 0.0005675000000000001,
-        "provision:io.vertx.core.Vertx": 2.3500000000000002e-05,
-        "provision:com.codahale.metrics.MetricRegistry": 1.95e-05,
-        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider": 5.22119,
-        "provision:io.swagger.v3.oas.models.OpenAPI": 0.000516,
-        "provision:com.guicedee.client.utils.GlobalProperties": 0.014632,
-        "post-startup": 90.51878049999999,
-        "provision:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.009595,
-        "provision:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.0020755,
-        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.004402,
-        "provision:com.guicedee.vertx.spi.VertxVerticlePostStartup": 0.004847,
-        "provision:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.004957,
-        "provision:com.guicedee.client.scopes.CallScoper": 0.0049759999999999995,
-        "post-hook-prepare:com.guicedee.vertx.spi.VertxVerticlePostStartup": 36.653595499999994,
-        "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup": 117.3324035,
-        "post-hook-prepare:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.0016015,
-        "post-hook-complete:com.guicedee.vertx.web.VertxWebServerPostStartup": 10.2825325,
-        "provision:com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator": 0.007032,
-        "provision:com.guicedee.metrics.implementations.PrometheusMetricsConfigurator": 0.004177999999999999,
-        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter": 0.0016875,
-        "provision:com.guicedee.rest.implementations.GuicedRestRouterConfigurator": 0.0019265,
-        "provision:com.guicedee.rest.pathing.OperationRegistry": 0.002888,
-        "provision:com.guicedee.servlets.swaggerui.SwaggerUIRegistration": 0.0013635000000000001,
-        "post-hook-prepare:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.07787,
-        "post-hook-complete:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.0385785,
-        "post-hook-prepare:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.0048745,
-        "post-hook-prepare:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.000364,
-        "post-hook-complete:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.5960194999999999,
-        "provision:com.guicedee.vertx.web.spi.ManagedHttpListenerGroup": 0.0048535
+        "application-startup": 152.384357,
+        "context-discovery": 4.678383,
+        "application-preparation": 0.008496,
+        "configuration": 0.178218,
+        "discovery": 0.001935,
+        "pre-startup": 4.152672,
+        "pre-hook-complete:com.guicedee.client.implementations.GuicedEEClientStartup": 0.462509,
+        "pre-hook-prepare:com.guicedee.client.implementations.GuicedEEClientStartup": 0.449272,
+        "pre-hook-complete:com.guicedee.telemetry.implementations.TelemetryPreStartup": 0.275605,
+        "pre-hook-prepare:com.guicedee.telemetry.implementations.TelemetryPreStartup": 0.27281,
+        "pre-hook-complete:com.guicedee.metrics.implementations.MetricsPreStartup": 0.010333,
+        "pre-hook-prepare:com.guicedee.metrics.implementations.MetricsPreStartup": 0.009608,
+        "pre-hook-complete:com.guicedee.vertx.spi.VertXPreStartup": 2.781141,
+        "pre-hook-prepare:com.guicedee.vertx.spi.VertXPreStartup": 2.779119,
+        "pre-hook-complete:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.00714,
+        "pre-hook-prepare:com.guicedee.faulttolerance.implementations.FaultTolerancePreStartup": 0.006587,
+        "pre-hook-complete:com.guicedee.vertx.auth.VertxAuthPreStartup": 0.211879,
+        "pre-hook-prepare:com.guicedee.vertx.auth.VertxAuthPreStartup": 0.21109,
+        "pre-hook-prepare:com.guicedee.vertx.redis.RedisPreStartup": 0.016416,
+        "pre-hook-prepare:com.guicedee.vertx.grpc.GrpcPreStartup": 0.007876,
+        "pre-hook-prepare:com.guicedee.rest.services.GuicedRestPreStartup": 0.0021,
+        "guice-module-discovery": 0.757599,
+        "guice-create-injector": 44.396621,
+        "provision:tools.jackson.databind.ObjectMapper": 0.000504,
+        "provision:io.vertx.core.Vertx": 2e-05,
+        "provision:com.codahale.metrics.MetricRegistry": 1.9e-05,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIProvider": 4.62136,
+        "provision:io.swagger.v3.oas.models.OpenAPI": 0.000198,
+        "provision:com.guicedee.client.utils.GlobalProperties": 0.012787,
+        "post-startup": 95.155856,
+        "provision:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.005243,
+        "provision:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.003593,
+        "provision:com.guicedee.vertx.spi.VertxVerticlePostStartup": 0.00312,
+        "provision:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.001579,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.002428,
+        "provision:com.guicedee.client.scopes.CallScoper": 0.004302,
+        "post-hook-prepare:com.guicedee.vertx.spi.VertxVerticlePostStartup": 0.351908,
+        "post-hook-complete:com.guicedee.vertx.spi.VertxVerticlePostStartup": 241.916387,
+        "post-hook-prepare:com.guicedee.vertx.web.VertxWebServerPostStartup": 0.002023,
+        "post-hook-complete:com.guicedee.vertx.web.VertxWebServerPostStartup": 10.107773,
+        "provision:com.guicedee.rest.implementations.GuicedRestHttpServerConfigurator": 0.009728,
+        "provision:com.guicedee.metrics.implementations.PrometheusMetricsConfigurator": 0.003707,
+        "provision:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRouter": 0.001526,
+        "provision:com.guicedee.rest.implementations.GuicedRestRouterConfigurator": 0.001494,
+        "provision:com.guicedee.rest.pathing.OperationRegistry": 0.002524,
+        "provision:com.guicedee.servlets.swaggerui.SwaggerUIRegistration": 0.000997,
+        "post-hook-prepare:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.076511,
+        "post-hook-complete:com.guicedee.client.implementations.GuicedEEClientPostStartup": 0.017558,
+        "post-hook-prepare:com.guicedee.guicedservlets.openapi.implementations.OpenAPIRegistryPostStartup": 0.006983,
+        "post-hook-prepare:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.000254,
+        "post-hook-complete:com.guicedee.vertx.web.ManagedHttpListenersLifecycle": 0.589008,
+        "provision:com.guicedee.vertx.web.spi.ManagedHttpListenerGroup": 0.004856
       },
       "workload": {
-        "jdk-http-client-initialization": 0.37702749999999996,
-        "vendor-client-initialization": 37.9354815,
-        "vendor-rest-including-oauth": 9.931550999999999,
-        "vendor-graphql": 1.8476615,
-        "firestore-client-initialization": 5.237572,
-        "firestore-write-await": 192.51456249999998,
-        "firestore-read-await": 6.0774635
+        "jdk-http-client-initialization": 0.343431,
+        "vendor-client-initialization": 49.576168,
+        "vendor-rest-including-oauth": 9.649405,
+        "vendor-graphql": 1.71686,
+        "firestore-client-initialization": 4.981725,
+        "firestore-write-await": 11.927278,
+        "firestore-read-await": 1.90355
       }
     },
     "Quarkus upstream native": {
-      "batch": "20261114-231325",
+      "batch": "20261115-033737",
       "variant": "quarkus-standard-native",
-      "starts": 1,
-      "image": "sha256:a7c4d1a26a04cff98c8755c7c7c9ed81826e0eb8bba9436d036b0ab35ba69809",
+      "starts": 3,
+      "image": "sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69",
       "startup": {},
       "workload": {
-        "jdk-http-client-initialization": 0.626808,
-        "vendor-client-initialization": 43.496714,
-        "vendor-rest-including-oauth": 10.813432,
-        "vendor-graphql": 2.082534,
-        "firestore-client-initialization": 26.114239,
-        "firestore-write-await": 310.83823,
-        "firestore-read-await": 7.464485
+        "jdk-http-client-initialization": 0.801728,
+        "vendor-client-initialization": 56.906643,
+        "vendor-rest-including-oauth": 12.824807,
+        "vendor-graphql": 2.541658,
+        "firestore-client-initialization": 25.168626,
+        "firestore-write-await": 50.26522,
+        "firestore-read-await": 1.750545
       }
     }
   },
+  "hostCondition": {
+    "bootTimeUtc": "2026-11-15T00:45:50.5000000Z",
+    "samples": 6,
+    "cpuPercent": {
+      "median": 4.270329805394929,
+      "minimum": 2.5424430091934735,
+      "maximum": 6.930181806701629
+    },
+    "availableMemoryMiB": {
+      "median": 34719.0,
+      "minimum": 32218,
+      "maximum": 37219.0
+    },
+    "stages": [
+      "local-before",
+      "preflight-before"
+    ],
+    "recoveredBoundaryCpuPercent": {
+      "builds-before": [
+        61.9,
+        48.9,
+        54.5
+      ],
+      "builds-after": [
+        11.6,
+        8.9,
+        4.9
+      ],
+      "default-before": [
+        4.9,
+        4.3,
+        6.2
+      ]
+    },
+    "coverage": "Partial boundary snapshots, not continuous monitoring. Preflight values and rounded boundary CPU percentages were recovered from console output after root Maven clean deleted the original host log. Local-before/after values come from retained Get-Counter captures. Original boundary CPU precision is one decimal place; missing timestamps, memory and disk readings were not reconstructed. The preflight disk counter name is not retained. Builds-before precedes untimed container/cache preparation, not the first timed build."
+  },
   "inputSha256": {
-    "results/latest/measurements.json": "79a2087debcc5ad90d7608305bc00321becbeee610d7c5dc83fed920bd9d1a55",
-    "results/latest/builds.json": "caa837413cf29006f263d79f7e5345f203709cf6178acea63113b66194ed9b61"
+    "results/latest/measurements.json": "6a79d4cb9890a420827c489d2400ba22d2a512be8d934b8841c916181dec907d",
+    "results/latest/builds.json": "ae0e705f4b1ce7c4b476c494d9ffc3a74161a37f4592a0f222d94a1033aa26bb"
   },
   "builds": {
-    "measuredAt": "2026-11-14T23:17:00.800344+00:00",
+    "measuredAt": "2026-11-15T01:08:53.884997+00:00",
     "runs": 3,
     "protocol": "Warm dependencies; new Maven process; clean outputs; timed invocations offline; tests skipped; sequential rotated order.",
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.34",
@@ -1281,11 +1333,11 @@
     "java": "openjdk version \"25.0.5\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-25.0.5+8 (build 25.0.5+8-LTS)\nOpenJDK 64-Bit Server VM Temurin-25.0.5+8 (build 25.0.5+8-LTS, mixed mode, sharing)\n",
     "guicedeeArtifactVersion": "2.5.1",
     "container": {
-      "image": "sha256:bcf89ba3c394af8f8d1f00f123881e53c41bd05f61883469a1ad2deeb1e1bfcd",
+      "image": "sha256:d39e455109aae5b9eb47a72db6bbd378c5b7213524ef198d3df4b2f21c09b665",
       "operatingSystem": "Docker Desktop",
       "kernel": "6.6.87.2-microsoft-standard-WSL2",
       "cpus": 32,
-      "memoryBytes": 33539874816,
+      "memoryBytes": 33539862528,
       "cpuLimit": null,
       "memoryLimit": null
     },
@@ -1296,53 +1348,53 @@
     "variants": {
       "guicedee": {
         "compile": {
-          "median": 3.0120308010009467,
-          "minimum": 2.929002491000574,
-          "maximum": 3.0509905729995808,
+          "median": 3.108775648000119,
+          "minimum": 3.104357055000037,
+          "maximum": 3.227038447999803,
           "samples": 3,
           "baseline": "quarkus-standard",
-          "differencePercent": -17.498287381784582
+          "differencePercent": -13.773942929518979
         },
         "package": {
-          "median": 3.690636330000416,
-          "minimum": 3.6542858949978836,
-          "maximum": 3.741579816000012,
+          "median": 3.6716261239998857,
+          "minimum": 3.63807024599987,
+          "maximum": 3.8527645759997995,
           "samples": 3,
           "baseline": "quarkus-standard",
-          "differencePercent": -40.20930044986517
+          "differencePercent": -39.85650725700267
         }
       },
       "guicedee-scan": {
         "compile": {
-          "median": 3.0537114380058483,
-          "minimum": 3.0159350729954895,
-          "maximum": 3.095051746997342,
+          "median": 3.064795586999935,
+          "minimum": 2.992308263000041,
+          "maximum": 3.1877535789999456,
           "samples": 3,
           "baseline": "quarkus-standard",
-          "differencePercent": -16.356624443019218
+          "differencePercent": -14.993788836445276
         },
         "package": {
-          "median": 3.6383987389999675,
-          "minimum": 3.5673120409992407,
-          "maximum": 3.677601871000661,
+          "median": 3.566554908000171,
+          "minimum": 3.5074564759997884,
+          "maximum": 3.585520299000109,
           "samples": 3,
           "baseline": "quarkus-standard",
-          "differencePercent": -41.05558326655502
+          "differencePercent": -41.57763835901488
         }
       },
       "quarkus-standard": {
         "compile": {
-          "median": 3.65087063700048,
-          "minimum": 3.5740567660031957,
-          "maximum": 4.167400443002407,
+          "median": 3.605378412999926,
+          "minimum": 3.518489671999987,
+          "maximum": 3.624846103999971,
           "samples": 3,
           "baseline": "quarkus-standard",
           "differencePercent": 0.0
         },
         "package": {
-          "median": 6.172592656999768,
-          "minimum": 6.157951768997009,
-          "maximum": 6.551202235001256,
+          "median": 6.104777020000029,
+          "minimum": 6.098965786000008,
+          "maximum": 6.405263439000009,
           "samples": 3,
           "baseline": "quarkus-standard",
           "differencePercent": 0.0
@@ -1350,39 +1402,39 @@
       },
       "guicedee-jlink": {
         "package": {
-          "median": 17.82182259399997,
-          "minimum": 17.460278191996622,
-          "maximum": 17.907079194999824,
+          "median": 17.34877169800029,
+          "minimum": 17.263966966999988,
+          "maximum": 17.53212350900003,
           "samples": 3,
           "baseline": "quarkus-standard-native",
-          "differencePercent": -73.17659681552892
+          "differencePercent": -73.12237071384362
         }
       },
       "guicedee-scan-jlink": {
         "package": {
-          "median": 17.695093438000185,
-          "minimum": 17.452647439997236,
-          "maximum": 17.707305779993476,
+          "median": 17.28269381300015,
+          "minimum": 17.09846334399981,
+          "maximum": 17.313057879000098,
           "samples": 3,
           "baseline": "quarkus-standard-native",
-          "differencePercent": -73.36733528959243
+          "differencePercent": -73.22474204755895
         }
       },
       "guicedee-native": {
         "package": {
-          "median": 82.3565191289963,
-          "minimum": 80.96034888400027,
-          "maximum": 85.08352803000162,
+          "median": 75.08116808899968,
+          "minimum": 74.91451417500002,
+          "maximum": 77.16984812400005,
           "samples": 3,
           "baseline": "quarkus-standard-native",
-          "differencePercent": 23.95377104754699
+          "differencePercent": 16.319693255305978
         }
       },
       "quarkus-standard-native": {
         "package": {
-          "median": 66.44131794699933,
-          "minimum": 66.33967636499438,
-          "maximum": 69.67397195999365,
+          "median": 64.54725419900024,
+          "minimum": 64.00669768600005,
+          "maximum": 65.1803463199999,
           "samples": 3,
           "baseline": "quarkus-standard-native",
           "differencePercent": 0.0
