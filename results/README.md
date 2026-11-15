@@ -20,17 +20,18 @@ untimed cache preparation, exact commands, toolchain details and input hashes. I
 build costs from runtime measurements. Full Maven logs stay in the ignored local run folder;
 log hashes, all timing samples and extracted completion evidence are retained here.
 
-`latest/native-audit.json` retains the paired previous/current native artifact comparison,
-compiler inclusion counts, SDK reflection/allocation policy, and full-reflection/full-provider
-override validation. Only
-the accepted final configuration is published; exploratory and failed candidates remain
-in ignored local output. The extended native cohort retains all 1,000 requests per start.
+`latest/native-profile.json` contains only the current native artifact's compiler inclusion
+counts, code origins, SDK reflection/allocation policy and source hashes. Runtime timings
+come from the current comparison groups in `measurements.json`.
 
-`latest/jvm-discovery-audit.json` retains the complete original/shared mapper control,
-scan observations, changed-class hashes and the unchanged module-descriptor hash. The
-candidate's entry bytes match the currently measured JVM SDK; both controls use identical
-dependencies and ZIP packaging. The main JVM matrices use the actual Maven-packaged wrapper.
-The earlier native and clean-build cohorts remain separately identified.
+Keep the latest complete cohort for each published execution mode and diagnostic profile.
+All repeated starts and request samples within that cohort remain available; "latest" does
+not mean selecting the last or fastest individual run. Before/after optimization experiments,
+superseded cohorts and unused image metadata stay out of the published snapshot. The
+extended native cohort retains all 1,000 requests per start.
+
+The JVM matrices use the actual Maven-packaged wrapper. Native and clean-build cohorts
+remain the latest measured for those modes, with their distinct artifact inputs identified.
 
 New executions write to ignored `target/runs/<timestamp>/`.
 The root Maven aggregator preserves this evidence directory during `clean`; application
@@ -40,9 +41,9 @@ To replace a published group:
 
 ```shell
 python tools/publish_results.py jvm-default target/runs/<batch>
-python tools/publish_results.py phases target/runs/<diagnostic-batch> target/runs/<wrapped-diagnostic-batch>
+python tools/publish_results.py phases target/runs/<diagnostic-batch>
 python tools/publish_builds.py target/build-runs/<build-batch>
-python tools/publish_native_audit.py target/runs/<paired-native-batch> target/runs/<provider-override-batch> --artifact-build-log target/<native-build.log>
+python tools/publish_native_profile.py target/runs/<current-native-batch> --artifact-build-log target/<native-build.log>
 python tools/render_performance.py
 python tools/render_charts.py
 python tools/verify_latest.py
@@ -51,4 +52,6 @@ python tools/verify_latest.py
 For counterbalanced native batches, pass both directories to `native-standard`. Publishing
 requires complete passing comparisons and keeps all starts and samples for each selected
 variant. Review the report's written analysis after replacing its numeric grids. Commit the
-latest files and generated report together. Superseded published data remains in Git history.
+latest files and generated report together. The result-file allowlist prevents old run
+directories and ad hoc audits from being added accidentally. Superseded published data
+remains accessible through Git history, without being kept in the current checkout.

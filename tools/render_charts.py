@@ -1,4 +1,4 @@
-"""Render the current startup chart (optional report dependency: matplotlib)."""
+"""Render the current startup and build charts (optional dependency: matplotlib)."""
 import json
 import hashlib
 from pathlib import Path

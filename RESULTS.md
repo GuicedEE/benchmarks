@@ -135,7 +135,7 @@ a larger counterbalanced sample. Full grids retain every start and measured requ
 
 Read the [native comparison](#native-standard), [default JVM matrix](#jvm-default),
 [C1 matrix](#jvm-c1), [percentage differences](#relative-differences),
-[local profile](#local-windows), [packaging](#packaging), and [phase diagnostics](#phase-diagnostics).
+[packaging](#packaging), and [phase diagnostics](#phase-diagnostics).
 
 ## Measurement contract
 
@@ -230,7 +230,7 @@ Displayed rows: **6 starts / 90 passing checks / 6000 successful measured reques
 In this separate 3-start-per-framework cohort, median peak charged memory is **78.88 / 80.09 MiB** (GuicedEE / Quarkus), a GuicedEE difference of **-1.5%**. Its full-business startup medians are **669 / 712 ms**. Keep this smaller startup sample separate from the primary counterbalanced comparison; longer request sequences also change allocation and GC behavior.
 <!-- END GENERATED: extended-findings -->
 
-### Native inclusion and allocation audit
+### Native inclusion and allocation profile
 
 The current application excludes 15 unused xDS, RLS, legacy grpclb and Google C2P service
 providers from native compilation. DNS, ordinary load balancing, transports and TLS
@@ -253,28 +253,25 @@ These are application defaults; the normal Quarkus implementation is unchanged. 
 native compilers still use O2, Serial GC, x86-64-v3 and an 8 GiB builder heap.
 [Configuration and overrides](guicedee-native/README.md) describe the scope.
 
-<!-- BEGIN GENERATED: native-audit -->
-| Metric | Previous GuicedEE artifact | Current GuicedEE artifact | Difference |
-| --- | ---: | ---: | ---: |
-| Executable | 166.93 MiB | 142.35 MiB | -14.7% |
-| Reachable types | 42,163 | 33,493 | -20.6% |
-| Methods registered for reflection | 108,810 | 53,073 | -51.2% |
-| Reachable methods | 175,092 | 172,953 | -1.2% |
-| Compiled code area | 67.74 MiB | 67.41 MiB | -0.5% |
-| Embedded resources | 285 | 281 | -1.4% |
-| Image heap | 98.81 MiB | 74.56 MiB | -24.5% |
-| Artifact compiler peak RSS | 8697.71 MiB | 7969.84 MiB | -8.4% |
-| Full-business startup | 654.03 ms | 647.34 ms | -1.0% |
-| Peak charged memory | 69.05 MiB | 68.71 MiB | -0.5% |
+<!-- BEGIN GENERATED: native-profile -->
+| Metric | Current GuicedEE native artifact |
+| --- | ---: |
+| Reachable types | 33,493 |
+| Methods registered for reflection | 53,073 |
+| Reachable methods | 172,953 |
+| Compiled code area | 67.41 MiB |
+| Embedded resources | 281 |
+| Image heap | 74.56 MiB |
+| Artifact compiler peak RSS | 7969.84 MiB |
 
-Runtime rows use 7 alternating starts per artifact, with the same CPU, memory, heap and request settings. Compiler counts and peak RSS describe the single builds that produced the two artifacts; clean-build time is measured separately in the build grid. The full-provider and full-SDK-reflection override also passed **90 capability checks** across 6 starts. This validates the existing workload with the override, not connectivity to a real xDS control plane or coverage of additional SDK APIs. [Raw audit evidence](results/latest/native-audit.json).
-<!-- END GENERATED: native-audit -->
+Compiler counts and peak RSS describe the single build that produced the currently measured executable. Repeated clean-build time and compiler memory are measured separately in the build grid. [Current compiler profile](results/latest/native-profile.json).
+<!-- END GENERATED: native-profile -->
 
 The retained compiler breakdown identifies `java.base`, Firebase and commercetools as the
 largest remaining code origins. XML, Jackson, Log4j, OpenAPI and HTTP/Vert.x code also remain.
 These are candidates for more targeted reachability work, not evidence that their whole
 modules can be removed. Reflection metadata and SDK model types still contribute to the
-image heap. The [audit evidence](results/latest/native-audit.json) retains the compiler's
+image heap. The [compiler profile](results/latest/native-profile.json) retains the compiler's
 top code origins and heap object types alongside its counts.
 
 The headline memory figures are **peak charged container memory**, not process RSS. The
@@ -375,33 +372,6 @@ implied. The byte sizes are compared separately below.
 **C1 JVM, linked workload:** linked SPI/scanner complete the first business response in **7.567/7.874 s**, versus **14.311 s** for Quarkus JVM. SPI jlink uses **47.1% less time** for this workload. The SDK scanner reports zero linked-image URLs, so this is not evidence of equivalent complete SDK model discovery.
 <!-- END GENERATED: findings -->
 
-<a id="local-windows"></a>
-## Local Windows profile
-
-These are unrestricted-host, default-tiered JVM runs of the four GuicedEE modes. There is
-**no 250m CPU quota, no 500 MiB container limit and no Quarkus row**. They establish the
-local mode timings and functional coverage only; they cannot rank against Docker results.
-Container memory and image size do not apply to this host profile. OpenAPI request timing
-is recorded separately from the first business response.
-
-<!-- BEGIN GENERATED: local-windows -->
-Displayed rows: **12 starts / 180 passing checks / 1200 successful measured requests**. Each start: 20 warmups, 100 measured requests. Batch IDs in [latest measurements](results/latest/measurements.json): `20261115-035518`.
-
-| Variant | Starts | Ready (s) | First request (ms) | Full business (s) | Full business min–max (s) | First OpenAPI (ms) |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 3 | 1.242 | 2,452.72 | 3.688 | 3.672–4.038 | 25.01 |
-| GuicedEE scanner / full JDK | 3 | 1.255 | 2,426.32 | 3.696 | 3.657–3.719 | 24.49 |
-| GuicedEE SPI / application jlink | 3 | 1.241 | 598.40 | 1.841 | 1.831–1.857 | 24.83 |
-| GuicedEE scanner / application jlink | 3 | 1.242 | 581.28 | 1.829 | 1.818–1.842 | 11.26 |
-
-| Variant | Warm p50 (ms) | Warm p95 (ms) | Warm p99 (ms) | Peak memory median (MiB) | Peak memory min–max (MiB) | End memory median (MiB) |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 7.41 | 31.38 | 32.05 | — | — | — |
-| GuicedEE scanner / full JDK | 7.24 | 31.48 | 32.67 | — | — | — |
-| GuicedEE SPI / application jlink | 6.12 | 31.10 | 31.48 | — | — | — |
-| GuicedEE scanner / application jlink | 6.10 | 30.61 | 31.57 | — | — | — |
-<!-- END GENERATED: local-windows -->
-
 <a id="packaging"></a>
 ## Packaging and module footprint
 
@@ -456,7 +426,6 @@ not zero cost.
 | SPI JVM | 1 | `20261115-140817` | `81dc069a9833` |
 | SPI jlink | 1 | `20261115-140817` | `328a1e99248b` |
 | Scanner jlink | 1 | `20261115-140817` | `c394e88f4118` |
-| Quarkus wrapped JVM | 3 | `20261115-034350` | `8bb83742f618` |
 | Quarkus upstream JVM | 1 | `20261115-140817` | `ff1c796950c8` |
 | GuicedEE native | 3 | `20261115-125151` | `cba41d26ee56` |
 | Quarkus upstream native | 3 | `20261115-125151` | `32153f649fea` |
@@ -494,15 +463,15 @@ headline native comparison, with instrumentation enabled for the phase capture.
 <!-- END GENERATED: sdk-headline -->
 
 <!-- BEGIN GENERATED: phase-workload -->
-| Inclusive phase (ms) | Scanner JVM | SPI JVM | SPI jlink | Scanner jlink | Quarkus wrapped JVM | Quarkus upstream JVM | GuicedEE native | Quarkus upstream native |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| JDK HTTP client construction | 1,600.31 | 2,798.89 | 1,194.39 | 1,005.29 | 701.20 | 708.12 | 0.35 | 0.60 |
-| Commercetools client initialization | 9,105.06 | 13,995.06 | 499.97 | 509.15 | 13,811.62 | 11,502.78 | 42.15 | 38.85 |
-| Commercetools REST + first OAuth | 897.15 | 1,093.52 | 999.97 | 993.26 | 1,497.84 | 1,303.63 | 8.17 | 10.54 |
-| GraphQL completion | 194.85 | 102.10 | 99.40 | 199.05 | 203.84 | 199.99 | 1.43 | 2.15 |
-| Firestore client initialization | 1,414.18 | 1,804.74 | 1,613.67 | 1,697.33 | 1,603.51 | 1,498.43 | 4.95 | 31.35 |
-| Firestore write completion | 1,110.47 | 2,062.01 | 1,699.96 | 1,297.93 | 1,211.78 | 814.49 | 9.97 | 8.01 |
-| Firestore read completion | 8.70 | 38.52 | 10.46 | 8.37 | 13.11 | 86.12 | 1.33 | 1.39 |
+| Inclusive phase (ms) | Scanner JVM | SPI JVM | SPI jlink | Scanner jlink | Quarkus upstream JVM | GuicedEE native | Quarkus upstream native |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| JDK HTTP client construction | 1,600.31 | 2,798.89 | 1,194.39 | 1,005.29 | 708.12 | 0.35 | 0.60 |
+| Commercetools client initialization | 9,105.06 | 13,995.06 | 499.97 | 509.15 | 11,502.78 | 42.15 | 38.85 |
+| Commercetools REST + first OAuth | 897.15 | 1,093.52 | 999.97 | 993.26 | 1,303.63 | 8.17 | 10.54 |
+| GraphQL completion | 194.85 | 102.10 | 99.40 | 199.05 | 199.99 | 1.43 | 2.15 |
+| Firestore client initialization | 1,414.18 | 1,804.74 | 1,613.67 | 1,697.33 | 1,498.43 | 4.95 | 31.35 |
+| Firestore write completion | 1,110.47 | 2,062.01 | 1,699.96 | 1,297.93 | 814.49 | 9.97 | 8.01 |
+| Firestore read completion | 8.70 | 38.52 | 10.46 | 8.37 | 86.12 | 1.33 | 1.39 |
 <!-- END GENERATED: phase-workload -->
 
 The commercetools initialization phase is distinct from the first REST/OAuth request.
@@ -514,17 +483,6 @@ Instrumented phase durations remain separate from the runtime rankings.
 
 <a id="jvm-discovery-boundaries"></a>
 ### JVM discovery and measurement boundaries
-
-<!-- BEGIN GENERATED: jvm-discovery-audit -->
-| Matched SDK control | Original mapper | Shared scan | Difference |
-| --- | ---: | ---: | ---: |
-| Ready (s) | 10.788 | 10.456 | 3.1% less time |
-| First business request (s) | 15.793 | 12.706 | 19.5% less time |
-| Full business (s) | 26.581 | 23.211 | 12.7% less time |
-| Peak charged memory (MiB) | 304.023 | 288.316 | 5.2% less memory |
-
-3 alternating starts per artifact; **90 passing capability checks**. The SDK performs two scans with the original mapper and one with scoped reuse. Both JARs use the same dependencies and ZIP packaging; all other entry bytes, including the module descriptor, are identical. This isolates mapper discovery from the wrapper dependency changes. [Raw control evidence](results/latest/jvm-discovery-audit.json).
-<!-- END GENERATED: jvm-discovery-audit -->
 
 The current JVM artifacts use the packaged Commercetools wrapper with scoped scan reuse
 and its current external dependency graph. Named-module smoke checks discover all four SDK

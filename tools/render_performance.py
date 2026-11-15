@@ -88,50 +88,20 @@ def verify_build_runtime_sources(data, image_inputs):
             actual = {e['path']:e['sha256'] for e in image_inputs.get(item['image'], {}).get('sharedSourceHashes', [])}
             if actual != expected:
                 raise ValueError(f'Build/runtime workload source mismatch: {group}/{name}')
-    if data.get('nativeAudit'):
+    if data.get('nativeProfile'):
         native_sources = data['builds']['nativeSources']
-        for path, digest in data['nativeAudit']['sourceSha256'].items():
+        for path, digest in data['nativeProfile']['sourceSha256'].items():
             if native_sources.get(path) != digest:
                 raise ValueError(f'Build/runtime native policy source mismatch: {path}')
 
 
-def collect_native_audit(path, current_image):
-    global LATEST
+def collect_native_profile(path, current_image):
     raw = json.loads(path.read_text(encoding='utf-8'))
     if raw['currentImage'] != current_image:
-        raise ValueError('Native audit does not describe the current executable')
-    saved = LATEST
-    cohorts = {}
-    try:
-        for key in ['comparison', 'providerOverride']:
-            batch = raw[key]
-            LATEST = {'batches': {batch['batch']: batch}}
-            cohorts[key] = collect_group([batch['batch']], None)
-    finally:
-        LATEST = saved
-    return {**{k:v for k,v in raw.items() if k not in ['comparison', 'providerOverride']}, **cohorts}
-
-
-def collect_jvm_discovery_audit(path, current_image):
-    global LATEST
-    raw = json.loads(path.read_text(encoding='utf-8'))
-    if (raw['currentImage'] != current_image or not raw['candidateMatchesCurrentEntryBytes']
-            or raw['currentSdkSha256'] != LATEST['jvmDiscoveryInputs']['packagedSdkSha256']):
-        raise ValueError('JVM discovery audit does not describe the current SDK contents')
-    rows = raw['comparison']['summary']['runs']
-    expected = {(r['variant'], r['run']): 2 if r['variant'].endswith('-before') else 1 for r in rows}
-    observed = {(r['variant'], r['run']): r['scans'] for r in raw['scanCounts']}
-    if ({r['variant'] for r in rows} != {'guicedee-before', 'guicedee-after'}
-            or observed != expected or len(raw['scanCounts']) != len(expected)):
-        raise ValueError('JVM discovery scan observations do not cover the complete control')
-    saved = LATEST
-    try:
-        batch = raw['comparison']
-        LATEST = {'batches': {batch['batch']: batch}}
-        comparison = collect_group([batch['batch']], None)
-    finally:
-        LATEST = saved
-    return {**{k:v for k,v in raw.items() if k != 'comparison'}, 'comparison': comparison}
+        raise ValueError('Native profile does not describe the current executable')
+    if any(key in raw for key in ['comparison', 'providerOverride']):
+        raise ValueError('Native profile must contain only the current artifact')
+    return raw
 
 
 def difference(a, b, metric='time'):
@@ -380,25 +350,6 @@ def render(data):
     groups = data['groups']
     sections = {name: timing_tables(group) for name, group in groups.items()}
     sections['overview'] = overview(groups)
-    if data.get('jvmDiscoveryAudit'):
-        audit = data['jvmDiscoveryAudit']['comparison']
-        before = audit['variants']['guicedee-before']
-        after = audit['variants']['guicedee-after']
-        rows = []
-        for label, key, scale in [('Ready (s)', 'launchToReadyMs', 1000),
-                                  ('First business request (s)', 'firstBusinessMs', 1000),
-                                  ('Full business (s)', 'launchToFirstBusinessMs', 1000),
-                                  ('Peak charged memory (MiB)', 'peakMiB', 1)]:
-            old, new = before[key]['median']/scale, after[key]['median']/scale
-            rows.append([label, f'{old:.3f}', f'{new:.3f}', difference(new, old, 'memory' if scale == 1 else 'time')])
-        sections['jvm-discovery-audit'] = (
-            table(['Matched SDK control', 'Original mapper', 'Shared scan', 'Difference'], rows)
-            + f"\n\n{before['starts']} alternating starts per artifact; "
-            f"**{before['capabilityChecks'] + after['capabilityChecks']} passing capability checks**. "
-            'The SDK performs two scans with the original mapper and one with scoped reuse. '
-            'Both JARs use the same dependencies and ZIP packaging; all other entry bytes, including '
-            'the module descriptor, are identical. This isolates mapper discovery from the wrapper dependency '
-            'changes. [Raw control evidence](results/latest/jvm-discovery-audit.json).')
     native = groups['native-standard']['variants']
     a, b = native['guicedee-native'], native['quarkus-standard-native']
     delta = []
@@ -424,33 +375,23 @@ def render(data):
             f"Its full-business startup medians are **{eg['launchToFirstBusinessMs']['median']:.0f} / "
             f"{eq['launchToFirstBusinessMs']['median']:.0f} ms**. Keep this smaller startup sample separate "
             'from the primary counterbalanced comparison; longer request sequences also change allocation and GC behavior.')
-    if data.get('nativeAudit'):
-        audit = data['nativeAudit']
-        before = audit['comparison']['variants']['guicedee-native-before']
-        after = audit['comparison']['variants']['guicedee-native-after']
-        old, new = (audit['compilerStatistics'][key] for key in ['before', 'after'])
+    if data.get('nativeProfile'):
+        profile = data['nativeProfile']['compilerStatistics']
         rows = []
-        for label, av, bv, unit in [
-            ('Executable', before['executableMiB'], after['executableMiB'], 'MiB'),
-            ('Reachable types', old['analysis_results']['types']['reachable'], new['analysis_results']['types']['reachable'], 'count'),
-            ('Methods registered for reflection', old['analysis_results']['methods']['reflection'], new['analysis_results']['methods']['reflection'], 'count'),
-            ('Reachable methods', old['analysis_results']['methods']['reachable'], new['analysis_results']['methods']['reachable'], 'count'),
-            ('Compiled code area', old['image_details']['code_area']['bytes']/MIB, new['image_details']['code_area']['bytes']/MIB, 'MiB'),
-            ('Embedded resources', old['image_details']['image_heap']['resources']['count'], new['image_details']['image_heap']['resources']['count'], 'count'),
-            ('Image heap', old['image_details']['image_heap']['bytes']/MIB, new['image_details']['image_heap']['bytes']/MIB, 'MiB'),
-            ('Artifact compiler peak RSS', old['resource_usage']['memory']['peak_rss_bytes']/MIB, new['resource_usage']['memory']['peak_rss_bytes']/MIB, 'MiB'),
-            ('Full-business startup', before['launchToFirstBusinessMs']['median'], after['launchToFirstBusinessMs']['median'], 'ms'),
-            ('Peak charged memory', before['peakMiB']['median'], after['peakMiB']['median'], 'MiB')]:
-            values = [f'{v:,.0f}' if unit=='count' else f'{v:.2f} {unit}' for v in [av,bv]]
-            rows.append([label,*values,f'{(bv/av-1)*100:+.1f}%'])
-        sections['native-audit'] = table(['Metric','Previous GuicedEE artifact','Current GuicedEE artifact','Difference'],rows)
-        sections['native-audit'] += (
-            f"\n\nRuntime rows use {before['starts']} alternating starts per artifact, with the same CPU, memory, "
-            'heap and request settings. Compiler counts and peak RSS describe the single builds that produced the two artifacts; clean-build time is measured '
-            'separately in the build grid. '
-            f"The full-provider and full-SDK-reflection override also passed **{audit['providerOverride']['batchCapabilityChecks']} capability checks** "
-            f"across {audit['providerOverride']['batchStarts']} starts. This validates the existing workload with the override, "
-            'not connectivity to a real xDS control plane or coverage of additional SDK APIs. [Raw audit evidence](results/latest/native-audit.json).')
+        for label, value, unit in [
+            ('Reachable types', profile['analysis_results']['types']['reachable'], 'count'),
+            ('Methods registered for reflection', profile['analysis_results']['methods']['reflection'], 'count'),
+            ('Reachable methods', profile['analysis_results']['methods']['reachable'], 'count'),
+            ('Compiled code area', profile['image_details']['code_area']['bytes']/MIB, 'MiB'),
+            ('Embedded resources', profile['image_details']['image_heap']['resources']['count'], 'count'),
+            ('Image heap', profile['image_details']['image_heap']['bytes']/MIB, 'MiB'),
+            ('Artifact compiler peak RSS', profile['resource_usage']['memory']['peak_rss_bytes']/MIB, 'MiB')]:
+            rows.append([label, f'{value:,.0f}' if unit == 'count' else f'{value:.2f} {unit}'])
+        sections['native-profile'] = table(['Metric', 'Current GuicedEE native artifact'], rows)
+        sections['native-profile'] += (
+            '\n\nCompiler counts and peak RSS describe the single build that produced the currently measured '
+            'executable. Repeated clean-build time and compiler memory are measured separately in the build grid. '
+            '[Current compiler profile](results/latest/native-profile.json).')
     memory = []
     for label in ['GuicedEE native', 'Quarkus upstream native']:
         phase = data['phases'][label]
@@ -584,13 +525,10 @@ def main():
             'groups': {name: collect_group(*config) for name, config in GROUPS.items()}, 'phases': collect_phases()}
     if LATEST.get('jvmDiscoveryInputs'):
         data['jvmDiscoveryInputs'] = LATEST['jvmDiscoveryInputs']
-    jvm_audit_path = EVIDENCE_ROOT/'results/latest/jvm-discovery-audit.json'
-    if jvm_audit_path.exists():
-        data['jvmDiscoveryAudit'] = collect_jvm_discovery_audit(
-            jvm_audit_path, data['groups']['jvm-default']['variants']['guicedee']['image'])
-    audit_path = EVIDENCE_ROOT/'results/latest/native-audit.json'
-    if audit_path.exists():
-        data['nativeAudit'] = collect_native_audit(audit_path, data['groups']['native-standard']['variants']['guicedee-native']['image'])
+    profile_path = EVIDENCE_ROOT/'results/latest/native-profile.json'
+    if profile_path.exists():
+        data['nativeProfile'] = collect_native_profile(
+            profile_path, data['groups']['native-standard']['variants']['guicedee-native']['image'])
     if LATEST.get('hostObservations'):
         host = LATEST['hostObservations']
         before = [row for row in host['observations'] if row['stage'].endswith('-before')]
@@ -601,10 +539,8 @@ def main():
             recoveredBoundaryCpuPercent=host.get('recoveredBoundaryCpuPercent', {}),
             coverage=host['coverage'])
     data['inputSha256'] = {'results/latest/measurements.json': hashlib.sha256(evidence.read_bytes()).hexdigest()}
-    if jvm_audit_path.exists():
-        data['inputSha256']['results/latest/jvm-discovery-audit.json'] = hashlib.sha256(jvm_audit_path.read_bytes()).hexdigest()
-    if audit_path.exists():
-        data['inputSha256']['results/latest/native-audit.json'] = hashlib.sha256(audit_path.read_bytes()).hexdigest()
+    if profile_path.exists():
+        data['inputSha256']['results/latest/native-profile.json'] = hashlib.sha256(profile_path.read_bytes()).hexdigest()
     output = io.StringIO(newline='')
     writer = csv.writer(output, lineterminator='\n')
     writer.writerow(['group', 'variant', 'starts', 'ready_ms', 'first_request_ms', 'full_business_ms',

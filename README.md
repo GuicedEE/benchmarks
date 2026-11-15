@@ -43,9 +43,9 @@ mapper options and an independent-scan override. Native images and the clean-bui
 retain their separately identified earlier artifact cohort; they were not rebuilt for this
 JVM change. See the [measurement boundaries](RESULTS.md#jvm-discovery-boundaries).
 
-The [native inclusion audit](RESULTS.md#native-inclusion-and-allocation-audit) records the
-SDK reflection, provider and buffer-pool policies, with validated full-reflection and
-full-provider overrides. The separate
+The [native inclusion profile](RESULTS.md#native-inclusion-and-allocation-profile) records the
+current compiler footprint and SDK reflection, provider and buffer-pool policies, including
+the available overrides. The separate
 [1,000-request cohort](RESULTS.md#extended-native-request-sequence) shows memory after a longer
 request sequence; its smaller cold-start sample is reported separately from the headline.
 
@@ -80,8 +80,8 @@ limits. [Build protocol, ranges and runtime tradeoffs](RESULTS.md#build-performa
 **Commercetools first-use initialization:** GuicedEE SPI JVM records **13.995 s** versus **11.503 s** for standard Quarkus JVM: **2.492 s more** (**21.7% more time**). These are instrumented phase diagnostics (GuicedEE n=1, Quarkus n=1), separate from build time and the uninstrumented runtime rankings. The samples identify a first-use cost; they do not establish a general SDK performance ratio. The linked-image SDK scanner reports zero URLs; jlink timings cover the tested workload, not complete SDK mixin/subtype discovery.
 <!-- END GENERATED: sdk-headline -->
 
-The [phase grid](RESULTS.md#first-use-business-phases) also includes scanner, wrapped-SDK
-control and native diagnostics, plus REST/OAuth, GraphQL and Firestore completion.
+The [phase grid](RESULTS.md#first-use-business-phases) also includes scanner, jlink and native
+diagnostics, plus REST/OAuth, GraphQL and Firestore completion.
 
 ## Run it
 

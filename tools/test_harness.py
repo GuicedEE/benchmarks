@@ -22,25 +22,37 @@ from prepare_jlink import verify_scanner_artifact, DISCOVERY_ENTRIES
 from prepare_native import verify_quarkus_adapter
 from prepare_native_metadata import relocate, transform, conditional_protobuf, rules
 from import_native_trace import verify_sdk_inputs
-from publish_native_audit import verify_override_settings
+from publish_native_profile import verify_profile_settings
+from verify_latest import verify_retention
 from summarize_native import sdk_evidence
 
 
 class HarnessTest(unittest.TestCase):
-    def test_jvm_discovery_control_rejects_mismatched_sdk_and_image(self):
-        root = Path(__file__).resolve().parents[1]
-        path = root/'results/latest/jvm-discovery-audit.json'
-        raw = json.loads(path.read_text())
-        context = dict(jvmDiscoveryInputs=dict(packagedSdkSha256=raw['currentSdkSha256']))
-        with patch.object(render_performance, 'LATEST', context):
-            result = render_performance.collect_jvm_discovery_audit(path, raw['currentImage'])
-            self.assertEqual(6, result['comparison']['batchStarts'])
-            self.assertIs(context, render_performance.LATEST)
-            with self.assertRaisesRegex(ValueError, 'current SDK'):
-                render_performance.collect_jvm_discovery_audit(path, 'different-image')
-            context['jvmDiscoveryInputs']['packagedSdkSha256'] = 'different-sdk'
-            with self.assertRaisesRegex(ValueError, 'current SDK'):
-                render_performance.collect_jvm_discovery_audit(path, raw['currentImage'])
+    def test_current_snapshot_rejects_unreferenced_batches_and_hashes(self):
+        data = dict(groups={'jvm-default':dict(batches=['20261115-135709'])},
+                    phases=[dict(batch='20261115-140817')],
+                    batches={'20261115-135709':{}, '20261115-140817':{}}, inputSha256={})
+        verify_retention(data)
+        data['batches']['20261115-035518'] = {}
+        with self.assertRaisesRegex(ValueError, 'exactly match'):
+            verify_retention(data)
+        del data['batches']['20261115-035518']
+        data['inputSha256']['20261115-035518/summary.json'] = 'older-hash'
+        with self.assertRaisesRegex(ValueError, 'Superseded batch hash'):
+            verify_retention(data)
+
+    def test_native_profile_rejects_stale_image_and_historical_comparisons(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'profile.json'
+            raw = dict(currentImage='sha256:current', compilerStatistics={})
+            path.write_text(json.dumps(raw))
+            self.assertEqual(raw, render_performance.collect_native_profile(path, 'sha256:current'))
+            with self.assertRaisesRegex(ValueError, 'current executable'):
+                render_performance.collect_native_profile(path, 'sha256:older')
+            raw['comparison'] = {}
+            path.write_text(json.dumps(raw))
+            with self.assertRaisesRegex(ValueError, 'only the current artifact'):
+                render_performance.collect_native_profile(path, 'sha256:current')
 
     def test_native_platform_filter_preserves_linux_x64_tls_and_transport(self):
         recipe = (Path(__file__).resolve().parents[1]/'guicedee-native/build-native.sh').read_text()
@@ -55,15 +67,12 @@ class HarnessTest(unittest.TestCase):
             self.assertNotRegex('META-INF/native/'+name, pattern)
         self.assertNotRegex('bench/windows-support.json', pattern)
 
-    def test_sdk_override_publication_requires_both_actual_build_settings(self):
-        roles = dict(before='candidate', after='override')
-        details = dict(candidate='NATIVE_FULL_REFLECTION=false\nNATIVE_CLOUD_CONTROL_PLANE=false',
-                       override='NATIVE_FULL_REFLECTION=true\nNATIVE_CLOUD_CONTROL_PLANE=true')
-        environment = dict(nativeRuntimeDetailsByVariant=details)
-        verify_override_settings(environment, roles)
-        details['override'] = details['override'].replace('NATIVE_FULL_REFLECTION=true', 'NATIVE_FULL_REFLECTION=false')
-        with self.assertRaisesRegex(ValueError, 'NATIVE_FULL_REFLECTION=true'):
-            verify_override_settings(environment, roles)
+    def test_native_profile_requires_actual_default_inclusion_settings(self):
+        details = 'NATIVE_FULL_REFLECTION=false\nNATIVE_CLOUD_CONTROL_PLANE=false'
+        verify_profile_settings(details)
+        for key in ['NATIVE_FULL_REFLECTION', 'NATIVE_CLOUD_CONTROL_PLANE']:
+            with self.assertRaisesRegex(ValueError, f'{key}=false'):
+                verify_profile_settings(details.replace(f'{key}=false', f'{key}=true'))
 
     def test_published_diagnostics_keep_instrumentation_status(self):
         summary = dict(eligibleComparison=False, instrumented=True, performanceComparison=False,
@@ -109,7 +118,7 @@ class HarnessTest(unittest.TestCase):
         path = 'guicedee-native/native-excluded-providers.txt'
         data = dict(builds=dict(sharedSources={'common/src/main/java/bench/Workload.java':'same'},
                                 nativeSources={path:'measured-policy'}), groups={},
-                    nativeAudit=dict(sourceSha256={path:'measured-policy'}))
+                    nativeProfile=dict(sourceSha256={path:'measured-policy'}))
         verify_build_runtime_sources(data, {})
         data['builds']['nativeSources'][path] = 'different-policy'
         with self.assertRaisesRegex(ValueError, 'native policy source mismatch'):

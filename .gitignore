@@ -21,7 +21,10 @@ Thumbs.db
 results/**
 !results/README.md
 !results/latest/
-!results/latest/**
+!results/latest/measurements.json
+!results/latest/builds.json
+!results/latest/native-profile.json
+!results/latest/manifest.json
 docker/build-provenance.json
 docker/analysis/
 

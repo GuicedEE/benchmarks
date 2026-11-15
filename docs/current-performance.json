@@ -650,182 +650,6 @@
         }
       }
     },
-    "local-windows": {
-      "batches": [
-        "20261115-035518"
-      ],
-      "batchStarts": 12,
-      "batchCapabilityChecks": 180,
-      "batchMeasuredRequests": 1200,
-      "warmupsPerStart": 20,
-      "requestsPerStart": 100,
-      "variants": {
-        "guicedee": {
-          "label": "GuicedEE SPI / full JDK",
-          "starts": 3,
-          "capabilityChecks": 45,
-          "measuredRequests": 300,
-          "image": null,
-          "imageMiB": null,
-          "rowSources": [
-            "20261115-035518/guicedee/1",
-            "20261115-035518/guicedee/2",
-            "20261115-035518/guicedee/3"
-          ],
-          "launchToReadyMs": {
-            "median": 1241.9297000005827,
-            "minimum": 1235.4773999995814,
-            "maximum": 1266.313799999807
-          },
-          "firstBusinessMs": {
-            "median": 2452.715299999909,
-            "minimum": 2430.3945000001477,
-            "maximum": 2771.6017000002466
-          },
-          "launchToFirstBusinessMs": {
-            "median": 3688.2316999999603,
-            "minimum": 3672.362900000735,
-            "maximum": 4037.9597999999532
-          },
-          "firstOpenApiJsonMs": {
-            "median": 25.005899999996473,
-            "minimum": 23.320199999943725,
-            "maximum": 31.91530000003695
-          },
-          "warm": {
-            "p50Ms": 7.410649999656016,
-            "p95Ms": 31.37909999986732,
-            "p99Ms": 32.049999999799184
-          },
-          "peakMiB": null,
-          "endMiB": null,
-          "executableMiB": null
-        },
-        "guicedee-scan": {
-          "label": "GuicedEE scanner / full JDK",
-          "starts": 3,
-          "capabilityChecks": 45,
-          "measuredRequests": 300,
-          "image": null,
-          "imageMiB": null,
-          "rowSources": [
-            "20261115-035518/guicedee-scan/1",
-            "20261115-035518/guicedee-scan/2",
-            "20261115-035518/guicedee-scan/3"
-          ],
-          "launchToReadyMs": {
-            "median": 1255.3131999993639,
-            "minimum": 1249.0759000002072,
-            "maximum": 1269.1923000002134
-          },
-          "firstBusinessMs": {
-            "median": 2426.318500000889,
-            "minimum": 2408.129100000224,
-            "maximum": 2464.0497999998843
-          },
-          "launchToFirstBusinessMs": {
-            "median": 3695.5502999999226,
-            "minimum": 3657.244800000626,
-            "maximum": 3719.401199999993
-          },
-          "firstOpenApiJsonMs": {
-            "median": 24.489499999617692,
-            "minimum": 11.73800000015035,
-            "maximum": 30.085999999755586
-          },
-          "warm": {
-            "p50Ms": 7.239000000026863,
-            "p95Ms": 31.476800000746152,
-            "p99Ms": 32.670300000063435
-          },
-          "peakMiB": null,
-          "endMiB": null,
-          "executableMiB": null
-        },
-        "guicedee-jlink": {
-          "label": "GuicedEE SPI / application jlink",
-          "starts": 3,
-          "capabilityChecks": 45,
-          "measuredRequests": 300,
-          "image": null,
-          "imageMiB": null,
-          "rowSources": [
-            "20261115-035518/guicedee-jlink/1",
-            "20261115-035518/guicedee-jlink/2",
-            "20261115-035518/guicedee-jlink/3"
-          ],
-          "launchToReadyMs": {
-            "median": 1240.6252000000677,
-            "minimum": 1230.5312000007689,
-            "maximum": 1242.473900000732
-          },
-          "firstBusinessMs": {
-            "median": 598.3994999996867,
-            "minimum": 590.1204000001599,
-            "maximum": 626.7821999999796
-          },
-          "launchToFirstBusinessMs": {
-            "median": 1840.9127000004446,
-            "minimum": 1830.7843000002322,
-            "maximum": 1857.3538999999073
-          },
-          "firstOpenApiJsonMs": {
-            "median": 24.827299999742536,
-            "minimum": 11.429600000155915,
-            "maximum": 31.455299999834097
-          },
-          "warm": {
-            "p50Ms": 6.123099999513215,
-            "p95Ms": 31.10229999947478,
-            "p99Ms": 31.484899999668414
-          },
-          "peakMiB": null,
-          "endMiB": null,
-          "executableMiB": null
-        },
-        "guicedee-scan-jlink": {
-          "label": "GuicedEE scanner / application jlink",
-          "starts": 3,
-          "capabilityChecks": 45,
-          "measuredRequests": 300,
-          "image": null,
-          "imageMiB": null,
-          "rowSources": [
-            "20261115-035518/guicedee-scan-jlink/1",
-            "20261115-035518/guicedee-scan-jlink/2",
-            "20261115-035518/guicedee-scan-jlink/3"
-          ],
-          "launchToReadyMs": {
-            "median": 1241.6911000000255,
-            "minimum": 1234.317899999951,
-            "maximum": 1248.0922999993709
-          },
-          "firstBusinessMs": {
-            "median": 581.2848000005033,
-            "minimum": 576.2978000002477,
-            "maximum": 607.672499999353
-          },
-          "launchToFirstBusinessMs": {
-            "median": 1829.4151000000056,
-            "minimum": 1818.0274999995163,
-            "maximum": 1842.0286999999007
-          },
-          "firstOpenApiJsonMs": {
-            "median": 11.263399999734247,
-            "minimum": 10.740800000348827,
-            "maximum": 11.612799999966228
-          },
-          "warm": {
-            "p50Ms": 6.0985499999333115,
-            "p95Ms": 30.606299999817566,
-            "p99Ms": 31.573400000524998
-          },
-          "peakMiB": null,
-          "endMiB": null,
-          "executableMiB": null
-        }
-      }
-    },
     "native-extended": {
       "batches": [
         "20261115-125042"
@@ -1244,22 +1068,6 @@
         "Pss_File": 1.7265625
       }
     },
-    "Quarkus wrapped JVM": {
-      "batch": "20261115-034350",
-      "variant": "quarkus",
-      "starts": 3,
-      "image": "sha256:8bb83742f618f753100704ec251249db8f28cc941de34af2c016b14f32e50ff8",
-      "startup": {},
-      "workload": {
-        "jdk-http-client-initialization": 701.2006220000001,
-        "vendor-client-initialization": 13811.623185,
-        "vendor-rest-including-oauth": 1497.837883,
-        "vendor-graphql": 203.83665,
-        "firestore-client-initialization": 1603.505767,
-        "firestore-write-await": 1211.783052,
-        "firestore-read-await": 13.108935
-      }
-    },
     "Quarkus upstream JVM": {
       "batch": "20261115-140817",
       "variant": "quarkus-standard",
@@ -1488,372 +1296,76 @@
     "nativeAndBuildCohorts": "Unchanged, previously measured SDK inputs. The current JVM dependency graph has not been rebuilt as native or measured for clean build time.",
     "frameworkRevision": "97a7fc7a6865362b821365f07f768e56582673c9"
   },
-  "jvmDiscoveryAudit": {
+  "nativeProfile": {
     "schemaVersion": 1,
-    "currentImage": "sha256:81dc069a9833e36a6767e252c9b8a7a3ba611f179b203bf73a833a650a3bdbbd",
-    "currentSdkSha256": "c57691624f7da71fa0bdb247b2cb62a81f6d0927a4a8fec60c963d52ac22732a",
-    "protocol": "Three alternating full-JDK starts per variant at 250m CPU / 500 MiB, default JVM flags, 10 warmups and 30 measured requests. Same app and current dependencies. Original restores upstream 20.4.0 mapper definitions; shared uses current wrapper definitions. Both SDK JARs are repacked identically. This control is separate from Quarkus rankings.",
-    "changedClassSha256": {
-      "com/commercetools/api/json/ApiModule.class": {
-        "original": "f10f37725a834f4e65ba7783ab29938844dba819406cd1f32c4212e92357ea4f",
-        "shared": "f8861ad082ae7ae7bb90d9b53d241e16f1f1a51f92867f66fe6fa08e8478699e"
-      },
-      "io/vrap/rmf/base/client/utils/json/JsonUtils$ObjectMapperHolder.class": {
-        "original": "9129eaa313298042463b96d70d9eb696f511a8de4ab9e9026aef9cd0805afba9",
-        "shared": "c803969bfa868a8ace41b6b08ea6c7358057e85d7284066b68b8f5b25e3668c7"
-      },
-      "io/vrap/rmf/base/client/utils/json/JsonUtils.class": {
-        "original": "34eab09c4804d9ff013a53f87defa6c40a3638c19c7e1aa12e3a136306ff5454",
-        "shared": "d37153d8e55541afccfcfbb25304401ccb01099030396f39cc1eca3c1b1052ac"
-      },
-      "io/vrap/rmf/base/client/utils/json/modules/SubTypeModule.class": {
-        "original": "6b2e0717e5f98218678811eb956f536970d88f71448f0e806e72f1f04fd987e4",
-        "shared": "bc6bc7b70f0ea5fb28d276ad1dbc20ab8c15f6eaea10d93284754a890a2d6644"
-      }
-    },
-    "moduleDescriptorSha256": "5121ef45214459d0b3217040d99d5bd538b0baf57e6f76a29c8e49499974de81",
-    "candidateMatchesCurrentEntryBytes": true,
-    "scanCounts": [
-      {
-        "variant": "guicedee-before",
-        "run": 1,
-        "scans": 2,
-        "lines": [
-          "[2026-11-15 12:19:26.852] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5104 ms to scan 1 urls, producing 3140 keys and 35877 values",
-          "[2026-11-15 12:19:30.145] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 2596 ms to scan 1 urls, producing 3140 keys and 35877 values"
-        ],
-        "logSha256": "7ed76034993486506b2acfad5a4e0a0323be889629a38ccda779046243e62a01"
-      },
-      {
-        "variant": "guicedee-after",
-        "run": 1,
-        "scans": 1,
-        "lines": [
-          "[2026-11-15 12:19:58.436] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5101 ms to scan 1 urls, producing 3140 keys and 35877 values"
-        ],
-        "logSha256": "c9c10cc7c28ed237bf8257f2fdbbc7e4bcfda4c7b945d8c47cea41144d8b4032"
-      },
-      {
-        "variant": "guicedee-after",
-        "run": 2,
-        "scans": 1,
-        "lines": [
-          "[2026-11-15 12:20:27.473] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5207 ms to scan 1 urls, producing 3140 keys and 35877 values"
-        ],
-        "logSha256": "f433c8a73586b50916839276d4af834151a9892cd3672159d6aee6d08c139b23"
-      },
-      {
-        "variant": "guicedee-before",
-        "run": 2,
-        "scans": 2,
-        "lines": [
-          "[2026-11-15 12:20:56.021] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5092 ms to scan 1 urls, producing 3140 keys and 35877 values",
-          "[2026-11-15 12:20:59.631] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 3005 ms to scan 1 urls, producing 3140 keys and 35877 values"
-        ],
-        "logSha256": "d6c3811243b8d32d69b4a5ee4dff20a6df6a8e8aede54836885e329019c736b3"
-      },
-      {
-        "variant": "guicedee-after",
-        "run": 3,
-        "scans": 1,
-        "lines": [
-          "[2026-11-15 12:21:27.345] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5001 ms to scan 1 urls, producing 3140 keys and 35877 values"
-        ],
-        "logSha256": "32a7102e8e522e6c3d360734333b2687f10dc750356f8905a1291db9c0139bfb"
-      },
-      {
-        "variant": "guicedee-before",
-        "run": 3,
-        "scans": 2,
-        "lines": [
-          "[2026-11-15 12:21:55.751] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 5004 ms to scan 1 urls, producing 3140 keys and 35877 values",
-          "[2026-11-15 12:21:59.341] [c.c.i.s.o.r.Reflections                 ] [edee-service-startup] [INFO ] - Reflections took 2801 ms to scan 1 urls, producing 3140 keys and 35877 values"
-        ],
-        "logSha256": "ee9db9d82fcb2733cf7847bb4bf06f04a2e67b132b4ecbf2a06453e1ca7be3bc"
-      }
-    ],
-    "inputSha256": {
-      "summary.json": "50347d0714627ea56236710606b6cb9972dad7b226c019726ccb9ae34018c649",
-      "environment.json": "b552af1b69bdb0d352442d1c3592c33bbbd56ed90869f398d6d977cbb790608b"
-    },
-    "sdkControls": {
-      "guicedee-before": {
-        "role": "original",
-        "upstreamVersion": "20.4.0",
-        "note": "Same current dependency graph; both JARs repacked identically. Only the three mapper/discovery definitions differ. Module descriptor and all other entries retained.",
-        "sdkSha256": "3fe8d4c4488b9b124e0dd11f1d6ccf81c06a46327d27a2f777e87f7005824a92",
-        "upstreamRestorationSourceSha256": {
-          "io\\vrap\\rmf\\base\\client\\utils\\json\\JsonUtils.java": "6910373e153997d4097acba7b7b732df57badca58f5e52c977f7757c3b02e2b3",
-          "io\\vrap\\rmf\\base\\client\\utils\\json\\modules\\SubTypeModule.java": "ecdc2408961d199838ba55fa04501eebc453f29b8bac0de40911ef64976061fb",
-          "com\\commercetools\\api\\json\\ApiModule.java": "3a6f0b2c811e3f54557bc713d5f3528c0eb2a113956b7351c09639008f15b87d"
-        },
-        "sourceHashScope": "Sources used to restore the original SDK definitions in the original control; shared definitions match the current wrapper entry bytes."
-      },
-      "guicedee-after": {
-        "role": "shared",
-        "upstreamVersion": "20.4.0",
-        "note": "Same current dependency graph; both JARs repacked identically. Only the three mapper/discovery definitions differ. Module descriptor and all other entries retained.",
-        "sdkSha256": "fcfbbc4b05ca3689fe248aa553881f2c4643ac0f981e942fc80e185de3a77666",
-        "upstreamRestorationSourceSha256": {
-          "io\\vrap\\rmf\\base\\client\\utils\\json\\JsonUtils.java": "6910373e153997d4097acba7b7b732df57badca58f5e52c977f7757c3b02e2b3",
-          "io\\vrap\\rmf\\base\\client\\utils\\json\\modules\\SubTypeModule.java": "ecdc2408961d199838ba55fa04501eebc453f29b8bac0de40911ef64976061fb",
-          "com\\commercetools\\api\\json\\ApiModule.java": "3a6f0b2c811e3f54557bc713d5f3528c0eb2a113956b7351c09639008f15b87d"
-        },
-        "sourceHashScope": "Sources used to restore the original SDK definitions in the original control; shared definitions match the current wrapper entry bytes."
-      }
-    },
-    "comparison": {
-      "batches": [
-        "20261115-141847"
-      ],
-      "batchStarts": 6,
-      "batchCapabilityChecks": 90,
-      "batchMeasuredRequests": 180,
-      "warmupsPerStart": 10,
-      "requestsPerStart": 30,
-      "variants": {
-        "guicedee-before": {
-          "label": "GuicedEE SPI / full JDK",
-          "starts": 3,
-          "capabilityChecks": 45,
-          "measuredRequests": 90,
-          "image": "sha256:b47693c3021f039b5952173e822df3a55711e8d05d763e8e1db6fcdb8282c6ef",
-          "imageMiB": 1082.9685201644897,
-          "rowSources": [
-            "20261115-141847/guicedee-before/1",
-            "20261115-141847/guicedee-before/2",
-            "20261115-141847/guicedee-before/3"
-          ],
-          "launchToReadyMs": {
-            "median": 10787.729900002887,
-            "minimum": 10771.34500000102,
-            "maximum": 11466.657999997551
-          },
-          "firstBusinessMs": {
-            "median": 15793.198800005484,
-            "minimum": 15192.573399996036,
-            "maximum": 15892.250500000955
-          },
-          "launchToFirstBusinessMs": {
-            "median": 26580.973000003723,
-            "minimum": 25963.960000000952,
-            "maximum": 27358.9776000008
-          },
-          "firstOpenApiJsonMs": {
-            "median": 102.1550000004936,
-            "minimum": 96.40529999887804,
-            "maximum": 102.50339999765856
-          },
-          "warm": {
-            "p50Ms": 92.23294999901555,
-            "p95Ms": 100.2264999988256,
-            "p99Ms": 101.2786999999662
-          },
-          "peakMiB": {
-            "median": 304.0234375,
-            "minimum": 294.8046875,
-            "maximum": 379.30859375
-          },
-          "endMiB": {
-            "median": 300.15625,
-            "minimum": 291.11328125,
-            "maximum": 375.65625
-          },
-          "executableMiB": null
-        },
-        "guicedee-after": {
-          "label": "GuicedEE SPI / full JDK",
-          "starts": 3,
-          "capabilityChecks": 45,
-          "measuredRequests": 90,
-          "image": "sha256:7440c418329effd517793eaf93e7d018c633ddcd9f40f241877acabdefc8409f",
-          "imageMiB": 1082.9736471176147,
-          "rowSources": [
-            "20261115-141847/guicedee-after/1",
-            "20261115-141847/guicedee-after/2",
-            "20261115-141847/guicedee-after/3"
-          ],
-          "launchToReadyMs": {
-            "median": 10455.840100003115,
-            "minimum": 10443.513999998686,
-            "maximum": 10504.167700004473
-          },
-          "firstBusinessMs": {
-            "median": 12706.398700000136,
-            "minimum": 12495.672099998046,
-            "maximum": 13501.83939999988
-          },
-          "launchToFirstBusinessMs": {
-            "median": 23210.607300003176,
-            "minimum": 22951.562000002014,
-            "maximum": 23945.431699998153
-          },
-          "firstOpenApiJsonMs": {
-            "median": 187.38489999668673,
-            "minimum": 99.80129999894416,
-            "maximum": 192.5450999988243
-          },
-          "warm": {
-            "p50Ms": 92.184350000025,
-            "p95Ms": 98.61970000201836,
-            "p99Ms": 101.1475999985123
-          },
-          "peakMiB": {
-            "median": 288.31640625,
-            "minimum": 286.87890625,
-            "maximum": 322.671875
-          },
-          "endMiB": {
-            "median": 284.17578125,
-            "minimum": 284.00390625,
-            "maximum": 319.1875
-          },
-          "executableMiB": null
-        }
-      }
-    }
-  },
-  "nativeAudit": {
-    "schemaVersion": 1,
+    "currentImage": "sha256:cba41d26ee568443fc067010e607b07b6ddc858fd47599402d0190fd9fb96132",
     "compilerStatistics": {
-      "before": {
-        "resource_usage": {
-          "memory": {
-            "system_total": 33539862528,
-            "peak_rss_bytes": 9120210944
-          },
-          "garbage_collection": {
-            "count": 306,
-            "total_secs": 5.902,
-            "max_heap": 7635730432
-          },
-          "cpu": {
-            "load": 14.901695495804075,
-            "parallelism": 32,
-            "total_cores": 32
-          },
-          "total_secs": 57.638763887
+      "resource_usage": {
+        "memory": {
+          "system_total": 33539862528,
+          "peak_rss_bytes": 8356986880
         },
-        "image_details": {
-          "code_area": {
-            "bytes": 71025824,
-            "compilation_units": 119327
-          },
-          "total_bytes": 185124112,
-          "image_heap": {
-            "bytes": 103612416,
-            "objects": {
-              "count": 814216
-            },
-            "resources": {
-              "bytes": 0,
-              "count": 285
-            }
-          }
+        "garbage_collection": {
+          "count": 291,
+          "total_secs": 5.551,
+          "max_heap": 7635730432
         },
-        "general_info": {
-          "c_compiler": "gcc (redhat, x86_64, 11.5.0)",
-          "name": "application",
-          "java_version": "25.0.5+8-LTS",
-          "garbage_collector": "Serial GC",
-          "graal_compiler": {
-            "march": "x86-64-v3",
-            "optimization_level": "2"
-          },
-          "vendor_version": "Mandrel-25.0.5.0-Final",
-          "graalvm_version": "Mandrel-25.0.5.0-Final"
+        "cpu": {
+          "load": 15.601240298962237,
+          "parallelism": 32,
+          "total_cores": 32
         },
-        "analysis_results": {
-          "types": {
-            "total": 48582,
-            "reflection": 19915,
-            "jni": 122,
-            "reachable": 42163
+        "total_secs": 55.174986761
+      },
+      "image_details": {
+        "code_area": {
+          "bytes": 70680448,
+          "compilation_units": 117313
+        },
+        "total_bytes": 159209928,
+        "image_heap": {
+          "bytes": 78184448,
+          "objects": {
+            "count": 697965
           },
-          "methods": {
-            "foreign_upcalls": 0,
-            "foreign_downcalls": 0,
-            "total": 435508,
-            "reflection": 108810,
-            "jni": 1000,
-            "reachable": 175092
-          },
-          "fields": {
-            "total": 111698,
-            "reflection": 18125,
-            "jni": 291,
-            "reachable": 51868
+          "resources": {
+            "bytes": 0,
+            "count": 281
           }
         }
       },
-      "after": {
-        "resource_usage": {
-          "memory": {
-            "system_total": 33539862528,
-            "peak_rss_bytes": 8356986880
-          },
-          "garbage_collection": {
-            "count": 291,
-            "total_secs": 5.551,
-            "max_heap": 7635730432
-          },
-          "cpu": {
-            "load": 15.601240298962237,
-            "parallelism": 32,
-            "total_cores": 32
-          },
-          "total_secs": 55.174986761
+      "general_info": {
+        "c_compiler": "gcc (redhat, x86_64, 11.5.0)",
+        "name": "application",
+        "java_version": "25.0.5+8-LTS",
+        "garbage_collector": "Serial GC",
+        "graal_compiler": {
+          "march": "x86-64-v3",
+          "optimization_level": "2"
         },
-        "image_details": {
-          "code_area": {
-            "bytes": 70680448,
-            "compilation_units": 117313
-          },
-          "total_bytes": 159209928,
-          "image_heap": {
-            "bytes": 78184448,
-            "objects": {
-              "count": 697965
-            },
-            "resources": {
-              "bytes": 0,
-              "count": 281
-            }
-          }
+        "vendor_version": "Mandrel-25.0.5.0-Final",
+        "graalvm_version": "Mandrel-25.0.5.0-Final"
+      },
+      "analysis_results": {
+        "types": {
+          "total": 44580,
+          "reflection": 13927,
+          "jni": 122,
+          "reachable": 33493
         },
-        "general_info": {
-          "c_compiler": "gcc (redhat, x86_64, 11.5.0)",
-          "name": "application",
-          "java_version": "25.0.5+8-LTS",
-          "garbage_collector": "Serial GC",
-          "graal_compiler": {
-            "march": "x86-64-v3",
-            "optimization_level": "2"
-          },
-          "vendor_version": "Mandrel-25.0.5.0-Final",
-          "graalvm_version": "Mandrel-25.0.5.0-Final"
+        "methods": {
+          "foreign_upcalls": 0,
+          "foreign_downcalls": 0,
+          "total": 351134,
+          "reflection": 53073,
+          "jni": 1000,
+          "reachable": 172953
         },
-        "analysis_results": {
-          "types": {
-            "total": 44580,
-            "reflection": 13927,
-            "jni": 122,
-            "reachable": 33493
-          },
-          "methods": {
-            "foreign_upcalls": 0,
-            "foreign_downcalls": 0,
-            "total": 351134,
-            "reflection": 53073,
-            "jni": 1000,
-            "reachable": 172953
-          },
-          "fields": {
-            "total": 100215,
-            "reflection": 7582,
-            "jni": 291,
-            "reachable": 53446
-          }
+        "fields": {
+          "total": 100215,
+          "reflection": 7582,
+          "jni": 291,
+          "reachable": 53446
         }
       }
     },
@@ -1875,7 +1387,6 @@
         "Warning: The log4j library has been detected, but the version is unavailable. Due to Log4Shell, please ensure log4j is at version 2.17.1 or later."
       ]
     },
-    "currentImage": "sha256:cba41d26ee568443fc067010e607b07b6ddc858fd47599402d0190fd9fb96132",
     "excludedProviders": [
       "com.google.firebase.internal.shaded.io.grpc.googleapis.GoogleCloudToProdExperimentalNameResolverProvider",
       "com.google.firebase.internal.shaded.io.grpc.googleapis.GoogleCloudToProdNameResolverProvider",
@@ -1905,13 +1416,11 @@
       "guicedee-native/src/main/resources/META-INF/native-image/dev.guicedee.benchmarks/guicedee-trace/reachability-metadata.json": "14284997ae6116c844bf5dae03590ef807aacd37cb87898b7ace347dc3ab214e",
       "guicedee-native/src/main/java/bench/guicedee/nativeconfig/BenchmarkNativeConfiguration.java": "270b8113351a39c2ae6807f9836e83ec123c3705b743254dc107a933a041c335"
     },
-    "scope": "Application native policy; original SDK JARs and module descriptors retained. The override validation exercises the existing workload, not an xDS control plane or additional SDK APIs.",
+    "scope": "Compiler inclusion and application native policy for the current immutable executable. Runtime and clean-build samples are recorded separately.",
     "sdkReflection": {
       "conditionalModelQueries": true,
       "staticProtobufParseRegistrationEntriesOmitted": 6756,
-      "parseCountScope": "Metadata occurrences across three schemas; not unique methods.",
-      "fullReflectionOverrideValidated": true,
-      "sdkJarBytesUnchanged": true
+      "parseCountScope": "Metadata occurrences across three schemas; not unique methods."
     },
     "nativeResourceTarget": {
       "os": "linux",
@@ -1937,234 +1446,6 @@
         "com.google.firebase.internal.shaded.io.netty",
         "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty"
       ]
-    },
-    "comparison": {
-      "batches": [
-        "20261115-124848"
-      ],
-      "batchStarts": 14,
-      "batchCapabilityChecks": 210,
-      "batchMeasuredRequests": 420,
-      "warmupsPerStart": 10,
-      "requestsPerStart": 30,
-      "variants": {
-        "guicedee-native-before": {
-          "label": "GuicedEE SPI / native",
-          "starts": 7,
-          "capabilityChecks": 105,
-          "measuredRequests": 210,
-          "image": "sha256:22c33c17f6378602a853a4e869dcbe40f8f9152a6622a6348e572c18347b59ee",
-          "imageMiB": 389.0347557067871,
-          "rowSources": [
-            "20261115-124848/guicedee-native-before/1",
-            "20261115-124848/guicedee-native-before/2",
-            "20261115-124848/guicedee-native-before/3",
-            "20261115-124848/guicedee-native-before/4",
-            "20261115-124848/guicedee-native-before/5",
-            "20261115-124848/guicedee-native-before/6",
-            "20261115-124848/guicedee-native-before/7"
-          ],
-          "launchToReadyMs": {
-            "median": 575.3150999953505,
-            "minimum": 568.1114999970305,
-            "maximum": 703.3422000022256
-          },
-          "firstBusinessMs": {
-            "median": 79.77059999393532,
-            "minimum": 60.476699996797834,
-            "maximum": 497.3089000050095
-          },
-          "launchToFirstBusinessMs": {
-            "median": 654.0343999949982,
-            "minimum": 635.8318999991752,
-            "maximum": 1200.777800004289
-          },
-          "firstOpenApiJsonMs": {
-            "median": 3.467100003035739,
-            "minimum": 3.290000000561122,
-            "maximum": 4.032600001664832
-          },
-          "warm": {
-            "p50Ms": 5.083899999590358,
-            "p95Ms": 28.475400002207607,
-            "p99Ms": 29.99860000272747
-          },
-          "peakMiB": {
-            "median": 69.0546875,
-            "minimum": 67.79296875,
-            "maximum": 69.13671875
-          },
-          "endMiB": {
-            "median": 65.35546875,
-            "minimum": 64.234375,
-            "maximum": 66.01953125
-          },
-          "executableMiB": 166.9288101196289
-        },
-        "guicedee-native-after": {
-          "label": "GuicedEE SPI / native",
-          "starts": 7,
-          "capabilityChecks": 105,
-          "measuredRequests": 210,
-          "image": "sha256:cba41d26ee568443fc067010e607b07b6ddc858fd47599402d0190fd9fb96132",
-          "imageMiB": 357.2281436920166,
-          "rowSources": [
-            "20261115-124848/guicedee-native-after/1",
-            "20261115-124848/guicedee-native-after/2",
-            "20261115-124848/guicedee-native-after/3",
-            "20261115-124848/guicedee-native-after/4",
-            "20261115-124848/guicedee-native-after/5",
-            "20261115-124848/guicedee-native-after/6",
-            "20261115-124848/guicedee-native-after/7"
-          ],
-          "launchToReadyMs": {
-            "median": 569.63989999349,
-            "minimum": 564.90340000164,
-            "maximum": 585.3914000035729
-          },
-          "firstBusinessMs": {
-            "median": 75.41099999798462,
-            "minimum": 68.9602000056766,
-            "maximum": 102.01389999565436
-          },
-          "launchToFirstBusinessMs": {
-            "median": 647.3369000013918,
-            "minimum": 633.9031000024988,
-            "maximum": 687.4470000038855
-          },
-          "firstOpenApiJsonMs": {
-            "median": 3.4446999998181127,
-            "minimum": 3.0078999989200383,
-            "maximum": 17.949000000953674
-          },
-          "warm": {
-            "p50Ms": 4.966649998095818,
-            "p95Ms": 27.515599998878315,
-            "p99Ms": 29.610999998112675
-          },
-          "peakMiB": {
-            "median": 68.70703125,
-            "minimum": 67.28125,
-            "maximum": 69.3515625
-          },
-          "endMiB": {
-            "median": 65.26953125,
-            "minimum": 63.890625,
-            "maximum": 65.8046875
-          },
-          "executableMiB": 142.3506851196289
-        }
-      }
-    },
-    "providerOverride": {
-      "batches": [
-        "20261115-124823"
-      ],
-      "batchStarts": 6,
-      "batchCapabilityChecks": 90,
-      "batchMeasuredRequests": 180,
-      "warmupsPerStart": 10,
-      "requestsPerStart": 30,
-      "variants": {
-        "guicedee-native-before": {
-          "label": "GuicedEE SPI / native",
-          "starts": 3,
-          "capabilityChecks": 45,
-          "measuredRequests": 90,
-          "image": "sha256:cba41d26ee568443fc067010e607b07b6ddc858fd47599402d0190fd9fb96132",
-          "imageMiB": 357.2281436920166,
-          "rowSources": [
-            "20261115-124823/guicedee-native-before/1",
-            "20261115-124823/guicedee-native-before/2",
-            "20261115-124823/guicedee-native-before/3"
-          ],
-          "launchToReadyMs": {
-            "median": 663.347599998815,
-            "minimum": 589.6149999971385,
-            "maximum": 780.2996999962488
-          },
-          "firstBusinessMs": {
-            "median": 119.89619999803836,
-            "minimum": 115.90630000137025,
-            "maximum": 383.728599997994
-          },
-          "launchToFirstBusinessMs": {
-            "median": 900.2391999965766,
-            "minimum": 779.2980999947758,
-            "maximum": 973.389099999622
-          },
-          "firstOpenApiJsonMs": {
-            "median": 5.222400002821814,
-            "minimum": 4.727100000309292,
-            "maximum": 19.94570000533713
-          },
-          "warm": {
-            "p50Ms": 11.892849997821031,
-            "p95Ms": 32.59129999787547,
-            "p99Ms": 35.82159999496071
-          },
-          "peakMiB": {
-            "median": 69.34765625,
-            "minimum": 68.390625,
-            "maximum": 69.3671875
-          },
-          "endMiB": {
-            "median": 65.70703125,
-            "minimum": 65.08984375,
-            "maximum": 65.79296875
-          },
-          "executableMiB": 142.3506851196289
-        },
-        "guicedee-native-after": {
-          "label": "GuicedEE SPI / native",
-          "starts": 3,
-          "capabilityChecks": 45,
-          "measuredRequests": 90,
-          "image": "sha256:f9bf26e4cd03ffe1bc2522deb93096739f4ec63ce4fbff92c92960b8b495ad30",
-          "imageMiB": 405.09092235565186,
-          "rowSources": [
-            "20261115-124823/guicedee-native-after/1",
-            "20261115-124823/guicedee-native-after/2",
-            "20261115-124823/guicedee-native-after/3"
-          ],
-          "launchToReadyMs": {
-            "median": 599.314899998717,
-            "minimum": 565.3894999995828,
-            "maximum": 626.5869999988354
-          },
-          "firstBusinessMs": {
-            "median": 94.72499999537831,
-            "minimum": 88.77639999991516,
-            "maximum": 110.26709999714512
-          },
-          "launchToFirstBusinessMs": {
-            "median": 709.6401999951922,
-            "minimum": 654.205799997726,
-            "maximum": 721.3533999965875
-          },
-          "firstOpenApiJsonMs": {
-            "median": 3.5023999953409657,
-            "minimum": 3.3203999992110766,
-            "maximum": 3.5717999999178573
-          },
-          "warm": {
-            "p50Ms": 8.353650002391078,
-            "p95Ms": 30.869200003508013,
-            "p99Ms": 31.820399999560323
-          },
-          "peakMiB": {
-            "median": 68.5703125,
-            "minimum": 68.09375,
-            "maximum": 69.44140625
-          },
-          "endMiB": {
-            "median": 65.32421875,
-            "minimum": 64.9453125,
-            "maximum": 66.29296875
-          },
-          "executableMiB": 180.2061538696289
-        }
-      }
     }
   },
   "hostCondition": {
@@ -2188,9 +1469,8 @@
     "coverage": "The six retained one-second snapshots precede the earlier native and clean-build cohorts. The current JVM runtime and diagnostic batches ran sequentially afterwards; no continuous background-load sampler was used for them."
   },
   "inputSha256": {
-    "results/latest/measurements.json": "2f893dd2cea470d2a7184e90c1ca521fb11d8c19dbd594e9860c38c092676155",
-    "results/latest/jvm-discovery-audit.json": "706da7c70730e2871f3b0dfec0de3cc73af469d1e58ee8869ee93ec6fb126f50",
-    "results/latest/native-audit.json": "a954dd69e3b53d3d3b08a86703896fc4f7f19c16f56c43ed9cbb9580bafa8c8d",
+    "results/latest/measurements.json": "4b9784b4f1247966af0128800914b799e71b2913af4e007d8b51a7f48e6522b5",
+    "results/latest/native-profile.json": "582443bc56a2787e5718ebb3e15d56dcc2699f6901ba6826b16cc2cd313dd13b",
     "results/latest/builds.json": "1dc5579c46850f2f0a470cd5502a3b82f964aca1ed955dd559a10c00cd2bb03b"
   },
   "builds": {
