@@ -1354,8 +1354,8 @@
           "minimum": 17.460278191996622,
           "maximum": 17.907079194999824,
           "samples": 3,
-          "baseline": "quarkus-standard",
-          "differencePercent": 188.72507201313346
+          "baseline": "quarkus-standard-native",
+          "differencePercent": -73.17659681552892
         }
       },
       "guicedee-scan-jlink": {
@@ -1364,8 +1364,8 @@
           "minimum": 17.452647439997236,
           "maximum": 17.707305779993476,
           "samples": 3,
-          "baseline": "quarkus-standard",
-          "differencePercent": 186.6719775835817
+          "baseline": "quarkus-standard-native",
+          "differencePercent": -73.36733528959243
         }
       },
       "guicedee-native": {

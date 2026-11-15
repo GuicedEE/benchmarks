@@ -119,7 +119,8 @@ Use `--variants guicedee guicedee-scan quarkus-standard` for JVM-only builds, or
 `--docker` to use your host JDK/Maven. Host runs support `--maven-repository`; Docker uses
 the repository staged by `tools/build.py`. `--guicedee-version` selects the prepared artifacts
 explicitly. Changing native SDK inputs still requires matching reachability metadata.
-The published grid uses all seven variants. See [build results](RESULTS.md#build-performance)
+The published grid uses all seven variants, with jlink build times compared against native
+image builds. See [build results](RESULTS.md#build-performance)
 for the measured boundaries, artifact hashes and environment.
 
 ## Results and validation

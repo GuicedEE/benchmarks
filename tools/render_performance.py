@@ -64,7 +64,7 @@ def collect_builds(evidence):
                 values[goal] = dict(stats([r['wallSeconds'] for r in rows]), samples=len(rows))
         result['variants'][name] = values
     for name, values in result['variants'].items():
-        baseline = 'quarkus-standard-native' if name.endswith('-native') else 'quarkus-standard'
+        baseline = 'quarkus-standard-native' if name.endswith(('-native', '-jlink')) else 'quarkus-standard'
         for goal, item in values.items():
             reference = result['variants'].get(baseline, {}).get(goal)
             if reference:
@@ -90,6 +90,10 @@ def build_sections(data):
     values = data['builds']['variants']
     reference = values['quarkus-standard']
     spi = values['guicedee']
+    linked_spi = values['guicedee-jlink']['package']['median']
+    linked_scan = values['guicedee-scan-jlink']['package']['median']
+    native_g = values['guicedee-native']['package']['median']
+    native_q = values['quarkus-standard-native']['package']['median']
     def difference(a, b):
         delta = (a / b - 1) * 100
         return f"{abs(delta):.1f}% {'less' if delta < 0 else 'more'} time"
@@ -100,19 +104,21 @@ def build_sections(data):
         f"Complete runnable JVM packaging takes **{spi['package']['median']:.2f} / "
         f"{reference['package']['median']:.2f} s** (GuicedEE / Quarkus), "
         f"**{difference(spi['package']['median'], reference['package']['median'])}**. "
-        f"Medians of {data['builds']['runs']} clean, offline builds per task; dependency preparation is excluded.")
+        f"Medians of {data['builds']['runs']} clean, offline builds per task; dependency preparation is excluded.\n\n"
+        f"**jlink versus native build:** GuicedEE SPI/scanner jlink packages in "
+        f"**{linked_spi:.2f} / {linked_scan:.2f} s**, versus **{native_q:.2f} s** for Quarkus native "
+        f"(**{difference(linked_spi, native_q)} / {difference(linked_scan, native_q)}**).")
     rows = []
     for name, item in values.items():
-        native = name.endswith('-native')
-        baseline = values['quarkus-standard-native' if native else 'quarkus-standard']['package']['median']
         package = item['package']
         compile_time = item.get('compile')
         rows.append([LABELS[name], number(item.get('compile', {}).get('median')),
                      f"{compile_time['minimum']:.2f}–{compile_time['maximum']:.2f}" if compile_time else '—',
                      number(package['median']), f"{package['minimum']:.2f}–{package['maximum']:.2f}",
-                     f"{(package['median'] / baseline - 1) * 100:+.1f}%" if name.startswith('guicedee') else 'Baseline'])
+                     'Quarkus native' if package['baseline'] == 'quarkus-standard-native' else 'Quarkus fast-JAR',
+                     f"{package['differencePercent']:+.1f}%" if name.startswith('guicedee') else 'Baseline'])
     grid = table(['Artifact', 'Clean compile (s)', 'Compile min–max (s)', 'Complete package (s)', 'Package min–max (s)',
-                  'Package difference vs Quarkus'], rows)
+                  'Build baseline', 'Package difference'], rows)
     tradeoffs = []
     for name, item in values.items():
         group = 'native-standard' if name.endswith('-native') else 'jvm-default'
@@ -129,14 +135,16 @@ def build_sections(data):
            f"({phases['SPI jlink']['starts']} GuicedEE starts, {phases['Quarkus upstream JVM']['starts']} Quarkus start), "
            'separate from build time and the uninstrumented runtime rankings. The samples identify a first-use cost; '
            'they do not establish its cause or a general SDK performance ratio.')
-    native_g = values['guicedee-native']['package']['median']
-    native_q = values['quarkus-standard-native']['package']['median']
     interpretation = (
         f"GuicedEE's JVM package requires **{difference(spi['package']['median'], reference['package']['median'])}** "
-        'than Quarkus fast-JAR. Linking the runtime adds a separate packaging cost. '
+        'than Quarkus fast-JAR.\n\n'
+        f"**jlink versus native:** SPI/scanner jlink take **{linked_spi:.2f} / {linked_scan:.2f} s**. "
+        f"Against Quarkus native's **{native_q:.2f} s**, that is **{difference(linked_spi, native_q)} / "
+        f"{difference(linked_scan, native_q)}**; against GuicedEE native's **{native_g:.2f} s**, it is "
+        f"**{difference(linked_spi, native_g)} / {difference(linked_scan, native_g)}**.\n\n"
         f"The complete GuicedEE native build takes **{native_g:.2f} s** versus **{native_q:.2f} s**, "
-        f"or **{difference(native_g, native_q)}**. The runtime grid must therefore be read by artifact type: "
-        'the inexpensive JVM build and the native startup result describe different deployment choices.')
+        f"or **{difference(native_g, native_q)}**. jlink produces a bundled JVM runtime; native builds produce "
+        'ahead-of-time executables. The runtime grid shows the startup and request-latency tradeoffs for each artifact.')
     return {'build-headline': headline, 'build-grid': grid, 'build-findings': interpretation, 'build-runtime': table(
         ['Artifact', 'Complete package (s)', 'Full-business startup (s)', 'Warm p50 (ms)'], tradeoffs),
         'sdk-headline': sdk}

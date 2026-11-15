@@ -13,6 +13,8 @@ GuicedEE native completes the first full business request in **657 ms**, versus 
 
 <!-- BEGIN GENERATED: build-headline -->
 **Clean JVM build:** GuicedEE SPI compiles in **3.01 s** versus **3.65 s** for Quarkus (**17.5% less time**). Complete runnable JVM packaging takes **3.69 / 6.17 s** (GuicedEE / Quarkus), **40.2% less time**. Medians of 3 clean, offline builds per task; dependency preparation is excluded.
+
+**jlink versus native build:** GuicedEE SPI/scanner jlink packages in **17.82 / 17.70 s**, versus **66.44 s** for Quarkus native (**73.2% less time / 73.4% less time**).
 <!-- END GENERATED: build-headline -->
 
 **Median launch to completed business response, seconds.** JVM/default and C1 columns use
@@ -38,22 +40,23 @@ all JVMs; native executables have no JIT tiering.
 ## Compile and package time
 
 <!-- BEGIN GENERATED: build-grid -->
-| Artifact | Clean compile (s) | Compile min–max (s) | Complete package (s) | Package min–max (s) | Package difference vs Quarkus |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 3.01 | 2.93–3.05 | 3.69 | 3.65–3.74 | -40.2% |
-| GuicedEE scanner / full JDK | 3.05 | 3.02–3.10 | 3.64 | 3.57–3.68 | -41.1% |
-| Quarkus upstream SDKs / fast-JAR | 3.65 | 3.57–4.17 | 6.17 | 6.16–6.55 | Baseline |
-| GuicedEE SPI / application jlink | — | — | 17.82 | 17.46–17.91 | +188.7% |
-| GuicedEE scanner / application jlink | — | — | 17.70 | 17.45–17.71 | +186.7% |
-| GuicedEE SPI / native | — | — | 82.36 | 80.96–85.08 | +24.0% |
-| Quarkus upstream SDKs / native | — | — | 66.44 | 66.34–69.67 | Baseline |
+| Artifact | Clean compile (s) | Compile min–max (s) | Complete package (s) | Package min–max (s) | Build baseline | Package difference |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| GuicedEE SPI / full JDK | 3.01 | 2.93–3.05 | 3.69 | 3.65–3.74 | Quarkus fast-JAR | -40.2% |
+| GuicedEE scanner / full JDK | 3.05 | 3.02–3.10 | 3.64 | 3.57–3.68 | Quarkus fast-JAR | -41.1% |
+| Quarkus upstream SDKs / fast-JAR | 3.65 | 3.57–4.17 | 6.17 | 6.16–6.55 | Quarkus fast-JAR | Baseline |
+| GuicedEE SPI / application jlink | — | — | 17.82 | 17.46–17.91 | Quarkus native | -73.2% |
+| GuicedEE scanner / application jlink | — | — | 17.70 | 17.45–17.71 | Quarkus native | -73.4% |
+| GuicedEE SPI / native | — | — | 82.36 | 80.96–85.08 | Quarkus native | +24.0% |
+| Quarkus upstream SDKs / native | — | — | 66.44 | 66.34–69.67 | Quarkus native | Baseline |
 <!-- END GENERATED: build-grid -->
 
 ![Clean compilation and complete packaging](docs/builds.svg)
 
 Complete packaging includes runtime dependencies for JVM artifacts, runtime creation for
-jlink, and native compilation for native executables. Native rows compare with Quarkus
-native; other rows compare with Quarkus fast-JAR. A dash means that compilation is covered
+jlink, and native compilation for native executables. **jlink and native build times compare
+with Quarkus native**; full-JDK JVM builds compare with Quarkus fast-JAR. The chart also places
+both jlink modes alongside GuicedEE native. A dash means that compilation is covered
 by the underlying application, rather than timed again as a separate packaging project.
 The build machine has its full CPU/memory allocation; runtime tests use the stated 250m/500 MiB
 limits. [Build protocol, ranges and runtime tradeoffs](RESULTS.md#build-performance) and

@@ -22,9 +22,9 @@ def save(fig, name):
 def build_chart(data):
     values = data['builds']['variants']
     groups = [(['guicedee', 'guicedee-scan', 'quarkus-standard'], 'compile', 'Clean Java compilation'),
-              (['guicedee', 'guicedee-scan', 'quarkus-standard', 'guicedee-jlink', 'guicedee-scan-jlink'],
-               'package', 'Complete JVM / jlink packaging'),
-              (['guicedee-native', 'quarkus-standard-native'], 'package', 'Complete native packaging')]
+              (['guicedee', 'guicedee-scan', 'quarkus-standard'], 'package', 'Complete JVM packaging'),
+              (['guicedee-jlink', 'guicedee-scan-jlink', 'guicedee-native', 'quarkus-standard-native'],
+               'package', 'jlink and native packaging')]
     labels = {'guicedee':'GuicedEE SPI', 'guicedee-scan':'GuicedEE scanner', 'quarkus-standard':'Quarkus',
               'guicedee-jlink':'GuicedEE SPI jlink', 'guicedee-scan-jlink':'GuicedEE scanner jlink',
               'guicedee-native':'GuicedEE SPI native', 'quarkus-standard-native':'Quarkus native'}
