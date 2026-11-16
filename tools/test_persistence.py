@@ -74,11 +74,16 @@ class PersistenceTest(unittest.TestCase):
         events=[dict(type='jdk.ObjectAllocationSample',values=allocation),
                 dict(type='jdk.ObjectAllocationSample',values=dict(allocation,startTime='2026-11-15T00:00:03Z')),
                 dict(type='jdk.NativeMethodSample',values=allocation)]
+        loader = dict(method=dict(type=dict(name='java/lang/ClassLoader'),name='loadClass'))
+        events.append(dict(type='jdk.ExecutionSample',values=dict(
+            startTime='2026-11-15T00:00:05Z',stackTrace=dict(frames=[loader,loader]))))
         result=summarize(events,marks)
         self.assertEqual(result['startup']['sampledAllocationBytes'],0)
         self.assertEqual(result['warm']['sampledAllocationBytes'],100)
         self.assertEqual(result['warm']['inclusiveAllocationBytes'],{'example.Work.run':100})
-        self.assertEqual(result['warm']['executionSamples'],0)
+        self.assertEqual(result['warm']['executionSamples'],1)
+        self.assertEqual(result['warm']['focusedExecutionSamples']['java.lang.ClassLoader.loadClass'],1)
+        self.assertEqual(result['startup']['focusedExecutionSamples']['java.lang.ClassLoader.loadClass'],0)
 
     def test_publication_rejects_instrumented_runs_even_if_marked_eligible(self):
         value=complete();value['instrumented']=True

@@ -2,7 +2,8 @@
 from datetime import datetime, timezone
 import json
 
-JFR_FLAG = '-XX:StartFlightRecording=filename=/tmp/persistence.jfr,settings=profile,dumponexit=true,maxsize=64m'
+JFR_FLAG = ('-XX:StartFlightRecording=filename=/tmp/persistence.jfr,settings=profile,dumponexit=true,'
+            'maxsize=64m,jdk.ExecutionSample#period=2ms')
 PG_FLAGS = ['-c','shared_preload_libraries=pg_stat_statements',
             '-c','pg_stat_statements.track=all','-c','pg_stat_statements.track_planning=on']
 

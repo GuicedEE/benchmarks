@@ -59,12 +59,32 @@ def summarize(events, marks):
                 'org.hibernate.jpa.boot.spi.PersistenceXmlParser.loadUrlWithJaxb',
                 'org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete',
                 'org.hibernate.boot.internal.BootstrapContextImpl.createModelBuildingContext',
+                'org.hibernate.models.CompleteAnnotationDescriptor.<init>',
+                'org.hibernate.models.CompleteAnnotationDescriptor.getAttributes',
+                'org.hibernate.models.internal.AnnotationDescriptorBuilding.extractAttributeDescriptors',
                 'org.hibernate.boot.model.source.internal.hbm.ModelBinder.prepare',
                 'org.hibernate.internal.SessionFactoryImpl.<init>',
                 'org.hibernate.metamodel.model.domain.internal.MappingMetamodelImpl.finishInitialization',
                 'org.hibernate.query.internal.QueryEngineImpl.<init>',
                 'org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard.instantiate',
-                'org.hibernate.metamodel.internal.GuiceEntityProvider.get']})
+                'org.hibernate.metamodel.internal.GuiceEntityProvider.get',
+                'com.guicedee.client.scopes.mutiny.CallScopeUniInterceptor.captureCallScope',
+                'com.guicedee.rest.pathing.OperationRegistry.handleRequest',
+                'org.hibernate.query.sqm.tree.select.SqmQuerySpec.containsCollectionFetches',
+                'org.hibernate.reactive.util.async.impl.AsyncTrampoline$TrampolineInternal.unroll']})
+        phases[phase]['focusedExecutionSamples'] = {name:samples[name] for name in [
+            'java.lang.ClassLoader.loadClass',
+            'org.hibernate.boot.internal.BootstrapContextImpl.createModelBuildingContext',
+            'org.hibernate.models.internal.AnnotationDescriptorBuilding.extractAttributeDescriptors',
+            'org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete',
+            'org.hibernate.internal.SessionFactoryImpl.<init>',
+            'org.hibernate.metamodel.model.domain.internal.MappingMetamodelImpl.finishInitialization',
+            'org.hibernate.query.internal.QueryEngineImpl.<init>',
+            'org.hibernate.query.hql.internal.StandardHqlTranslator.translate',
+            'org.hibernate.metamodel.internal.GuiceEntityProvider.get',
+            'com.guicedee.client.scopes.mutiny.CallScopeUniInterceptor.captureCallScope',
+            'com.guicedee.rest.pathing.OperationRegistry.handleRequest',
+            'org.hibernate.reactive.util.async.impl.AsyncTrampoline$TrampolineInternal.unroll']}
     return phases
 
 
@@ -72,9 +92,11 @@ def render(report):
     text = ['# Current persistence profile', '',
             f"Diagnostic batch `{report['batch']}`; {report['requests']} measured reads and CRUD cycles per application.", '',
             '**Instrumented diagnostics, not benchmark timings.** Use [RESULTS.md](../RESULTS.md) for the uninstrumented comparison.', '',
-            report['limitations'], '',
-            '| Application | Startup sampled allocation (MiB) | Warm sampled allocation (MiB) | Warm SQL calls | Of which transaction control | Warm SQL planning (ms) | Warm SQL execution (ms) |',
-            '|---|---:|---:|---:|---:|---:|---:|']
+            report['limitations'], '']
+    if report.get('jvmFlags'):
+        text += ['JVM flags: '+', '.join(f'`{flag}`' for flag in report['jvmFlags'])+'.', '']
+    text += ['| Application | Startup sampled allocation (MiB) | Warm sampled allocation (MiB) | Warm SQL calls | Of which transaction control | Warm SQL planning (ms) | Warm SQL execution (ms) |',
+             '|---|---:|---:|---:|---:|---:|---:|']
     for row in report['starts']:
         sql = [q for q in row['warmSql'] if q['toplevel']]
         transaction_calls = sum(q['calls'] for q in sql
@@ -126,6 +148,17 @@ def render(report):
         for row in report['starts']:
             sql = [q for q in row['startupSql'] if q['toplevel']]
             text.append(f"| {row['variant']} | {sum(q['calls'] for q in sql)} | {sum(q['total_exec_time'] for q in sql):.2f} |")
+    for row in report['starts']:
+        if row['variant'] != 'guicedee' or 'focusedExecutionSamples' not in row['phases']['startup']: continue
+        text += ['', '## GuicedEE execution sample locations', '',
+                 f"The recording contains {row['phases']['startup']['executionSamples']} startup and "
+                 f"{row['phases']['warm']['executionSamples']} warm execution samples. "
+                 'Counts below include any sample containing the method on its stack. '
+                 'Stacks overlap; counts are not elapsed phase times or additive percentages. '
+                 'Zero means that this recording did not sample the method.', '',
+                 '| Stack location | Startup samples | Warm samples |', '|---|---:|---:|']
+        for name,count in row['phases']['startup']['focusedExecutionSamples'].items():
+            text.append(f"| `{name}` | {count} | {row['phases']['warm']['focusedExecutionSamples'][name]} |")
     text += ['', '## Focused allocation samples', '',
              'These inclusive stack estimates locate work; zero means no allocation sample observed on that stack.', '',
              '| GuicedEE stack | Startup (MiB) | Warm (MiB) |', '|---|---:|---:|']
@@ -151,6 +184,7 @@ def main():
         parser.error('Diagnostic summary requires complete, passing application starts')
     report = dict(instrumented=True, performanceComparison=False,batch=data['batch'],measuredAt=data['measuredAt'],
         requests=data['requests'],warmup=data['warmup'],images=data['images'],runnerSha256=data['runnerSha256'],
+        jvmFlags=data['jvmFlags'],
         profilerSha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         limitations='JFR allocation weights are estimates; inclusive stacks overlap. Execution samples '
                     'exclude native wait samples and do not measure elapsed phase time. '

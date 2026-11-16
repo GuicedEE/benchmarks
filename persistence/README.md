@@ -153,7 +153,9 @@ Diagnostics capture JFR in all JVMs, GuicedEE's inclusive startup phases and Pos
 the first committed graph from the warmed measurement interval. SQL counters are
 subtracted at the measurement boundaries. JFR allocation weights are estimates and
 inclusive stack totals overlap; they must not be summed. Native wait samples are excluded
-from execution-sample summaries. Diagnostic timings are affected by instrumentation and
+from execution-sample summaries. Execution sampling uses a 2 ms period; the published
+profile records the exact JVM flags and counts for selected Hibernate and request stacks.
+Sample counts locate work and do not measure elapsed phase time. Diagnostic timings are affected by instrumentation and
 the publication gate rejects them, even if marked eligible. Full recordings and derived
 summaries stay in ignored `target/`; rerun without `--diagnostics` for comparison tables.
 The GuicedEE log also separates persistence XML parsing, GuicedEE discovery scanning, Hibernate metadata bootstrap,
