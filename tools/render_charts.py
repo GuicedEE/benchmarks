@@ -116,7 +116,10 @@ def main():
 def persistence_chart(data):
     variants = data['variants']
     names = ['guicedee','quarkus','micronaut']
-    fig, axes = plt.subplots(1,3,figsize=(13,4.4))
+    has_control = 'parserControl' in data
+    fig, axes = plt.subplots(2 if has_control else 1,2 if has_control else 3,
+                             figsize=(13,7.6 if has_control else 4.4))
+    axes = axes.ravel()
     metrics = [('Launch to committed graph','launchToFirstTransactionMs','median',1000,'Seconds'),
                ('Joined read, warm p50','read','p50Ms',1,'Milliseconds'),
                ('CRUD cycle, warm p50','cycle','p50Ms',1,'Milliseconds')]
@@ -135,10 +138,26 @@ def persistence_chart(data):
         ax.set_title(title+f'\nGuicedEE vs Quarkus {(values[0]/values[1]-1)*100:+.1f}%',loc='left',fontsize=11,fontweight='bold');ax.set_xlabel(unit)
         ax.spines[['top','right','left']].set_visible(False);ax.grid(axis='x',alpha=.15);ax.set_axisbelow(True)
         for index,value in enumerate(values):ax.text(upper[index]+max(upper)*.025,index,f'{value:.3f}',va='center',fontsize=9)
+    if has_control:
+        ax = axes[3]
+        startup = [variants['guicedee']['launchToFirstTransactionMs'],data['parserControl']['launchToFirstTransactionMs']]
+        values = [s['median']/1000 for s in startup]
+        upper = [s['maximum']/1000 for s in startup]
+        errors = [[(s['median']-s['minimum'])/1000 for s in startup],
+                  [(s['maximum']-s['median'])/1000 for s in startup]]
+        ax.barh([0,1],values,color=['#167c80','#708892'],height=.5,xerr=errors,ecolor='#374151',capsize=3)
+        ax.set_yticks([0,1],['Fast parser','Hibernate fallback'])
+        ax.invert_yaxis();ax.set_xlim(0,max(upper)*1.35)
+        ax.set_title(f'Identical-image parser control\nFast vs fallback {(values[0]/values[1]-1)*100:+.1f}%',
+                     loc='left',fontsize=11,fontweight='bold')
+        ax.set_xlabel('Launch to committed graph (seconds)')
+        ax.spines[['top','right','left']].set_visible(False);ax.grid(axis='x',alpha=.15);ax.set_axisbelow(True)
+        for index,value in enumerate(values):ax.text(upper[index]+max(upper)*.025,index,f'{value:.3f}',va='center',fontsize=9)
     fig.suptitle('PostgreSQL: 15 entities, 19 foreign keys',x=.02,ha='left',fontsize=15,fontweight='bold')
     fig.text(.02,.02,f"{data['runs']} fresh starts per application · {data['requests']} measured reads and CRUD cycles per start · {data['profile']} JVM profile\n"
              'Apps: 250m CPU / 500 MiB · PostgreSQL: separate 2 CPU / 1 GiB · CRUD cycle = three write transactions and one read, over four HTTP requests\n'
-             'Shared schema/model/query · Startup whiskers show min–max, bars show medians · Panels use different scales',fontsize=9)
+             'Shared schema/model/query · Startup whiskers show min–max, bars show medians · Panels use different scales'
+             + ('\nParser control: 3 additional starts, same image, descriptor security enabled for both paths' if has_control else ''),fontsize=9)
     fig.tight_layout(rect=(0,.17,1,.94))
     save(fig,'persistence')
 

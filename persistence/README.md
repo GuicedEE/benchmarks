@@ -56,6 +56,13 @@ generation for applications that benefit from it. No benchmark-specific startup 
 or transaction shortcuts select this behavior. Application source and packaged-JAR hashes
 are retained with this persistence cohort.
 
+The Hibernate wrapper resolves a Guice provider once per entity instantiator; each
+entity still goes through that provider, preserving injection and configured scopes.
+Enhanced entity interception uses Hibernate's existing superclass setup. Annotation-only
+units skip the legacy HBM binder when their collected XML binding list is empty.
+Nonempty XML bindings retain the complete mapping path; schema validation and transaction
+readiness remain part of startup.
+
 ## Run
 
 Use the same JDK 25, Maven 4, Python and Docker prerequisites as the main suite. PostgreSQL

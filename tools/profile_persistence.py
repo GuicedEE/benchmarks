@@ -52,10 +52,19 @@ def summarize(events, marks):
                 'com.guicedee.client.scopes.mutiny.CallScopeUniInterceptor$ScopedUniSubscription.<init>',
                 'com.guicedee.client.IGuiceContext.loaderToSet',
                 'com.guicedee.persistence.implementations.PersistenceDescriptorParser.parse',
+                'com.guicedee.modules.services.hibernate.scan.ClassGraphScanner.scan',
+                'com.guicedee.modules.services.hibernate.scan.ExplicitPersistenceScanner.scan',
                 'org.hibernate.bytecode.internal.bytebuddy.BytecodeProviderImpl.getReflectionOptimizer',
                 'org.hibernate.bytecode.internal.bytebuddy.BytecodeProviderImpl.<init>',
                 'org.hibernate.jpa.boot.spi.PersistenceXmlParser.loadUrlWithJaxb',
-                'org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete']})
+                'org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete',
+                'org.hibernate.boot.internal.BootstrapContextImpl.createModelBuildingContext',
+                'org.hibernate.boot.model.source.internal.hbm.ModelBinder.prepare',
+                'org.hibernate.internal.SessionFactoryImpl.<init>',
+                'org.hibernate.metamodel.model.domain.internal.MappingMetamodelImpl.finishInitialization',
+                'org.hibernate.query.internal.QueryEngineImpl.<init>',
+                'org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard.instantiate',
+                'org.hibernate.metamodel.internal.GuiceEntityProvider.get']})
     return phases
 
 
@@ -89,6 +98,26 @@ def render(report):
                 text.append(f'| {name} | {elapsed:.2f} |')
         for phase in row.get('persistenceBootstrap', []):
             text.append(f"| persistence {phase['phase']} ({phase['unit']}) | {phase['durationMs']:.2f} |")
+    for row in report['starts']:
+        if row['variant'] != 'guicedee': continue
+        phases = {p['phase']:p['durationMs'] for p in row.get('persistenceBootstrap', [])}
+        required = ['persistence-xml','discovery-scan','metadata-bootstrap','mapping-model','session-factory']
+        if all(name in phases for name in required):
+            text += ['', f"The current instrumented sample records **{phases['persistence-xml']:.2f} ms** for descriptor parsing "
+                f"and **{phases['discovery-scan']:.2f} ms** for persistence discovery. Metadata bootstrap "
+                f"(**{phases['metadata-bootstrap']/1000:.3f} s**) and session-factory creation "
+                f"(**{phases['session-factory']/1000:.3f} s**) are the largest recorded persistence phases; "
+                f"mapping-model construction takes **{phases['mapping-model']/1000:.3f} s**. "
+                'Discovery is nested within metadata bootstrap. These inclusive values must not be summed.', '']
+    if report.get('parserControlBootstrap'):
+        text += ['', '## Secured Hibernate parser control', '',
+                 'Same application image, forced Hibernate descriptor parsing with security checks enabled. '
+                 'These additional instrumented starts are separate from the default-parser profile and runtime rankings. '
+                 'Inclusive phases overlap; a single diagnostic start is not a timing comparison.', '',
+                 '| Start | Phase | Instrumented duration (ms) |', '|---|---|---:|']
+        for row in report['parserControlBootstrap']:
+            for phase in row['phases']:
+                text.append(f"| {row['run']} | {phase['phase']} ({phase['unit']}) | {phase['durationMs']:.2f} |")
     if all('startupSql' in row for row in report['starts']):
         text += ['', '## Startup database work', '',
                  'SQL counters cover application launch through the first committed graph, excluding schema preparation. '
@@ -152,6 +181,23 @@ def main():
                     (args.directory/f'{prefix}.log').read_text(encoding='utf-8'))]
         report['starts'].append(row)
     if len(report['starts']) != len(data['starts']): parser.error('Missing diagnostic recordings')
+    if 'parserControl' in data:
+        report['parserControlBootstrap'] = []
+        control = data['parserControl']
+        if control['identicalApplicationImage'] != data['images']['guicedee']:
+            parser.error('Parser diagnostic control must use the same image')
+        for row in control['starts']:
+            if not row['eligible'] or not all(row['checks'].values()):
+                parser.error('Parser diagnostic control failed')
+            log = args.directory/'parser-control'/f"guicedee-{row['run']}.log"
+            phases = [dict(phase=phase,unit=unit,durationMs=int(nanos)/1e6,success=success=='true')
+                for phase,unit,nanos,success in re.findall(
+                    r'\[PERSISTENCE-PHASE\] phase=(\S+) unit=(.*?) durationNs=(\d+) success=(true|false)',
+                    log.read_text(encoding='utf-8'))]
+            if not phases or not all(p['success'] for p in phases):
+                parser.error('Missing or failed parser control phases')
+            report['parserControlBootstrap'].append(dict(run=row['run'],image=row['image'],
+                environmentOverride=control['environmentOverride'],phases=phases))
     destination = args.directory/'profile-summary.json'
     destination.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     if args.publish:

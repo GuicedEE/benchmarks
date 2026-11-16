@@ -4,6 +4,35 @@ from unittest.mock import patch
 from types import SimpleNamespace
 from compare_persistence import CHECKS, CONTRACT, validate, check_database
 from profile_persistence import sql_delta, summarize
+from compare_persistence_parser import parser_command
+from render_persistence import collect as collect_report
+
+
+class ParserControlTest(unittest.TestCase):
+    def test_report_rejects_incomplete_or_unmatched_parser_controls(self):
+        data = complete()
+        data.update(measuredAt='2026-11-16',batch='test',profile='default',warmup=0)
+        for row in data['starts']:
+            row.update(readiness={'ormVersion':'test'},launchToReadyMs=1,firstTransactionMs=1,
+                       launchToFirstTransactionMs=2,peakMemoryBytes=3,endMemoryBytes=2)
+        control = dict(data['starts'][0],run=101)
+        data['parserControl'] = dict(environmentOverride={'GUICEDEE_PERSISTENCE_XML_PARSER':'hibernate'},
+            descriptorSecurityChecks=True,identicalApplicationImage='guicedee',starts=[control],scope='test')
+        self.assertEqual(1,collect_report(data)['parserControl']['starts'])
+        for change in [dict(starts=[]),dict(starts=[dict(control,image='different-image')]),
+                       dict(descriptorSecurityChecks=False),dict(identicalApplicationImage='other')]:
+            bad = copy.deepcopy(data)
+            bad['parserControl'].update(change)
+            with self.assertRaises(ValueError): collect_report(bad)
+
+    def test_only_guicedee_application_launch_receives_override(self):
+        base = ['run', '-d', '--name', 'network-guicedee-101', '-e', 'DB_HOST=postgres', 'sha256:image']
+        self.assertEqual(base[:-1] + ['-e', 'GUICEDEE_PERSISTENCE_XML_PARSER=hibernate', base[-1]], parser_command(base))
+        for name in ['network-db', 'network-quarkus-1', 'network-micronaut-1']:
+            command = ['run', '-d', '--name', name, 'sha256:image']
+            self.assertEqual(command, parser_command(command))
+        self.assertEqual(['run', '--rm', '--entrypoint', 'cat', 'image'],
+                         parser_command(['run', '--rm', '--entrypoint', 'cat', 'image']))
 
 
 def complete():

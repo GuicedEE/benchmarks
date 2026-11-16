@@ -55,6 +55,13 @@ For the independent **15-entity PostgreSQL persistence comparison**, run
 The [persistence protocol](persistence/README.md) describes the shared schema, Narayana and
 reactive stateless adapters, checks, limits and publication commands. It uses Docker's
 PostgreSQL image and does not require the Firebase/Node.js fixture.
+
+To measure the fast descriptor parser against the secured Hibernate fallback in the same
+image, run `python tools/compare_persistence_parser.py --runs 3 --requests 150 --warmup 20`.
+It runs the normal three-framework matrix and three additional GuicedEE starts, alternating
+the control before/after the default parser. Only controls set
+`GUICEDEE_PERSISTENCE_XML_PARSER=hibernate`; descriptor security checks remain enabled.
+Controls are kept in the current raw dataset and reported separately from framework rankings.
 Both JVMs receive `-Dlog4j.shutdownHookEnabled=false` so Log4j cannot stop logging
 before framework shutdown finishes. The runner verifies clean lifecycle completion
 and zero remaining database connections after each measured start.

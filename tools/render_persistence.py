@@ -1,5 +1,6 @@
 """Publish one complete persistence cohort and render its current comparison grids."""
 import argparse
+import copy
 import csv
 import hashlib
 import io
@@ -34,6 +35,22 @@ def collect(raw):
                              p99Ms=statistics.median(percentile(v,.99) for v in per_start),
                              samples=sum(len(v) for v in per_start))
         result['variants'][variant] = item
+    if 'parserControl' in raw:
+        control = raw['parserControl']
+        if (control['environmentOverride'] != {'GUICEDEE_PERSISTENCE_XML_PARSER':'hibernate'}
+                or control['descriptorSecurityChecks'] is not True
+                or control['identicalApplicationImage'] != raw['images']['guicedee']):
+            raise ValueError('Parser control must preserve the application image and descriptor security')
+        equivalent = copy.deepcopy(raw)
+        equivalent['starts'] = [r for r in equivalent['starts'] if r['variant'] != 'guicedee']
+        equivalent['starts'] += [dict(r, run=r['run']-100) for r in control['starts']]
+        validate(equivalent)
+        rows = control['starts']
+        result['parserControl'] = dict(starts=len(rows), checks=sum(len(r['checks']) for r in rows),
+            launchToFirstTransactionMs=stats([r['launchToFirstTransactionMs'] for r in rows]),
+            readP50Ms=statistics.median(percentile(r['readsMs'],.5) for r in rows),
+            cycleP50Ms=statistics.median(percentile([c['cycleMs'] for c in r['cycles']],.5) for r in rows),
+            peakMemoryBytes=stats([r['peakMemoryBytes'] for r in rows]), scope=control['scope'])
     return result
 
 
@@ -93,6 +110,21 @@ def render(data, raw):
                 'native or jlink result.\n\n'
                 '[Protocol and reproduction](persistence/README.md) · [All current raw samples](results/latest/persistence.json) · '
                 '[CSV](docs/persistence-performance.csv) · [Separate diagnostic profile](docs/PERSISTENCE_PROFILE.md)\n\n')
+    if 'parserControl' in data:
+        control = data['parserControl']
+        rows = []
+        for label, startup, read, cycle, memory in [
+                ('Default fast parser',a['launchToFirstTransactionMs'],a['read']['p50Ms'],a['cycle']['p50Ms'],a['peakMemoryBytes']),
+                ('Secured Hibernate fallback',control['launchToFirstTransactionMs'],control['readP50Ms'],control['cycleP50Ms'],control['peakMemoryBytes'])]:
+            rows.append([label,f"{startup['median']/1000:.3f}",f"{startup['minimum']/1000:.3f}–{startup['maximum']/1000:.3f}",
+                         f'{read:.2f}',f'{cycle:.2f}',f"{memory['median']/2**20:.2f}"])
+        content += ('**Parser control, identical GuicedEE image.** '+str(control['starts'])+' additional starts / '
+            +str(control['checks'])+' passing checks; alternated before/after default-parser starts. '
+            'Both paths enforce descriptor security. The control forces `GUICEDEE_PERSISTENCE_XML_PARSER=hibernate`. '
+            'This measures the current fast path against the current secured fallback; it does not isolate historical scanner/security changes.\n\n'
+            +table(['Parser','Launch to commit (s)','Min–max (s)','Read p50 (ms)','CRUD p50 (ms)','Peak memory (MiB)'],rows)
+            +f"\n\nDefault-parser startup differs by **{delta(a['launchToFirstTransactionMs']['median'],control['launchToFirstTransactionMs']['median'])}** "
+            'from the fallback. Three starts per path are a small sample; use the ranges alongside the medians.\n\n')
     content += table(['Application','Immutable image'],[[values[n]['label'],f"`{values[n]['image']}`"] for n in VARIANTS])
     content += f"\n\nPostgreSQL image: `{raw['postgres']['image']}`. JDK base: `{raw['buildInputs']['guicedee']['javaImage']}`."
     return content
@@ -106,7 +138,7 @@ def main():
     if args.publish and args.check: parser.error('--publish and --check are mutually exclusive')
     if args.publish:
         raw=json.loads(args.publish.read_text(encoding='utf-8'))
-        validate(raw)
+        collect(raw)
         raw['inputSha256']=hashlib.sha256(args.publish.read_bytes()).hexdigest()
         LATEST.write_text(json.dumps(raw,separators=(',',':'))+'\n',encoding='utf-8',newline='\n')
         subprocess.run([sys.executable,ROOT/'tools/verify_latest.py','--refresh'],check=True)
@@ -121,6 +153,14 @@ def main():
         for key in ['read','create','update','delete','cycle']:
             for pct in ['p50Ms','p95Ms','p99Ms']:
                 writer.writerow([name,data['profile'],data['runs'],key+'_'+pct,item[key][pct],'','','ms'])
+    if 'parserControl' in data:
+        control = data['parserControl']
+        for key, unit in [('launchToFirstTransactionMs','ms'),('peakMemoryBytes','bytes')]:
+            value = control[key]
+            writer.writerow(['guicedee-hibernate-parser-control',data['profile'],control['starts'],key,
+                             value['median'],value['minimum'],value['maximum'],unit])
+        for key in ['readP50Ms','cycleP50Ms']:
+            writer.writerow(['guicedee-hibernate-parser-control',data['profile'],control['starts'],key,control[key],'','','ms'])
     outputs={ROOT/'RESULTS.md':replace_sections(ROOT/'RESULTS.md',{'persistence':render(data,raw)}),
              ROOT/'docs/persistence-performance.json':json.dumps(data,indent=2)+'\n',
              ROOT/'docs/persistence-performance.csv':output.getvalue()}

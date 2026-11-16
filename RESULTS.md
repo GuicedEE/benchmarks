@@ -1,8 +1,8 @@
 # Current performance state
 
-**Report: 15 November 2026.** All tables are generated from the latest retained samples.
-The complete default/C1 matrices were rerun together for this report; diagnostic
-profiles have their own recorded batch identities.
+**SDK measurements: 15 November 2026. Persistence measurements: 16 November 2026.**
+Tables are generated from the current retained samples. Persistence and diagnostic
+profiles have separate batch identities; instrumented timings do not enter the rankings.
 
 <!-- BEGIN GENERATED: host-condition -->
 The SDK runtime and clean-build comparisons were rerun after the host boot at **2026-11-15T17:49:08.5Z**. Across 7 retained host boundary samples, CPU utilization ranged **1.0–39.0%**, available physical memory **21.3–29.0 GiB**. Build, runtime and diagnostic stages ran sequentially. Host observations have partial coverage and are boundary snapshots, not continuous measurements of background load during each run. Available observations and their coverage are included in the latest measurement dataset. Boundary samples before the fresh three-framework runtime, persistence, diagnostic and clean-build sequence after the recorded host reboot; no continuous background-load monitoring. Other retained diagnostic profiles and the extended native workload have their separately recorded batch dates.
@@ -138,6 +138,8 @@ measures all three frameworks with rotated/reversed execution order. Full grids 
 | --- | ---: | ---: | ---: | ---: | ---: |
 | GuicedEE SPI | [22.367](RESULTS.md#jvm-default) | [13.290](RESULTS.md#jvm-c1) | [13.005](RESULTS.md#jvm-default) | [8.300](RESULTS.md#jvm-c1) | [0.655](RESULTS.md#native-standard) |
 | GuicedEE scanner | [23.862](RESULTS.md#jvm-default) | [13.480](RESULTS.md#jvm-c1) | [13.195](RESULTS.md#jvm-default) | [7.777](RESULTS.md#jvm-c1) | SPI only |
+| GuicedEE CDI SPI | Not measured | Not measured | Not measured | Not measured | Not measured |
+| GuicedEE CDI scanner | Not measured | Not measured | Not measured | Not measured | SPI only |
 | Quarkus / upstream SDKs | [23.320](RESULTS.md#jvm-default) | [14.177](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.681](RESULTS.md#native-standard) |
 | Micronaut / upstream SDKs | [26.573](RESULTS.md#jvm-default) | [15.658](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.627](RESULTS.md#native-standard) |
 <!-- END GENERATED: overview -->
@@ -549,41 +551,41 @@ and query in all three applications. Readiness includes the database lifecycle; 
 response includes the committed graph. The graph precedes the detailed measurements below.
 
 <!-- BEGIN GENERATED: persistence -->
-Measured **2026-11-15**, **default JVM profile**, batch `20261115-205634`. **9 fresh starts / 126 passing checks**. Each start has 20 warmup reads and CRUD cycles, then 150 measured reads and 150 measured CRUD cycles. All samples are retained.
+Measured **2026-11-16**, **default JVM profile**, batch `20261116-093613`. **9 fresh starts / 126 passing checks**. Each start has 20 warmup reads and CRUD cycles, then 150 measured reads and 150 measured CRUD cycles. All samples are retained.
 
 ![PostgreSQL startup and transaction latency](docs/persistence.svg)
 
 | Application | Starts | DB-ready (s) | First transaction (ms) | Launch to committed graph (s) | Full startup min–max (s) | Peak charged memory (MiB) | Hibernate ORM |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE reactive stateless | 3 | 13.898 | 2290.89 | 16.189 | 15.848–16.693 | 228.16 | 7.4.15.Final |
-| Quarkus ORM / Narayana | 3 | 10.992 | 1991.18 | 12.997 | 12.852–13.393 | 221.86 | 7.4.9.Final |
-| Micronaut ORM / local transactions | 3 | 15.261 | 1803.34 | 17.065 | 16.375–18.325 | 240.71 | 7.4.10.Final |
+| GuicedEE reactive stateless | 3 | 12.358 | 2090.21 | 14.448 | 14.391–15.113 | 233.34 | 7.4.15.Final |
+| Quarkus ORM / Narayana | 3 | 10.051 | 1801.48 | 11.852 | 11.326–12.197 | 225.53 | 7.4.9.Final |
+| Micronaut ORM / local transactions | 3 | 13.952 | 1700.41 | 15.454 | 15.395–17.265 | 245.27 | 7.4.10.Final |
 
 | Operation | GuicedEE p50 (ms) | p95 | p99 | Quarkus p50 (ms) | p95 | p99 | Micronaut p50 (ms) | p95 | p99 | GuicedEE vs Quarkus | GuicedEE vs Micronaut |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Joined graph read | 3.30 | 81.49 | 92.20 | 3.11 | 59.26 | 83.18 | 3.34 | 67.70 | 83.09 | +6.3% | -1.0% |
-| Create 15 rows | 9.51 | 86.13 | 96.23 | 9.37 | 88.01 | 97.38 | 10.62 | 88.91 | 95.62 | +1.5% | -10.4% |
-| Update 15 rows | 10.38 | 93.63 | 97.01 | 9.83 | 86.08 | 93.99 | 12.20 | 93.85 | 97.53 | +5.6% | -14.9% |
-| Delete 15 rows | 9.62 | 93.64 | 98.37 | 9.54 | 82.96 | 96.20 | 11.46 | 94.40 | 99.33 | +0.9% | -16.0% |
-| Complete CRUD cycle | 87.55 | 204.60 | 286.17 | 88.65 | 184.79 | 206.21 | 102.57 | 196.88 | 286.07 | -1.2% | -14.6% |
+| Joined graph read | 2.58 | 84.77 | 91.21 | 2.51 | 67.59 | 83.21 | 2.64 | 76.27 | 87.02 | +2.8% | -2.2% |
+| Create 15 rows | 5.96 | 92.30 | 97.06 | 6.07 | 84.50 | 91.18 | 6.94 | 91.78 | 97.36 | -1.9% | -14.2% |
+| Update 15 rows | 6.58 | 90.43 | 95.84 | 6.51 | 87.31 | 95.25 | 8.15 | 94.95 | 98.01 | +1.1% | -19.3% |
+| Delete 15 rows | 6.04 | 89.75 | 96.85 | 5.88 | 88.21 | 96.97 | 6.79 | 90.34 | 96.66 | +2.8% | -11.0% |
+| Complete CRUD cycle | 87.94 | 193.94 | 210.79 | 83.80 | 186.76 | 196.63 | 97.18 | 193.68 | 207.32 | +4.9% | -9.5% |
 
 Per-start warm medians expose the variation within this small, CPU-capped cohort. No individual start is dropped.
 
 | Application | Start | Read p50 (ms) | Create p50 (ms) | Update p50 (ms) | Delete p50 (ms) | CRUD cycle p50 (ms) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE reactive stateless | 1 | 3.17 | 9.51 | 11.12 | 9.77 | 93.80 |
-| Quarkus ORM / Narayana | 1 | 3.14 | 8.91 | 9.83 | 9.78 | 88.59 |
-| Micronaut ORM / local transactions | 1 | 3.23 | 10.50 | 12.57 | 19.45 | 103.21 |
-| Micronaut ORM / local transactions | 2 | 3.34 | 14.05 | 12.20 | 10.23 | 99.84 |
-| Quarkus ORM / Narayana | 2 | 3.08 | 9.37 | 10.04 | 9.54 | 89.18 |
-| GuicedEE reactive stateless | 2 | 3.54 | 9.67 | 10.37 | 9.31 | 87.55 |
-| Quarkus ORM / Narayana | 3 | 3.11 | 9.46 | 9.73 | 8.76 | 88.65 |
-| Micronaut ORM / local transactions | 3 | 3.48 | 10.62 | 12.08 | 11.46 | 102.57 |
-| GuicedEE reactive stateless | 3 | 3.30 | 9.20 | 10.38 | 9.62 | 86.50 |
+| GuicedEE reactive stateless | 1 | 2.77 | 6.05 | 6.58 | 6.11 | 83.17 |
+| Quarkus ORM / Narayana | 1 | 2.65 | 6.07 | 6.51 | 5.92 | 80.18 |
+| Micronaut ORM / local transactions | 1 | 2.81 | 8.43 | 8.03 | 6.94 | 99.16 |
+| Micronaut ORM / local transactions | 2 | 2.64 | 6.94 | 8.15 | 6.79 | 97.18 |
+| Quarkus ORM / Narayana | 2 | 2.51 | 6.07 | 7.04 | 5.88 | 88.30 |
+| GuicedEE reactive stateless | 2 | 2.58 | 5.96 | 6.90 | 6.04 | 90.32 |
+| Quarkus ORM / Narayana | 3 | 2.51 | 5.42 | 6.26 | 5.46 | 83.80 |
+| Micronaut ORM / local transactions | 3 | 2.58 | 6.90 | 8.35 | 6.62 | 95.09 |
+| GuicedEE reactive stateless | 3 | 2.42 | 5.52 | 6.44 | 5.68 | 87.94 |
 
-Update p50 spans **10.37–11.12 ms** for GuicedEE and **9.73–10.04 ms** for Quarkus across starts. Every container records CPU throttling; these measurements do not separate database work from quota waits. Individual operation medians do not add up to the median of a complete CRUD cycle.
+Update p50 spans **6.44–6.90 ms** for GuicedEE and **6.26–7.04 ms** for Quarkus across starts. Every container records CPU throttling; these measurements do not separate database work from quota waits. Individual operation medians do not add up to the median of a complete CRUD cycle.
 
-Against Quarkus, GuicedEE's launch-to-commit median differs by **+24.6%**; its peak charged container memory differs by **+2.8%**. Against Micronaut, those differences are **-5.1%** and **-5.2%**. Negative differences mean less time or memory. Warm percentiles are medians of per-start percentiles. A CRUD cycle includes four HTTP requests, three completed write transactions and one read without an explicit transaction; its latency is not one transaction. Database memory is separate from the application memory figures.
+Against Quarkus, GuicedEE's launch-to-commit median differs by **+21.9%**; its peak charged container memory differs by **+3.5%**. Against Micronaut, those differences are **-6.5%** and **-4.9%**. Negative differences mean less time or memory. Warm percentiles are medians of per-start percentiles. A CRUD cycle includes four HTTP requests, three completed write transactions and one read without an explicit transaction; its latency is not one transaction. Database memory is separate from the application memory figures.
 
 All three full-JDK applications use the same immutable JDK base, schema, graph/query source and five-connection limit. The database runs separately at 2 CPU / 1 GiB with durable commit settings. Application limits are 250m CPU / 500 MiB. The persistence patterns are Quarkus managed JPA/Narayana, Micronaut managed JPA/local transactions and GuicedEE reactive stateless operations. This is not a distributed-transaction, saturation-throughput, native or jlink result.
 
@@ -591,9 +593,9 @@ All three full-JDK applications use the same immutable JDK base, schema, graph/q
 
 | Application | Immutable image |
 | --- | ---: |
-| GuicedEE reactive stateless | `sha256:aed2cb911c0b31ad1771572575d6d3838b3c345e7ca7c8d6ca838d5dd1de8925` |
-| Quarkus ORM / Narayana | `sha256:dc3707f2fc46bbf2a6866c8c0bd76783e2120ae5785f889fa46714f4d93144e4` |
-| Micronaut ORM / local transactions | `sha256:f932ea19f0c0eaa3287662d813862526fcbeed97268d47eb7035db7fb73743e2` |
+| GuicedEE reactive stateless | `sha256:57b0ab48f7cb76b6da6ce354b738b4b350c1c6ffd20f48552f44f81b0f176835` |
+| Quarkus ORM / Narayana | `sha256:0bc7159055535327cd5e298f12265717f1b36bca53ae9aff8dda5117977be753` |
+| Micronaut ORM / local transactions | `sha256:e72f031e28a1cb3ef439b739ac74950e997d1b970340b68b8dc0ec6a43a91d83` |
 
 PostgreSQL image: `sha256:0d938e975177bef9f1f61f3f9dbcf2e0aa0a139568f66d3415ed8892eb97f6ac`. JDK base: `eclipse-temurin@sha256:b8705e936964c228dfce359e63dbf08f6c69cb380ed1d576b1f6b1064f15567d`.
 <!-- END GENERATED: persistence -->

@@ -49,6 +49,8 @@ four-mode sample, including CDI/config. Links open the full timing and memory gr
 | --- | ---: | ---: | ---: | ---: | ---: |
 | GuicedEE SPI | [22.367](RESULTS.md#jvm-default) | [13.290](RESULTS.md#jvm-c1) | [13.005](RESULTS.md#jvm-default) | [8.300](RESULTS.md#jvm-c1) | [0.655](RESULTS.md#native-standard) |
 | GuicedEE scanner | [23.862](RESULTS.md#jvm-default) | [13.480](RESULTS.md#jvm-c1) | [13.195](RESULTS.md#jvm-default) | [7.777](RESULTS.md#jvm-c1) | SPI only |
+| GuicedEE CDI SPI | Not measured | Not measured | Not measured | Not measured | Not measured |
+| GuicedEE CDI scanner | Not measured | Not measured | Not measured | Not measured | SPI only |
 | Quarkus / upstream SDKs | [23.320](RESULTS.md#jvm-default) | [14.177](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.681](RESULTS.md#native-standard) |
 | Micronaut / upstream SDKs | [26.573](RESULTS.md#jvm-default) | [15.658](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.627](RESULTS.md#native-standard) |
 <!-- END GENERATED: overview -->
