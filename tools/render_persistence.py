@@ -14,7 +14,7 @@ from render_performance import table, replace_sections, stats
 
 ROOT = Path(__file__).resolve().parents[1]
 LATEST = ROOT/'results/latest/persistence.json'
-LABELS = dict(guicedee='GuicedEE reactive stateless',quarkus='Quarkus ORM / Narayana')
+LABELS = dict(guicedee='GuicedEE reactive stateless',quarkus='Quarkus ORM / Narayana',micronaut='Micronaut ORM / local transactions')
 
 
 def collect(raw):
@@ -39,7 +39,7 @@ def collect(raw):
 
 def render(data, raw):
     values = data['variants']
-    a,b = (values[name] for name in VARIANTS)
+    a,b = (values[name] for name in ['guicedee','quarkus'])
     delta = lambda x,y: f'{(x/y-1)*100:+.1f}%'
     rows = []
     for name in VARIANTS:
@@ -49,7 +49,7 @@ def render(data, raw):
                      f"{startup['minimum']/1000:.3f}–{startup['maximum']/1000:.3f}",
                      f"{item['peakMemoryBytes']['median']/2**20:.2f}",item['ormVersion']])
     content = (f"Measured **{data['measuredAt'][:10]}**, **{data['profile']} JVM profile**, batch `{data['batch']}`. "
-               f"**{2*data['runs']} fresh starts / {a['checks']+b['checks']} passing checks**. "
+               f"**{len(VARIANTS)*data['runs']} fresh starts / {sum(v['checks'] for v in values.values())} passing checks**. "
                f"Each start has {data['warmup']} warmup reads and CRUD cycles, then {data['requests']} measured reads "
                f"and {data['requests']} measured CRUD cycles. All samples are retained.\n\n"
                '![PostgreSQL startup and transaction latency](docs/persistence.svg)\n\n'
@@ -58,9 +58,10 @@ def render(data, raw):
     rows=[]
     for label,key in [('Joined graph read','read'),('Create 15 rows','create'),('Update 15 rows','update'),
                       ('Delete 15 rows','delete'),('Complete CRUD cycle','cycle')]:
-        rows.append([label,*[f'{v[key][p]:.2f}' for v in [a,b] for p in ['p50Ms','p95Ms','p99Ms']],
-                     delta(a[key]['p50Ms'],b[key]['p50Ms'])])
-    content += '\n\n'+table(['Operation','GuicedEE p50 (ms)','p95','p99','Quarkus p50 (ms)','p95','p99','GuicedEE p50 difference'],rows)
+        rows.append([label,*[f'{values[n][key][p]:.2f}' for n in VARIANTS for p in ['p50Ms','p95Ms','p99Ms']],
+                     delta(a[key]['p50Ms'],b[key]['p50Ms']),delta(a[key]['p50Ms'],values['micronaut'][key]['p50Ms'])])
+    content += '\n\n'+table(['Operation','GuicedEE p50 (ms)','p95','p99','Quarkus p50 (ms)','p95','p99',
+                              'Micronaut p50 (ms)','p95','p99','GuicedEE vs Quarkus','GuicedEE vs Micronaut'],rows)
     rows=[]
     for row in raw['starts']:
         rows.append([LABELS[row['variant']],row['run'],f"{percentile(row['readsMs'],.5):.2f}",
@@ -78,15 +79,17 @@ def render(data, raw):
                for line in row['cpuStat'].splitlines()) for row in raw['starts']):
         content += ('Every container records CPU throttling; these measurements do not separate database work from quota waits. ')
     content += 'Individual operation medians do not add up to the median of a complete CRUD cycle.'
-    content += (f"\n\nGuicedEE's launch-to-commit median differs by **{delta(a['launchToFirstTransactionMs']['median'],b['launchToFirstTransactionMs']['median'])}**; "
+    content += (f"\n\nAgainst Quarkus, GuicedEE's launch-to-commit median differs by **{delta(a['launchToFirstTransactionMs']['median'],b['launchToFirstTransactionMs']['median'])}**; "
                 f"its peak charged container memory differs by **{delta(a['peakMemoryBytes']['median'],b['peakMemoryBytes']['median'])}**. "
+                f"Against Micronaut, those differences are **{delta(a['launchToFirstTransactionMs']['median'],values['micronaut']['launchToFirstTransactionMs']['median'])}** "
+                f"and **{delta(a['peakMemoryBytes']['median'],values['micronaut']['peakMemoryBytes']['median'])}**. "
                 'Negative differences mean less time or memory. Warm percentiles are medians of per-start percentiles. '
                 'A CRUD cycle includes four HTTP requests, three completed write transactions and one read without an explicit transaction; its latency is not one transaction. '
                 'Database memory is separate from the application memory figures.\n\n'
-                'Both full-JDK applications use the same immutable JDK base, schema, graph/query source and five-connection limit. '
+                'All three full-JDK applications use the same immutable JDK base, schema, graph/query source and five-connection limit. '
                 'The database runs separately at 2 CPU / 1 GiB with durable commit settings. '
-                'Application limits are 250m CPU / 500 MiB. These are different persistence patterns: managed stateful JPA/Narayana '
-                'versus explicit reactive stateless operations. This is not a distributed-transaction, saturation-throughput, '
+                'Application limits are 250m CPU / 500 MiB. The persistence patterns are Quarkus managed JPA/Narayana, '
+                'Micronaut managed JPA/local transactions and GuicedEE reactive stateless operations. This is not a distributed-transaction, saturation-throughput, '
                 'native or jlink result.\n\n'
                 '[Protocol and reproduction](persistence/README.md) · [All current raw samples](results/latest/persistence.json) · '
                 '[CSV](docs/persistence-performance.csv) · [Separate diagnostic profile](docs/PERSISTENCE_PROFILE.md)\n\n')

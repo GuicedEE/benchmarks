@@ -15,12 +15,19 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('agent',type=Path)
     parser.add_argument('output',type=Path)
-    parser.add_argument('--framework',choices=['quarkus','guicedee'],default='quarkus')
+    parser.add_argument('--framework',choices=['quarkus','guicedee','micronaut'],default='quarkus')
     parser.add_argument('--image-tag',default='local')
     parser.add_argument('--quarkus-dependencies',choices=['wrapped','standard'],default='standard')
     from build import framework_version
     parser.add_argument('--guicedee-version',default=framework_version())
+    parser.add_argument('--cdi-config', action='store_true')
     options=parser.parse_args()
+    if options.cdi_config and options.framework != 'guicedee':
+        parser.error('--cdi-config requires --framework guicedee')
+    selected_artifact = 'guicedee-cdi-spi' if options.cdi_config else options.framework
+    if options.cdi_config:
+        select = compare.select_variants
+        compare.select_variants = lambda *args, **kwargs: [v for v in select(*args, **kwargs) if v.get('configuration') == 'cdi-config']
     library=options.agent.resolve()
     output=options.output.resolve()
     if not library.is_file(): raise SystemExit('Native-image agent library is missing')
@@ -36,7 +43,7 @@ def main():
             command[command.index('--memory-swap')+1]='2g'
             command[2:2]=['--mount',f'type=bind,source={library},target=/native-agent.so,readonly',
                           '--mount',f'type=bind,source={output},target=/native-metadata']
-            launch=command.index('--module-path') if options.framework=='guicedee' else command.index('-jar')
+            launch=command.index({'guicedee':'--module-path','quarkus':'-jar','micronaut':'-cp'}[options.framework])
             command[launch:launch]=['--add-modules=jdk.unsupported',
                 '-agentpath:/native-agent.so=config-output-dir=/native-metadata,config-write-period-secs=1,config-write-initial-delay-secs=0']
         return start(command,log,env,cwd)
@@ -58,18 +65,18 @@ def main():
         environment=json.loads((out/'environment.json').read_text())
         traced_images.append(environment['images'][row['variant']])
         environment.update(instrumented=True,cpuQuota=row['diagnosticLimits'])
-        if options.framework == 'quarkus' and options.quarkus_dependencies == 'standard':
-            provenance=environment['imageBuildProvenance']['quarkus-standard']
+        if options.framework == 'micronaut' or options.framework == 'quarkus' and options.quarkus_dependencies == 'standard':
+            provenance=environment['imageBuildProvenance']['micronaut' if options.framework == 'micronaut' else 'quarkus-standard']
             sdk_jars.extend({'name':entry['path'],'sha256':entry['sha256']} for entry in provenance['sdkJars'])
             resolved_dependencies.extend(provenance['resolvedDependencies'])
-        for sdk in ([] if options.framework == 'quarkus' and options.quarkus_dependencies == 'standard' else ['firebase-admin','commercetools']):
+        for sdk in ([] if options.framework == 'micronaut' or options.framework == 'quarkus' and options.quarkus_dependencies == 'standard' else ['firebase-admin','commercetools']):
             artifact=sdk+'-'+options.guicedee_version+'.jar'
-            provenance=environment['imageBuildProvenance'][options.framework]
+            provenance=environment['imageBuildProvenance'][selected_artifact]
             if 'phaseDiagnosticInputs' in provenance:
                 matched=[entry for entry in provenance['phaseDiagnosticInputs']['stagedJars']
                          if entry['path'].endswith('/'+artifact)]
             else:
-                prefix='quarkus/target/quarkus-app/lib/' if options.framework=='quarkus' else 'guicedee/target/lib/'
+                prefix='quarkus/target/quarkus-app/lib/' if options.framework=='quarkus' else selected_artifact+'/target/lib/'
                 matched=[entry for entry in provenance['packagedJars']
                          if entry['path'].startswith(prefix) and entry['path'].endswith(artifact)]
             if len(matched)!=1:raise RuntimeError('Cannot identify traced SDK artifact: '+artifact)
@@ -80,19 +87,20 @@ def main():
     sys.argv=[sys.argv[0],'--docker','--firebase','--framework',options.framework,'--discovery','spi',
               '--quarkus-dependencies',options.quarkus_dependencies,
               '--image-tag',options.image_tag,'--runs','1','--requests','2','--warmup','1']
+    if options.cdi_config: sys.argv.append('--cdi-config')
     result=compare.main()
     for out in outputs:
         summary=json.loads((out/'summary.json').read_text())
         summary.update(instrumented=True,scope='Native-image agent diagnostic: 2 CPU / 2 GiB; excluded from performance comparisons')
         (out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
     # Single-variant diagnostics intentionally return 1 even when all checks pass.
-    passed=len(rows)==1 and len(rows[0]['checks'])==15 and all(c['passed'] for c in rows[0]['checks'].values())
+    passed=len(rows)==1 and len(rows[0]['checks'])==(16 if options.cdi_config else 15) and all(c['passed'] for c in rows[0]['checks'].values())
     (output/'diagnostic.json').write_text(json.dumps({'instrumented':True,'performanceComparison':False,
         'harnessExitCode':result,'allCapabilitiesPassed':passed,'checks':rows[0]['checks'] if rows else {},
         'agentSha256':hashlib.sha256(library.read_bytes()).hexdigest(),'sdkJars':sdk_jars,
         'sourceImage':traced_images[0] if len(traced_images)==1 else None,
         'resolvedDependencies':resolved_dependencies,
-        'dependencyMode':options.quarkus_dependencies if options.framework=='quarkus' else 'wrapped'},indent=2)+'\n')
+        'dependencyMode':options.quarkus_dependencies if options.framework=='quarkus' else 'standard' if options.framework=='micronaut' else 'wrapped'},indent=2)+'\n')
     return 0 if passed and any((output/name).exists() for name in ['reachability-metadata.json','reflect-config.json']) else 1
 
 

@@ -28,6 +28,58 @@ from summarize_native import sdk_evidence
 
 
 class HarnessTest(unittest.TestCase):
+    def test_all_frameworks_have_distinct_upstream_micronaut_artifacts(self):
+        variants=select_variants('all',runtime='both',native=True,quarkus_dependencies='standard')
+        self.assertEqual(9,len(variants))
+        micronaut=[v for v in variants if v['framework']=='micronaut']
+        self.assertEqual(['micronaut','micronaut-native'],[v['id'] for v in micronaut])
+        self.assertTrue(all(v['dependencyMode']=='standard' for v in micronaut))
+        self.assertEqual([],select_variants('micronaut',runtime='jlink'))
+        self.assertEqual([('micronaut','compile'),('micronaut','package'),('micronaut-native','package')],
+                         compare_builds.tasks(['micronaut','micronaut-native']))
+        for v in micronaut:
+            invocation=compare_builds.command(v['id'],'package','2.6.0')
+            self.assertEqual('micronaut/pom.xml',invocation[invocation.index('-f')+1])
+            self.assertEqual(v['runtime']=='native','-Pnative' in invocation)
+
+    def test_cdi_config_is_separate_scanner_jvm_case(self):
+        from variants import guicedee_project, guicedee_module
+        baseline = select_variants(runtime='both')
+        selected = select_variants(runtime='both', cdi_config=True)
+        cdi = next(v for v in selected if v['id'] == 'guicedee-cdi')
+        self.assertEqual([v for v in selected if v.get('configuration') != 'cdi-config'], baseline)
+        self.assertEqual((cdi['discovery'], cdi['runtime']), ('scan', 'jre'))
+        self.assertEqual(guicedee_project(cdi), 'guicedee-cdi')
+        self.assertEqual(guicedee_module(cdi), 'bench.guicedee.cdi')
+        self.assertEqual(guicedee_jar(cdi), 'comparison-guicedee-cdi-1.0-SNAPSHOT.jar')
+        for options in [dict(runtime='native', discovery='scan'), dict(framework='quarkus')]:
+            with self.assertRaises(ValueError):
+                select_variants(cdi_config=True, **options)
+
+    def test_cdi_runtime_matrix_retains_discovery_identity(self):
+        from variants import guicedee_module, guicedee_project
+        cases = [v for v in select_variants(framework='guicedee', runtime='both', native=True, cdi_config=True)
+                 if v.get('configuration') == 'cdi-config']
+        self.assertEqual({v['id'] for v in cases}, {'guicedee-cdi', 'guicedee-cdi-spi',
+            'guicedee-cdi-jlink', 'guicedee-cdi-spi-jlink', 'guicedee-cdi-native'})
+        native = next(v for v in cases if v['runtime'] == 'native')
+        self.assertEqual(native['discovery'], 'spi')
+        self.assertEqual(guicedee_module(native), 'bench.guicedee.cdi.spi')
+        self.assertEqual(guicedee_project(native), 'guicedee-cdi-native')
+        scanner = Path(__file__).resolve().parents[1]/'guicedee-cdi/src/main/java'
+        spi = scanner.parents[3]/'guicedee-cdi-spi/src/main/java'
+        for path in (scanner/'bench').rglob('*.java'):
+            counterpart = spi/path.relative_to(scanner)
+            if path.name == 'Main.java':
+                scan_source, spi_source = path.read_text(), counterpart.read_text()
+                scan_mode = 'discoveryMode = GuiceOptions.DiscoveryMode.SCAN'
+                spi_mode = 'discoveryMode = GuiceOptions.DiscoveryMode.SPI'
+                self.assertEqual(scan_source.count(scan_mode), 1)
+                self.assertEqual(spi_source.count(spi_mode), 1)
+                self.assertEqual(scan_source.replace(scan_mode, spi_mode), spi_source)
+            else:
+                self.assertEqual(path.read_bytes(), counterpart.read_bytes())
+
     def test_current_snapshot_rejects_unreferenced_batches_and_hashes(self):
         data = dict(groups={'jvm-default':dict(batches=['20261115-135709'])},
                     phases=[dict(batch='20261115-140817')],
@@ -129,13 +181,20 @@ class HarnessTest(unittest.TestCase):
             invocation = compare_builds.command(variant, 'package', '2.6.0')
             self.assertIn('-o', invocation)
             self.assertIn('clean', invocation)
-            if variant in ['guicedee', 'guicedee-scan']:
+            if variant in ['guicedee', 'guicedee-scan', 'guicedee-cdi', 'guicedee-cdi-spi']:
                 self.assertIn('dependency:copy-dependencies', invocation)
             if variant == 'quarkus-standard-native':
                 self.assertIn('-Pnative', invocation)
                 self.assertNotIn('-Dguicedee.version=2.6.0', invocation)
+            if variant.startswith('guicedee-cdi'):
+                profile = next(a for a in invocation if a.startswith('-P'))
+                self.assertIn('cdi-config', profile)
+                if variant.endswith('-native'):
+                    self.assertIn('cdi-native', profile)
+                if variant.endswith('-jlink'):
+                    self.assertIn('cdi-jlink', profile)
         schedule = compare_builds.tasks(compare_builds.VARIANTS)
-        self.assertEqual(10, len(schedule))
+        self.assertEqual(20, len(schedule))
         for run in range(1, 4):
             self.assertCountEqual(schedule, compare_builds.ordered(schedule, run))
         self.assertNotEqual(compare_builds.ordered(schedule, 1), compare_builds.ordered(schedule, 2))
@@ -285,7 +344,7 @@ public class TraceProbe {
     System.out.print(output);
   }
 }''')
-            source=Path(__file__).resolve().parents[1]/'common/src/main/java/bench/workload/WorkloadTrace.java'
+            source=next((Path(__file__).resolve().parents[1]/'common/src/main/java').rglob('WorkloadTrace.java'))
             subprocess.run(['javac','-d',temporary,str(source),str(probe)],check=True,capture_output=True,text=True)
             output=subprocess.check_output(['java','-cp',temporary,'bench.workload.TraceProbe'],text=True)
             rows=[json.loads(line.removeprefix('BENCH_PHASE ')) for line in output.splitlines()]
@@ -399,6 +458,22 @@ public class TraceProbe {
             with self.assertRaises(AssertionError): verify_scanner_artifact(spi,scan)
             write_scan(b'business',descriptor=False)
             with self.assertRaises(AssertionError): verify_scanner_artifact(spi,scan)
+
+    def test_scanner_launcher_allows_only_the_discovery_enum_difference(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            spi, scan = Path(temporary)/'spi.jar', Path(temporary)/'scan.jar'
+            with zipfile.ZipFile(spi, 'w') as jar:
+                for entry in DISCOVERY_ENTRIES: jar.writestr(entry, b'provider')
+                jar.writestr('module-info.class', b'spi-descriptor')
+                jar.writestr('bench/guicedee/Main.class', b'bootstrap\x01\x00\x03SPIsettings')
+            def scanner(suffix):
+                with zipfile.ZipFile(scan, 'w') as jar:
+                    jar.writestr('module-info.class', b'scanner-descriptor')
+                    jar.writestr('bench/guicedee/Main.class', b'bootstrap\x01\x00\x04SCAN' + suffix)
+            scanner(b'settings')
+            verify_scanner_artifact(spi, scan)
+            scanner(b'different-settings')
+            with self.assertRaises(AssertionError): verify_scanner_artifact(spi, scan)
 
     def test_metric_parser_requires_actual_samples(self):
         self.assertEqual({}, metric_counts('# HELP benchmark_quotes Counter\n# TYPE benchmark_quotes counter\n'))

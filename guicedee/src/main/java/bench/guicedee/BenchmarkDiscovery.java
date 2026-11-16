@@ -1,8 +1,8 @@
 package bench.guicedee;
 
-import com.guicedee.client.services.IGuiceDiscovery;
 import bench.guicedee.rest.Resource;
 import bench.guicedee.service.Service;
+import com.guicedee.client.services.IGuiceDiscovery;
 import java.util.Collection;
 import java.util.List;
 
@@ -10,6 +10,6 @@ import java.util.List;
 public final class BenchmarkDiscovery implements IGuiceDiscovery<BenchmarkDiscovery> {
     @Override
     public Collection<Class<?>> classes() {
-        return List.of(Resource.class, Service.class);
+        return List.of(Main.class, Resource.class, Service.class);
     }
 }

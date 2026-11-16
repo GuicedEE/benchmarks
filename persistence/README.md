@@ -1,11 +1,13 @@
 # PostgreSQL persistence comparison
 
-Two independent JVM applications execute the same operations over **15 related entities
+Three independent JVM applications execute the same operations over **15 related entities
 and 19 foreign keys**. Quarkus uses Hibernate ORM with Narayana-managed JTA transactions.
 GuicedEE uses Hibernate Reactive's stateless sessions, explicit writes and resource-local
 transactions through the persistence module. Writes use `withStatelessSession` with
 a composed `withTransaction`; Hibernate manages session opening and closing on success
-or failure. Reads also use `withStatelessSession`. This compares these application patterns;
+or failure. Reads also use `withStatelessSession`. Micronaut uses Hibernate ORM with its
+own transaction interceptor and resource-local Hibernate transaction manager, plus HikariCP.
+Blocking operations run on Micronaut's blocking executor. This compares these application patterns;
 it does not isolate the transaction manager or compare distributed XA transactions.
 
 | Project | Role |
@@ -13,13 +15,14 @@ it does not isolate the transaction manager or compare distributed XA transactio
 | `model` | Shared Jakarta Persistence mappings, graph construction and joined read query; JPMS descriptor retained |
 | `guicedee` | Modular GuicedEE application, SPI discovery, `DatabaseModule`, reactive stateless operations |
 | `quarkus` | Independent Quarkus BOM, Hibernate ORM, PostgreSQL JDBC, explicit Narayana extension |
+| `micronaut` | Independent Micronaut platform, Hibernate ORM, HikariCP and Micronaut-managed local transactions |
 | `schema.sql` | Identical schema created before each application launch, then validated by Hibernate |
 
 The model comprises Country, Region, Address, Customer, Supplier, Category, Product,
 Warehouse, Inventory, PurchaseOrder, OrderLine, Payment, Shipment, ShipmentItem and
 AuditEntry. Each graph has one row per entity. Every row has a supplied identifier,
 a label and an optimistic-lock version. Associations have explicit foreign keys and
-no cascades. Both adapters insert in dependency order and delete in reverse order.
+no cascades. All adapters insert in dependency order and delete in reverse order.
 
 The modular GuicedEE launcher grants explicit read edges between Hibernate ORM and the
 model module for runtime proxy generation. The model package is opened to Hibernate, and
@@ -30,7 +33,28 @@ compiled model and performs its normal enhancement. Pre-enhancing Quarkus's inpu
 apply two enhancement pipelines to the same bytecode. Both artifacts come from the same
 compiled classes; their hashes and all source hashes are recorded and checked. Hibernate
 is a provided model dependency, so each application retains its own runtime ORM version.
-The shared entity setter preserves dirty tracking in both applications.
+The shared entity setter preserves dirty tracking. Micronaut receives the original model
+and generates an entity discovery index at compile time with `@Introspected`, without
+changing the shared entities. Its read opens a Hibernate session for the same single
+projection query, without an explicit transaction; writes use `@Transactional` and verify
+an active transaction before touching the graph.
+
+GuicedEE reuses the parsed persistence-unit descriptor during factory creation and
+avoids speculative pools outside Hibernate's ownership. Common Jakarta Persistence
+descriptors use a streaming XML parser; unsupported descriptor grammar delegates to Hibernate.
+Both paths reject DTDs, external entities, malformed XML and excessive XML complexity.
+Fallback reads validated byte snapshots. The descriptor size limit defaults to 8 MiB;
+`GUICEDEE_PERSISTENCE_XML_MAX_BYTES` allows larger application descriptors.
+`GUICEDEE_PERSISTENCE_XML_PARSER=hibernate` selects the original parser after the same
+security checks. Environment
+placeholders and descriptor values are preserved. Its persistence integration
+uses standard Hibernate property access for enhanced entities and defers the default
+Byte Buddy provider where the classloader arrangement permits it. Proxy generation,
+runtime enhancement and ordinary entities retain Hibernate's provider behavior.
+`guicedee.persistence.optimize_enhanced_entities=false` restores the original accessor
+generation for applications that benefit from it. No benchmark-specific startup flags
+or transaction shortcuts select this behavior. Application source and packaged-JAR hashes
+are retained with this persistence cohort.
 
 ## Run
 
@@ -45,12 +69,12 @@ python tools/compare_persistence.py --runs 3 --requests 30 --warmup 10
 
 Run from the repository root. `--guicedee-version` and `--maven-repository` select explicit
 framework artifacts during the build. Quarkus resolves normal upstream dependencies under
-its own BOM. Both runtime images use the same immutable JDK base. Source and packaged-JAR
+its own BOM; Micronaut uses its upstream platform. All runtime images use the same immutable JDK base. Source and packaged-JAR
 hashes are embedded in each image and retained with results. `--tiered` applies C1 tuning
-equally to both applications; keep that profile separate from default-JVM results.
+equally to all applications; keep that profile separate from default-JVM results.
 
 GuicedEE defaults live in `guicedee/.env`, with environment overrides for `DB_HOST`,
-`DB_PORT`, `DB_NAME`, `DB_USER` and `DB_PASSWORD`. Quarkus uses those same variables.
+`DB_PORT`, `DB_NAME`, `DB_USER` and `DB_PASSWORD`. Quarkus and Micronaut use those same variables.
 The persistence unit resolves GuicedEE's environment placeholders; `Database` only selects
 the PostgreSQL implementation and pool defaults. GuicedEE manages its lifecycle through
 the module binding, without duplicate application startup/destroy service registrations.
@@ -81,17 +105,17 @@ outside the application session. Any failed check prevents publication of the co
 
 Warm samples interleave a read of an unchanged graph with a complete CRUD cycle. Each cycle
 makes four HTTP requests: create, read, update and delete. The three writes each have their
-own transaction; the single-query read has no explicit transaction in either application.
+own transaction; the single-query read has no explicit transaction in any application.
 It performs 15 inserts, 15 updates, 15 deletes and five joined queries. All response fields
 are checked. Timings include HTTP transport, ORM work and transaction completion; they are
 sequential request latencies, not saturation throughput or a bare-database microbenchmark.
 
-Quarkus uses managed entities and dirty checking; GuicedEE explicitly updates detached
+Quarkus and Micronaut use managed entities and dirty checking; GuicedEE explicitly updates detached
 entities in a stateless session. Those differences are part of the requested comparison.
-Both use the same graph plan and joined scalar projection for response data, including all
+All use the same graph plan and joined scalar projection for response data, including all
 identifiers, labels, versions and foreign-key values. GuicedEE prepares detached rows from
 the projection for explicit updates/deletes, following ActivityMaster's lean stateless
-pattern. Quarkus loads managed entities for dirty checking and removal. Their ORM/driver
+pattern. Quarkus and Micronaut load managed entities for dirty checking and removal. Their ORM/driver
 stacks can perform different hydration work; runtime versions and dependencies are recorded.
 
 GuicedEE uses `insertAll(0, ...)`, `updateAll(0, ...)` and `deleteAll(0, ...)` inside
@@ -106,7 +130,7 @@ and [GeographyService](https://github.com/Activity-Master/GeographyMaster/blob/m
 Each graph has one row per entity type, so writes remain ordered; the same-type bulk batching
 used by Geography's import workload is not part of this CRUD workload.
 
-Only these two full-JDK persistence modes are measured here. The existing SDK comparison's
+Only these three full-JDK persistence modes are measured here. The existing SDK comparison's
 SPI/scanner, jlink and native results remain a separate workload and cannot be used as
 persistence results.
 
@@ -117,7 +141,7 @@ python tools/compare_persistence.py --diagnostics --runs 1 --requests 150 --warm
 python tools/profile_persistence.py target/persistence-runs/<batch>
 ```
 
-Diagnostics capture JFR in both JVMs, GuicedEE's inclusive startup phases and PostgreSQL
+Diagnostics capture JFR in all JVMs, GuicedEE's inclusive startup phases and PostgreSQL
 `pg_stat_statements` execution/planning counters. The summary separates startup through
 the first committed graph from the warmed measurement interval. SQL counters are
 subtracted at the measurement boundaries. JFR allocation weights are estimates and
@@ -125,6 +149,9 @@ inclusive stack totals overlap; they must not be summed. Native wait samples are
 from execution-sample summaries. Diagnostic timings are affected by instrumentation and
 the publication gate rejects them, even if marked eligible. Full recordings and derived
 summaries stay in ignored `target/`; rerun without `--diagnostics` for comparison tables.
+The GuicedEE log also separates persistence XML parsing, GuicedEE discovery scanning, Hibernate metadata bootstrap,
+mapping-model construction and session-factory construction. Startup SQL counters subtract the prelaunch snapshot,
+so schema preparation is excluded from the reported database execution time.
 
 ## Publish the latest complete comparison
 

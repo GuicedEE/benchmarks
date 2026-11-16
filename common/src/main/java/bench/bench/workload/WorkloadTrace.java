@@ -1,8 +1,8 @@
 package bench.workload;
 
 import java.util.Locale;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Supplier;
 
 /** First-use diagnostics only; all phase names are fixed literals, never request data. */
@@ -28,15 +28,24 @@ final class WorkloadTrace {
         if (!enabled) return action.get();
         long start = enabled ? System.nanoTime() : 0;
         boolean success = false;
-        try { T result = action.get(); success = true; return result; }
-        finally { record(name, start, success); }
+        try {
+            T result = action.get();
+            success = true;
+            return result;
+        } finally {
+            record(name, start, success);
+        }
     }
 
     <T> CompletionStage<T> async(String name, Supplier<CompletionStage<T>> action) {
         if (!enabled) return action.get();
         long start = enabled ? System.nanoTime() : 0;
-        try { return action.get().whenComplete((result, failure) -> record(name, start, failure == null)); }
-        catch (RuntimeException | Error failure) { record(name, start, false); throw failure; }
+        try {
+            return action.get().whenComplete((result, failure) -> record(name, start, failure == null));
+        } catch (RuntimeException | Error failure) {
+            record(name, start, false);
+            throw failure;
+        }
     }
 
     <T> CompletionStage<T> complete(CompletionStage<T> stage) {
@@ -46,13 +55,24 @@ final class WorkloadTrace {
     private void record(String name, long start, boolean success) {
         if (!enabled) return;
         long end = System.nanoTime();
-        spans.add(String.format(Locale.ROOT,
-                "{\"phase\":\"%s\",\"startNs\":%d,\"durationNs\":%d,\"success\":%s}", name, start - origin, end - start, success));
+        spans.add(String.format(
+                Locale.ROOT,
+                "{\"phase\":\"%s\",\"startNs\":%d,\"durationNs\":%d,\"success\":%s}",
+                name,
+                start - origin,
+                end - start,
+                success));
     }
 
     void finish(boolean success) {
-        if (enabled) System.out.println("BENCH_PHASE " + String.format(Locale.ROOT,
-                "{\"operation\":\"%s\",\"durationNs\":%d,\"success\":%s,\"events\":[%s]}",
-                operation, System.nanoTime() - origin, success, String.join(",", spans)));
+        if (enabled)
+            System.out.println("BENCH_PHASE "
+                    + String.format(
+                            Locale.ROOT,
+                            "{\"operation\":\"%s\",\"durationNs\":%d,\"success\":%s,\"events\":[%s]}",
+                            operation,
+                            System.nanoTime() - origin,
+                            success,
+                            String.join(",", spans)));
     }
 }

@@ -14,3 +14,9 @@ FROM runtime AS quarkus
 COPY quarkus/target/quarkus-app/ ./
 COPY target/quarkus-inputs.json benchmark-inputs.json
 ENTRYPOINT ["java", "-jar", "/app/quarkus-run.jar"]
+
+FROM runtime AS micronaut
+COPY micronaut/target/persistence-micronaut-1.0-SNAPSHOT.jar app.jar
+COPY micronaut/target/lib/ lib/
+COPY target/micronaut-inputs.json benchmark-inputs.json
+ENTRYPOINT ["java", "-cp", "/app/app.jar:/app/lib/*", "bench.persistence.micronaut.Application"]

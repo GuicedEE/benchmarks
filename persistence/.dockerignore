@@ -11,3 +11,8 @@
 !quarkus/target/quarkus-app/**
 !target/
 !target/*-inputs.json
+!micronaut/
+!micronaut/target/
+!micronaut/target/persistence-micronaut-1.0-SNAPSHOT.jar
+!micronaut/target/lib/
+!micronaut/target/lib/**

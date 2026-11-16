@@ -13,15 +13,17 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def prepare(trace=None, source_repository=None, version=None):
+def prepare(trace=None, source_repository=None, version=None, cdi_config=False):
+    application = "guicedee-cdi-native" if cdi_config else "guicedee-native"
+    expected_checks = 16 if cdi_config else 15
     from build import framework_version
     version = version or framework_version()
     source_repository = (source_repository or Path.home()/'.m2/repository').resolve()
     repository=ROOT/'docker/repository'
-    manifest_path=ROOT/'guicedee-native/native-trace-inputs.json'
+    manifest_path=ROOT/application/'native-trace-inputs.json'
     diagnostic=json.loads((trace/'diagnostic.json' if trace else manifest_path).read_text())
     check_count=len(diagnostic.get('checks',{})) if trace else diagnostic.get('capabilityCount',0)
-    if not diagnostic.get('allCapabilitiesPassed') or check_count!=15:
+    if not diagnostic.get('allCapabilitiesPassed') or check_count!=expected_checks:
         raise ValueError('Native metadata requires a successful full GuicedEE capability trace')
     sdk_inputs=[]
     for sdk in ['firebase-admin','commercetools']:
@@ -43,7 +45,7 @@ def prepare(trace=None, source_repository=None, version=None):
         if pom.resolve() != (destination/pom.name).resolve():
             shutil.copy2(pom,destination/pom.name)
         staged.append({'path':jar.relative_to(source_repository).as_posix(),'sha256':sha(jar)})
-    output=ROOT/'guicedee-native/src/main/resources/META-INF/native-image/dev.guicedee.benchmarks/guicedee-trace'
+    output=ROOT/application/'src/main/resources/META-INF/native-image/dev.guicedee.benchmarks/guicedee-trace'
     metadata=json.loads((trace/'reachability-metadata.json' if trace else output/'reachability-metadata.json').read_text())
     def generated(entry):
         return any(marker in str(entry.get('type','')) for marker in ['$$EnhancerByGuice$$','$$FastClassByGuice$$'])
@@ -68,15 +70,18 @@ def prepare(trace=None, source_repository=None, version=None):
     resources=sorted({entry['glob'] for entry in metadata.get('resources',[]) if 'glob' in entry})
     if any(any(char in resource for char in '*\\\"\n') for resource in resources):
         raise ValueError('Expected literal traced resource paths for modular registration')
-    (ROOT/'guicedee-native/native-resources.txt').write_text('\n'.join(resources)+'\n')
+    (ROOT/application/'native-resources.txt').write_text('\n'.join(resources)+'\n')
     manifest={'traceSha256':sha(trace/'reachability-metadata.json') if trace else diagnostic['traceSha256'],
               'metadataSha256':sha(output/'reachability-metadata.json'),
-              'sdkJars':sdk_inputs,'frameworkJars':staged,'capabilityCount':15,
+              'sdkJars':sdk_inputs,'frameworkJars':staged,'capabilityCount':expected_checks,
               'allCapabilitiesPassed':True,'agentSha256':diagnostic['agentSha256']}
     manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
     provenance=capture()
-    provenance['guicedeeNativeInputs']=manifest
-    provenance['guicedeeNativeInputs']['stagedJars']=[{'path':p.relative_to(repository).as_posix(),'sha256':sha(p)}
+    provenance_key = 'guicedeeCdiNativeInputs' if cdi_config else 'guicedeeNativeInputs'
+    if cdi_config:
+        provenance['guicedeeNativeInputs'] = json.loads((ROOT/'guicedee-native/native-trace-inputs.json').read_text())
+    provenance[provenance_key]=manifest
+    provenance[provenance_key]['stagedJars']=[{'path':p.relative_to(repository).as_posix(),'sha256':sha(p)}
                                                     for p in sorted(repository.rglob('*.jar'))]
     (ROOT/'docker/build-provenance.json').write_text(json.dumps(provenance,indent=2)+'\n')
     print('Prepared native Guice support and full capability trace; retained verified SDK snapshot.')
@@ -87,5 +92,6 @@ if __name__=='__main__':
     parser.add_argument('trace',type=Path,nargs='?',help='Fresh agent trace, or reuse committed metadata for the exact recorded SDKs')
     parser.add_argument('--repository',type=Path,help='Maven repository containing the framework artifacts under test')
     parser.add_argument('--version',help='GuicedEE artifact version; defaults to the benchmark POM')
+    parser.add_argument('--cdi-config', action='store_true')
     args=parser.parse_args()
-    prepare(args.trace,args.repository,args.version)
+    prepare(args.trace,args.repository,args.version,args.cdi_config)

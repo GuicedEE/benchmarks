@@ -83,6 +83,12 @@ def main():
             for phase in data['phases']:
                 if phase['variant'] in variants:
                     phase['batch'] = batch
+            for variant,label in [('micronaut','Micronaut upstream JVM'),('micronaut-native','Micronaut upstream native'),
+                                  ('guicedee-cdi','CDI scanner JVM'),('guicedee-cdi-spi','CDI SPI JVM'),
+                                  ('guicedee-cdi-jlink','CDI scanner jlink'),('guicedee-cdi-spi-jlink','CDI SPI jlink'),
+                                  ('guicedee-cdi-native','GuicedEE CDI native')]:
+                if variant in variants and not any(p['variant']==variant for p in data['phases']):
+                    data['phases'].append(dict(label=label,batch=batch,variant=variant))
         for filename in ['summary.json','environment.json']:
             data['inputSha256'][f'{batch}/{filename}'] = hashlib.sha256((directory/filename).read_bytes()).hexdigest()
         for name, provenance in environment.get('imageBuildProvenance', {}).items():
@@ -107,6 +113,10 @@ def main():
     used_images = retained_images(data['batches'])
     data['imageInputs'] = {k:v for k, v in data.get('imageInputs', {}).items() if k in used_images}
     data['reportAsOf'] = date.today().isoformat()
+    dates = sorted({f'{batch[:4]}-{batch[4:6]}-{batch[6:8]}' for batch in used
+                    if re.fullmatch(r'\d{8}-\d{6}', batch)})
+    if dates:
+        data['measuredOn'] = ', '.join(dates)
     # Validate every complete selected group before replacing the public evidence.
     import render_performance
     render_performance.LATEST = data

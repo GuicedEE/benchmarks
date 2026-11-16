@@ -1,6 +1,7 @@
-"""Import upstream commercetools reachability from a passing standard-Quarkus JVM trace.
+"""Import upstream SDK reachability from a passing Quarkus or Micronaut JVM trace.
 
-Firebase/Firestore and framework metadata remain owned by their published Quarkus extensions.
+Framework support stays with its published integrations; Micronaut also retains observed
+Firebase/auth/API-client reflection alongside Google's native-image support.
 No relocated types, substitutions, or previous wrapper traces are copied.
 """
 import argparse
@@ -16,22 +17,27 @@ ROOT = Path(__file__).resolve().parents[1]
 PREFIXES = ('com.commercetools.', 'io.vrap.', 'tools.jackson.', 'javax.money.', 'org.javamoney.', 'org.asynchttpclient.')
 
 
-def select(metadata):
+def select(metadata, framework='quarkus'):
+    prefixes = PREFIXES + (('com.google.firebase.', 'com.google.auth.', 'com.google.api.client.', 'com.google.cloud.firestore.') if framework == 'micronaut' else ())
     return {
         'reflection': [entry for entry in metadata.get('reflection', [])
-                       if isinstance(entry.get('type'), str) and entry['type'].startswith(PREFIXES)],
+                       if isinstance(entry.get('type'), str) and entry['type'].startswith(prefixes)],
         'resources': [entry for entry in metadata.get('resources', [])
                       if entry.get('glob', '').startswith(tuple('META-INF/services/' + prefix for prefix in PREFIXES))
                       or entry.get('glob', '').startswith('org/asynchttpclient/')
-                      or entry.get('glob') == 'javamoney.properties']
+                      or entry.get('glob') == 'javamoney.properties'
+                      or framework == 'micronaut' and entry.get('glob','').startswith(('com/google/firebase/','com/google/auth/','com/google/api/client/','com/google/cloud/firestore/'))]
     }
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory', type=Path)
-    parser.add_argument('--image', default='devsuite-bench-quarkus-standard:local')
+    parser.add_argument('--framework', choices=['quarkus','micronaut'], default='quarkus')
+    parser.add_argument('--image')
     args = parser.parse_args()
+    project = 'micronaut' if args.framework == 'micronaut' else 'quarkus-standard'
+    args.image = args.image or f'devsuite-bench-{project}:local'
     diagnostic = json.loads((args.directory/'diagnostic.json').read_text())
     if not diagnostic.get('allCapabilitiesPassed') or diagnostic.get('dependencyMode') != 'standard':
         raise ValueError('A passing standard-dependency trace is required')
@@ -43,12 +49,13 @@ def main():
     if not diagnostic.get('sourceImage'): raise ValueError('Missing traced image identity')
     owner_paths = ('com/commercetools/sdk/', 'org/asynchttpclient/', 'tools/jackson/', 'org/javamoney/',
                    'javax/money/', 'com/fasterxml/jackson/core/jackson-annotations/')
+    if args.framework == 'micronaut': owner_paths += ('com/google/',)
     def relevant(dependencies):
         return [{'name':entry['path'],'sha256':entry['sha256']} for entry in dependencies
                 if entry['path'].startswith(owner_paths)]
     verify_sdk_inputs(relevant(diagnostic['resolvedDependencies']), relevant(provenance['resolvedDependencies']))
     source = args.directory/'reachability-metadata.json'
-    metadata = select(json.loads(source.read_text()))
+    metadata = select(json.loads(source.read_text()), args.framework)
     # The JDK 25 agent records provider type lookups but not ServiceLoader's
     # MethodHandle constructor invocation. Register the upstream JARs' declared
     # providers explicitly, as a Quarkus extension would, without enabling every
@@ -59,7 +66,7 @@ def main():
     for dependency in provenance['resolvedDependencies']:
         if not dependency['path'].startswith('com/commercetools/sdk/'): continue
         parts = dependency['path'].split('/')
-        jar = '/app/lib/main/' + '.'.join(parts[:-3]) + '.' + parts[-1]
+        jar = '/app/lib/'+parts[-1] if args.framework == 'micronaut' else '/app/lib/main/' + '.'.join(parts[:-3]) + '.' + parts[-1]
         data = subprocess.check_output(['docker','run','--rm','--entrypoint','cat',image,jar])
         if hashlib.sha256(data).hexdigest() != dependency['sha256']: raise ValueError('SDK dependency hash mismatch: ' + jar)
         with zipfile.ZipFile(io.BytesIO(data)) as archive:
@@ -76,7 +83,7 @@ def main():
     metadata['reflection'] = sorted(reflection.values(), key=lambda entry:entry['type'])
     metadata['resources'] = [{'glob':path} for path in sorted(resources)]
     if not metadata['reflection'] or not metadata['resources']: raise ValueError('Empty upstream SDK metadata')
-    target = ROOT/'quarkus-standard/src/main/resources/META-INF/native-image/bench/quarkus-standard'
+    target = ROOT/f'{project}/src/main/resources/META-INF/native-image/bench/{project}'
     target.mkdir(parents=True, exist_ok=True)
     (target/'reachability-metadata.json').write_text(json.dumps(metadata,indent=2)+'\n')
     (target/'trace-inputs.json').write_text(json.dumps({
@@ -86,7 +93,9 @@ def main():
         'agentSha256':diagnostic['agentSha256'],'traceSha256':hashlib.sha256(source.read_bytes()).hexdigest(),
         'included':{key:len(value) for key,value in metadata.items()},
         'declaredSdkProviders':providers,
-        'scope':'Observed upstream commercetools, AsyncHttpClient, Jackson 3 and money types/resources, plus SDK-declared service providers; no GuicedEE wrapper metadata'
+        'scope':'Observed upstream commercetools, AsyncHttpClient, Jackson 3 and money types/resources, plus SDK-declared service providers; '
+                + ('observed Firebase/auth/API-client/Firestore reflection; ' if args.framework == 'micronaut' else '')
+                + 'no GuicedEE wrapper metadata'
     },indent=2)+'\n')
     print({key:len(value) for key,value in metadata.items()})
 

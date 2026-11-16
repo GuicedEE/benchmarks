@@ -19,17 +19,20 @@
             <resource><directory>src/main/resources</directory></resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>dev.openjavaformat</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <configuration>
+                    <additionalSourceDirectories>
+                        <param>${project.basedir}/../quarkus-native/src/main/java</param>
+                    </additionalSourceDirectories>
+                </configuration>
+            </plugin>
             <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId>
-                <configuration><compilerArgs>
-                    <arg>--add-exports</arg><arg>commercetools.sdk.java.api/com.commercetools.internal.shaded.io.netty.channel=bench.guicedee.nativeimage</arg>
-                    <arg>--add-exports</arg><arg>commercetools.sdk.java.api/com.commercetools.internal.shaded.io.netty.channel.embedded=bench.guicedee.nativeimage</arg>
-                    <arg>--add-exports</arg><arg>commercetools.sdk.java.api/com.commercetools.internal.shaded.io.netty.handler.codec.compression=bench.guicedee.nativeimage</arg>
-                    <arg>--add-exports</arg><arg>commercetools.sdk.java.api/com.commercetools.internal.shaded.io.netty.handler.codec.http=bench.guicedee.nativeimage</arg>
-                    <arg>--add-exports</arg><arg>commercetools.sdk.java.api/com.commercetools.internal.shaded.io.netty.handler.ssl=bench.guicedee.nativeimage</arg>
-                    <arg>--add-exports</arg><arg>commercetools.sdk.java.api/com.commercetools.internal.shaded.io.netty.util=bench.guicedee.nativeimage</arg>
-                    <arg>--add-exports</arg><arg>firebase.admin/com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.buffer=bench.guicedee.nativeimage</arg>
-                    <arg>--add-exports</arg><arg>firebase.admin/com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging=bench.guicedee.nativeimage</arg>
-                </compilerArgs></configuration>
+                <configuration>
+                    <!-- 2.6.0 uses shared Netty; old relocated Commerce substitutions have no target. -->
+                    <excludes><exclude>**/CommerceContentDecoder.java</exclude><exclude>**/CommerceJdkTls.java</exclude></excludes>
+                </configuration>
             </plugin>
             <plugin><groupId>org.codehaus.mojo</groupId><artifactId>build-helper-maven-plugin</artifactId><version>3.8.0</version>
                 <executions><execution><id>shared-sdk-native-compatibility</id><phase>generate-sources</phase><goals><goal>add-source</goal></goals>

@@ -8,18 +8,18 @@ from profile_persistence import sql_delta, summarize
 
 def complete():
     rows=[]
-    for variant in ['guicedee','quarkus']:
+    for variant in ['guicedee','quarkus','micronaut']:
         rows.append(dict(variant=variant,run=1,eligible=True,checks=dict.fromkeys(CHECKS,True),
             readsMs=[1.0],cycles=[dict.fromkeys(['createMs','readMs','updateMs','deleteMs','cycleMs'],2.0)],
             image=variant,jvmFlags=['same'],oomKilled=False,memoryEvents='oom_kill 0\n',
             shutdown=dict(exitCode=143,remainingConnections=0,lifecycleCompleted=True),
             containerLimits=dict(nanoCpus=250000000,memoryBytes=500*2**20,memorySwapBytes=500*2**20)))
     return dict(eligible=True,contract=CONTRACT,runs=1,requests=1,starts=rows,jvmFlags=['same'],
-        images={n:n for n in ['guicedee','quarkus']},
+        images={n:n for n in ['guicedee','quarkus','micronaut']},
         buildInputs={n:dict(sources={'model.java':'same'},javaImage='same-jdk',
                            modelArtifacts={'persistence-model-1.0-SNAPSHOT.jar':'original','persistence-model-1.0-SNAPSHOT-enhanced.jar':'enhanced'},
                            jarSha256={('lib/'+('' if n=='guicedee' else 'dev.guicedee.benchmarks.')+'persistence-model-1.0-SNAPSHOT'+('-enhanced' if n=='guicedee' else '')+'.jar'):
-                                      'enhanced' if n=='guicedee' else 'original'}) for n in ['guicedee','quarkus']},
+                                      'enhanced' if n=='guicedee' else 'original'}) for n in ['guicedee','quarkus','micronaut']},
         postgres=dict(settings=dict(fsync='on',synchronous_commit='on',full_page_writes='on',isolation='read committed')))
 
 

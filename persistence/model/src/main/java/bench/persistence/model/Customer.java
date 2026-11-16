@@ -1,5 +1,7 @@
 package bench.persistence.model;
+
 import jakarta.persistence.*;
+
 @Entity
 @Table(name = "bench_customer")
 public class Customer extends Row {

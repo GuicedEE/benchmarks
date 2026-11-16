@@ -64,6 +64,15 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>dev.openjavaformat</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <configuration>
+                    <additionalSourceDirectories>
+                        <param>${project.basedir}/../quarkus/src/main/java</param>
+                    </additionalSourceDirectories>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <version>3.8.0</version>

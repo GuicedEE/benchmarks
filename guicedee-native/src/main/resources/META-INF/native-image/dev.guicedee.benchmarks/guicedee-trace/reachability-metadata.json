@@ -8,6 +8,10 @@
       "allDeclaredConstructors": true
     },
     {
+      "type": "bench.guicedee.Main",
+      "allDeclaredConstructors": true
+    },
+    {
       "type": "bench.guicedee.rest.Resource",
       "fields": [
         {
@@ -31,10 +35,6 @@
           "parameterTypes": [
             "java.lang.String"
           ]
-        },
-        {
-          "name": "timeout",
-          "parameterTypes": []
         }
       ],
       "allDeclaredConstructors": true
@@ -13730,622 +13730,6 @@
       "type": "com.commercetools.http.asynchttp.AsyncHttpClientSolutionInfo"
     },
     {
-      "type": "com.commercetools.internal.shaded.com.fasterxml.jackson.annotation.JacksonAnnotationValue"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.com.fasterxml.jackson.annotation.ObjectIdResolver"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.Call"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.ExecutionContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.Policy"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.PolicyConfig"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.PolicyListeners"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.event.ExecutionEvent"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.internal.CircuitState"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.internal.CircuitStats"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.internal.RateLimiterStats"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.internal.TimedCircuitStats$Stat"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.spi.PolicyExecutor"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.dev.failsafe.spi.Scheduler"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.bootstrap.AbstractBootstrapConfig"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.bootstrap.ChannelFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.bootstrap.ChannelInitializerExtensions"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.AbstractByteBufAllocator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.AdaptivePoolingAllocator$ChunkAllocator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.AdaptivePoolingAllocator$ChunkCache"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.AdaptivePoolingAllocator$ChunkController"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.AdaptivePoolingAllocator$ChunkManagementStrategy"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.AdaptivePoolingAllocator$Magazine"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.AdaptivePoolingAllocator$SizeClassedChunk"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.ByteBufAllocator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.ByteBufAllocatorMetric"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.ByteBufAllocatorMetricProvider"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.ByteBufConvertible"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.ChunkInfo"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.CompositeByteBuf$ByteWrapper"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.PoolChunkMetric"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.PoolSubpageMetric"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.PoolThreadCache$MemoryRegionCache"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.SizeClassesMetric"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.buffer.search.SearchProcessorFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.AbstractChannelHandlerContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.AbstractCoalescingBufferQueue"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.Channel$Unsafe"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.ChannelConfig"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.ChannelFlushPromiseNotifier$FlushCheckpoint"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.ChannelHandler"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.ChannelInboundInvoker"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.ChannelOutboundBuffer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.ChannelOutboundBuffer$MessageProcessor"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.ChannelOutboundInvoker"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.DefaultChannelConfig"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.DefaultChannelPipeline"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.DefaultChannelPipeline$TailContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.IoEvent"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.IoHandler"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.IoHandlerContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.IoHandlerFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.IoOps"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.IoRegistration"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.MessageSizeEstimator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.MessageSizeEstimator$Handle"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.RecvByteBufAllocator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.RecvByteBufAllocator$Handle"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.SelectStrategy"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.SelectStrategyFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.epoll.AbstractEpollStreamChannel$SpliceInTask"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.group.ChannelMatcher"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.pool.ChannelHealthChecker"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.pool.ChannelPoolHandler"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.pool.ChannelPoolMap"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.channel.unix.FileDescriptor"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.ByteToMessageDecoder$Cumulator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.CodecOutputList$CodecOutputListRecycler"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.DecoderResult"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.DecoderResultProvider"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.DefaultHeaders$NameValidator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.DefaultHeaders$ValueValidator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.ValueConverter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.compression.CompressionOptions"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.compression.Decompressor$AbstractDecompressorBuilder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.CombinedHttpHeaders$CombinedHttpHeadersImpl$CsvValueEscaper"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.HttpClientCodec"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.HttpClientUpgradeHandler$SourceCodec"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.HttpHeadersFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.HttpObjectDecoder$HeaderParser"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.HttpServerUpgradeHandler$SourceCodec"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.cookie.CookieDecoder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.cookie.CookieEncoder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.multipart.HttpDataFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.multipart.InterfaceHttpPostRequestDecoder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.websocketx.WebSocketClientHandshaker"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.websocketx.WebSocketFrameMaskGenerator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.websocketx.extensions.WebSocketClientExtensionHandshaker"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.websocketx.extensions.WebSocketExtension"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.websocketx.extensions.WebSocketExtensionFilter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.websocketx.extensions.WebSocketExtensionFilterProvider"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.http.websocketx.extensions.WebSocketServerExtensionHandshaker"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.serialization.ClassResolver"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.socks.SocksMessage"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5AddressDecoder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.socksx.v5.Socks5AddressEncoder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.spdy.SpdyFrame"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.spdy.SpdyFrameDecoder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.spdy.SpdyFrameDecoderDelegate"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.spdy.SpdyHeaderBlockDecoder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.codec.spdy.SpdyHeaderBlockEncoder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ipfilter.IpFilterRule"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.ApplicationProtocolAccessor"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.ApplicationProtocolNegotiator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.CipherSuiteFilter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.JdkApplicationProtocolNegotiator$ProtocolSelectionListener"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.JdkApplicationProtocolNegotiator$ProtocolSelectionListenerFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.JdkApplicationProtocolNegotiator$ProtocolSelector"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.JdkApplicationProtocolNegotiator$ProtocolSelectorFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.JdkApplicationProtocolNegotiator$SslEngineWrapperFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.OpenSslCertificateCompressionAlgorithm"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.OpenSslKeyMaterialProvider"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.OpenSslX509TrustManagerWrapper$TrustManagerWrapper"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.ReferenceCountedOpenSslEngine$NativeSslException",
-      "condition": {
-        "typeReached": "com.commercetools.internal.shaded.io.netty.internal.tcnative.SSL"
-      }
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.SslCompletionEvent"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.ssl.SslContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.stream.ChunkedInput"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.stream.ChunkedWriteHandler"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.timeout.IdleStateEvent"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.handler.traffic.TrafficCounter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.internal.tcnative.AsyncSSLPrivateKeyMethod"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.internal.tcnative.CertificateCallback"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.internal.tcnative.CertificateCompressionAlgo"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.internal.tcnative.CertificateVerifier"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.internal.tcnative.SSLPrivateKeyMethod"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.internal.tcnative.SSLSessionCache"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.internal.tcnative.SniHostNameMatcher"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.resolver.HostsFileEntriesProvider$Parser"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.resolver.HostsFileEntriesResolver"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.AsciiString$CharEqualityComparator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.AsyncMapping"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.Attribute"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.AttributeMap"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.BooleanSupplier"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.ByteProcessor"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.ConstantPool"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.DefaultAttributeMap"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.DefaultAttributeMap$DefaultAttribute"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.HashedWheelTimer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.HashedWheelTimer$HashedWheelTimeout"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.HashingStrategy"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.IntSupplier"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.Mapping"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.Recycler"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.Recycler$DefaultHandle"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.Recycler$LocalPool"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.ReferenceCountUtil"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.ReferenceCounted"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.ResourceLeak"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.ResourceLeakDetector"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.ResourceLeakDetector$DefaultResourceLeak"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.ResourceLeakDetectorFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.ResourceLeakHint"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.ResourceLeakTracker"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.Timeout"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.Timer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.collection.ByteObjectMap$PrimitiveEntry"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.collection.CharObjectMap$PrimitiveEntry"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.collection.IntObjectMap$PrimitiveEntry"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.collection.LongObjectMap$PrimitiveEntry"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.collection.ShortObjectMap$PrimitiveEntry"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.ConcurrentSkipListIntObjMultimap"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.ConcurrentSkipListIntObjMultimap$Index"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.ConcurrentSkipListIntObjMultimap$Node"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.DefaultPromise"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.EventExecutorChooserFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.EventExecutorChooserFactory$EventExecutorChooser"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.FastThreadLocal"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.MpscIntQueue"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.MpscIntQueue$MpscAtomicIntegerArrayQueue"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.RejectedExecutionHandler"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.SingleThreadEventExecutor"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.ThreadProperties"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.concurrent.Ticker"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.CleanableDirectBuffer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.Cleaner"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.LongCounter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.ObjectPool"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.ObjectPool$Handle"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.PriorityQueueNode"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.ReferenceCountUpdater"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.TypeParameterMatcher"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.UnpaddedInternalThreadLocalMap"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.logging.InternalLogger"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.logging.InternalLoggerFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.shaded.org.jctools.queues.IndexedQueueSizeUtil$IndexedQueue"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.shaded.org.jctools.queues.MessagePassingQueue"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.shaded.org.jctools.queues.QueueProgressIndicators"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.shaded.org.jctools.queues.SupportsIterator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.shaded.org.jctools.queues.varhandle.BaseMpscLinkedVarHandleArrayQueueColdProducerFields",
-      "fields": [
-        {
-          "name": "producerLimit"
-        }
-      ]
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.shaded.org.jctools.queues.varhandle.BaseMpscLinkedVarHandleArrayQueueConsumerFields",
-      "fields": [
-        {
-          "name": "consumerIndex"
-        }
-      ]
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.shaded.org.jctools.queues.varhandle.BaseMpscLinkedVarHandleArrayQueueProducerFields",
-      "fields": [
-        {
-          "name": "producerIndex"
-        }
-      ]
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.shaded.org.jctools.queues.varhandle.MpmcVarHandleArrayQueueConsumerIndexField",
-      "fields": [
-        {
-          "name": "consumerIndex"
-        }
-      ]
-    },
-    {
-      "type": "com.commercetools.internal.shaded.io.netty.util.internal.shaded.org.jctools.queues.varhandle.MpmcVarHandleArrayQueueProducerIndexField",
-      "fields": [
-        {
-          "name": "producerIndex"
-        }
-      ]
-    },
-    {
       "type": "com.commercetools.internal.shaded.jakarta.validation.Path$Node"
     },
     {
@@ -14391,225 +13775,6 @@
       "type": "com.commercetools.internal.shaded.javax.annotation.meta.TypeQualifierValidator"
     },
     {
-      "type": "com.commercetools.internal.shaded.javax.money.AbstractContextBuilder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.CurrencySupplier"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.MonetaryAmountFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.MonetaryOperator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.MonetaryQuery"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.NumberSupplier"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.convert.ExchangeRateProvider"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.spi.CurrencyProviderSpi"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.spi.MonetaryAmountFactoryProviderSpi"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.spi.MonetaryAmountFormatProviderSpi"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.spi.MonetaryAmountsSingletonQuerySpi"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.spi.MonetaryAmountsSingletonSpi"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.spi.MonetaryCurrenciesSingletonSpi"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.spi.MonetaryFormatsSingletonSpi"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.spi.MonetaryRoundingsSingletonSpi"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.spi.RoundingProviderSpi"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.javax.money.spi.ServiceProvider"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.FileDeleteStrategy"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.file.Counters$Counter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.file.Counters$PathCounters"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.file.DeleteOption"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.file.PathFilter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.filefilter.ConditionalFileFilter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.function.IOBiFunction"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.function.IOFunction"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.function.IOIterable"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.function.IOIterator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.function.IOSpliterator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.function.IOSupplier"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.input.ByteBufferCleaner$Cleaner"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.input.ObservableInputStream$Observer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.input.Tailer$Tailable"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.input.TailerListener"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.monitor.FileAlterationListener"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.io.serialization.ClassNameMatcher"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.Strings"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.ThreadUtils$ThreadGroupPredicate"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.ThreadUtils$ThreadPredicate"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.builder.Builder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.concurrent.CircuitBreaker"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.concurrent.Computable"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.concurrent.EventCountCircuitBreaker$AbstractStateStrategy"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.concurrent.locks.LockingVisitors$LockVisitor"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.exception.ExceptionContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.function.FailableSupplier"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.reflect.Typed"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.text.StrLookup"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.text.StrMatcher"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.text.translate.CharSequenceTranslator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.time.AbstractFormatCache"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.time.DateParser"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.time.DatePrinter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.time.FastDateParser$Strategy"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.commons.lang3.time.FastDatePrinter$Rule"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.apache.logging.log4j.spi.ExtendedLoggerWrapper"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.conscrypt.AllocatedBuffer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.conscrypt.BufferAllocator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.conscrypt.HandshakeListener"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.javamoney.moneta.function.MonetaryAmountProducer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.javamoney.moneta.function.MonetaryRoundedFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.javamoney.moneta.function.MonetarySummaryStatistics"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.javamoney.moneta.spi.ConvertNumberValue$ConvertNumberValueI"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.javamoney.moneta.spi.MonetaryAmountProducer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.javamoney.moneta.spi.MonetaryConfigProvider"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.javamoney.moneta.spi.format.FormatToken"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.javamoney.moneta.spi.loader.DataStreamFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.javamoney.moneta.spi.loader.LoaderService"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.javamoney.moneta.spi.loader.ResourceCache"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.osgi.framework.BundleActivator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.osgi.framework.ServiceFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.reactivestreams.Publisher"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.reactivestreams.Subscriber"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.reactivestreams.Subscription"
-    },
-    {
       "type": "com.commercetools.internal.shaded.org.reflections.Configuration"
     },
     {
@@ -14635,258 +13800,6 @@
     },
     {
       "type": "com.commercetools.internal.shaded.org.reflections.vfs.Vfs$UrlType"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.slf4j.ILoggerFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.slf4j.IMarkerFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.slf4j.Logger"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.slf4j.event.LoggingEvent"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.slf4j.spi.CallerBoundaryAware"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.slf4j.spi.LoggingEventBuilder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.slf4j.spi.MDCAdapter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.org.slf4j.spi.SLF4JServiceProvider"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.ObjectReadContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.ObjectWriteContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.PrettyPrinter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.SerializableString"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.TSFBuilder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.TokenStreamContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.TreeCodec"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.TreeNode"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.Versioned"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.async.NonBlockingInputFeeder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.filter.TokenFilter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.internal.shaded.fdp.AbstractNumberParser"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.type.ResolvedType"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.util.BufferRecycler$Gettable"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.util.DefaultPrettyPrinter$Indenter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.util.Instantiatable"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.util.JacksonFeature"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.util.Named"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.util.RecyclerPool$WithPool"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.util.Snapshottable"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.core.util.TextBuffer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.AbstractTypeResolver"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.BeanDescription"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.DatabindContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.EnumNamingStrategy"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.JacksonModule$SetupContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.JacksonSerializable"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.KeyDeserializer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.cfg.ConfigFeature"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.cfg.ConfigOverride"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.cfg.MapperBuilder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.DeserializationProblemHandler"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.DeserializerFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.Deserializers"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.Deserializers[]"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.KeyDeserializers"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.KeyDeserializers[]"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.NullValueProvider"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.ReadableObjectId$Referring"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.SettableAnyProperty"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.ValueInstantiator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.ValueInstantiator$Gettable"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.ValueInstantiators"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.ValueInstantiators[]"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.bean.PropertyValue"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.deser.jdk.NullKeySkippable"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.ext.beans.JavaBeansAnnotations"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.introspect.AccessorNamingStrategy"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.introspect.Annotated"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.introspect.AnnotationCollector"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.introspect.ClassIntrospector"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.introspect.CollectorBase"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.introspect.DefaultAccessorNamingStrategy$BaseNameValidator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.introspect.POJOPropertyBuilder$WithMember"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.introspect.TypeResolutionContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsonFormatVisitors.JsonAnyFormatVisitor"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsonFormatVisitors.JsonFormatVisitable"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsonFormatVisitors.JsonNullFormatVisitor"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsonFormatVisitors.JsonValueFormatVisitor"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsonFormatVisitors.WithGettableSerializationContext"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsontype.BasicPolymorphicTypeValidator$NameMatcher"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsontype.BasicPolymorphicTypeValidator$TypeMatcher"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsontype.TypeDeserializer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsontype.TypeIdResolver"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsontype.TypeResolverBuilder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.jsontype.TypeSerializer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.node.JsonNodeCreator"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.ser.SerializerFactory"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.ser.Serializers"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.ser.Serializers[]"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.ser.impl.PropertySerializerMap"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.util.Annotations"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.util.Converter"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.util.NameTransformer"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.util.PrimitiveArrayBuilder"
-    },
-    {
-      "type": "com.commercetools.internal.shaded.tools.jackson.databind.util.internal.Linked"
     },
     {
       "type": "com.commercetools.money.MonetaryProvider"
@@ -15337,6 +14250,10 @@
       "allDeclaredConstructors": true
     },
     {
+      "type": "com.guicedee.client.scopes.mutiny.CallScopeUniInterceptor$ScopedUniSubscription",
+      "allDeclaredConstructors": true
+    },
+    {
       "type": "com.guicedee.client.services.IDefaultService",
       "allDeclaredConstructors": true
     },
@@ -15585,6 +14502,10 @@
       "allDeclaredConstructors": true
     },
     {
+      "type": "com.guicedee.vertx.web.spi.ManagedHttpListenerProvider",
+      "allDeclaredConstructors": true
+    },
+    {
       "type": "com.guicedee.vertx.web.spi.VertxHttpServerConfigurator",
       "allDeclaredConstructors": true
     },
@@ -15719,7 +14640,19 @@
       "type": "io.netty.channel.DefaultChannelPipeline$TailContext"
     },
     {
+      "type": "io.netty.channel.DefaultFileRegion"
+    },
+    {
+      "type": "io.netty.channel.epoll.NativeDatagramPacketArray$NativeDatagramPacket"
+    },
+    {
+      "type": "io.netty.channel.unix.PeerCredentials"
+    },
+    {
       "type": "io.netty.handler.codec.haproxy.HAProxyMessageDecoder"
+    },
+    {
+      "type": "io.netty.handler.codec.http.HttpClientCodec"
     },
     {
       "type": "io.netty.handler.codec.http.websocketx.extensions.WebSocketServerExtensionHandler"
@@ -15732,6 +14665,15 @@
     },
     {
       "type": "io.netty.util.DefaultAttributeMap"
+    },
+    {
+      "type": "io.netty.util.DefaultAttributeMap$DefaultAttribute"
+    },
+    {
+      "type": "io.netty.util.HashedWheelTimer"
+    },
+    {
+      "type": "io.netty.util.HashedWheelTimer$HashedWheelTimeout"
     },
     {
       "type": "io.netty.util.Recycler$DefaultHandle"
@@ -15756,6 +14698,18 @@
     },
     {
       "type": "io.netty.util.concurrent.SingleThreadEventExecutor"
+    },
+    {
+      "type": "io.netty.util.internal.NativeLibraryUtil",
+      "methods": [
+        {
+          "name": "loadLibrary",
+          "parameterTypes": [
+            "java.lang.String",
+            "boolean"
+          ]
+        }
+      ]
     },
     {
       "type": "io.netty.util.internal.shaded.org.jctools.queues.varhandle.BaseMpscLinkedVarHandleArrayQueueColdProducerFields",
@@ -15798,28 +14752,10 @@
       ]
     },
     {
-      "type": "io.opentelemetry.api.incubator.ExtendedOpenTelemetry"
-    },
-    {
-      "type": "io.opentelemetry.api.incubator.trace.ExtendedDefaultTracerProvider",
-      "methods": [
-        {
-          "name": "getNoop",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "io.opentelemetry.instrumentation.log4j.appender.v2_17.OpenTelemetryAppender"
     },
     {
       "type": "io.opentelemetry.instrumentation.log4j.contextdata.v2_17.OpenTelemetryContextDataProvider"
-    },
-    {
-      "type": "io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk"
-    },
-    {
-      "type": "io.opentelemetry.sdk.testing.context.SettableContextStorageProvider"
     },
     {
       "type": "io.smallrye.mutiny.Uni"
@@ -15837,64 +14773,16 @@
       "type": "io.smallrye.mutiny.operators.multi.MultiOperatorProcessor"
     },
     {
-      "type": "io.smallrye.mutiny.operators.multi.processors.UnicastProcessor"
-    },
-    {
       "type": "io.smallrye.mutiny.operators.uni.UniOperatorProcessor"
     },
     {
       "type": "io.smallrye.mutiny.operators.uni.builders.UniCreateFromPublisher$PublisherSubscriber"
     },
     {
-      "type": "io.swagger.v3.core.jackson.ApiResponsesSerializer",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.core.jackson.PathsSerializer",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.core.jackson.mixin.ComponentsMixin"
-    },
-    {
       "type": "io.swagger.v3.core.jackson.mixin.Discriminator31Mixin"
     },
     {
-      "type": "io.swagger.v3.core.jackson.mixin.DiscriminatorMixin"
-    },
-    {
-      "type": "io.swagger.v3.core.jackson.mixin.ExampleMixin"
-    },
-    {
       "type": "io.swagger.v3.core.jackson.mixin.ExtensionsMixin"
-    },
-    {
-      "type": "io.swagger.v3.core.jackson.mixin.InfoMixin"
-    },
-    {
-      "type": "io.swagger.v3.core.jackson.mixin.LicenseMixin"
-    },
-    {
-      "type": "io.swagger.v3.core.jackson.mixin.MediaTypeMixin"
-    },
-    {
-      "type": "io.swagger.v3.core.jackson.mixin.OpenAPI31Mixin"
-    },
-    {
-      "type": "io.swagger.v3.core.jackson.mixin.OpenAPIMixin"
-    },
-    {
-      "type": "io.swagger.v3.core.jackson.mixin.OperationMixin"
     },
     {
       "type": "io.swagger.v3.core.jackson.mixin.Schema31Mixin"
@@ -15909,430 +14797,16 @@
       ]
     },
     {
-      "type": "io.swagger.v3.core.jackson.mixin.SchemaConverterMixin"
-    },
-    {
-      "type": "io.swagger.v3.core.jackson.mixin.SchemaMixin"
-    },
-    {
-      "type": "io.swagger.v3.core.util.Configuration$GroupsValidationStrategy"
-    },
-    {
-      "type": "io.swagger.v3.oas.integration.SwaggerConfiguration",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        },
-        {
-          "name": "getCacheTTL",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDefaultResponseCode",
-          "parameterTypes": []
-        },
-        {
-          "name": "getFilterClass",
-          "parameterTypes": []
-        },
-        {
-          "name": "getGroupsValidationStrategy",
-          "parameterTypes": []
-        },
-        {
-          "name": "getId",
-          "parameterTypes": []
-        },
-        {
-          "name": "getIgnoredRoutes",
-          "parameterTypes": []
-        },
-        {
-          "name": "getModelConverterClasses",
-          "parameterTypes": []
-        },
-        {
-          "name": "getObjectMapperProcessorClass",
-          "parameterTypes": []
-        },
-        {
-          "name": "getOpenAPI",
-          "parameterTypes": []
-        },
-        {
-          "name": "getOpenAPIVersion",
-          "parameterTypes": []
-        },
-        {
-          "name": "getReaderClass",
-          "parameterTypes": []
-        },
-        {
-          "name": "getResourceClasses",
-          "parameterTypes": []
-        },
-        {
-          "name": "getResourcePackages",
-          "parameterTypes": []
-        },
-        {
-          "name": "getScannerClass",
-          "parameterTypes": []
-        },
-        {
-          "name": "getSchemaResolution",
-          "parameterTypes": []
-        },
-        {
-          "name": "getUserDefinedOptions",
-          "parameterTypes": []
-        },
-        {
-          "name": "getValidatorProcessorClass",
-          "parameterTypes": []
-        },
-        {
-          "name": "isAlwaysResolveAppPath",
-          "parameterTypes": []
-        },
-        {
-          "name": "isConvertToOpenAPI31",
-          "parameterTypes": []
-        },
-        {
-          "name": "isOpenAPI31",
-          "parameterTypes": []
-        },
-        {
-          "name": "isPrettyPrint",
-          "parameterTypes": []
-        },
-        {
-          "name": "isReadAllResources",
-          "parameterTypes": []
-        },
-        {
-          "name": "isSkipResolveAppPath",
-          "parameterTypes": []
-        },
-        {
-          "name": "isSortOutput",
-          "parameterTypes": []
-        },
-        {
-          "name": "setCacheTTL",
-          "parameterTypes": [
-            "java.lang.Long"
-          ]
-        },
-        {
-          "name": "setConvertToOpenAPI31",
-          "parameterTypes": [
-            "java.lang.Boolean"
-          ]
-        },
-        {
-          "name": "setGroupsValidationStrategy",
-          "parameterTypes": [
-            "io.swagger.v3.core.util.Configuration$GroupsValidationStrategy"
-          ]
-        },
-        {
-          "name": "setId",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        },
-        {
-          "name": "setOpenAPI",
-          "parameterTypes": [
-            "io.swagger.v3.oas.models.OpenAPI"
-          ]
-        },
-        {
-          "name": "setOpenAPI31",
-          "parameterTypes": [
-            "java.lang.Boolean"
-          ]
-        },
-        {
-          "name": "setReadAllResources",
-          "parameterTypes": [
-            "java.lang.Boolean"
-          ]
-        },
-        {
-          "name": "setSchemaResolution",
-          "parameterTypes": [
-            "io.swagger.v3.oas.models.media.Schema$SchemaResolution"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.oas.integration.api.OpenAPIConfiguration"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.Components"
-    },
-    {
       "type": "io.swagger.v3.oas.models.ExternalDocumentation"
     },
     {
-      "type": "io.swagger.v3.oas.models.OpenAPI",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        },
-        {
-          "name": "getComponents",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExtensions",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExternalDocs",
-          "parameterTypes": []
-        },
-        {
-          "name": "getInfo",
-          "parameterTypes": []
-        },
-        {
-          "name": "getJsonSchemaDialect",
-          "parameterTypes": []
-        },
-        {
-          "name": "getOpenapi",
-          "parameterTypes": []
-        },
-        {
-          "name": "getPaths",
-          "parameterTypes": []
-        },
-        {
-          "name": "getSecurity",
-          "parameterTypes": []
-        },
-        {
-          "name": "getServers",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTags",
-          "parameterTypes": []
-        },
-        {
-          "name": "setOpenapi",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.oas.models.Operation",
-      "methods": [
-        {
-          "name": "getCallbacks",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDeprecated",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDescription",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExtensions",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExternalDocs",
-          "parameterTypes": []
-        },
-        {
-          "name": "getOperationId",
-          "parameterTypes": []
-        },
-        {
-          "name": "getParameters",
-          "parameterTypes": []
-        },
-        {
-          "name": "getRequestBody",
-          "parameterTypes": []
-        },
-        {
-          "name": "getResponses",
-          "parameterTypes": []
-        },
-        {
-          "name": "getSecurity",
-          "parameterTypes": []
-        },
-        {
-          "name": "getServers",
-          "parameterTypes": []
-        },
-        {
-          "name": "getSummary",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTags",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.oas.models.PathItem",
-      "methods": [
-        {
-          "name": "get$ref",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDelete",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDescription",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExtensions",
-          "parameterTypes": []
-        },
-        {
-          "name": "getGet",
-          "parameterTypes": []
-        },
-        {
-          "name": "getHead",
-          "parameterTypes": []
-        },
-        {
-          "name": "getOptions",
-          "parameterTypes": []
-        },
-        {
-          "name": "getParameters",
-          "parameterTypes": []
-        },
-        {
-          "name": "getPatch",
-          "parameterTypes": []
-        },
-        {
-          "name": "getPost",
-          "parameterTypes": []
-        },
-        {
-          "name": "getPut",
-          "parameterTypes": []
-        },
-        {
-          "name": "getServers",
-          "parameterTypes": []
-        },
-        {
-          "name": "getSummary",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTrace",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.oas.models.Paths"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.examples.Example"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.headers.Header"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.info.Contact"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.info.Info"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.info.License"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.links.Link"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.media.BooleanSchema",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.oas.models.media.Content"
-    },
-    {
       "type": "io.swagger.v3.oas.models.media.Discriminator"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.media.Encoding"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.media.IntegerSchema",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
     },
     {
       "type": "io.swagger.v3.oas.models.media.JsonSchema",
       "methods": [
         {
           "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.oas.models.media.MapSchema"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.media.MediaType",
-      "methods": [
-        {
-          "name": "getEncoding",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExample",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExamples",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExtensions",
-          "parameterTypes": []
-        },
-        {
-          "name": "getSchema",
           "parameterTypes": []
         }
       ]
@@ -16386,10 +14860,6 @@
         },
         {
           "name": "getAnyOf",
-          "parameterTypes": []
-        },
-        {
-          "name": "getBooleanSchemaValue",
           "parameterTypes": []
         },
         {
@@ -16453,15 +14923,7 @@
           "parameterTypes": []
         },
         {
-          "name": "getExclusiveMaximum",
-          "parameterTypes": []
-        },
-        {
           "name": "getExclusiveMaximumValue",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExclusiveMinimum",
           "parameterTypes": []
         },
         {
@@ -16537,10 +14999,6 @@
           "parameterTypes": []
         },
         {
-          "name": "getNullable",
-          "parameterTypes": []
-        },
-        {
           "name": "getOneOf",
           "parameterTypes": []
         },
@@ -16581,10 +15039,6 @@
           "parameterTypes": []
         },
         {
-          "name": "getType",
-          "parameterTypes": []
-        },
-        {
           "name": "getTypes",
           "parameterTypes": []
         },
@@ -16609,179 +15063,21 @@
           "parameterTypes": []
         },
         {
+          "name": "set$ref",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
           "name": "setFormat",
           "parameterTypes": [
             "java.lang.String"
           ]
-        },
-        {
-          "name": "setProperties",
-          "parameterTypes": [
-            "java.util.Map"
-          ]
-        },
-        {
-          "name": "setType",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.oas.models.media.Schema$SchemaResolution"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.media.StringSchema",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
         }
       ]
     },
     {
       "type": "io.swagger.v3.oas.models.media.XML"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.parameters.Parameter",
-      "methods": [
-        {
-          "name": "get$ref",
-          "parameterTypes": []
-        },
-        {
-          "name": "getAllowEmptyValue",
-          "parameterTypes": []
-        },
-        {
-          "name": "getAllowReserved",
-          "parameterTypes": []
-        },
-        {
-          "name": "getContent",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDeprecated",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDescription",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExample",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExamples",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExplode",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExtensions",
-          "parameterTypes": []
-        },
-        {
-          "name": "getIn",
-          "parameterTypes": []
-        },
-        {
-          "name": "getName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getRequired",
-          "parameterTypes": []
-        },
-        {
-          "name": "getSchema",
-          "parameterTypes": []
-        },
-        {
-          "name": "getStyle",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.oas.models.parameters.Parameter$StyleEnum"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.parameters.RequestBody",
-      "methods": [
-        {
-          "name": "get$ref",
-          "parameterTypes": []
-        },
-        {
-          "name": "getContent",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDescription",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExtensions",
-          "parameterTypes": []
-        },
-        {
-          "name": "getRequired",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.oas.models.responses.ApiResponse",
-      "methods": [
-        {
-          "name": "get$ref",
-          "parameterTypes": []
-        },
-        {
-          "name": "getContent",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDescription",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExtensions",
-          "parameterTypes": []
-        },
-        {
-          "name": "getHeaders",
-          "parameterTypes": []
-        },
-        {
-          "name": "getLinks",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "io.swagger.v3.oas.models.responses.ApiResponses"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.security.SecurityRequirement"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.servers.Server"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.servers.ServerVariable"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.servers.ServerVariables"
-    },
-    {
-      "type": "io.swagger.v3.oas.models.tags.Tag"
     },
     {
       "type": "io.vertx.core.eventbus.impl.EventBusImpl"
@@ -16841,9 +15137,6 @@
     },
     {
       "type": "io.vertx.tracing.opentelemetry.OpenTelemetryTracingFactory"
-    },
-    {
-      "type": "io.vertx.tracing.opentelemetry.VertxContextStorageProvider"
     },
     {
       "type": "io.vrap.rmf.base.client.Accessor"
@@ -16972,16 +15265,7 @@
       "type": "java.awt.event.ActionListener"
     },
     {
-      "type": "java.io.BufferedReader"
-    },
-    {
       "type": "java.io.Closeable"
-    },
-    {
-      "type": "java.io.DataInput"
-    },
-    {
-      "type": "java.io.DataOutput"
     },
     {
       "type": "java.io.Externalizable"
@@ -16990,85 +15274,22 @@
       "type": "java.io.FileDescriptor"
     },
     {
-      "type": "java.io.FileFilter"
-    },
-    {
-      "type": "java.io.FilenameFilter"
-    },
-    {
-      "type": "java.io.FilterInputStream"
-    },
-    {
-      "type": "java.io.FilterOutputStream"
-    },
-    {
-      "type": "java.io.FilterReader"
-    },
-    {
-      "type": "java.io.FilterWriter"
-    },
-    {
-      "type": "java.io.Flushable"
-    },
-    {
       "type": "java.io.IOException"
     },
     {
       "type": "java.io.InputStream"
     },
     {
-      "type": "java.io.ObjectInput"
-    },
-    {
-      "type": "java.io.ObjectInputStream"
-    },
-    {
-      "type": "java.io.ObjectOutput"
-    },
-    {
-      "type": "java.io.ObjectOutputStream"
-    },
-    {
-      "type": "java.io.OutputStream"
-    },
-    {
-      "type": "java.io.PrintStream"
-    },
-    {
-      "type": "java.io.RandomAccessFile"
-    },
-    {
-      "type": "java.io.Reader"
-    },
-    {
       "type": "java.io.Serializable"
-    },
-    {
-      "type": "java.io.Writer"
-    },
-    {
-      "type": "java.lang.Appendable"
     },
     {
       "type": "java.lang.AutoCloseable"
     },
     {
-      "type": "java.lang.Boolean",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "getBoolean",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        }
-      ]
+      "type": "java.lang.Boolean"
     },
     {
       "type": "java.lang.Byte"
-    },
-    {
-      "type": "java.lang.CharSequence"
     },
     {
       "type": "java.lang.Class",
@@ -17080,9 +15301,6 @@
       ]
     },
     {
-      "type": "java.lang.Cloneable"
-    },
-    {
       "type": "java.lang.Comparable"
     },
     {
@@ -17092,22 +15310,10 @@
       "type": "java.lang.Enum"
     },
     {
-      "type": "java.lang.Error"
-    },
-    {
       "type": "java.lang.Exception"
     },
     {
       "type": "java.lang.Float"
-    },
-    {
-      "type": "java.lang.IllegalArgumentException"
-    },
-    {
-      "type": "java.lang.IllegalStateException"
-    },
-    {
-      "type": "java.lang.InheritableThreadLocal"
     },
     {
       "type": "java.lang.Integer"
@@ -17128,16 +15334,10 @@
       ]
     },
     {
-      "type": "java.lang.Number"
-    },
-    {
       "type": "java.lang.Object"
     },
     {
       "type": "java.lang.Object[]"
-    },
-    {
-      "type": "java.lang.OutOfMemoryError"
     },
     {
       "type": "java.lang.ProcessHandle",
@@ -17162,9 +15362,6 @@
       "type": "java.lang.RuntimeException"
     },
     {
-      "type": "java.lang.SecurityManager"
-    },
-    {
       "type": "java.lang.Short"
     },
     {
@@ -17178,15 +15375,6 @@
           "parameterTypes": []
         }
       ]
-    },
-    {
-      "type": "java.lang.Thread$UncaughtExceptionHandler"
-    },
-    {
-      "type": "java.lang.Throwable"
-    },
-    {
-      "type": "java.lang.UnsupportedOperationException"
     },
     {
       "type": "java.lang.annotation.Annotation"
@@ -17295,48 +15483,6 @@
       ]
     },
     {
-      "type": "java.lang.ref.PhantomReference"
-    },
-    {
-      "type": "java.lang.ref.WeakReference"
-    },
-    {
-      "type": "java.lang.reflect.GenericArrayType"
-    },
-    {
-      "type": "java.lang.reflect.InvocationHandler"
-    },
-    {
-      "type": "java.lang.reflect.ParameterizedType"
-    },
-    {
-      "type": "java.lang.reflect.Type"
-    },
-    {
-      "type": "java.lang.reflect.WildcardType"
-    },
-    {
-      "type": "java.net.ConnectException"
-    },
-    {
-      "type": "java.net.InetSocketAddress"
-    },
-    {
-      "type": "java.net.NoRouteToHostException"
-    },
-    {
-      "type": "java.net.ProtocolFamily"
-    },
-    {
-      "type": "java.net.SocketAddress"
-    },
-    {
-      "type": "java.net.SocketException"
-    },
-    {
-      "type": "java.net.URLConnection"
-    },
-    {
       "type": "java.net.UnixDomainSocketAddress",
       "methods": [
         {
@@ -17396,58 +15542,16 @@
       ]
     },
     {
-      "type": "java.nio.channels.ByteChannel"
-    },
-    {
-      "type": "java.nio.channels.Channel"
-    },
-    {
-      "type": "java.nio.channels.ClosedChannelException"
-    },
-    {
       "type": "java.nio.channels.FileChannel"
-    },
-    {
-      "type": "java.nio.channels.ReadableByteChannel"
-    },
-    {
-      "type": "java.nio.channels.SeekableByteChannel"
-    },
-    {
-      "type": "java.nio.channels.Selector"
-    },
-    {
-      "type": "java.nio.channels.WritableByteChannel"
     },
     {
       "type": "java.nio.channels.spi.SelectorProvider"
     },
     {
-      "type": "java.nio.file.DirectoryStream$Filter"
-    },
-    {
-      "type": "java.nio.file.FileVisitor"
-    },
-    {
-      "type": "java.nio.file.OpenOption"
-    },
-    {
-      "type": "java.nio.file.PathMatcher"
-    },
-    {
-      "type": "java.nio.file.SimpleFileVisitor"
-    },
-    {
       "type": "java.security.AlgorithmParametersSpi"
     },
     {
-      "type": "java.security.KeyStore"
-    },
-    {
       "type": "java.security.KeyStoreSpi"
-    },
-    {
-      "type": "java.security.PrivateKey"
     },
     {
       "type": "java.security.PrivilegedAction"
@@ -17456,16 +15560,7 @@
       "type": "java.security.PrivilegedExceptionAction"
     },
     {
-      "type": "java.security.Provider"
-    },
-    {
-      "type": "java.security.SecureRandom"
-    },
-    {
-      "type": "java.security.cert.CertificateException"
-    },
-    {
-      "type": "java.security.cert.X509Certificate"
+      "type": "java.security.cert.PKIXRevocationChecker"
     },
     {
       "type": "java.sql.Date"
@@ -17474,64 +15569,16 @@
       "type": "java.sql.Time"
     },
     {
-      "type": "java.text.DateFormat"
-    },
-    {
-      "type": "java.text.Format"
-    },
-    {
-      "type": "java.text.MessageFormat"
-    },
-    {
-      "type": "java.text.SimpleDateFormat"
-    },
-    {
       "type": "java.time.Instant"
-    },
-    {
-      "type": "java.util.AbstractCollection"
-    },
-    {
-      "type": "java.util.AbstractList"
     },
     {
       "type": "java.util.AbstractMap"
     },
     {
-      "type": "java.util.AbstractMap$SimpleEntry"
-    },
-    {
-      "type": "java.util.AbstractQueue"
-    },
-    {
-      "type": "java.util.AbstractSet"
-    },
-    {
-      "type": "java.util.ArrayDeque"
-    },
-    {
-      "type": "java.util.ArrayList"
-    },
-    {
-      "type": "java.util.BitSet"
-    },
-    {
       "type": "java.util.Comparator"
     },
     {
-      "type": "java.util.Deque"
-    },
-    {
-      "type": "java.util.Enumeration"
-    },
-    {
-      "type": "java.util.EventListener"
-    },
-    {
       "type": "java.util.HashMap"
-    },
-    {
-      "type": "java.util.HashMap$Node[]"
     },
     {
       "type": "java.util.ImmutableCollections$AbstractImmutableMap"
@@ -17546,43 +15593,13 @@
       "type": "java.util.Iterator"
     },
     {
-      "type": "java.util.LinkedHashMap"
-    },
-    {
       "type": "java.util.List"
-    },
-    {
-      "type": "java.util.ListIterator"
     },
     {
       "type": "java.util.Map"
     },
     {
-      "type": "java.util.Map$Entry"
-    },
-    {
       "type": "java.util.Optional"
-    },
-    {
-      "type": "java.util.Queue"
-    },
-    {
-      "type": "java.util.Random"
-    },
-    {
-      "type": "java.util.RandomAccess"
-    },
-    {
-      "type": "java.util.SequencedMap"
-    },
-    {
-      "type": "java.util.Set"
-    },
-    {
-      "type": "java.util.Spliterator"
-    },
-    {
-      "type": "java.util.Spliterators$AbstractSpliterator"
     },
     {
       "type": "java.util.SplittableRandom",
@@ -17594,81 +15611,6 @@
           ]
         }
       ]
-    },
-    {
-      "type": "java.util.StringTokenizer"
-    },
-    {
-      "type": "java.util.TimeZone"
-    },
-    {
-      "type": "java.util.TimerTask"
-    },
-    {
-      "type": "java.util.concurrent.AbstractExecutorService"
-    },
-    {
-      "type": "java.util.concurrent.Callable"
-    },
-    {
-      "type": "java.util.concurrent.CancellationException"
-    },
-    {
-      "type": "java.util.concurrent.CompletableFuture"
-    },
-    {
-      "type": "java.util.concurrent.ConcurrentHashMap"
-    },
-    {
-      "type": "java.util.concurrent.ConcurrentMap"
-    },
-    {
-      "type": "java.util.concurrent.Executor"
-    },
-    {
-      "type": "java.util.concurrent.Flow$Processor"
-    },
-    {
-      "type": "java.util.concurrent.Flow$Publisher"
-    },
-    {
-      "type": "java.util.concurrent.Flow$Subscriber"
-    },
-    {
-      "type": "java.util.concurrent.Flow$Subscription"
-    },
-    {
-      "type": "java.util.concurrent.Future"
-    },
-    {
-      "type": "java.util.concurrent.RunnableFuture"
-    },
-    {
-      "type": "java.util.concurrent.RunnableScheduledFuture"
-    },
-    {
-      "type": "java.util.concurrent.ScheduledExecutorService"
-    },
-    {
-      "type": "java.util.concurrent.ScheduledFuture"
-    },
-    {
-      "type": "java.util.concurrent.ScheduledThreadPoolExecutor"
-    },
-    {
-      "type": "java.util.concurrent.ThreadFactory"
-    },
-    {
-      "type": "java.util.concurrent.TimeoutException"
-    },
-    {
-      "type": "java.util.concurrent.atomic.AtomicBoolean"
-    },
-    {
-      "type": "java.util.concurrent.atomic.AtomicIntegerArray"
-    },
-    {
-      "type": "java.util.concurrent.atomic.AtomicReference"
     },
     {
       "type": "java.util.concurrent.atomic.LongAdder",
@@ -17686,31 +15628,13 @@
       ]
     },
     {
-      "type": "java.util.function.BiConsumer"
-    },
-    {
-      "type": "java.util.function.BiFunction"
-    },
-    {
       "type": "java.util.function.Function"
-    },
-    {
-      "type": "java.util.function.IntConsumer"
     },
     {
       "type": "java.util.function.Predicate"
     },
     {
-      "type": "java.util.function.Supplier"
-    },
-    {
-      "type": "java.util.stream.BaseStream"
-    },
-    {
       "type": "java.util.stream.Collector"
-    },
-    {
-      "type": "java.util.zip.Checksum"
     },
     {
       "type": "java.util.zip.DeflaterInputStream"
@@ -17719,64 +15643,13 @@
       "type": "javassist.expr.ExprEditor"
     },
     {
+      "type": "javax.money.MonetaryAmount"
+    },
+    {
       "type": "javax.naming.directory.InitialDirContext"
     },
     {
-      "type": "javax.net.ssl.ExtendedSSLSession"
-    },
-    {
-      "type": "javax.net.ssl.KeyManagerFactory"
-    },
-    {
-      "type": "javax.net.ssl.KeyManagerFactorySpi"
-    },
-    {
-      "type": "javax.net.ssl.SNIServerName"
-    },
-    {
-      "type": "javax.net.ssl.SSLEngine"
-    },
-    {
-      "type": "javax.net.ssl.SSLException"
-    },
-    {
-      "type": "javax.net.ssl.SSLHandshakeException"
-    },
-    {
-      "type": "javax.net.ssl.SSLSession"
-    },
-    {
-      "type": "javax.net.ssl.SSLSessionBindingListener"
-    },
-    {
-      "type": "javax.net.ssl.SSLSessionContext"
-    },
-    {
-      "type": "javax.net.ssl.TrustManagerFactory"
-    },
-    {
-      "type": "javax.net.ssl.TrustManagerFactorySpi"
-    },
-    {
-      "type": "javax.net.ssl.X509ExtendedKeyManager"
-    },
-    {
-      "type": "javax.net.ssl.X509ExtendedTrustManager"
-    },
-    {
-      "type": "javax.net.ssl.X509TrustManager"
-    },
-    {
-      "type": "javax.security.cert.X509Certificate"
-    },
-    {
       "type": "javax.servlet.Servlet"
-    },
-    {
-      "type": "jdk.jfr.Event"
-    },
-    {
-      "type": "jdk.jfr.FlightRecorderListener"
     },
     {
       "type": "kotlin.Deprecated"
@@ -18859,16 +16732,1344 @@
       "type": "org.asynchttpclient.netty.handler.HttpHandler"
     },
     {
-      "type": "org.jctools.queues.atomic.unpadded.BaseSpscLinkedAtomicUnpaddedArrayQueueConsumerField"
+      "type": "org.bouncycastle.asn1.bc.BCObjectIdentifiers",
+      "fields": [
+        {
+          "name": "mqom2_cat1_gf16_fast_r3"
+        },
+        {
+          "name": "mqom2_cat1_gf16_fast_r5"
+        },
+        {
+          "name": "mqom2_cat1_gf16_short_r3"
+        },
+        {
+          "name": "mqom2_cat1_gf16_short_r5"
+        },
+        {
+          "name": "mqom2_cat1_gf256_fast_r3"
+        },
+        {
+          "name": "mqom2_cat1_gf256_fast_r5"
+        },
+        {
+          "name": "mqom2_cat1_gf256_short_r3"
+        },
+        {
+          "name": "mqom2_cat1_gf256_short_r5"
+        },
+        {
+          "name": "mqom2_cat1_gf2_fast_r3"
+        },
+        {
+          "name": "mqom2_cat1_gf2_fast_r5"
+        },
+        {
+          "name": "mqom2_cat1_gf2_short_r3"
+        },
+        {
+          "name": "mqom2_cat1_gf2_short_r5"
+        },
+        {
+          "name": "mqom2_cat3_gf16_fast_r3"
+        },
+        {
+          "name": "mqom2_cat3_gf16_fast_r5"
+        },
+        {
+          "name": "mqom2_cat3_gf16_short_r3"
+        },
+        {
+          "name": "mqom2_cat3_gf16_short_r5"
+        },
+        {
+          "name": "mqom2_cat3_gf256_fast_r3"
+        },
+        {
+          "name": "mqom2_cat3_gf256_fast_r5"
+        },
+        {
+          "name": "mqom2_cat3_gf256_short_r3"
+        },
+        {
+          "name": "mqom2_cat3_gf256_short_r5"
+        },
+        {
+          "name": "mqom2_cat3_gf2_fast_r3"
+        },
+        {
+          "name": "mqom2_cat3_gf2_fast_r5"
+        },
+        {
+          "name": "mqom2_cat3_gf2_short_r3"
+        },
+        {
+          "name": "mqom2_cat3_gf2_short_r5"
+        },
+        {
+          "name": "mqom2_cat5_gf16_fast_r3"
+        },
+        {
+          "name": "mqom2_cat5_gf16_fast_r5"
+        },
+        {
+          "name": "mqom2_cat5_gf16_short_r3"
+        },
+        {
+          "name": "mqom2_cat5_gf16_short_r5"
+        },
+        {
+          "name": "mqom2_cat5_gf256_fast_r3"
+        },
+        {
+          "name": "mqom2_cat5_gf256_fast_r5"
+        },
+        {
+          "name": "mqom2_cat5_gf256_short_r3"
+        },
+        {
+          "name": "mqom2_cat5_gf256_short_r5"
+        },
+        {
+          "name": "mqom2_cat5_gf2_fast_r3"
+        },
+        {
+          "name": "mqom2_cat5_gf2_fast_r5"
+        },
+        {
+          "name": "mqom2_cat5_gf2_short_r3"
+        },
+        {
+          "name": "mqom2_cat5_gf2_short_r5"
+        }
+      ]
     },
     {
-      "type": "org.jctools.queues.atomic.unpadded.BaseSpscLinkedAtomicUnpaddedArrayQueueProducerFields"
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.CMCE$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.COMPOSITE$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.CONTEXT$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.CompositeKEMs$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.CompositeSignatures$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.DH$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.DSA$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.DSTU4145$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.EC$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.ECGOST$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.EXTERNAL$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.EdEC$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.ElGamal$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.Falcon$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.FrodoKEM$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.GM$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.GOST$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.IES$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.LMS$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.MLDSA$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.MLKEM$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.NTRU$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.NoSig$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.RSA$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.SLHDSA$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.X509$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.XMSS$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.asymmetric.XWing$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.Ascon$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.Blake2b$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.Blake2s$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.Blake3$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.DSTU7564$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.GOST3411$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.Haraka$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.Keccak$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.MD2$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.MD4$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.MD5$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.RIPEMD128$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.RIPEMD160$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.RIPEMD256$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.RIPEMD320$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.SHA1$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.SHA224$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.SHA256$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.SHA3$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.SHA384$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.SHA512$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.SM3$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.Skein$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.Tiger$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.digest.Whirlpool$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.drbg.DRBG$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.kdf.HKDF$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.kdf.KBKDF$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.kdf.KMAC$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.kdf.ONESTEP$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.kdf.PBKDF2$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.kdf.SCRYPT$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.keystore.BC$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.keystore.BCFKS$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.keystore.PKCS12$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.AES$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.ARC4$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.ARGON2$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.ARIA$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Ascon$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Blowfish$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.CAST5$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.CAST6$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Camellia$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.ChaCha$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.DES$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.DESede$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.DSTU7624$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.GOST28147$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.GOST3412_2015$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Grain128$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Grainv1$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.HC128$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.HC256$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.HKDF$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.IDEA$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.LEA$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Noekeon$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.OpenSSLPBKDF$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.PBEPBKDF1$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.PBEPBKDF2$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.PBEPKCS12$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Poly1305$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.RC2$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.RC5$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.RC6$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Rijndael$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.SCRYPT$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.SEED$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.SM4$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Salsa20$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Serpent$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Shacal2$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.SipHash$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.SipHash128$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Skipjack$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.TEA$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.TLSKDF$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Threefish$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Twofish$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.VMPC$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.VMPCKSA3$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.XChaCha$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.XSalsa20$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.XTEA$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.jcajce.provider.symmetric.Zuc$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.AIMer$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.BIKE$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.Faest$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.Falcon$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.HQC$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.Haetae$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.LMS$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.MQOM$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.Mayo$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.NH$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.NTRU$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.NTRUPlus$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.NTRUPrime$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.QRUOV$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.SABER$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.SDitH$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.SPHINCS$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.SQIsign$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.SmaugT$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.Snova$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.UOV$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.bouncycastle.pqc.jcajce.provider.XMSS$Mappings",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
     },
     {
       "type": "org.osgi.framework.FrameworkUtil"
-    },
-    {
-      "type": "reactor.blockhound.integration.BlockHoundIntegration"
     },
     {
       "type": "sun.management.VMManagementImpl",
@@ -19052,6 +18253,15 @@
       ]
     },
     {
+      "type": "sun.security.rsa.RSASignature$SHA256withRSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "sun.security.ssl.KeyManagerFactoryImpl$SunX509",
       "methods": [
         {
@@ -19220,7 +18430,16 @@
       "type": "sun.util.resources.cldr.CalendarData"
     },
     {
+      "type": "tools.jackson.core.type.TypeReference"
+    },
+    {
       "type": "tools.jackson.databind.ObjectMapper"
+    },
+    {
+      "type": "tools.jackson.databind.ValueDeserializer"
+    },
+    {
+      "type": "tools.jackson.databind.ValueSerializer"
     },
     {
       "type": "tools.jackson.databind.deser.Deserializers[]"
@@ -19238,10 +18457,16 @@
       "type": "tools.jackson.databind.json.JsonMapper"
     },
     {
+      "type": "tools.jackson.databind.module.SimpleModule"
+    },
+    {
       "type": "tools.jackson.databind.ser.Serializers[]"
     },
     {
       "type": "tools.jackson.databind.ser.ValueSerializerModifier[]"
+    },
+    {
+      "type": "tools.jackson.databind.ser.std.StdScalarSerializer"
     },
     {
       "type": {
@@ -19272,13 +18497,13 @@
       "glob": "META-INF/log4j-provider.properties"
     },
     {
+      "glob": "META-INF/native/libnetty_transport_native_epoll.so"
+    },
+    {
+      "glob": "META-INF/native/libnetty_transport_native_epoll_x86_64.so"
+    },
+    {
       "glob": "META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat"
-    },
-    {
-      "glob": "META-INF/services/com.commercetools.internal.shaded.org.slf4j.spi.SLF4JServiceProvider"
-    },
-    {
-      "glob": "META-INF/services/com.commercetools.internal.shaded.tools.jackson.databind.module.SimpleModule"
     },
     {
       "glob": "META-INF/services/com.google.cloud.firestore.FirestoreFactory"
@@ -19380,9 +18605,6 @@
       "glob": "META-INF/services/com.guicedee.vertx.web.spi.VertxRouterConfigurator"
     },
     {
-      "glob": "META-INF/services/io.opentelemetry.context.ContextStorageProvider"
-    },
-    {
       "glob": "META-INF/services/io.smallrye.mutiny.infrastructure.CallbackDecorator"
     },
     {
@@ -19396,9 +18618,6 @@
     },
     {
       "glob": "META-INF/services/io.swagger.v3.core.converter.ModelConverter"
-    },
-    {
-      "glob": "META-INF/services/io.swagger.v3.oas.integration.api.OpenAPIConfigBuilder"
     },
     {
       "glob": "META-INF/services/io.swagger.v3.rest.ext.OpenAPIExtension"
@@ -19440,10 +18659,10 @@
       "glob": "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
     },
     {
-      "glob": "com/commercetools"
+      "glob": "META-INF/services/tools.jackson.databind.module.SimpleModule"
     },
     {
-      "glob": "com/commercetools/internal/shaded/org/slf4j/impl/StaticLoggerBinder.class"
+      "glob": "com/commercetools"
     },
     {
       "glob": "com/google/firebase/internal/shaded/org/apache/hc/client5/version.properties"
@@ -19470,22 +18689,22 @@
       "glob": "log4j2-test.yml"
     },
     {
-      "glob": "log4j2-test1b701da1.jsn"
+      "glob": "log4j2-test675d3402.jsn"
     },
     {
-      "glob": "log4j2-test1b701da1.json"
+      "glob": "log4j2-test675d3402.json"
     },
     {
-      "glob": "log4j2-test1b701da1.properties"
+      "glob": "log4j2-test675d3402.properties"
     },
     {
-      "glob": "log4j2-test1b701da1.xml"
+      "glob": "log4j2-test675d3402.xml"
     },
     {
-      "glob": "log4j2-test1b701da1.yaml"
+      "glob": "log4j2-test675d3402.yaml"
     },
     {
-      "glob": "log4j2-test1b701da1.yml"
+      "glob": "log4j2-test675d3402.yml"
     },
     {
       "glob": "log4j2.component.properties"
@@ -19512,22 +18731,26 @@
       "glob": "log4j2.yml"
     },
     {
-      "glob": "log4j21b701da1.jsn"
+      "glob": "log4j2675d3402.jsn"
     },
     {
-      "glob": "log4j21b701da1.json"
+      "glob": "log4j2675d3402.json"
     },
     {
-      "glob": "log4j21b701da1.properties"
+      "glob": "log4j2675d3402.properties"
     },
     {
-      "glob": "log4j21b701da1.xml"
+      "glob": "log4j2675d3402.xml"
     },
     {
-      "glob": "log4j21b701da1.yaml"
+      "glob": "log4j2675d3402.yaml"
     },
     {
-      "glob": "log4j21b701da1.yml"
+      "glob": "log4j2675d3402.yml"
+    },
+    {
+      "module": "com.github.luben.zstd_jni",
+      "glob": "linux/amd64/libzstd-jni-1.5.7-20.so"
     },
     {
       "module": "com.guicedee.modules.services.openapi",

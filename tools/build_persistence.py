@@ -35,6 +35,7 @@ def main():
     run(mvn+['-f', 'persistence/guicedee/pom.xml', 'dependency:copy-dependencies',
              '-DincludeScope=runtime', '-DoutputDirectory=target/lib'])
     run(mvn+['-f', 'persistence/quarkus/pom.xml', 'clean', 'package'])
+    run(mvn+['-f', 'persistence/micronaut/pom.xml', 'clean', 'package'])
     # Both images use precisely the same immutable JDK base even if a tag moves between builds.
     run(['docker', 'pull', args.java_image])
     base = json.loads(subprocess.check_output(['docker','image','inspect',args.java_image],text=True))[0]
@@ -47,7 +48,7 @@ def main():
                       java=subprocess.check_output(['java','-version'],stderr=subprocess.STDOUT,text=True))
     output = ROOT/'persistence/target'
     output.mkdir(exist_ok=True)
-    for variant in ['guicedee','quarkus']:
+    for variant in ['guicedee','quarkus','micronaut']:
         packaged = ROOT/f'persistence/{variant}/target'
         jars = {p.relative_to(packaged).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                 for p in packaged.rglob('*.jar')}

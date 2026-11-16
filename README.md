@@ -2,7 +2,7 @@
 
 A standalone benchmark suite for **GuicedEE 2.6.0**, comparing SPI and scanner discovery,
 full-JDK and application-jlink execution, and native executables against normal Quarkus
-applications. Both frameworks execute the same commercetools/GraphQL/Firestore business
+and **Micronaut Platform 5.2.6** applications. All three execute the same commercetools/GraphQL/Firestore business
 workload, with REST, retries, timeouts, metrics, OpenAPI and Swagger capability checks.
 
 ## Repository layout
@@ -11,9 +11,11 @@ workload, with REST, retries, timeouts, metrics, OpenAPI and Swagger capability 
 |---|---|
 | `guicedee`, `guicedee-scan` | Separate modular SPI and scanner applications |
 | `guicedee-jlink`, `guicedee-scan-jlink`, `guicedee-native` | Linked-runtime and native packaging |
+| `guicedee-cdi`, `guicedee-cdi-spi`, and their jlink/native projects | Jakarta CDI and MicroProfile Config equivalents |
 | `quarkus-standard` | Default Quarkus JVM/native comparison with upstream SDK dependencies |
+| `micronaut` | Independent Micronaut JVM/native application using the upstream platform and SDKs |
 | `common`, `quarkus`, `quarkus-native` | Shared workload, Quarkus adapter and optional wrapped-SDK control/build support |
-| `persistence/model`, `persistence/guicedee`, `persistence/quarkus` | Shared 15-entity PostgreSQL workload, reactive stateless GuicedEE and Narayana Quarkus adapters |
+| `persistence/model`, `persistence/guicedee`, `persistence/quarkus`, `persistence/micronaut` | Shared 15-entity PostgreSQL workload, reactive stateless GuicedEE, Narayana Quarkus and Micronaut Hibernate adapters |
 | `fixtures`, `docker`, `tools` | Local services, image recipes, build/measurement/report tools |
 | `results/latest` | Only the current published raw measurements and their manifest |
 | `target/runs` | Ignored output of new executions |
@@ -27,40 +29,44 @@ The [current persistence profile](docs/PERSISTENCE_PROFILE.md) separates Hiberna
 reactive allocations and PostgreSQL work from the benchmark timings.
 
 <!-- BEGIN GENERATED: headline -->
-GuicedEE native completes the first full business request in **656 ms**, versus **678 ms** for Quarkus native (**3.2% less time**). Warm p50 is **5.21 / 5.11 ms** (GuicedEE / Quarkus). Peak charged memory is **68.47 / 55.30 MiB**; executables are **142.35 / 143.31 MiB**. The native sample contains **28 starts and 420 passing capability checks**.
+GuicedEE native completes the first full business request in **655 ms**, versus **681 ms** for Quarkus native (**3.9% less time**). Warm p50 is **4.93 / 5.19 ms** (GuicedEE / Quarkus). Peak charged memory is **68.57 / 55.30 MiB**; executables are **142.35 / 143.31 MiB**. Micronaut native completes the same first business response in **627 ms**, with warm p50 **5.25 ms**, peak charged memory **85.26 MiB** and a **205.94 MiB** executable. The native sample contains **18 starts and 270 passing capability checks**.
 <!-- END GENERATED: headline -->
 
 <!-- BEGIN GENERATED: build-headline -->
-**Clean JVM build:** GuicedEE SPI compiles in **3.14 s** versus **3.66 s** for Quarkus (**14.1% less time**). Complete runnable JVM packaging takes **3.61 / 6.29 s** (GuicedEE / Quarkus), **42.6% less time**. Medians of 3 clean, offline builds per task; dependency preparation is excluded.
+**Clean JVM build:** GuicedEE SPI compiles in **3.52 s** versus **4.01 s** for Quarkus (**12.4% less time**). Complete runnable JVM packaging takes **4.10 / 6.80 s** (GuicedEE / Quarkus), **39.7% less time**. Medians of 3 clean, offline builds per task; dependency preparation is excluded.
 
-**jlink versus native build:** GuicedEE SPI/scanner jlink packages in **17.68 / 17.34 s**, versus **66.36 s** for Quarkus native (**73.4% less time / 73.9% less time**).
+**jlink versus native build:** GuicedEE SPI/scanner jlink packages in **18.25 / 17.88 s**, versus **70.91 s** for Quarkus native (**74.3% less time / 74.8% less time**).
+
+**Micronaut:** compile **5.68 s**, JVM package **5.85 s**, native package **92.24 s**. GuicedEE SPI JVM packaging uses **30.0% less time**; SPI jlink uses **80.2% less time** than Micronaut native packaging.
 <!-- END GENERATED: build-headline -->
 
 **Median launch to completed business response, seconds.** JVM/default and C1 columns use
-matched five-mode Docker batches at **250m CPU / 500 MiB**. The native column uses a larger
-counterbalanced native-only sample. Links open the full timing and memory grids.
+matched ten-mode Docker batches at **250m CPU / 500 MiB**. The native column uses a separate
+four-mode sample, including CDI/config. Links open the full timing and memory grids.
 
 <!-- BEGIN GENERATED: overview -->
 | Application | Full JDK default (s) | Full JDK C1 (s) | Application jlink default (s) | Application jlink C1 (s) | Native (s) |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI | [22.928](RESULTS.md#jvm-default) | [13.353](RESULTS.md#jvm-c1) | [12.966](RESULTS.md#jvm-default) | [7.567](RESULTS.md#jvm-c1) | [0.656](RESULTS.md#native-standard) |
-| GuicedEE scanner | [23.706](RESULTS.md#jvm-default) | [13.364](RESULTS.md#jvm-c1) | [13.556](RESULTS.md#jvm-default) | [7.874](RESULTS.md#jvm-c1) | SPI only |
-| Quarkus / upstream SDKs | [23.387](RESULTS.md#jvm-default) | [14.311](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.678](RESULTS.md#native-standard) |
+| GuicedEE SPI | [22.367](RESULTS.md#jvm-default) | [13.290](RESULTS.md#jvm-c1) | [13.005](RESULTS.md#jvm-default) | [8.300](RESULTS.md#jvm-c1) | [0.655](RESULTS.md#native-standard) |
+| GuicedEE scanner | [23.862](RESULTS.md#jvm-default) | [13.480](RESULTS.md#jvm-c1) | [13.195](RESULTS.md#jvm-default) | [7.777](RESULTS.md#jvm-c1) | SPI only |
+| Quarkus / upstream SDKs | [23.320](RESULTS.md#jvm-default) | [14.177](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.681](RESULTS.md#native-standard) |
+| Micronaut / upstream SDKs | [26.573](RESULTS.md#jvm-default) | [15.658](RESULTS.md#jvm-c1) | Not implemented | Not implemented | [0.627](RESULTS.md#native-standard) |
 <!-- END GENERATED: overview -->
 
 ![Startup by execution mode](docs/startup.svg)
 
 [The full results](RESULTS.md) include readiness, first-request and full-business startup,
 warm p50/p95/p99, memory, executable/image sizes, **percentage differences for every
-GuicedEE mode**, and scanning/Guice/commercetools/Firestore phase analysis. Actual image IDs,
+GuicedEE and Micronaut mode**, and scanning/Guice/commercetools/Firestore phase analysis. Actual image IDs,
 artifact hashes, flags and sample counts accompany the measurements. C1 applies equally to
 all JVMs; native executables have no JIT tiering.
 
 The current JVM wrapper shares the SDK's duplicate Reflections scan during each mapper
 construction, then releases it. Full-JDK tests preserve SDK and application mixins/subtypes,
-mapper options and an independent-scan override. Native images and the clean-build grid
-retain their separately identified earlier artifact cohort; they were not rebuilt for this
-JVM change. See the [measurement boundaries](RESULTS.md#jvm-discovery-boundaries).
+mapper options and an independent-scan override. The GuicedEE JVM and native artifacts retain
+their separately identified dependency hashes. The clean-build grid is a fresh independent
+cohort; its artifact inputs are recorded alongside the timings. See the
+[measurement boundaries](RESULTS.md#jvm-discovery-boundaries).
 
 The [native inclusion profile](RESULTS.md#native-inclusion-and-allocation-profile) records the
 current compiler footprint and SDK reflection, provider and buffer-pool policies, including
@@ -73,13 +79,15 @@ request sequence; its smaller cold-start sample is reported separately from the 
 <!-- BEGIN GENERATED: build-grid -->
 | Artifact | Clean compile (s) | Compile min–max (s) | Complete package (s) | Package min–max (s) | Build baseline | Package difference |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE SPI / full JDK | 3.14 | 3.13–3.32 | 3.61 | 3.54–3.79 | Quarkus fast-JAR | -42.6% |
-| GuicedEE scanner / full JDK | 3.05 | 3.02–3.26 | 3.68 | 3.63–3.69 | Quarkus fast-JAR | -41.5% |
-| Quarkus upstream SDKs / fast-JAR | 3.66 | 3.59–3.81 | 6.29 | 6.19–6.32 | Quarkus fast-JAR | Baseline |
-| GuicedEE SPI / application jlink | — | — | 17.68 | 17.42–17.71 | Quarkus native | -73.4% |
-| GuicedEE scanner / application jlink | — | — | 17.34 | 17.24–17.35 | Quarkus native | -73.9% |
-| GuicedEE SPI / native | — | — | 65.05 | 64.97–80.24 | Quarkus native | -2.0% |
-| Quarkus upstream SDKs / native | — | — | 66.36 | 66.07–66.67 | Quarkus native | Baseline |
+| GuicedEE SPI / full JDK | 3.52 | 3.47–3.91 | 4.10 | 3.92–4.19 | Quarkus fast-JAR | -39.7% |
+| GuicedEE scanner / full JDK | 3.72 | 3.33–3.81 | 3.88 | 3.76–4.47 | Quarkus fast-JAR | -42.8% |
+| Quarkus upstream SDKs / fast-JAR | 4.01 | 3.87–4.47 | 6.80 | 6.66–6.89 | Quarkus fast-JAR | Baseline |
+| GuicedEE SPI / application jlink | — | — | 18.25 | 18.14–19.46 | Quarkus native | -74.3% |
+| GuicedEE scanner / application jlink | — | — | 17.88 | 17.41–18.44 | Quarkus native | -74.8% |
+| GuicedEE SPI / native | — | — | 67.86 | 66.25–86.94 | Quarkus native | -4.3% |
+| Quarkus upstream SDKs / native | — | — | 70.91 | 68.84–85.88 | Quarkus native | Baseline |
+| Micronaut upstream SDKs / JVM | 5.68 | 5.12–5.82 | 5.85 | 5.59–6.48 | Quarkus fast-JAR | -13.9% |
+| Micronaut upstream SDKs / native | — | — | 92.24 | 84.91–95.63 | Quarkus native | +30.1% |
 <!-- END GENERATED: build-grid -->
 
 ![Clean compilation and complete packaging](docs/builds.svg)
@@ -87,7 +95,7 @@ request sequence; its smaller cold-start sample is reported separately from the 
 Complete packaging includes runtime dependencies for JVM artifacts, runtime creation for
 jlink, and native compilation for native executables. **jlink and native build times compare
 with Quarkus native**; full-JDK JVM builds compare with Quarkus fast-JAR. The chart also places
-both jlink modes alongside GuicedEE native. A dash means that compilation is covered
+both jlink modes alongside all three native applications. A dash means that compilation is covered
 by the underlying application, rather than timed again as a separate packaging project.
 The build machine has its full CPU/memory allocation; runtime tests use the stated 250m/500 MiB
 limits. [Build protocol, ranges and runtime tradeoffs](RESULTS.md#build-performance) and
@@ -113,7 +121,7 @@ python tools/build.py --docker --runtime both --native
 python tools/compare.py --docker --firebase --runtime both --native --runs 5 --requests 100 --warmup 20
 # Repeat the same matrix with equal C1 tuning:
 python tools/compare.py --docker --firebase --runtime both --native --tiered --runs 5 --requests 100 --warmup 20
-# Measure clean compilation and packaging of all seven artifacts:
+# Measure clean compilation and packaging of all nine artifacts:
 python tools/compare_builds.py --docker --runs 3
 ```
 
@@ -136,3 +144,8 @@ python tools/render_persistence.py --check
 
 Measurements cover this local reference workload and its completed reactive flow. They are
 sequential latency tests, not sustained-load throughput or production WAN measurements.
+
+The optional [Jakarta CDI/config comparison](RUNNING.md#jakarta-cdi-and-applicationproperties-comparison)
+adds Jakarta scopes/injection and MicroProfile Config backed by `application.properties`
+across scanner/SPI JVM and application-jlink variants, plus SPI native. Select it with
+`--cdi-config` on both build and measurement commands. Native runtime scanning is unsupported.

@@ -25,10 +25,17 @@ LABELS = {
     'guicedee-jlink': 'GuicedEE SPI / application jlink',
     'guicedee-scan-jlink': 'GuicedEE scanner / application jlink',
     'guicedee-native': 'GuicedEE SPI / native',
+    'guicedee-cdi': 'GuicedEE CDI scanner / full JDK',
+    'guicedee-cdi-spi': 'GuicedEE CDI SPI / full JDK',
+    'guicedee-cdi-jlink': 'GuicedEE CDI scanner / application jlink',
+    'guicedee-cdi-spi-jlink': 'GuicedEE CDI SPI / application jlink',
+    'guicedee-cdi-native': 'GuicedEE CDI SPI / native',
     'quarkus': 'Quarkus wrapped SDKs / fast-JAR',
     'quarkus-standard': 'Quarkus upstream SDKs / fast-JAR',
     'quarkus-native': 'Quarkus wrapped SDKs / native',
     'quarkus-standard-native': 'Quarkus upstream SDKs / native',
+    'micronaut': 'Micronaut upstream SDKs / JVM',
+    'micronaut-native': 'Micronaut upstream SDKs / native',
 }
 GROUPS = {}
 PHASES = []
@@ -136,9 +143,15 @@ def build_sections(data):
                      f"{compile_time['minimum']:.2f}–{compile_time['maximum']:.2f}" if compile_time else '—',
                      number(package['median']), f"{package['minimum']:.2f}–{package['maximum']:.2f}",
                      'Quarkus native' if package['baseline'] == 'quarkus-standard-native' else 'Quarkus fast-JAR',
-                     f"{package['differencePercent']:+.1f}%" if name.startswith('guicedee') else 'Baseline'])
+                     f"{package['differencePercent']:+.1f}%" if name != package['baseline'] else 'Baseline'])
     grid = table(['Artifact', 'Clean compile (s)', 'Compile min–max (s)', 'Complete package (s)', 'Package min–max (s)',
                   'Build baseline', 'Package difference'], rows)
+    mn = values['micronaut']
+    native_m = values['micronaut-native']['package']['median']
+    headline += (f"\n\n**Micronaut:** compile **{mn['compile']['median']:.2f} s**, JVM package **{mn['package']['median']:.2f} s**, "
+                 f"native package **{native_m:.2f} s**. GuicedEE SPI JVM packaging uses "
+                 f"**{difference(spi['package']['median'],mn['package']['median'])}**; SPI jlink uses "
+                 f"**{difference(linked_spi,native_m)}** than Micronaut native packaging.")
     tradeoffs = []
     for name, item in values.items():
         group = 'native-standard' if name.endswith('-native') else 'jvm-default'
@@ -178,7 +191,9 @@ def build_sections(data):
         ['Artifact', 'Complete package (s)', 'Full-business startup (s)', 'Warm p50 (ms)'], tradeoffs),
         'sdk-headline': sdk}
     memory = []
-    for name in ['guicedee-native', 'quarkus-standard-native']:
+    for name in ['guicedee-native', 'guicedee-cdi-native', 'quarkus-standard-native', 'micronaut-native']:
+        if name not in values:
+            continue
         item = values[name]['package']
         if item.get('nativeCompilerPeakRssGB'):
             rss = item['nativeCompilerPeakRssGB']
@@ -332,6 +347,8 @@ def timing_tables(group):
 
 def overview(groups, prefix=''):
     def cell(group, name):
+        if name not in groups[group]['variants']:
+            return 'Not measured'
         value = median(groups[group]['variants'][name], 'launchToFirstBusinessMs', 1000, 3)
         return f'[{value}]({prefix}RESULTS.md#{group})'
     return table(['Application', 'Full JDK default (s)', 'Full JDK C1 (s)',
@@ -340,8 +357,14 @@ def overview(groups, prefix=''):
          cell('jvm-default', 'guicedee-jlink'), cell('jvm-c1', 'guicedee-jlink'), cell('native-standard', 'guicedee-native')],
         ['GuicedEE scanner', cell('jvm-default', 'guicedee-scan'), cell('jvm-c1', 'guicedee-scan'),
          cell('jvm-default', 'guicedee-scan-jlink'), cell('jvm-c1', 'guicedee-scan-jlink'), 'SPI only'],
+        ['GuicedEE CDI SPI', cell('jvm-default', 'guicedee-cdi-spi'), cell('jvm-c1', 'guicedee-cdi-spi'),
+         cell('jvm-default', 'guicedee-cdi-spi-jlink'), cell('jvm-c1', 'guicedee-cdi-spi-jlink'), cell('native-standard', 'guicedee-cdi-native')],
+        ['GuicedEE CDI scanner', cell('jvm-default', 'guicedee-cdi'), cell('jvm-c1', 'guicedee-cdi'),
+         cell('jvm-default', 'guicedee-cdi-jlink'), cell('jvm-c1', 'guicedee-cdi-jlink'), 'SPI only'],
         ['Quarkus / upstream SDKs', cell('jvm-default', 'quarkus-standard'), cell('jvm-c1', 'quarkus-standard'),
          'Not implemented', 'Not implemented', cell('native-standard', 'quarkus-standard-native')],
+        ['Micronaut / upstream SDKs', cell('jvm-default', 'micronaut'), cell('jvm-c1', 'micronaut'),
+         'Not implemented', 'Not implemented', cell('native-standard', 'micronaut-native')],
     ])
 
 
@@ -351,20 +374,23 @@ def render(data):
     sections = {name: timing_tables(group) for name, group in groups.items()}
     sections['overview'] = overview(groups)
     native = groups['native-standard']['variants']
-    a, b = native['guicedee-native'], native['quarkus-standard-native']
+    a, b, c = (native[n] for n in ['guicedee-native','quarkus-standard-native','micronaut-native'])
     delta = []
-    for label, av, bv, unit in [
-        ('Full-business startup', a['launchToFirstBusinessMs']['median'], b['launchToFirstBusinessMs']['median'], 'ms'),
-        ('First business request', a['firstBusinessMs']['median'], b['firstBusinessMs']['median'], 'ms'),
-        ('Warm p50', a['warm']['p50Ms'], b['warm']['p50Ms'], 'ms'),
-        ('Warm p95', a['warm']['p95Ms'], b['warm']['p95Ms'], 'ms'),
-        ('Warm p99', a['warm']['p99Ms'], b['warm']['p99Ms'], 'ms'),
-        ('Peak container memory', a['peakMiB']['median'], b['peakMiB']['median'], 'MiB'),
-        ('Executable size', a['executableMiB'], b['executableMiB'], 'MiB'),
-        ('Docker local image size', a['imageMiB'], b['imageMiB'], 'MiB'),
+    for label, metric, unit in [
+        ('Full-business startup', lambda i:i['launchToFirstBusinessMs']['median'], 'ms'),
+        ('First business request', lambda i:i['firstBusinessMs']['median'], 'ms'),
+        ('Warm p50', lambda i:i['warm']['p50Ms'], 'ms'),
+        ('Warm p95', lambda i:i['warm']['p95Ms'], 'ms'),
+        ('Warm p99', lambda i:i['warm']['p99Ms'], 'ms'),
+        ('Peak container memory', lambda i:i['peakMiB']['median'], 'MiB'),
+        ('Executable size', lambda i:i['executableMiB'], 'MiB'),
+        ('Docker local image size', lambda i:i['imageMiB'], 'MiB'),
     ]:
-        delta.append([label, f'{av:.2f} {unit}', f'{bv:.2f} {unit}', f'{(av / bv - 1) * 100:+.1f}%'])
-    sections['native-deltas'] = table(['Metric', 'GuicedEE native', 'Quarkus upstream native', 'GuicedEE difference'], delta)
+        av,bv,cv = (metric(i) for i in [a,b,c])
+        delta.append([label, f'{av:.2f} {unit}', f'{bv:.2f} {unit}', f'{(av / bv - 1) * 100:+.1f}%',
+                      f'{cv:.2f} {unit}', f'{(av / cv - 1) * 100:+.1f}%'])
+    sections['native-deltas'] = table(['Metric','GuicedEE native','Quarkus native','GuicedEE vs Quarkus',
+                                      'Micronaut native','GuicedEE vs Micronaut'],delta)
     if 'native-extended' in groups:
         extended = groups['native-extended']['variants']
         eg, eq = extended['guicedee-native'], extended['quarkus-standard-native']
@@ -393,7 +419,8 @@ def render(data):
             'executable. Repeated clean-build time and compiler memory are measured separately in the build grid. '
             '[Current compiler profile](results/latest/native-profile.json).')
     memory = []
-    for label in ['GuicedEE native', 'Quarkus upstream native']:
+    for label in ['GuicedEE native', 'GuicedEE CDI native', 'Quarkus upstream native', 'Micronaut upstream native']:
+        if label not in data['phases']: continue
         phase = data['phases'][label]
         if phase.get('processMemoryMiB'):
             memory.append([label,phase['starts'],*[f"{phase['processMemoryMiB'][key]:.2f}"
@@ -409,11 +436,17 @@ def render(data):
         f"Warm p50 is **{a['warm']['p50Ms']:.2f} / {b['warm']['p50Ms']:.2f} ms** (GuicedEE / Quarkus). "
         f"Peak charged memory is **{a['peakMiB']['median']:.2f} / {b['peakMiB']['median']:.2f} MiB**; "
         f"executables are **{a['executableMiB']:.2f} / {b['executableMiB']:.2f} MiB**. "
-        f"The native sample contains **{a['starts'] + b['starts']} starts and "
-        f"{a['capabilityChecks'] + b['capabilityChecks']} passing capability checks**.")
-    native_startup_winner = 'GuicedEE' if a['launchToFirstBusinessMs']['median'] < b['launchToFirstBusinessMs']['median'] else 'Quarkus'
-    native_latency_winner = 'GuicedEE' if a['warm']['p50Ms'] < b['warm']['p50Ms'] else 'Quarkus'
-    native_memory_winner = 'GuicedEE' if a['peakMiB']['median'] < b['peakMiB']['median'] else 'Quarkus'
+        f"Micronaut native completes the same first business response in **{c['launchToFirstBusinessMs']['median']:.0f} ms**, "
+        f"with warm p50 **{c['warm']['p50Ms']:.2f} ms**, peak charged memory **{c['peakMiB']['median']:.2f} MiB** "
+        f"and a **{c['executableMiB']:.2f} MiB** executable. "
+        f"The native sample contains **{sum(i['starts'] for i in native.values())} starts and "
+        f"{sum(i['capabilityChecks'] for i in native.values())} passing capability checks**.")
+    candidates = dict(GuicedEE=a,Quarkus=b,Micronaut=c)
+    if 'guicedee-cdi-native' in native:
+        candidates['GuicedEE CDI SPI'] = native['guicedee-cdi-native']
+    native_startup_winner = min(candidates,key=lambda n:candidates[n]['launchToFirstBusinessMs']['median'])
+    native_latency_winner = min(candidates,key=lambda n:candidates[n]['warm']['p50Ms'])
+    native_memory_winner = min(candidates,key=lambda n:candidates[n]['peakMiB']['median'])
     sections['runtime-findings'] = (
         f"{native_startup_winner} native records the lower median full-business startup; "
         f"{native_latency_winner} native records the lower warm p50. {native_memory_winner} native has the lower "
@@ -423,17 +456,18 @@ def render(data):
     for group in ['jvm-default', 'jvm-c1']:
         values = groups[group]['variants']
         for name, item in values.items():
-            if not name.startswith('guicedee'):
+            if not name.startswith(('guicedee','micronaut')):
                 continue
-            baseline = values['quarkus-standard-native' if name == 'guicedee-native' else 'quarkus-standard']
-            pairs = [(item['launchToReadyMs']['median'], baseline['launchToReadyMs']['median']),
-                     (item['launchToFirstBusinessMs']['median'], baseline['launchToFirstBusinessMs']['median']),
-                     (item['warm']['p50Ms'], baseline['warm']['p50Ms']),
-                     (item['warm']['p95Ms'], baseline['warm']['p95Ms']),
-                     (item['peakMiB']['median'], baseline['peakMiB']['median'])]
-            relative.append([group, item['label'], 'Native' if name == 'guicedee-native' else 'JVM',
-                             *[f'{(a / b - 1) * 100:+.1f}%' for a, b in pairs]])
-    sections['relative'] = table(['Profile', 'GuicedEE mode', 'Quarkus baseline', 'Ready', 'Full business',
+            for reference in (['quarkus-standard','micronaut'] if name.startswith('guicedee') else ['quarkus-standard']):
+                baseline = values[reference]
+                pairs = [(item['launchToReadyMs']['median'], baseline['launchToReadyMs']['median']),
+                         (item['launchToFirstBusinessMs']['median'], baseline['launchToFirstBusinessMs']['median']),
+                         (item['warm']['p50Ms'], baseline['warm']['p50Ms']),
+                         (item['warm']['p95Ms'], baseline['warm']['p95Ms']),
+                         (item['peakMiB']['median'], baseline['peakMiB']['median'])]
+                relative.append([group, item['label'], baseline['label'],
+                                 *[f'{(a / b - 1) * 100:+.1f}%' for a, b in pairs]])
+    sections['relative'] = table(['Profile', 'Application mode', 'Baseline', 'Ready', 'Full business',
                                   'Warm p50', 'Warm p95', 'Peak memory'], relative)
     findings = []
     for group, label in [('jvm-default', 'Default JVM'), ('jvm-c1', 'C1 JVM')]:
@@ -447,6 +481,8 @@ def render(data):
         findings.append(f"**{label}:** full-JDK SPI/scanner complete the first business response in "
                         f"**{full_spi / 1000:.3f}/{full_scan / 1000:.3f} s**, versus **{reference / 1000:.3f} s** "
                         f"for Quarkus JVM. SPI uses **{difference(full_spi, reference)}**. "
+                        f"Micronaut JVM completes in **{values['micronaut']['launchToFirstBusinessMs']['median']/1000:.3f} s**; "
+                        f"SPI uses **{difference(full_spi,values['micronaut']['launchToFirstBusinessMs']['median'])}** against it. "
                         'Use the retained ranges to judge the median difference; each mode has three starts.')
         findings.append(f"**{label}, linked workload:** linked SPI/scanner complete the first business response in "
                         f"**{spi / 1000:.3f}/{scan / 1000:.3f} s**, versus **{reference / 1000:.3f} s** "
@@ -465,11 +501,13 @@ def render(data):
                               '`' + item['image'].removeprefix('sha256:')[:12] + '`'])
     sections['packaging'] = table(['Variant', 'Evidence group', 'Docker local image (MiB)', 'Executable (MiB)', 'Image ID prefix'], packaging)
     audit = read('results/jlink-audit-verification.json')
-    sections['jlink-size'] = table(['Measured jlink payload', 'SPI', 'Scanner'],
-        [[label, *[number(audit['images'][key][field] / MIB) for key in ['spi', 'scan']]] for label, field in [
+    linked = [key for key in ['spi', 'scan', 'cdi-spi', 'cdi-scan'] if key in audit['images']]
+    linked_labels = {'spi':'SPI', 'scan':'Scanner', 'cdi-spi':'CDI SPI', 'cdi-scan':'CDI scanner'}
+    sections['jlink-size'] = table(['Measured jlink payload', *[linked_labels[key] for key in linked]],
+        [[label, *[number(audit['images'][key][field] / MIB) for key in linked]] for label, field in [
             ('Runtime including application (MiB)', 'runtimeTreeBytes'), ('Module image (MiB)', 'moduleImageBytes'),
             ('Unpacked Docker layers (MiB)', 'unpackedLayerBytes')]] +
-        [[label, *[audit['images'][key][field] for key in ['spi', 'scan']]] for label, field in [
+        [[label, *[audit['images'][key][field] for key in linked]] for label, field in [
             ('Installed modules', 'moduleCount'), ('Mandatory module closure', 'requiredClosureCount'),
             ('Closure including installed service providers', 'serviceBoundClosureCount')]])
     phases = data['phases']
@@ -477,7 +515,9 @@ def render(data):
         [[label, item['starts'], f"`{item['batch']}`",
           '`' + item['image'].removeprefix('sha256:')[:12] + '`'] for label, item in phases.items()])
     for kind, names, keys in [
-        ('startup', [name for name in ['SPI JVM', 'Scanner JVM', 'SPI jlink', 'Scanner jlink', 'GuicedEE native'] if name in phases], [
+        ('startup', [name for name in ['SPI JVM', 'Scanner JVM', 'SPI jlink', 'Scanner jlink', 'GuicedEE native',
+                                     'CDI SPI JVM', 'CDI scanner JVM', 'CDI SPI jlink', 'CDI scanner jlink',
+                                     'GuicedEE CDI native'] if name in phases], [
             ('Context discovery', 'context-discovery'), ('Discovery', 'discovery'), ('ClassGraph scan', 'classgraph-scan'),
             ('Pre-startup hooks', 'pre-startup'), ('Guice module discovery', 'guice-module-discovery'),
             ('Guice injector creation', 'guice-create-injector'),
@@ -568,8 +608,8 @@ def main():
             f"the default-runtime stage began at **{min(runtime):.1f}–{max(runtime):.1f}%**. "
             if preparation and runtime else '')
         sections['host-condition'] = (
-            f"All timing profiles were rerun after the host boot at **{host['bootTimeUtc']}**. "
-            f"Across {host['samples']} retained one-second host samples, CPU utilization "
+            f"The SDK runtime and clean-build comparisons were rerun after the host boot at **{host['bootTimeUtc']}**. "
+            f"Across {host['samples']} retained host boundary samples, CPU utilization "
             f"ranged **{cpu['minimum']:.1f}–{cpu['maximum']:.1f}%**, available physical memory "
             f"**{memory['minimum']/1024:.1f}–{memory['maximum']/1024:.1f} GiB**. "
             + preparation_note + 'Build, runtime and diagnostic stages ran sequentially. '

@@ -17,7 +17,7 @@ import urllib.error
 import urllib.request
 import uuid
 from upstream import Upstream
-from variants import select_variants, ordered_variants, paired_image_variants, guicedee_jar, guicedee_project, runtime_flags
+from variants import select_variants, ordered_variants, paired_image_variants, guicedee_jar, guicedee_project, guicedee_module, runtime_flags
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -114,6 +114,7 @@ def probe(variant, run, out, upstream, flags, args):
     framework = variant['framework']
     application = guicedee_project(variant) if framework == 'guicedee' else 'quarkus-native' if variant['runtime']=='native' else 'quarkus'
     if variant.get('dependencyMode') == 'standard': application = 'quarkus-standard'
+    if framework == 'micronaut': application = 'micronaut'
     app_port = port()
     env = dict(os.environ, HTTP_PORT=str(app_port), HTTPS_ENABLED="false", HTTP_HOST="127.0.0.1",
                BENCH_UPSTREAM=f"http://127.0.0.1:{upstream.server_port}", FIRESTORE_EMULATOR_HOST="127.0.0.1:18088",
@@ -123,8 +124,10 @@ def probe(variant, run, out, upstream, flags, args):
     if framework == "guicedee":
         env['GUICEDEE_DISCOVERY_MODE']=variant['discovery']
         cp = (ROOT/application/'target/classpath.txt').read_text().strip() if not args.docker else ''
-        module = 'bench.guicedee.scan' if variant['discovery'] == 'scan' else 'bench.guicedee'
+        module = guicedee_module(variant)
         launch = [] if variant['runtime']=='native' else ['--module-path', str(ROOT/application/'target'/guicedee_jar(variant))+os.pathsep+cp, '-m', module+'/bench.guicedee.Main']
+    elif framework == 'micronaut':
+        launch = [] if variant['runtime']=='native' else ['-cp', str(ROOT/'micronaut/target/comparison-micronaut-1.0-SNAPSHOT.jar')+os.pathsep+str(ROOT/'micronaut/target/lib/*'), 'bench.micronaut.Application']
     else: launch = [] if variant['runtime']=='native' else ['-jar', str(ROOT/application/'target/quarkus-app/quarkus-run.jar')]
     name = f'{variant["id"]}-{run}'
     diagnostics = getattr(args, 'diagnostics', False)
@@ -143,6 +146,7 @@ def probe(variant, run, out, upstream, flags, args):
                    FIRESTORE_EMULATOR_HOST='host.docker.internal:18088')
         launch = (['-m', module+'/bench.guicedee.Main'] if variant['runtime']=='jlink' else ['--module-path','/app/app.jar:/app/lib','-m',module+'/bench.guicedee.Main']) if framework=='guicedee' else [] if variant['runtime']=='native' else ['-jar','/app/quarkus-run.jar']
         if variant['runtime']=='native': launch=[]
+        elif framework == 'micronaut': launch=['-cp','/app/app.jar:/app/lib/*','bench.micronaut.Application']
     argfile = out/(name+'.args')
     argfile.write_text('\n'.join('"'+a.replace('\\','/')+'"' for a in flags+launch)+'\n')
     log = (out/(name+'.log')).open('w')
@@ -207,6 +211,11 @@ def probe(variant, run, out, upstream, flags, args):
         row['firstBusinessMs'] = latency
         row['launchToFirstBusinessMs'] = (time.perf_counter()-started)*1000
         check('business', status == 200 and body == expected, {'status': status, 'body': body})
+        if variant.get('configuration') == 'cdi-config':
+            config_status, config_body, _ = request(base, '/configuration')
+            check('jakartaCdiConfig', config_status == 200 and config_body == {
+                'marker': 'application-properties', 'upstream': env['BENCH_UPSTREAM'], 'initialized': True},
+                {'status': config_status, 'body': config_body})
         events = upstream.events[event_start:]
         for label, path in [('vendorSdkOAuth','/oauth/token'),('vendorSdkRest','/benchmark'),('graphqlClient','/benchmark/graphql')]:
             hits = [e for e in events if e['path'] == path]
@@ -316,7 +325,7 @@ def main():
     parser.add_argument('--discovery',choices=['scan','spi','both'],default='both',help='Select separate SPI/scanner artifacts; default compares both')
     parser.add_argument('--runtime',choices=['jre','jlink','both','native'],default='jre',help='JVM, linked application, or native executables (Docker only)')
     parser.add_argument('--native',action='store_true',help='Include the separate GuicedEE SPI and Quarkus native projects in the selected matrix')
-    parser.add_argument('--framework',choices=['both','guicedee','quarkus'],default='both')
+    parser.add_argument('--framework',choices=['all','both','guicedee','quarkus','micronaut'],default='all')
     parser.add_argument('--quarkus-dependencies', choices=['wrapped','standard'], default='standard',
                         help='standard uses the independent upstream-SDK Quarkus project; wrapped preserves historical batches')
     parser.add_argument('--diagnostics',action='store_true',help='Collect startup/SDK phases and live scan/binding inventories; never a performance comparison')
@@ -324,10 +333,14 @@ def main():
     parser.add_argument('--baseline-image-tag',help='Alternate a baseline tag with --image-tag in the same Docker batch')
     parser.add_argument('--reverse-initial-order',action='store_true',help='Reverse the initial variant order for an independently counterbalanced batch')
     parser.add_argument('--initial-heap',default='128m',help='Initial heap for every selected variant; retained in the result flags')
+    parser.add_argument('--cdi-config', action='store_true', help='Include the GuicedEE Jakarta CDI/application.properties cases')
     args=parser.parse_args()
     if min(args.runs,args.requests)<1 or args.warmup<0: parser.error('Invalid run/request counts')
     if not re.fullmatch(r'[1-9][0-9]*[mMgG]',args.initial_heap): parser.error('Initial heap must be a positive size such as 32m')
-    variants = select_variants(args.framework, args.discovery, args.runtime, args.native, args.quarkus_dependencies)
+    try:
+        variants = select_variants(args.framework, args.discovery, args.runtime, args.native, args.quarkus_dependencies, args.cdi_config)
+    except ValueError as error:
+        parser.error(str(error))
     if args.baseline_image_tag:
         if not args.docker: parser.error('Paired image comparisons require --docker')
         try: variants = paired_image_variants(variants,args.baseline_image_tag,args.image_tag)
@@ -342,10 +355,10 @@ def main():
     out.mkdir(parents=True)
     flags=['-Xms'+args.initial_heap,'-Xmx384m','-XX:ActiveProcessorCount=2']+(['-XX:TieredStopAtLevel=1'] if args.tiered else [])
     inputs=[]
-    for directory in [ROOT/'guicedee/target',ROOT/'guicedee-scan/target',ROOT/'quarkus/target/quarkus-app',ROOT/'quarkus-standard/target/quarkus-app']:
+    for directory in [ROOT/'guicedee-cdi-spi/target',ROOT/'guicedee-cdi-native/target',ROOT/'guicedee-cdi/target',ROOT/'guicedee/target',ROOT/'guicedee-scan/target',ROOT/'quarkus/target/quarkus-app',ROOT/'quarkus-standard/target/quarkus-app']:
         for file in directory.rglob('*.jar'):
             inputs.append({'path':str(file.relative_to(ROOT)),'sha256':hashlib.sha256(file.read_bytes()).hexdigest()})
-    for application in ['guicedee','guicedee-scan']:
+    for application in ['guicedee','guicedee-scan','guicedee-cdi','guicedee-cdi-spi']:
         cp=ROOT/application/'target/classpath.txt'
         if cp.exists():
             for path in cp.read_text().strip().split(os.pathsep):
@@ -356,7 +369,7 @@ def main():
           'sourceRevision':subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,capture_output=True,text=True).stdout.strip()}
     meta['linkedRuntimeArtifacts']={}
     if not args.docker:
-        for application in ['guicedee','guicedee-scan']:
+        for application in ['guicedee','guicedee-scan','guicedee-cdi','guicedee-cdi-spi']:
             image=ROOT/(application+'-jlink')/'target/maven-jlink/default'
             if (image/'lib/modules').is_file():
                 meta['linkedRuntimeArtifacts'][application]={
@@ -367,7 +380,7 @@ def main():
                               for p in ROOT.rglob('*') if p.is_file() and (p.suffix in ['.java','.py','.xml','.properties','.ps1'] or p.name=='.env')
                               and not any(part in ['target','node_modules','repository','results','.idea','.git','analysis'] for part in p.relative_to(ROOT).parts)]
     meta['guicedeeLocalEnvSha256']={}
-    for application in ['guicedee','guicedee-scan']:
+    for application in ['guicedee','guicedee-scan','guicedee-cdi','guicedee-cdi-spi']:
         local_env=ROOT/application/'.env.local'
         meta['guicedeeLocalEnvSha256'][application]=hashlib.sha256(local_env.read_bytes()).hexdigest() if local_env.exists() else None
     meta['emulatorInputs']=[{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
@@ -399,7 +412,7 @@ def main():
                 raise RuntimeError('Native image must contain an ELF executable and launch it directly')
         for variant in variants:
             if variant['runtime'] == 'jlink':
-                module = 'bench.guicedee.scan' if variant['discovery'] == 'scan' else 'bench.guicedee'
+                module = guicedee_module(variant)
                 details = meta['runtimeDetails'][variant['id']]
                 if not re.search(r'^'+re.escape(module)+r'@', details, re.MULTILINE):
                     raise RuntimeError('Application module missing from linked runtime: '+variant['id'])

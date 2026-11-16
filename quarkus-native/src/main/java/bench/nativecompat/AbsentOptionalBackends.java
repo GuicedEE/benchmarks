@@ -14,57 +14,102 @@ public final class AbsentOptionalBackends {
             return true;
         }
     }
+
     public static final class Zstd implements BooleanSupplier {
-        public boolean getAsBoolean() { return absent("com.github.luben.zstd.Zstd"); }
+        public boolean getAsBoolean() {
+            return absent("com.github.luben.zstd.Zstd");
+        }
     }
+
     public static final class Brotli implements BooleanSupplier {
-        public boolean getAsBoolean() { return absent("com.google.firebase.internal.shaded.com.aayushatharva.brotli4j.Brotli4jLoader"); }
+        public boolean getAsBoolean() {
+            return absent("com.google.firebase.internal.shaded.com.aayushatharva.brotli4j.Brotli4jLoader");
+        }
     }
+
     public static final class Log4j implements BooleanSupplier {
-        public boolean getAsBoolean() { return absent("com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging.Log4J2Logger"); }
+        public boolean getAsBoolean() {
+            return absent(
+                    "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging.Log4J2Logger");
+        }
     }
+
     public static final class Log4j1 implements BooleanSupplier {
-        public boolean getAsBoolean() { return absent("com.google.firebase.internal.shaded.org.apache.log4j.Logger"); }
+        public boolean getAsBoolean() {
+            return absent("com.google.firebase.internal.shaded.org.apache.log4j.Logger");
+        }
     }
+
     public static final class CommerceOpenSsl implements BooleanSupplier {
-        public boolean getAsBoolean() { return absent("com.commercetools.internal.shaded.io.netty.internal.tcnative.SSL"); }
+        public boolean getAsBoolean() {
+            return !absent("com.commercetools.internal.shaded.io.netty.handler.ssl.OpenSsl")
+                    && absent("com.commercetools.internal.shaded.io.netty.internal.tcnative.SSL");
+        }
     }
+
     public static final class FirebaseBouncyCastle implements BooleanSupplier {
-        public boolean getAsBoolean() { return absent("com.google.firebase.internal.shaded.org.bouncycastle.openssl.PEMParser"); }
+        public boolean getAsBoolean() {
+            return absent("com.google.firebase.internal.shaded.org.bouncycastle.openssl.PEMParser");
+        }
     }
 }
 
-@TargetClass(className = "com.commercetools.internal.shaded.io.netty.handler.ssl.OpenSsl", onlyWith = AbsentOptionalBackends.CommerceOpenSsl.class)
+@TargetClass(
+        className = "com.commercetools.internal.shaded.io.netty.handler.ssl.OpenSsl",
+        onlyWith = AbsentOptionalBackends.CommerceOpenSsl.class)
 final class Target_CommerceOpenSsl {
-    @Substitute public static boolean isAvailable() { return false; }
-    @Substitute public static void ensureAvailability() {
+    @Substitute
+    public static boolean isAvailable() {
+        return false;
+    }
+
+    @Substitute
+    public static void ensureAvailability() {
         throw new UnsatisfiedLinkError("Optional Netty tcnative library is not installed");
     }
 }
 
-@TargetClass(className = "com.google.firebase.internal.shaded.org.apache.hc.client5.http.impl.ZstdRuntime", onlyWith = AbsentOptionalBackends.Zstd.class)
+@TargetClass(
+        className = "com.google.firebase.internal.shaded.org.apache.hc.client5.http.impl.ZstdRuntime",
+        onlyWith = AbsentOptionalBackends.Zstd.class)
 final class Target_ZstdRuntime {
-    @Substitute public static boolean available() { return false; }
+    @Substitute
+    public static boolean available() {
+        return false;
+    }
 }
 
-@TargetClass(className = "com.google.firebase.internal.shaded.org.apache.hc.client5.http.impl.Brotli4jRuntime", onlyWith = AbsentOptionalBackends.Brotli.class)
+@TargetClass(
+        className = "com.google.firebase.internal.shaded.org.apache.hc.client5.http.impl.Brotli4jRuntime",
+        onlyWith = AbsentOptionalBackends.Brotli.class)
 final class Target_BrotliRuntime {
-    @Substitute public static boolean available() { return false; }
+    @Substitute
+    public static boolean available() {
+        return false;
+    }
 }
 
-@TargetClass(className = "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging.Log4J2LoggerFactory", onlyWith = AbsentOptionalBackends.Log4j.class)
+@TargetClass(
+        className =
+                "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging.Log4J2LoggerFactory",
+        onlyWith = AbsentOptionalBackends.Log4j.class)
 final class Target_Log4jFactory {
     @Substitute
-    public com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging.InternalLogger newInstance(String name) {
+    public com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging.InternalLogger
+            newInstance(String name) {
         // Netty catches this to select an installed logging backend, as on the JVM.
         throw new NoClassDefFoundError("Optional Log4j backend is not installed");
     }
 }
 
-@TargetClass(className = "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging.Log4JLoggerFactory", onlyWith = AbsentOptionalBackends.Log4j1.class)
+@TargetClass(
+        className =
+                "com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging.Log4JLoggerFactory",
+        onlyWith = AbsentOptionalBackends.Log4j1.class)
 final class Target_Log4j1Factory {
     @Substitute
-    public com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging.InternalLogger newInstance(String name) {
+    public com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging.InternalLogger
+            newInstance(String name) {
         throw new NoClassDefFoundError("Optional Log4j 1.x backend is not installed");
     }
 }

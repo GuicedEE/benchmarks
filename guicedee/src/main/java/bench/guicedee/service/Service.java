@@ -1,20 +1,19 @@
 package bench.guicedee.service;
 
-import com.google.inject.Singleton;
 import bench.workload.Workload;
+import com.google.inject.Singleton;
 import com.guicedee.vertx.spi.Verticle;
 import io.smallrye.mutiny.Uni;
+import java.util.Map;
 import org.eclipse.microprofile.faulttolerance.*;
 import org.eclipse.microprofile.metrics.annotation.Counted;
-
-import java.util.Map;
 
 @Singleton
 @Verticle("bench-guicedee-service")
 public class Service {
-    private final Workload workload = new Workload(com.guicedee.client.Environment.getSystemPropertyOrEnvironment(
-            "BENCH_UPSTREAM",
-            "http://127.0.0.1:18089"), Boolean.parseBoolean(com.guicedee.client.Environment.getSystemPropertyOrEnvironment(
+    private final Workload workload = new Workload(
+            com.guicedee.client.Environment.getSystemPropertyOrEnvironment("BENCH_UPSTREAM", "http://127.0.0.1:18089"),
+            Boolean.parseBoolean(com.guicedee.client.Environment.getSystemPropertyOrEnvironment(
                     "BENCH_PHASE_DIAGNOSTICS", "false")));
 
     @Counted(name = "benchmark_quotes", absolute = true)

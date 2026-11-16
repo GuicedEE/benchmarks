@@ -1,19 +1,19 @@
 {
   "agentSha256": "6a42aae41f2c615a17415e1c53672f6d57cc8444d88c914d440dded63566e8c4",
-  "traceSha256": "a136183e9dde6d1e260be6f8c05c2e7473ade6a6efbfa0b84ce62cde070ec4c1",
+  "traceSha256": "2b3e8b58562105d94686442adfa7e716c1922b16a796e6a2d70958a6583460dc",
   "allCapabilitiesPassed": true,
   "sdkJars": [
     {
-      "name": "commercetools-2.5.1.jar",
-      "sha256": "dd7c23c08dc3dab7b8e3b9d63d8357ecc69203aceef429ac28525c7a928b94e9"
+      "name": "commercetools-2.6.0.jar",
+      "sha256": "d70a9311745879fde60c35bfdb358e5189530e0080c08f36c60d0182c63c774d"
     },
     {
-      "name": "firebase-admin-2.5.1.jar",
-      "sha256": "0026ad198445ba7155bf34e33eca88c711619ccac53c422641317912ae340cf0"
+      "name": "firebase-admin-2.6.0.jar",
+      "sha256": "65b58f8774fbde8ebb4be0f23a6fde9a9f137433946599a1fa84db150c4750be"
     }
   ],
   "included": {
-    "reflection": 5010,
+    "reflection": 4670,
     "resources": 11
   },
   "scope": "Only types and resources owned by the two SDK wrapper JARs; no workload code changes"

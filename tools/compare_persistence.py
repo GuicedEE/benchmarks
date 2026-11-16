@@ -18,13 +18,14 @@ import urllib.error
 import urllib.request
 import uuid
 from compare import port, percentile
+from variants import ordered_variants
 from persistence_diagnostics import PersistenceDiagnostics, JFR_FLAG, PG_FLAGS
 
 ROOT = Path(__file__).resolve().parents[1]
 ENTITIES = ['Country','Region','Address','Customer','Supplier','Category','Product','Warehouse',
             'Inventory','PurchaseOrder','OrderLine','Payment','Shipment','ShipmentItem','AuditEntry']
 TABLES = ['bench_'+re.sub(r'(?<!^)(?=[A-Z])','_',name).lower() for name in ENTITIES]
-VARIANTS = ['guicedee','quarkus']
+VARIANTS = ['guicedee','quarkus','micronaut']
 FLAGS = ['-Xms128m','-Xmx384m','-XX:ActiveProcessorCount=2','-Dlog4j.shutdownHookEnabled=false']
 CONTRACT = '15-entity-projection-read-stateless-write-enhanced-v2'
 CHECKS = {'readinessAndTransactionMode','schemaAndRelationships','createGraph','committedFifteenRows',
@@ -101,7 +102,7 @@ def validate(data):
     if data.get('contract') != CONTRACT:
         raise ValueError('Persistence evidence does not describe the current projection/transaction contract')
     rows = data['starts']
-    if not data.get('eligible') or len(rows) != 2*data['runs']:
+    if not data.get('eligible') or len(rows) != len(VARIANTS)*data['runs']:
         raise ValueError('Persistence publication requires the complete passing matrix')
     if {(r['variant'],r['run']) for r in rows} != {(v,n) for v in VARIANTS for n in range(1,data['runs']+1)}:
         raise ValueError('Missing or duplicate persistence starts')
@@ -119,10 +120,10 @@ def validate(data):
         values = row['readsMs']+[c[k] for c in row['cycles'] for k in ['createMs','readMs','updateMs','deleteMs','cycleMs']]
         if any(not math.isfinite(v) or v <= 0 for v in values): raise ValueError('Invalid persistence latency')
     inputs = data['buildInputs']
-    if inputs['guicedee']['sources'] != inputs['quarkus']['sources'] or inputs['guicedee']['javaImage'] != inputs['quarkus']['javaImage']:
+    if any(inputs['guicedee'][key] != inputs[v][key] for v in VARIANTS for key in ['sources','javaImage']):
         raise ValueError('Persistence variants must share the source contract and JDK base')
     model = inputs['guicedee'].get('modelArtifacts', {})
-    if len(model) != 2 or model != inputs['quarkus'].get('modelArtifacts'):
+    if len(model) != 2 or any(model != inputs[v].get('modelArtifacts') for v in VARIANTS):
         raise ValueError('Persistence applications must use the same compiled source model and enhancement build')
     for variant in VARIANTS:
         expected_model = {name:digest for name,digest in model.items() if name.endswith('-enhanced.jar') == (variant=='guicedee')}
@@ -151,7 +152,7 @@ def run_start(args, data, output, db, network, variant, run):
                eligible=False,checks={},readsMs=[],cycles=[])
     data['starts'].append(row)
     diagnostics = PersistenceDiagnostics(output,variant,run,app,db,database,docker,psql) if args.diagnostics else None
-    if diagnostics: diagnostics.mark('launch')
+    if diagnostics: diagnostics.mark('launch',sql=True)
     started = time.perf_counter()
     try:
         docker('run','-d','--name',app,'--network',network,'--cpus','0.25','--memory','500m','--memory-swap','500m',
@@ -173,7 +174,7 @@ def run_start(args, data, output, db, network, variant, run):
         row['launchToReadyMs'] = (time.perf_counter()-started)*1000
         if diagnostics: diagnostics.mark('ready')
         row['readiness'] = ready
-        mode = 'hibernate-reactive-stateless' if variant == 'guicedee' else 'narayana-jta'
+        mode = dict(guicedee='hibernate-reactive-stateless',quarkus='narayana-jta',micronaut='micronaut-hibernate')[variant]
         if ready['entities'] != 15 or ready['transactionMode'] != mode: raise ValueError(f'Incorrect persistence wiring: {ready}')
         row['checks']['readinessAndTransactionMode'] = True
         row['checks']['schemaAndRelationships'] = True
@@ -237,6 +238,7 @@ def run_start(args, data, output, db, network, variant, run):
         shutdown_log = logs.stdout+logs.stderr
         completed = ('Guice Context shutdown completed' in shutdown_log
                      and re.search(r'Pre-destroy services execution completed - Success: \d+, Failed: 0', shutdown_log)) if variant=='guicedee' else 'stopped in' in shutdown_log
+        if variant == 'micronaut': completed = 'Shutdown completed' in shutdown_log
         row['shutdown'] = dict(exitCode=stopped['ExitCode'],remainingConnections=connections,lifecycleCompleted=bool(completed))
         if stopped['ExitCode'] not in [0,143] or connections != 0 or not row['shutdown']['lifecycleCompleted']:
             raise ValueError(f'Persistence lifecycle did not shut down cleanly: {row["shutdown"]}')
@@ -303,7 +305,7 @@ def main():
             "'fsync',current_setting('fsync'),'synchronous_commit',current_setting('synchronous_commit'),"
             "'full_page_writes',current_setting('full_page_writes'),'isolation',current_setting('default_transaction_isolation'));").stdout)
         for run in range(1,args.runs+1):
-            for variant in VARIANTS if run % 2 else list(reversed(VARIANTS)):
+            for variant in ordered_variants(VARIANTS,run):
                 run_start(args,data,output,db,network,variant,run)
         data['eligible'] = not args.diagnostics
         if args.diagnostics: print('Instrumented diagnostics only; performance publication is disabled.',flush=True)

@@ -7,7 +7,16 @@ module bench.guicedee.scan {
     requires transitive com.guicedee.metrics;
     requires transitive com.guicedee.telemetry;
 
-    opens bench.guicedee to com.google.guice, com.guicedee.rest, tools.jackson.databind;
-    opens bench.guicedee.rest to com.google.guice, com.guicedee.rest, com.guicedee.vertx, tools.jackson.databind;
-    opens bench.guicedee.service to com.google.guice, com.guicedee.vertx;
+    opens bench.guicedee to
+            com.google.guice,
+            com.guicedee.rest,
+            tools.jackson.databind;
+    opens bench.guicedee.rest to
+            com.google.guice,
+            com.guicedee.rest,
+            com.guicedee.vertx,
+            tools.jackson.databind;
+    opens bench.guicedee.service to
+            com.google.guice,
+            com.guicedee.vertx;
 }

@@ -11,10 +11,10 @@
         "pattern": "\\QMETA-INF/services/com.ctc.wstx.shaded.msv.relaxng_datatype.DatatypeLibraryFactory\\E"
       },
       {
-        "pattern": "\\QMETA-INF/services/java.time.chrono.Chronology\\E"
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.io.grpc.NameResolverProvider\\E"
       },
       {
-        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.io.grpc.NameResolverProvider\\E"
+        "pattern": "\\QMETA-INF/services/java.time.chrono.Chronology\\E"
       },
       {
         "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.org.codehaus.stax2.validation.XMLValidationSchemaFactory.relaxng\\E"
@@ -32,13 +32,13 @@
         "pattern": "\\QMETA-INF/services/javax.xml.stream.XMLOutputFactory\\E"
       },
       {
-        "pattern": "\\QMETA-INF/services/reactor.blockhound.integration.BlockHoundIntegration\\E"
+        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider\\E"
       },
       {
         "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.org.threeten.bp.zone.ZoneRulesProvider\\E"
       },
       {
-        "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.io.grpc.LoadBalancerProvider\\E"
+        "pattern": "\\QMETA-INF/services/reactor.blockhound.integration.BlockHoundIntegration\\E"
       },
       {
         "pattern": "\\QMETA-INF/services/com.google.firebase.internal.shaded.org.codehaus.stax2.validation.XMLValidationSchemaFactory\\E"

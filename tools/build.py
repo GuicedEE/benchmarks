@@ -43,7 +43,7 @@ def verify_framework(repository, version, native=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--framework', choices=['guicedee', 'quarkus', 'both'], default='both')
+    parser.add_argument('--framework', choices=['all', 'guicedee', 'quarkus', 'micronaut', 'both'], default='all')
     parser.add_argument('--runtime', choices=['jre', 'jlink', 'both', 'native'], default='jre')
     parser.add_argument('--native', action='store_true', help='Also build native executables')
     parser.add_argument('--docker', action='store_true', help='Build Linux container images')
@@ -54,23 +54,25 @@ def main():
     parser.add_argument('--tag', default='local')
     parser.add_argument('--skip-emulator', action='store_true')
     parser.add_argument('--trace-directory', type=Path, help='Fresh GuicedEE native capability trace')
+    parser.add_argument('--cdi-trace-directory', type=Path, help='Successful CDI/config SPI capability trace for native metadata')
     parser.add_argument('--audit-native', action='store_true')
     parser.add_argument('--include-desktop', action='store_true')
     parser.add_argument('--include-cloud-control-plane', action='store_true',
                         help='Retain optional Firebase gRPC xDS/RLS/grpclb/Google C2P providers in GuicedEE native')
     parser.add_argument('--full-sdk-reflection', action='store_true',
                         help='Retain all traced SDK model queries and protobuf parse reflection roots in GuicedEE native')
+    parser.add_argument('--cdi-config', action='store_true', help='Include the GuicedEE Jakarta CDI/application.properties cases')
     args = parser.parse_args()
-    variants = select_variants(args.framework, 'both', args.runtime, args.native, args.quarkus_dependencies)
+    variants = select_variants(args.framework, 'both', args.runtime, args.native, args.quarkus_dependencies, args.cdi_config)
     if not variants:
         parser.error('No supported variants selected; application jlink is GuicedEE-only')
     native = any(v['runtime'] == 'native' for v in variants)
     if native and not args.docker:
         parser.error('Native builds require --docker (Linux compiler/runtime)')
     repository = args.maven_repository.expanduser().resolve()
-    guicedee = args.framework in ['both', 'guicedee']
-    wrapped = args.framework in ['both', 'quarkus'] and args.quarkus_dependencies == 'wrapped'
-    standard = args.framework in ['both', 'quarkus'] and not wrapped
+    guicedee = args.framework in ['all', 'both', 'guicedee']
+    wrapped = args.framework in ['all', 'both', 'quarkus'] and args.quarkus_dependencies == 'wrapped'
+    standard = args.framework in ['all', 'both', 'quarkus'] and not wrapped
     if guicedee or wrapped or not args.docker:
         if not args.maven:
             parser.error('Maven 4 must be on PATH, or supply --maven')
@@ -88,30 +90,44 @@ def main():
         verify_framework(repository, args.guicedee_version, native and guicedee)
         modules = ['guicedee', 'guicedee-scan']
         profiles = []
+        if args.cdi_config:
+            modules += ['guicedee-cdi', 'guicedee-cdi-spi']
+            profiles.append('cdi-config')
         if native and guicedee:
             modules.append('guicedee-native')
             profiles.append('native-app')
+            if args.cdi_config:
+                modules.append('guicedee-cdi-native')
+                profiles.append('cdi-native')
         if wrapped:
             modules += ['quarkus', 'quarkus-native']
             profiles.append('wrapped-control')
         if not args.docker and any(v['runtime'] == 'jlink' for v in variants):
             modules += ['guicedee-jlink', 'guicedee-scan-jlink']
             profiles.append('jlink')
+            if args.cdi_config:
+                modules += ['guicedee-cdi-jlink', 'guicedee-cdi-spi-jlink']
+                profiles.append('cdi-jlink')
         profile_flags = ['-P' + ','.join(profiles)] if profiles else []
         run(mvn + ['-f', ROOT/'pom.xml', '-pl', ','.join(modules), '-am', *profile_flags, 'clean', 'install'])
         applications = ['guicedee', 'guicedee-scan'] + (['guicedee-native'] if native and guicedee else [])
+        if args.cdi_config:
+            applications += ['guicedee-cdi', 'guicedee-cdi-spi']
+            if native: applications.append('guicedee-cdi-native')
         for app in applications:
             run(mvn + ['-f', ROOT/app/'pom.xml', 'dependency:build-classpath',
                        '-Dmdep.outputFile=target/classpath.txt', '-Dmdep.regenerateFile=true'])
-        for app in ['guicedee', 'guicedee-scan']:
+        for app in ['guicedee', 'guicedee-scan'] + (['guicedee-cdi', 'guicedee-cdi-spi'] if args.cdi_config else []):
             run(mvn + ['-f', ROOT/app/'pom.xml', 'dependency:copy-dependencies',
                        '-DincludeScope=runtime', f'-DoutputDirectory={ROOT/app/"target/lib"}'])
-        run([sys.executable, ROOT/'tools/prepare_jlink.py'])
+        run([sys.executable, ROOT/'tools/prepare_jlink.py'] + (['--cdi-config'] if args.cdi_config else []))
         if args.docker:
             run([sys.executable, ROOT/'tools/stage_link_repository.py', '--repository', repository,
                  '--applications', *applications])
     if standard and not args.docker:
         run(mvn + ['-f', ROOT/'quarkus-standard/pom.xml', 'clean', 'package'])
+    if args.framework in ['all', 'micronaut'] and not args.docker:
+        run(mvn + ['-f', ROOT/'micronaut/pom.xml', 'clean', 'package'])
     if native and (guicedee or wrapped):
         if args.trace_directory:
             run([sys.executable, ROOT/'tools/import_native_trace.py', args.trace_directory.resolve()])
@@ -125,6 +141,11 @@ def main():
             if args.trace_directory:
                 command += [args.trace_directory.resolve()]
             run(command)
+            if args.cdi_config:
+                command = [sys.executable, ROOT/'tools/prepare_guicedee_native.py', '--repository', repository,
+                           '--version', args.guicedee_version, '--cdi-config']
+                if args.cdi_trace_directory: command += [args.cdi_trace_directory.resolve()]
+                run(command)
     if args.docker:
         # Standard Quarkus uses an independent Maven dependency graph in Docker.
         # Its final provenance replaces this shared-stage input.

@@ -5,193 +5,228 @@
   "groups": {
     "native-standard": {
       "batches": [
-        "20261115-124931",
-        "20261115-125007"
+        "20261115-202557"
       ],
-      "batchStarts": 28,
-      "batchCapabilityChecks": 420,
-      "batchMeasuredRequests": 840,
+      "batchStarts": 18,
+      "batchCapabilityChecks": 270,
+      "batchMeasuredRequests": 540,
       "warmupsPerStart": 10,
       "requestsPerStart": 30,
       "variants": {
         "guicedee-native": {
           "label": "GuicedEE SPI / native",
-          "starts": 14,
-          "capabilityChecks": 210,
-          "measuredRequests": 420,
+          "starts": 6,
+          "capabilityChecks": 90,
+          "measuredRequests": 180,
           "image": "sha256:cba41d26ee568443fc067010e607b07b6ddc858fd47599402d0190fd9fb96132",
           "imageMiB": 357.2281436920166,
           "rowSources": [
-            "20261115-124931/guicedee-native/1",
-            "20261115-124931/guicedee-native/2",
-            "20261115-124931/guicedee-native/3",
-            "20261115-124931/guicedee-native/4",
-            "20261115-124931/guicedee-native/5",
-            "20261115-124931/guicedee-native/6",
-            "20261115-124931/guicedee-native/7",
-            "20261115-125007/guicedee-native/1",
-            "20261115-125007/guicedee-native/2",
-            "20261115-125007/guicedee-native/3",
-            "20261115-125007/guicedee-native/4",
-            "20261115-125007/guicedee-native/5",
-            "20261115-125007/guicedee-native/6",
-            "20261115-125007/guicedee-native/7"
+            "20261115-202557/guicedee-native/1",
+            "20261115-202557/guicedee-native/2",
+            "20261115-202557/guicedee-native/3",
+            "20261115-202557/guicedee-native/4",
+            "20261115-202557/guicedee-native/5",
+            "20261115-202557/guicedee-native/6"
           ],
           "launchToReadyMs": {
-            "median": 576.4094000005571,
-            "minimum": 527.6996000029612,
-            "maximum": 594.0224000005401
+            "median": 571.8317500000012,
+            "minimum": 565.2679999998327,
+            "maximum": 582.2957999998835
           },
           "firstBusinessMs": {
-            "median": 77.70439999876544,
-            "minimum": 61.34780000138562,
-            "maximum": 373.5536000021966
+            "median": 79.27344999984598,
+            "minimum": 54.62209999996048,
+            "maximum": 398.61199999995733
           },
           "launchToFirstBusinessMs": {
-            "median": 656.0915500012925,
-            "minimum": 613.8511999961338,
-            "maximum": 950.2900000006775
+            "median": 654.6762000000399,
+            "minimum": 619.9286999999458,
+            "maximum": 980.1823000002514
           },
           "firstOpenApiJsonMs": {
-            "median": 3.516149998176843,
-            "minimum": 3.1127999973250553,
-            "maximum": 16.207000000576954
+            "median": 3.154799999720126,
+            "minimum": 3.0322000002342975,
+            "maximum": 16.52409999996962
           },
           "warm": {
-            "p50Ms": 5.210100001932005,
-            "p95Ms": 27.39744999780669,
-            "p99Ms": 29.93445000174688
+            "p50Ms": 4.931950000013785,
+            "p95Ms": 28.025699999943754,
+            "p99Ms": 30.253349999838974
           },
           "peakMiB": {
-            "median": 68.474609375,
-            "minimum": 67.91015625,
-            "maximum": 69.37890625
+            "median": 68.56640625,
+            "minimum": 68.05859375,
+            "maximum": 68.93359375
           },
           "endMiB": {
-            "median": 65.056640625,
-            "minimum": 64.4765625,
-            "maximum": 66.26953125
+            "median": 64.9765625,
+            "minimum": 64.75390625,
+            "maximum": 65.19921875
           },
           "executableMiB": 142.3506851196289
         },
         "quarkus-standard-native": {
           "label": "Quarkus upstream SDKs / native",
-          "starts": 14,
-          "capabilityChecks": 210,
-          "measuredRequests": 420,
+          "starts": 6,
+          "capabilityChecks": 90,
+          "measuredRequests": 180,
           "image": "sha256:32153f649fea73fc6143645f48a1c3969851a318903d308a32a7b3876869ec69",
           "imageMiB": 353.04186820983887,
           "rowSources": [
-            "20261115-124931/quarkus-standard-native/1",
-            "20261115-124931/quarkus-standard-native/2",
-            "20261115-124931/quarkus-standard-native/3",
-            "20261115-124931/quarkus-standard-native/4",
-            "20261115-124931/quarkus-standard-native/5",
-            "20261115-124931/quarkus-standard-native/6",
-            "20261115-124931/quarkus-standard-native/7",
-            "20261115-125007/quarkus-standard-native/1",
-            "20261115-125007/quarkus-standard-native/2",
-            "20261115-125007/quarkus-standard-native/3",
-            "20261115-125007/quarkus-standard-native/4",
-            "20261115-125007/quarkus-standard-native/5",
-            "20261115-125007/quarkus-standard-native/6",
-            "20261115-125007/quarkus-standard-native/7"
+            "20261115-202557/quarkus-standard-native/1",
+            "20261115-202557/quarkus-standard-native/2",
+            "20261115-202557/quarkus-standard-native/3",
+            "20261115-202557/quarkus-standard-native/4",
+            "20261115-202557/quarkus-standard-native/5",
+            "20261115-202557/quarkus-standard-native/6"
           ],
           "launchToReadyMs": {
-            "median": 572.935399999551,
-            "minimum": 566.2689000018872,
-            "maximum": 585.9233000010136
+            "median": 578.5277499999211,
+            "minimum": 565.0876999998218,
+            "maximum": 586.8568000000778
           },
           "firstBusinessMs": {
-            "median": 105.04070000024512,
-            "minimum": 79.79109999723732,
-            "maximum": 425.86429999937536
+            "median": 101.72090000037315,
+            "minimum": 91.11910000001444,
+            "maximum": 151.03969999972833
           },
           "launchToFirstBusinessMs": {
-            "median": 677.7094999997644,
-            "minimum": 658.4452000024612,
-            "maximum": 1004.5715999949607
+            "median": 681.3458999997692,
+            "minimum": 661.4807999999357,
+            "maximum": 725.1806999997825
           },
           "firstOpenApiJsonMs": {
-            "median": 2.3884499969426543,
-            "minimum": 1.9523000009940006,
-            "maximum": 24.636000001919456
+            "median": 1.9806999998763786,
+            "minimum": 1.8991000001733482,
+            "maximum": 25.012099999912607
           },
           "warm": {
-            "p50Ms": 5.111674998261151,
-            "p95Ms": 26.01765000144951,
-            "p99Ms": 28.220449999935227
+            "p50Ms": 5.192599999986669,
+            "p95Ms": 28.269249999993917,
+            "p99Ms": 33.65235000001121
           },
           "peakMiB": {
-            "median": 55.298828125,
-            "minimum": 54.40625,
-            "maximum": 55.87109375
+            "median": 55.302734375,
+            "minimum": 55.07421875,
+            "maximum": 55.6171875
           },
           "endMiB": {
-            "median": 52.00390625,
-            "minimum": 50.8203125,
-            "maximum": 52.78125
+            "median": 52.1015625,
+            "minimum": 51.78515625,
+            "maximum": 52.14453125
           },
           "executableMiB": 143.3077163696289
+        },
+        "micronaut-native": {
+          "label": "Micronaut upstream SDKs / native",
+          "starts": 6,
+          "capabilityChecks": 90,
+          "measuredRequests": 180,
+          "image": "sha256:a673984bc13a981cbe809c9c6ec8e4f98e2b721d3e04ac5dc411ba3c63cab8f6",
+          "imageMiB": 437.83184719085693,
+          "rowSources": [
+            "20261115-202557/micronaut-native/1",
+            "20261115-202557/micronaut-native/2",
+            "20261115-202557/micronaut-native/3",
+            "20261115-202557/micronaut-native/4",
+            "20261115-202557/micronaut-native/5",
+            "20261115-202557/micronaut-native/6"
+          ],
+          "launchToReadyMs": {
+            "median": 573.2782500001576,
+            "minimum": 567.5200999999106,
+            "maximum": 577.8331000001344
+          },
+          "firstBusinessMs": {
+            "median": 54.48230000001786,
+            "minimum": 39.514300000064395,
+            "maximum": 94.6193999998286
+          },
+          "launchToFirstBusinessMs": {
+            "median": 626.8338999998377,
+            "minimum": 607.0731999998316,
+            "maximum": 664.9092000002383
+          },
+          "firstOpenApiJsonMs": {
+            "median": 2.5336999999581167,
+            "minimum": 2.2779999999329448,
+            "maximum": 2.684499999759282
+          },
+          "warm": {
+            "p50Ms": 5.247474999919177,
+            "p95Ms": 27.597799999739436,
+            "p99Ms": 30.858550000175455
+          },
+          "peakMiB": {
+            "median": 85.2578125,
+            "minimum": 84.40625,
+            "maximum": 85.76953125
+          },
+          "endMiB": {
+            "median": 81.861328125,
+            "minimum": 81.33984375,
+            "maximum": 82.11328125
+          },
+          "executableMiB": 205.9405288696289
         }
       }
     },
     "jvm-default": {
       "batches": [
-        "20261115-135709"
+        "20261115-200219"
       ],
-      "batchStarts": 15,
-      "batchCapabilityChecks": 225,
-      "batchMeasuredRequests": 450,
-      "warmupsPerStart": 10,
-      "requestsPerStart": 30,
+      "batchStarts": 18,
+      "batchCapabilityChecks": 270,
+      "batchMeasuredRequests": 1800,
+      "warmupsPerStart": 20,
+      "requestsPerStart": 100,
       "variants": {
         "guicedee": {
           "label": "GuicedEE SPI / full JDK",
           "starts": 3,
           "capabilityChecks": 45,
-          "measuredRequests": 90,
+          "measuredRequests": 300,
           "image": "sha256:81dc069a9833e36a6767e252c9b8a7a3ba611f179b203bf73a833a650a3bdbbd",
           "imageMiB": 1027.2760400772095,
           "rowSources": [
-            "20261115-135709/guicedee/1",
-            "20261115-135709/guicedee/2",
-            "20261115-135709/guicedee/3"
+            "20261115-200219/guicedee/1",
+            "20261115-200219/guicedee/2",
+            "20261115-200219/guicedee/3"
           ],
           "launchToReadyMs": {
-            "median": 10153.399700000591,
-            "minimum": 10075.548599998001,
-            "maximum": 10220.320299995365
+            "median": 9977.337399999897,
+            "minimum": 9941.965699999855,
+            "maximum": 11358.68270000003
           },
           "firstBusinessMs": {
-            "median": 12707.354500002111,
-            "minimum": 11705.295700005081,
-            "maximum": 13815.052300000389
+            "median": 12389.78239999983,
+            "minimum": 12288.769600000023,
+            "maximum": 12418.096699999978
           },
           "launchToFirstBusinessMs": {
-            "median": 22927.716999998665,
-            "minimum": 21780.88690000004,
-            "maximum": 23968.562299996847
+            "median": 22367.160600000032,
+            "minimum": 22230.774699999984,
+            "maximum": 23776.847400000064
           },
           "firstOpenApiJsonMs": {
-            "median": 99.93050000048243,
-            "minimum": 93.38890000071842,
-            "maximum": 185.32179999601794
+            "median": 186.1870000000181,
+            "minimum": 93.38079999997717,
+            "maximum": 189.3723000000591
           },
           "warm": {
-            "p50Ms": 91.54645000307937,
-            "p95Ms": 98.24539999681292,
-            "p99Ms": 99.56080000119982
+            "p50Ms": 76.73779999998942,
+            "p95Ms": 97.30390000004263,
+            "p99Ms": 99.6256999999332
           },
           "peakMiB": {
-            "median": 292.9765625,
-            "minimum": 286.30078125,
-            "maximum": 296.30078125
+            "median": 313.46484375,
+            "minimum": 304.609375,
+            "maximum": 368.54296875
           },
           "endMiB": {
-            "median": 289.58984375,
-            "minimum": 282.86328125,
-            "maximum": 292.75390625
+            "median": 310.08203125,
+            "minimum": 301.484375,
+            "maximum": 365.0234375
           },
           "executableMiB": null
         },
@@ -199,48 +234,48 @@
           "label": "GuicedEE scanner / full JDK",
           "starts": 3,
           "capabilityChecks": 45,
-          "measuredRequests": 90,
+          "measuredRequests": 300,
           "image": "sha256:b08deee9eafc7e07bb6b5d388f1c873c02ae583be7830cfc4cb4ae069672f008",
           "imageMiB": 1027.2718000411987,
           "rowSources": [
-            "20261115-135709/guicedee-scan/1",
-            "20261115-135709/guicedee-scan/2",
-            "20261115-135709/guicedee-scan/3"
+            "20261115-200219/guicedee-scan/1",
+            "20261115-200219/guicedee-scan/2",
+            "20261115-200219/guicedee-scan/3"
           ],
           "launchToReadyMs": {
-            "median": 10696.372400001565,
-            "minimum": 10453.037499995844,
-            "maximum": 11064.420099995914
+            "median": 10773.766499999965,
+            "minimum": 10245.722800000067,
+            "maximum": 11640.803600000027
           },
           "firstBusinessMs": {
-            "median": 13009.859500001767,
-            "minimum": 12405.739499998163,
-            "maximum": 14900.751400004083
+            "median": 12896.846399999959,
+            "minimum": 12606.818499999918,
+            "maximum": 13088.579499999923
           },
           "launchToFirstBusinessMs": {
-            "median": 23706.27439999953,
-            "minimum": 22858.820099994773,
-            "maximum": 25965.23619999789
+            "median": 23862.427199999955,
+            "minimum": 22852.587999999967,
+            "maximum": 24537.693399999967
           },
           "firstOpenApiJsonMs": {
-            "median": 187.2557999959099,
-            "minimum": 93.37159999995492,
-            "maximum": 196.452500000305
+            "median": 104.09970000000612,
+            "minimum": 97.73749999999382,
+            "maximum": 104.45870000012292
           },
           "warm": {
-            "p50Ms": 93.71425000063027,
-            "p95Ms": 101.71619999891846,
-            "p99Ms": 102.54559999884805
+            "p50Ms": 82.86665000002813,
+            "p95Ms": 100.16479999990224,
+            "p99Ms": 109.48529999996026
           },
           "peakMiB": {
-            "median": 301.046875,
-            "minimum": 297.23828125,
-            "maximum": 305.1015625
+            "median": 309.3046875,
+            "minimum": 300.9921875,
+            "maximum": 379.3125
           },
           "endMiB": {
-            "median": 297.53125,
-            "minimum": 293.79296875,
-            "maximum": 302.0546875
+            "median": 305.5859375,
+            "minimum": 297.39453125,
+            "maximum": 375.6484375
           },
           "executableMiB": null
         },
@@ -248,48 +283,97 @@
           "label": "Quarkus upstream SDKs / fast-JAR",
           "starts": 3,
           "capabilityChecks": 45,
-          "measuredRequests": 90,
+          "measuredRequests": 300,
           "image": "sha256:ff1c796950c84a86c8bc4f833fb17794bf4d4343ab52b98b51ffc0df436d45a8",
           "imageMiB": 976.7744750976562,
           "rowSources": [
-            "20261115-135709/quarkus-standard/1",
-            "20261115-135709/quarkus-standard/2",
-            "20261115-135709/quarkus-standard/3"
+            "20261115-200219/quarkus-standard/1",
+            "20261115-200219/quarkus-standard/2",
+            "20261115-200219/quarkus-standard/3"
           ],
           "launchToReadyMs": {
-            "median": 6859.52950000501,
-            "minimum": 6698.220599995693,
-            "maximum": 6945.678800002497
+            "median": 6318.545699999959,
+            "minimum": 6275.483600000143,
+            "maximum": 6686.986599999955
           },
           "firstBusinessMs": {
-            "median": 16688.64829999802,
-            "minimum": 15609.13040000014,
-            "maximum": 17695.36550000339
+            "median": 16700.566500000037,
+            "minimum": 15684.824200000094,
+            "maximum": 17001.41880000001
           },
           "launchToFirstBusinessMs": {
-            "median": 23386.949699997786,
-            "minimum": 22468.703400001687,
-            "maximum": 24641.0853999987
+            "median": 23320.003499999984,
+            "minimum": 21960.350199999993,
+            "maximum": 23387.594899999953
           },
           "firstOpenApiJsonMs": {
-            "median": 499.8736999987159,
-            "minimum": 406.82899999956135,
-            "maximum": 499.9937000029604
+            "median": 492.99969999992754,
+            "minimum": 406.30929999997534,
+            "maximum": 497.5078999999596
           },
           "warm": {
-            "p50Ms": 90.57590000156779,
-            "p95Ms": 98.38029999809805,
-            "p99Ms": 98.56020000006538
+            "p50Ms": 38.3318499999632,
+            "p95Ms": 95.37999999997737,
+            "p99Ms": 99.60300000000188
           },
           "peakMiB": {
-            "median": 279.12109375,
-            "minimum": 276.6953125,
-            "maximum": 353.4375
+            "median": 277.99609375,
+            "minimum": 275.73046875,
+            "maximum": 352.38671875
           },
           "endMiB": {
-            "median": 275.8984375,
-            "minimum": 273.34765625,
-            "maximum": 349.22265625
+            "median": 272.0078125,
+            "minimum": 271.0703125,
+            "maximum": 349.0859375
+          },
+          "executableMiB": null
+        },
+        "micronaut": {
+          "label": "Micronaut upstream SDKs / JVM",
+          "starts": 3,
+          "capabilityChecks": 45,
+          "measuredRequests": 300,
+          "image": "sha256:6418eba79491522196e280c0e9858fa23bea89e0842a7800689c7586463b81f7",
+          "imageMiB": 964.4083395004272,
+          "rowSources": [
+            "20261115-200219/micronaut/1",
+            "20261115-200219/micronaut/2",
+            "20261115-200219/micronaut/3"
+          ],
+          "launchToReadyMs": {
+            "median": 8872.336399999995,
+            "minimum": 8187.513200000012,
+            "maximum": 8941.68060000004
+          },
+          "firstBusinessMs": {
+            "median": 17901.20430000002,
+            "minimum": 17700.609499999926,
+            "maximum": 17995.969299999957
+          },
+          "launchToFirstBusinessMs": {
+            "median": 26572.987099999864,
+            "minimum": 26088.805999999975,
+            "maximum": 26937.704300000063
+          },
+          "firstOpenApiJsonMs": {
+            "median": 191.8771000000561,
+            "minimum": 99.88379999992958,
+            "maximum": 198.784200000091
+          },
+          "warm": {
+            "p50Ms": 75.39464999996426,
+            "p95Ms": 100.43069999994714,
+            "p99Ms": 192.72460000001956
+          },
+          "peakMiB": {
+            "median": 305.62109375,
+            "minimum": 299.8984375,
+            "maximum": 369.2890625
+          },
+          "endMiB": {
+            "median": 302.39453125,
+            "minimum": 296.4609375,
+            "maximum": 363.44921875
           },
           "executableMiB": null
         },
@@ -297,48 +381,48 @@
           "label": "GuicedEE SPI / application jlink",
           "starts": 3,
           "capabilityChecks": 45,
-          "measuredRequests": 90,
+          "measuredRequests": 300,
           "image": "sha256:328a1e99248b71d99fb4769f9bd477bc9171a09a01d7e7b6c44caa2fd4e0ce6a",
           "imageMiB": 498.15668869018555,
           "rowSources": [
-            "20261115-135709/guicedee-jlink/1",
-            "20261115-135709/guicedee-jlink/2",
-            "20261115-135709/guicedee-jlink/3"
+            "20261115-200219/guicedee-jlink/1",
+            "20261115-200219/guicedee-jlink/2",
+            "20261115-200219/guicedee-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 8000.410200002079,
-            "minimum": 7895.802999999432,
-            "maximum": 8173.020700000052
+            "median": 8102.27789999999,
+            "minimum": 7723.256800000058,
+            "maximum": 8170.61990000002
           },
           "firstBusinessMs": {
-            "median": 4893.746300003841,
-            "minimum": 4793.29449999932,
-            "maximum": 5194.61869999941
+            "median": 4902.447299999949,
+            "minimum": 4303.677999999991,
+            "maximum": 4994.7859000001245
           },
           "launchToFirstBusinessMs": {
-            "median": 12966.35889999743,
-            "minimum": 12789.595599999302,
-            "maximum": 13195.079800003441
+            "median": 13004.765000000021,
+            "minimum": 12026.975700000094,
+            "maximum": 13165.449600000102
           },
           "firstOpenApiJsonMs": {
-            "median": 97.37150000000838,
-            "minimum": 95.8463999995729,
-            "maximum": 100.72539999964647
+            "median": 101.88640000001215,
+            "minimum": 101.86939999994138,
+            "maximum": 166.9629000000441
           },
           "warm": {
-            "p50Ms": 91.14150000095833,
-            "p95Ms": 99.7471999944537,
-            "p99Ms": 100.02269999677083
+            "p50Ms": 76.32134999994378,
+            "p95Ms": 98.02509999985887,
+            "p99Ms": 99.58529999994425
           },
           "peakMiB": {
-            "median": 234.09765625,
-            "minimum": 217.48046875,
-            "maximum": 240.1171875
+            "median": 231.15625,
+            "minimum": 225.2265625,
+            "maximum": 243.546875
           },
           "endMiB": {
-            "median": 230.7421875,
-            "minimum": 214.015625,
-            "maximum": 236.52734375
+            "median": 227.18359375,
+            "minimum": 221.74609375,
+            "maximum": 240.2265625
           },
           "executableMiB": null
         },
@@ -346,48 +430,48 @@
           "label": "GuicedEE scanner / application jlink",
           "starts": 3,
           "capabilityChecks": 45,
-          "measuredRequests": 90,
+          "measuredRequests": 300,
           "image": "sha256:c394e88f41189cf0a60fa87df2bd83b41a88ced213c798401834357e208f557a",
           "imageMiB": 498.1562662124634,
           "rowSources": [
-            "20261115-135709/guicedee-scan-jlink/1",
-            "20261115-135709/guicedee-scan-jlink/2",
-            "20261115-135709/guicedee-scan-jlink/3"
+            "20261115-200219/guicedee-scan-jlink/1",
+            "20261115-200219/guicedee-scan-jlink/2",
+            "20261115-200219/guicedee-scan-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 8556.426800001645,
-            "minimum": 8453.90220000263,
-            "maximum": 9072.35380000202
+            "median": 8221.802700000011,
+            "minimum": 8201.589799999965,
+            "maximum": 8582.705199999964
           },
           "firstBusinessMs": {
-            "median": 4698.86039999983,
-            "minimum": 4595.9576000022935,
-            "maximum": 4999.382199996035
+            "median": 4697.175500000071,
+            "minimum": 4605.602499999918,
+            "maximum": 4993.013400000109
           },
           "launchToFirstBusinessMs": {
-            "median": 13555.8486000009,
-            "minimum": 13152.833100000862,
-            "maximum": 13668.352599997888
+            "median": 13194.64599999992,
+            "minimum": 12827.445600000032,
+            "maximum": 13279.9250999999
           },
           "firstOpenApiJsonMs": {
-            "median": 101.58740000042599,
-            "minimum": 100.1782999956049,
-            "maximum": 102.12510000565089
+            "median": 97.52709999997933,
+            "minimum": 96.07200000004923,
+            "maximum": 184.54019999990123
           },
           "warm": {
-            "p50Ms": 91.29385000051116,
-            "p95Ms": 98.63999999652151,
-            "p99Ms": 98.87780000281055
+            "p50Ms": 74.41644999994423,
+            "p95Ms": 98.52079999996022,
+            "p99Ms": 101.75679999997556
           },
           "peakMiB": {
-            "median": 225.54296875,
-            "minimum": 225.40625,
-            "maximum": 229.16015625
+            "median": 229.0859375,
+            "minimum": 227.23828125,
+            "maximum": 231.46484375
           },
           "endMiB": {
-            "median": 221.90234375,
-            "minimum": 221.8125,
-            "maximum": 222.72265625
+            "median": 224.74609375,
+            "minimum": 223.4609375,
+            "maximum": 228.13671875
           },
           "executableMiB": null
         }
@@ -395,60 +479,60 @@
     },
     "jvm-c1": {
       "batches": [
-        "20261115-140354"
+        "20261115-201129"
       ],
-      "batchStarts": 15,
-      "batchCapabilityChecks": 225,
-      "batchMeasuredRequests": 450,
-      "warmupsPerStart": 10,
-      "requestsPerStart": 30,
+      "batchStarts": 18,
+      "batchCapabilityChecks": 270,
+      "batchMeasuredRequests": 1800,
+      "warmupsPerStart": 20,
+      "requestsPerStart": 100,
       "variants": {
         "guicedee": {
           "label": "GuicedEE SPI / full JDK",
           "starts": 3,
           "capabilityChecks": 45,
-          "measuredRequests": 90,
+          "measuredRequests": 300,
           "image": "sha256:81dc069a9833e36a6767e252c9b8a7a3ba611f179b203bf73a833a650a3bdbbd",
           "imageMiB": 1027.2760400772095,
           "rowSources": [
-            "20261115-140354/guicedee/1",
-            "20261115-140354/guicedee/2",
-            "20261115-140354/guicedee/3"
+            "20261115-201129/guicedee/1",
+            "20261115-201129/guicedee/2",
+            "20261115-201129/guicedee/3"
           ],
           "launchToReadyMs": {
-            "median": 6208.010299997113,
-            "minimum": 6066.359399999783,
-            "maximum": 6237.525399999868
+            "median": 6147.906499999863,
+            "minimum": 6102.8237000000445,
+            "maximum": 6183.5887000002
           },
           "firstBusinessMs": {
-            "median": 7115.839400001278,
-            "minimum": 7099.273699997866,
-            "maximum": 7206.2854999967385
+            "median": 7106.863700000076,
+            "minimum": 6903.139600000031,
+            "maximum": 7212.0991000001595
           },
           "launchToFirstBusinessMs": {
-            "median": 13353.407200003858,
-            "minimum": 13165.6742999985,
-            "maximum": 13414.346600002318
+            "median": 13290.494800000033,
+            "minimum": 13051.086599999962,
+            "maximum": 13314.971900000046
           },
           "firstOpenApiJsonMs": {
-            "median": 74.06210000044666,
-            "minimum": 11.435699998401105,
-            "maximum": 99.54899999866029
+            "median": 41.37439999999515,
+            "minimum": 12.080299999979616,
+            "maximum": 167.62390000008054
           },
           "warm": {
-            "p50Ms": 41.29919999468257,
-            "p95Ms": 89.13700000266545,
-            "p99Ms": 90.48410000104923
+            "p50Ms": 11.697949999984303,
+            "p95Ms": 89.50240000012855,
+            "p99Ms": 91.31760000013855
           },
           "peakMiB": {
-            "median": 258.953125,
-            "minimum": 258.57421875,
-            "maximum": 259.53125
+            "median": 261.796875,
+            "minimum": 259.953125,
+            "maximum": 262.20703125
           },
           "endMiB": {
-            "median": 255.703125,
-            "minimum": 255.203125,
-            "maximum": 256.1640625
+            "median": 258.37890625,
+            "minimum": 257.01953125,
+            "maximum": 259.18359375
           },
           "executableMiB": null
         },
@@ -456,48 +540,48 @@
           "label": "GuicedEE scanner / full JDK",
           "starts": 3,
           "capabilityChecks": 45,
-          "measuredRequests": 90,
+          "measuredRequests": 300,
           "image": "sha256:b08deee9eafc7e07bb6b5d388f1c873c02ae583be7830cfc4cb4ae069672f008",
           "imageMiB": 1027.2718000411987,
           "rowSources": [
-            "20261115-140354/guicedee-scan/1",
-            "20261115-140354/guicedee-scan/2",
-            "20261115-140354/guicedee-scan/3"
+            "20261115-201129/guicedee-scan/1",
+            "20261115-201129/guicedee-scan/2",
+            "20261115-201129/guicedee-scan/3"
           ],
           "launchToReadyMs": {
-            "median": 6366.5936999968835,
-            "minimum": 6326.53659999778,
-            "maximum": 6369.604299994535
+            "median": 6272.5308999999925,
+            "minimum": 6032.925899999782,
+            "maximum": 6564.322100000027
           },
           "firstBusinessMs": {
-            "median": 7007.774300000165,
-            "minimum": 6993.943699999363,
-            "maximum": 7192.808499996318
+            "median": 7207.282599999871,
+            "minimum": 6890.1058999999805,
+            "maximum": 7287.375699999984
           },
           "launchToFirstBusinessMs": {
-            "median": 13363.588000000163,
-            "minimum": 13334.369600001082,
-            "maximum": 13559.44289999752
+            "median": 13479.864199999838,
+            "minimum": 12923.074599999836,
+            "maximum": 13851.752699999906
           },
           "firstOpenApiJsonMs": {
-            "median": 56.4070000036736,
-            "minimum": 11.397700000088662,
-            "maximum": 91.78569999494357
+            "median": 15.654099999892424,
+            "minimum": 10.254899999836198,
+            "maximum": 93.24699999979202
           },
           "warm": {
-            "p50Ms": 65.39435000013327,
-            "p95Ms": 91.02030000212835,
-            "p99Ms": 91.84330000425689
+            "p50Ms": 10.419200000001183,
+            "p95Ms": 87.12289999994027,
+            "p99Ms": 90.73740000008002
           },
           "peakMiB": {
-            "median": 262.55859375,
-            "minimum": 262.546875,
-            "maximum": 262.5859375
+            "median": 264.515625,
+            "minimum": 263.69140625,
+            "maximum": 264.71484375
           },
           "endMiB": {
-            "median": 259.08984375,
-            "minimum": 258.67578125,
-            "maximum": 259.21875
+            "median": 260.6640625,
+            "minimum": 259.8203125,
+            "maximum": 260.79296875
           },
           "executableMiB": null
         },
@@ -505,48 +589,97 @@
           "label": "Quarkus upstream SDKs / fast-JAR",
           "starts": 3,
           "capabilityChecks": 45,
-          "measuredRequests": 90,
+          "measuredRequests": 300,
           "image": "sha256:ff1c796950c84a86c8bc4f833fb17794bf4d4343ab52b98b51ffc0df436d45a8",
           "imageMiB": 976.7744750976562,
           "rowSources": [
-            "20261115-140354/quarkus-standard/1",
-            "20261115-140354/quarkus-standard/2",
-            "20261115-140354/quarkus-standard/3"
+            "20261115-201129/quarkus-standard/1",
+            "20261115-201129/quarkus-standard/2",
+            "20261115-201129/quarkus-standard/3"
           ],
           "launchToReadyMs": {
-            "median": 4192.1466999992845,
-            "minimum": 4076.913199998671,
-            "maximum": 4269.675499999721
+            "median": 4059.057500000108,
+            "minimum": 3970.6624999998894,
+            "maximum": 4291.794000000209
           },
           "firstBusinessMs": {
-            "median": 10105.082600006426,
-            "minimum": 10041.343099997903,
-            "maximum": 10307.688400003826
+            "median": 10206.55529999999,
+            "minimum": 9810.364899999968,
+            "maximum": 10495.391000000154
           },
           "launchToFirstBusinessMs": {
-            "median": 14311.0749999978,
-            "minimum": 14182.050600000366,
-            "maximum": 14499.892699997872
+            "median": 14177.256399999806,
+            "minimum": 13869.462999999996,
+            "maximum": 14787.225300000046
           },
           "firstOpenApiJsonMs": {
-            "median": 288.89239999989513,
-            "minimum": 278.0140999966534,
-            "maximum": 291.9337999992422
+            "median": 292.612599999984,
+            "minimum": 274.48500000014064,
+            "maximum": 297.48429999995096
           },
           "warm": {
-            "p50Ms": 23.157349998655263,
-            "p95Ms": 89.42039999965345,
-            "p99Ms": 90.76549999736017
+            "p50Ms": 10.21410000009837,
+            "p95Ms": 86.69839999993201,
+            "p99Ms": 90.10339999986172
           },
           "peakMiB": {
-            "median": 241.17578125,
-            "minimum": 240.46875,
-            "maximum": 241.2265625
+            "median": 242.61328125,
+            "minimum": 242.42578125,
+            "maximum": 242.65234375
           },
           "endMiB": {
-            "median": 237.57421875,
-            "minimum": 236.85546875,
-            "maximum": 238.27734375
+            "median": 239.23828125,
+            "minimum": 238.7421875,
+            "maximum": 239.80078125
+          },
+          "executableMiB": null
+        },
+        "micronaut": {
+          "label": "Micronaut upstream SDKs / JVM",
+          "starts": 3,
+          "capabilityChecks": 45,
+          "measuredRequests": 300,
+          "image": "sha256:6418eba79491522196e280c0e9858fa23bea89e0842a7800689c7586463b81f7",
+          "imageMiB": 964.4083395004272,
+          "rowSources": [
+            "20261115-201129/micronaut/1",
+            "20261115-201129/micronaut/2",
+            "20261115-201129/micronaut/3"
+          ],
+          "launchToReadyMs": {
+            "median": 5049.731999999949,
+            "minimum": 4930.044300000191,
+            "maximum": 5100.026200000002
+          },
+          "firstBusinessMs": {
+            "median": 10720.660299999963,
+            "minimum": 10607.97209999987,
+            "maximum": 11015.426799999886
+          },
+          "launchToFirstBusinessMs": {
+            "median": 15657.745900000009,
+            "minimum": 15650.75620000016,
+            "maximum": 16115.49530000002
+          },
+          "firstOpenApiJsonMs": {
+            "median": 89.04710000001614,
+            "minimum": 86.52549999987968,
+            "maximum": 91.5021999999226
+          },
+          "warm": {
+            "p50Ms": 9.303999999929147,
+            "p95Ms": 88.20590000004813,
+            "p99Ms": 90.09160000005068
+          },
+          "peakMiB": {
+            "median": 258.55859375,
+            "minimum": 258.2421875,
+            "maximum": 259.4453125
+          },
+          "endMiB": {
+            "median": 255.3828125,
+            "minimum": 255.09765625,
+            "maximum": 256.0078125
           },
           "executableMiB": null
         },
@@ -554,48 +687,48 @@
           "label": "GuicedEE SPI / application jlink",
           "starts": 3,
           "capabilityChecks": 45,
-          "measuredRequests": 90,
+          "measuredRequests": 300,
           "image": "sha256:328a1e99248b71d99fb4769f9bd477bc9171a09a01d7e7b6c44caa2fd4e0ce6a",
           "imageMiB": 498.15668869018555,
           "rowSources": [
-            "20261115-140354/guicedee-jlink/1",
-            "20261115-140354/guicedee-jlink/2",
-            "20261115-140354/guicedee-jlink/3"
+            "20261115-201129/guicedee-jlink/1",
+            "20261115-201129/guicedee-jlink/2",
+            "20261115-201129/guicedee-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 4971.620199998142,
-            "minimum": 4963.800700003048,
-            "maximum": 5120.693799995934
+            "median": 5517.467300000135,
+            "minimum": 4762.93510000005,
+            "maximum": 5742.545300000074
           },
           "firstBusinessMs": {
-            "median": 2595.559900000808,
-            "minimum": 2499.2800999971223,
-            "maximum": 2597.6249000013922
+            "median": 2658.3760999999413,
+            "minimum": 2500.4433000001427,
+            "maximum": 2782.186700000011
           },
           "launchToFirstBusinessMs": {
-            "median": 7567.22190000437,
-            "minimum": 7463.1537000022945,
-            "maximum": 7718.360299993947
+            "median": 8299.696900000072,
+            "minimum": 7263.418900000033,
+            "maximum": 8400.961999999936
           },
           "firstOpenApiJsonMs": {
-            "median": 11.796300001151394,
-            "minimum": 11.6351000033319,
-            "maximum": 90.55709999665851
+            "median": 85.8878999999888,
+            "minimum": 79.98640000005253,
+            "maximum": 87.5576999999339
           },
           "warm": {
-            "p50Ms": 45.25674999968032,
-            "p95Ms": 92.6264000008814,
-            "p99Ms": 93.27269999630516
+            "p50Ms": 10.422300000186624,
+            "p95Ms": 89.03110000005654,
+            "p99Ms": 91.90499999999702
           },
           "peakMiB": {
-            "median": 186.5234375,
-            "minimum": 186.4296875,
-            "maximum": 186.9375
+            "median": 190.8203125,
+            "minimum": 189.640625,
+            "maximum": 191.58203125
           },
           "endMiB": {
-            "median": 182.99609375,
-            "minimum": 182.5625,
-            "maximum": 183.7578125
+            "median": 187.69921875,
+            "minimum": 186.203125,
+            "maximum": 187.7734375
           },
           "executableMiB": null
         },
@@ -603,48 +736,48 @@
           "label": "GuicedEE scanner / application jlink",
           "starts": 3,
           "capabilityChecks": 45,
-          "measuredRequests": 90,
+          "measuredRequests": 300,
           "image": "sha256:c394e88f41189cf0a60fa87df2bd83b41a88ced213c798401834357e208f557a",
           "imageMiB": 498.1562662124634,
           "rowSources": [
-            "20261115-140354/guicedee-scan-jlink/1",
-            "20261115-140354/guicedee-scan-jlink/2",
-            "20261115-140354/guicedee-scan-jlink/3"
+            "20261115-201129/guicedee-scan-jlink/1",
+            "20261115-201129/guicedee-scan-jlink/2",
+            "20261115-201129/guicedee-scan-jlink/3"
           ],
           "launchToReadyMs": {
-            "median": 5266.120200001751,
-            "minimum": 5265.858099999605,
-            "maximum": 5381.196399997862
+            "median": 5186.226900000065,
+            "minimum": 5003.766500000211,
+            "maximum": 5327.410699999973
           },
           "firstBusinessMs": {
-            "median": 2602.801200002432,
-            "minimum": 2508.1987000012305,
-            "maximum": 2608.2653000048595
+            "median": 2591.0429999998996,
+            "minimum": 2500.181800000064,
+            "maximum": 2600.3123999998934
           },
           "launchToFirstBusinessMs": {
-            "median": 7874.170900002355,
-            "minimum": 7868.967499998689,
-            "maximum": 7889.497399999527
+            "median": 7777.311199999986,
+            "minimum": 7503.988800000116,
+            "maximum": 7927.7649000000565
           },
           "firstOpenApiJsonMs": {
-            "median": 12.239000003319234,
-            "minimum": 11.130200000479817,
-            "maximum": 20.688199998403434
+            "median": 83.13539999994646,
+            "minimum": 10.707800000091083,
+            "maximum": 91.68989999989208
           },
           "warm": {
-            "p50Ms": 31.088150004507042,
-            "p95Ms": 90.16669999982696,
-            "p99Ms": 92.59190000011586
+            "p50Ms": 9.603200000015022,
+            "p95Ms": 89.43619999990915,
+            "p99Ms": 92.57830000001377
           },
           "peakMiB": {
-            "median": 190.9375,
-            "minimum": 188.50390625,
-            "maximum": 191.26171875
+            "median": 194.203125,
+            "minimum": 193.19921875,
+            "maximum": 195.7890625
           },
           "endMiB": {
-            "median": 187.5078125,
-            "minimum": 184.984375,
-            "maximum": 188.234375
+            "median": 190.4375,
+            "minimum": 189.58984375,
+            "maximum": 191.80078125
           },
           "executableMiB": null
         }
@@ -1186,6 +1319,50 @@
         "Pss_Anon": 42.46484375,
         "Pss_File": 86.71484375
       }
+    },
+    "Micronaut upstream JVM": {
+      "batch": "20261115-203340",
+      "variant": "micronaut",
+      "starts": 1,
+      "image": "sha256:6418eba79491522196e280c0e9858fa23bea89e0842a7800689c7586463b81f7",
+      "startup": {},
+      "workload": {
+        "jdk-http-client-initialization": 795.032632,
+        "vendor-client-initialization": 12618.331235,
+        "vendor-rest-including-oauth": 1289.13956,
+        "vendor-graphql": 293.516841,
+        "firestore-client-initialization": 1210.316275,
+        "firestore-write-await": 1366.953537,
+        "firestore-read-await": 14.857857
+      },
+      "processMemoryMiB": {
+        "Rss": 307.0859375,
+        "Pss": 306.42578125,
+        "Pss_Anon": 280.59375,
+        "Pss_File": 25.83203125
+      }
+    },
+    "Micronaut upstream native": {
+      "batch": "20261115-203340",
+      "variant": "micronaut-native",
+      "starts": 1,
+      "image": "sha256:a673984bc13a981cbe809c9c6ec8e4f98e2b721d3e04ac5dc411ba3c63cab8f6",
+      "startup": {},
+      "workload": {
+        "jdk-http-client-initialization": 0.400957,
+        "vendor-client-initialization": 3.226731,
+        "vendor-rest-including-oauth": 10.265656,
+        "vendor-graphql": 2.079206,
+        "firestore-client-initialization": 39.28504,
+        "firestore-write-await": 11.306068,
+        "firestore-read-await": 2.341317
+      },
+      "processMemoryMiB": {
+        "Rss": 188.125,
+        "Pss": 187.39453125,
+        "Pss_Anon": 74.55859375,
+        "Pss_File": 112.8359375
+      }
     }
   },
   "jvmDiscoveryInputs": {
@@ -1449,32 +1626,37 @@
     }
   },
   "hostCondition": {
-    "bootTimeUtc": "2026-11-15T00:45:50.5000000Z",
-    "samples": 6,
+    "bootTimeUtc": "2026-11-15T17:49:08.5Z",
+    "samples": 7,
     "cpuPercent": {
-      "median": 11.965359829294727,
-      "minimum": 5.818010153388331,
-      "maximum": 12.95571899534621
+      "median": 13.0,
+      "minimum": 1.0,
+      "maximum": 39.0
     },
     "availableMemoryMiB": {
-      "median": 26700.0,
-      "minimum": 22765.0,
-      "maximum": 27515.0
+      "median": 23093.31640625,
+      "minimum": 21788.7109375,
+      "maximum": 29654.8671875
     },
     "stages": [
-      "clean-build-preparation-before",
-      "sdk-platform-before"
+      "builds-before",
+      "jvm-c1-before",
+      "jvm-default-before",
+      "micronaut-diagnostics-before",
+      "native-standard-before",
+      "persistence-current-before",
+      "persistence-diagnostics-before"
     ],
     "recoveredBoundaryCpuPercent": {},
-    "coverage": "The six retained one-second snapshots precede the earlier native and clean-build cohorts. The current JVM runtime and diagnostic batches ran sequentially afterwards; no continuous background-load sampler was used for them."
+    "coverage": "Boundary samples before the fresh three-framework runtime, persistence, diagnostic and clean-build sequence after the recorded host reboot; no continuous background-load monitoring. Other retained diagnostic profiles and the extended native workload have their separately recorded batch dates."
   },
   "inputSha256": {
-    "results/latest/measurements.json": "4b9784b4f1247966af0128800914b799e71b2913af4e007d8b51a7f48e6522b5",
+    "results/latest/measurements.json": "f1de2a8a9544efedfb2319dd2df4e8ee6803fd2e5c9e040c26e50f2fa769c071",
     "results/latest/native-profile.json": "582443bc56a2787e5718ebb3e15d56dcc2699f6901ba6826b16cc2cd313dd13b",
-    "results/latest/builds.json": "1dc5579c46850f2f0a470cd5502a3b82f964aca1ed955dd559a10c00cd2bb03b"
+    "results/latest/builds.json": "3709d8958a26989bf4a0071248c4ad3391de048b1e97122365959b0c8a6e8512"
   },
   "builds": {
-    "measuredAt": "2026-11-15T11:03:22.084784+00:00",
+    "measuredAt": "2026-11-15T18:34:24.620449+00:00",
     "runs": 3,
     "protocol": "Warm dependencies; new Maven process; clean outputs; timed invocations offline; tests skipped; sequential rotated order.",
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.34",
@@ -1483,13 +1665,13 @@
     "java": "openjdk version \"25.0.5\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-25.0.5+8 (build 25.0.5+8-LTS)\nOpenJDK 64-Bit Server VM Temurin-25.0.5+8 (build 25.0.5+8-LTS, mixed mode, sharing)\n",
     "guicedeeArtifactVersion": "2.5.1",
     "container": {
-      "image": "sha256:658c579ff9e8b3a654baf86a299ad442db27861c2cf632e692ec14bff0b05030",
-      "operatingSystem": "Docker Desktop",
-      "kernel": "6.6.87.2-microsoft-standard-WSL2",
-      "cpus": 32,
-      "memoryBytes": 33539862528,
       "cpuLimit": null,
-      "memoryLimit": null
+      "operatingSystem": "Docker Desktop",
+      "memoryBytes": 33539866624,
+      "memoryLimit": null,
+      "image": "sha256:9e1d07e4aa2d6d1608eb23b98130fb5f9f301590abe6316c1c9f7ce4adae212d",
+      "cpus": 32,
+      "kernel": "6.6.87.2-microsoft-standard-WSL2"
     },
     "sharedSources": {
       "common/src/main/java/bench/workload/Workload.java": "94e6dc001e54a52f1f69f6880d39710eb0d432174cffd5e0b127f7a6d66fab9e",
@@ -1510,53 +1692,53 @@
     "variants": {
       "guicedee": {
         "compile": {
-          "median": 3.142556519997015,
-          "minimum": 3.1269706189996214,
-          "maximum": 3.321157457001391,
+          "median": 3.517444553000132,
+          "minimum": 3.4693496999998388,
+          "maximum": 3.9054237410000496,
           "samples": 3,
           "baseline": "quarkus-standard",
-          "differencePercent": -14.075859517458866
+          "differencePercent": -12.384262734137351
         },
         "package": {
-          "median": 3.613382607996755,
-          "minimum": 3.540610115000163,
-          "maximum": 3.7905448519959464,
+          "median": 4.097233871999833,
+          "minimum": 3.915044496000064,
+          "maximum": 4.189725716000339,
           "samples": 3,
           "baseline": "quarkus-standard",
-          "differencePercent": -42.55978491099333
+          "differencePercent": -39.704721519537586
         }
       },
       "guicedee-scan": {
         "compile": {
-          "median": 3.0543127689961693,
-          "minimum": 3.0210860740044154,
-          "maximum": 3.2612780929994187,
+          "median": 3.722911505999946,
+          "minimum": 3.3272784890000366,
+          "maximum": 3.8096864780000033,
           "samples": 3,
           "baseline": "quarkus-standard",
-          "differencePercent": -16.48863026937847
+          "differencePercent": -7.26630328954726
         },
         "package": {
-          "median": 3.678736948997539,
-          "minimum": 3.6266870079998625,
-          "maximum": 3.6925208379980177,
+          "median": 3.8845480259997203,
+          "minimum": 3.76343395899994,
+          "maximum": 4.470477734999804,
           "samples": 3,
           "baseline": "quarkus-standard",
-          "differencePercent": -41.520878210170274
+          "differencePercent": -42.834626405140384
         }
       },
       "quarkus-standard": {
         "compile": {
-          "median": 3.6573616009991383,
-          "minimum": 3.5910385030001635,
-          "maximum": 3.812964363998617,
+          "median": 4.01462643900004,
+          "minimum": 3.8710077129999263,
+          "maximum": 4.46697576600036,
           "samples": 3,
           "baseline": "quarkus-standard",
           "differencePercent": 0.0
         },
         "package": {
-          "median": 6.290684326995688,
-          "minimum": 6.185008239001036,
-          "maximum": 6.316454676998546,
+          "median": 6.795281446999979,
+          "minimum": 6.657370422999975,
+          "maximum": 6.891672325999934,
           "samples": 3,
           "baseline": "quarkus-standard",
           "differencePercent": 0.0
@@ -1564,52 +1746,85 @@
       },
       "guicedee-jlink": {
         "package": {
-          "median": 17.68009977899783,
-          "minimum": 17.41920514400408,
-          "maximum": 17.708078821997333,
+          "median": 18.24622751700008,
+          "minimum": 18.139327116000004,
+          "maximum": 19.4553061900001,
           "samples": 3,
           "baseline": "quarkus-standard-native",
-          "differencePercent": -73.35666330954163
+          "differencePercent": -74.26737501375922
         }
       },
       "guicedee-scan-jlink": {
         "package": {
-          "median": 17.342569385000388,
-          "minimum": 17.240374606997648,
-          "maximum": 17.35249384099734,
+          "median": 17.877413955000065,
+          "minimum": 17.413830298999983,
+          "maximum": 18.44327150199979,
           "samples": 3,
           "baseline": "quarkus-standard-native",
-          "differencePercent": -73.86531066125058
+          "differencePercent": -74.78751218030193
         }
       },
       "guicedee-native": {
         "package": {
-          "median": 65.04742507899937,
-          "minimum": 64.96809957900405,
-          "maximum": 80.24446508099936,
+          "median": 67.85807544100044,
+          "minimum": 66.24609463600018,
+          "maximum": 86.94487847899973,
           "samples": 3,
           "nativeCompilerPeakRssGB": {
-            "median": 8.5,
-            "minimum": 8.35,
-            "maximum": 8.59
+            "median": 8.48,
+            "minimum": 8.33,
+            "maximum": 8.53
           },
           "baseline": "quarkus-standard-native",
-          "differencePercent": -1.975641037621878
+          "differencePercent": -4.299866589716183
         }
       },
       "quarkus-standard-native": {
         "package": {
-          "median": 66.35842944299657,
-          "minimum": 66.07256183199934,
-          "maximum": 66.66610347099777,
+          "median": 70.90698102799979,
+          "minimum": 68.84245245300008,
+          "maximum": 85.87814577400013,
           "samples": 3,
           "nativeCompilerPeakRssGB": {
-            "median": 7.97,
-            "minimum": 7.95,
-            "maximum": 8.01
+            "median": 8.07,
+            "minimum": 8.04,
+            "maximum": 8.3
           },
           "baseline": "quarkus-standard-native",
           "differencePercent": 0.0
+        }
+      },
+      "micronaut": {
+        "compile": {
+          "median": 5.684916422000242,
+          "minimum": 5.119923835000009,
+          "maximum": 5.815816701000131,
+          "samples": 3,
+          "baseline": "quarkus-standard",
+          "differencePercent": 41.60511590254552
+        },
+        "package": {
+          "median": 5.85218265200001,
+          "minimum": 5.5883897690000595,
+          "maximum": 6.479035076999935,
+          "samples": 3,
+          "baseline": "quarkus-standard",
+          "differencePercent": -13.87873044487854
+        }
+      },
+      "micronaut-native": {
+        "package": {
+          "median": 92.23726224699976,
+          "minimum": 84.90550196699996,
+          "maximum": 95.62608343200009,
+          "samples": 3,
+          "nativeCompilerPeakRssGB": {
+            "median": 9.65,
+            "minimum": 9.52,
+            "maximum": 10.13
+          },
+          "baseline": "quarkus-standard-native",
+          "differencePercent": 30.08206090536707
         }
       }
     }

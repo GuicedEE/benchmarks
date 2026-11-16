@@ -3,13 +3,13 @@
   "files": [
     {
       "path": "measurements.json",
-      "bytes": 1013220,
-      "sha256": "4b9784b4f1247966af0128800914b799e71b2913af4e007d8b51a7f48e6522b5"
+      "bytes": 1139368,
+      "sha256": "f1de2a8a9544efedfb2319dd2df4e8ee6803fd2e5c9e040c26e50f2fa769c071"
     },
     {
       "path": "builds.json",
-      "bytes": 162421,
-      "sha256": "1dc5579c46850f2f0a470cd5502a3b82f964aca1ed955dd559a10c00cd2bb03b"
+      "bytes": 218003,
+      "sha256": "3709d8958a26989bf4a0071248c4ad3391de048b1e97122365959b0c8a6e8512"
     },
     {
       "path": "native-profile.json",
@@ -18,8 +18,8 @@
     },
     {
       "path": "persistence.json",
-      "bytes": 129261,
-      "sha256": "78fec5b183bbe3d355efa3dcc403faed83e44aa89286f85c3e931c068f8c4a4e"
+      "bytes": 320463,
+      "sha256": "3f591c5ea65a5e649e437d40da9ecffed55c4b3eaec5fdca48298087d9ca2949"
     }
   ]
 }

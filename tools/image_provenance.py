@@ -19,7 +19,7 @@ def capture():
             sources.append({'path': relative.as_posix(), 'sha256': hashlib.sha256(data).hexdigest(),
                             'content': data.decode('utf-8')})
     jars = []
-    for directory in [ROOT/'guicedee/target', ROOT/'guicedee-scan/target', ROOT/'quarkus/target/quarkus-app', ROOT/'quarkus-native/target/quarkus-app']:
+    for directory in [ROOT/'guicedee-cdi-spi/target', ROOT/'guicedee-cdi-native/target', ROOT/'guicedee-cdi/target', ROOT/'guicedee/target', ROOT/'guicedee-scan/target', ROOT/'quarkus/target/quarkus-app', ROOT/'quarkus-native/target/quarkus-app']:
         for path in directory.rglob('*.jar'):
             jars.append({'path': path.relative_to(ROOT).as_posix(),
                          'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})

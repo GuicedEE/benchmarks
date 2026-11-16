@@ -11,6 +11,9 @@
         <module>quarkus-standard</module>
     </modules>
     <profiles>
+        <profile><id>cdi-jlink</id><modules><module>guicedee-cdi-jlink</module><module>guicedee-cdi-spi-jlink</module></modules></profile>
+        <profile><id>cdi-native</id><modules><module>guicedee-cdi-native</module></modules></profile>
+        <profile><id>cdi-config</id><modules><module>guicedee-cdi</module><module>guicedee-cdi-spi</module></modules></profile>
         <profile><id>persistence</id><modules><module>persistence/model</module><module>persistence/guicedee</module><module>persistence/quarkus</module></modules></profile>
         <profile><id>jlink</id><modules><module>guicedee-jlink</module><module>guicedee-scan-jlink</module></modules></profile>
         <profile><id>native-app</id><modules><module>guicedee-native</module></modules></profile>
@@ -34,6 +37,25 @@
     </dependencyManagement>
     <build>
         <plugins>
+            <plugin>
+                <groupId>dev.openjavaformat</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <version>2.27.0.2</version>
+                <executions>
+                    <execution>
+                        <id>format-java</id>
+                        <phase>process-sources</phase>
+                        <goals><goal>format</goal></goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>dev.openjavaformat</groupId>
+                        <artifactId>open-java-format</artifactId>
+                        <version>21.0.2</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>

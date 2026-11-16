@@ -36,6 +36,20 @@ COPY guicedee-scan/target/lib/ lib/
 ENV GUICEDEE_DISCOVERY_MODE=scan
 CMD ["--module-path", "/app/app.jar:/app/lib", "-m", "bench.guicedee.scan/bench.guicedee.Main"]
 
+FROM base AS guicedee-cdi
+COPY guicedee-cdi/.env .env
+COPY guicedee-cdi/target/comparison-guicedee-cdi-1.0-SNAPSHOT.jar app.jar
+COPY guicedee-cdi/target/lib/ lib/
+ENV GUICEDEE_DISCOVERY_MODE=scan
+CMD ["--module-path", "/app/app.jar:/app/lib", "-m", "bench.guicedee.cdi/bench.guicedee.Main"]
+
+FROM base AS guicedee-cdi-spi
+COPY guicedee-cdi-spi/.env .env
+COPY guicedee-cdi-spi/target/comparison-guicedee-cdi-spi-1.0-SNAPSHOT.jar app.jar
+COPY guicedee-cdi-spi/target/lib/ lib/
+ENV GUICEDEE_DISCOVERY_MODE=spi
+CMD ["--module-path", "/app/app.jar:/app/lib", "-m", "bench.guicedee.cdi.spi/bench.guicedee.Main"]
+
 FROM stock-runtime AS maven-build-base
 ARG GUICEDEE_VERSION=2.6.0
 RUN microdnf install -y binutils && microdnf clean all
@@ -85,7 +99,7 @@ COPY --from=native-build /src/quarkus-native/target/*-runner /app/application
 COPY --from=native-build /native-build-info.txt /app/native-build-info.txt
 ENTRYPOINT ["/app/application"]
 
-FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-25@sha256:c0ff31764f70469795db5513d674e4721fd8e7e761beddbff741ef5d84e79ed3 AS guicedee-native-build
+FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-25@sha256:c0ff31764f70469795db5513d674e4721fd8e7e761beddbff741ef5d84e79ed3 AS guicedee-native-source
 ARG GUICEDEE_VERSION=2.6.0
 USER root
 COPY --from=maven-build-base /opt/apache-maven-4.0.0-rc-7 /opt/maven
@@ -102,6 +116,7 @@ ARG NATIVE_AUDIT=false
 ARG NATIVE_DESKTOP=false
 ARG NATIVE_CLOUD_CONTROL_PLANE=false
 ARG NATIVE_FULL_REFLECTION=false
+FROM guicedee-native-source AS guicedee-native-build
 RUN NATIVE_AUDIT=$NATIVE_AUDIT NATIVE_DESKTOP=$NATIVE_DESKTOP NATIVE_CLOUD_CONTROL_PLANE=$NATIVE_CLOUD_CONTROL_PLANE NATIVE_FULL_REFLECTION=$NATIVE_FULL_REFLECTION /opt/maven/bin/mvn -B -ntp -pl guicedee-native -am package -Pnative,native-app -Dguicedee.version=$GUICEDEE_VERSION -DskipTests
 
 FROM common-os AS guicedee-native
@@ -153,6 +168,38 @@ COPY --from=quarkus-standard-native-build /native-build-info.txt /app/native-bui
 COPY --from=quarkus-standard-native-build /src/quarkus-standard/target/build-provenance.json /app/build-provenance.json
 ENTRYPOINT ["/app/application"]
 
+# Independent Micronaut build using its upstream platform and unwrapped SDKs.
+FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-25@sha256:c0ff31764f70469795db5513d674e4721fd8e7e761beddbff741ef5d84e79ed3 AS micronaut-source
+USER root
+COPY --from=quarkus-standard-source /opt/apache-maven-4.0.0-rc-7 /opt/maven
+ENV PATH=/opt/maven/bin:$PATH
+WORKDIR /src/micronaut
+COPY common/src/main/java/bench/ /src/common/src/main/java/bench/
+COPY micronaut/pom.xml micronaut/BuildProvenance.java /src/micronaut/
+COPY micronaut/src/ /src/micronaut/src/
+
+FROM micronaut-source AS micronaut-jvm-build
+RUN --mount=type=cache,id=micronaut-m2,target=/root/.m2 \
+    mvn -B -ntp package dependency:build-classpath -Dmdep.outputFile=target/classpath.txt -DskipTests && java BuildProvenance.java
+
+FROM base AS micronaut
+COPY --from=micronaut-jvm-build /src/micronaut/target/comparison-micronaut-1.0-SNAPSHOT.jar /app/app.jar
+COPY --from=micronaut-jvm-build /src/micronaut/target/lib/ /app/lib/
+COPY --from=micronaut-jvm-build /src/micronaut/target/build-provenance.json /app/build-provenance.json
+CMD ["-cp", "/app/app.jar:/app/lib/*", "bench.micronaut.Application"]
+
+FROM micronaut-source AS micronaut-native-build
+RUN --mount=type=cache,id=micronaut-m2,target=/root/.m2 \
+    native-image --version > /native-build-info.txt && \
+    mvn -B -ntp package dependency:build-classpath -Pnative -Dmdep.outputFile=target/classpath.txt -DskipTests && \
+    java BuildProvenance.java && sha256sum target/application >> /native-build-info.txt
+
+FROM common-os AS micronaut-native
+COPY --from=micronaut-native-build /src/micronaut/target/application /app/application
+COPY --from=micronaut-native-build /native-build-info.txt /app/native-build-info.txt
+COPY --from=micronaut-native-build /src/micronaut/target/build-provenance.json /app/build-provenance.json
+ENTRYPOINT ["/app/application"]
+
 # Same compiler, Maven, machine and cache policy for all measured build modes.
 # No build output is reused: compare_builds.py runs clean and offline for every sample.
 FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-25@sha256:c0ff31764f70469795db5513d674e4721fd8e7e761beddbff741ef5d84e79ed3 AS build-benchmark
@@ -168,3 +215,48 @@ COPY guicedee-native/src/ guicedee-native/src/
 COPY guicedee-native/build-native.sh guicedee-native/NativeModuleAccess.java guicedee-native/native-resources.txt guicedee-native/native-excluded-providers.txt guicedee-native/
 COPY guicedee-native/native-trace-inputs.json guicedee-native/native-trace-inputs.json
 COPY tools/compare_builds.py tools/compare_builds.py
+COPY guicedee-cdi/ guicedee-cdi/
+COPY guicedee-cdi-spi/ guicedee-cdi-spi/
+COPY guicedee-cdi-jlink/ guicedee-cdi-jlink/
+COPY guicedee-cdi-spi-jlink/ guicedee-cdi-spi-jlink/
+COPY guicedee-cdi-native/ guicedee-cdi-native/
+COPY micronaut/pom.xml micronaut/BuildProvenance.java micronaut/
+COPY micronaut/src/ micronaut/src/
+
+FROM maven-build-base AS cdi-application-build
+COPY guicedee-cdi/pom.xml guicedee-cdi/pom.xml
+COPY guicedee-cdi/src/ guicedee-cdi/src/
+COPY guicedee-cdi-spi/pom.xml guicedee-cdi-spi/pom.xml
+COPY guicedee-cdi-spi/src/ guicedee-cdi-spi/src/
+COPY guicedee-cdi-jlink/pom.xml guicedee-cdi-jlink/pom.xml
+COPY guicedee-cdi-spi-jlink/pom.xml guicedee-cdi-spi-jlink/pom.xml
+RUN mvn -B -ntp -pl guicedee-cdi-jlink,guicedee-cdi-spi-jlink -am package -Pcdi-config,cdi-jlink -Dguicedee.version=$GUICEDEE_VERSION -DskipTests
+
+FROM common-os AS guicedee-cdi-jlink
+COPY --from=cdi-application-build /src/guicedee-cdi-jlink/target/maven-jlink/default /opt/java/openjdk
+COPY guicedee-cdi/.env .env
+ENV GUICEDEE_DISCOVERY_MODE=scan
+ENTRYPOINT ["/opt/java/openjdk/bin/benchmark"]
+
+FROM common-os AS guicedee-cdi-spi-jlink
+COPY --from=cdi-application-build /src/guicedee-cdi-spi-jlink/target/maven-jlink/default /opt/java/openjdk
+COPY guicedee-cdi-spi/.env .env
+ENV GUICEDEE_DISCOVERY_MODE=spi
+ENTRYPOINT ["/opt/java/openjdk/bin/benchmark"]
+
+FROM guicedee-native-source AS guicedee-cdi-native-build
+COPY guicedee-cdi/pom.xml guicedee-cdi/pom.xml
+COPY guicedee-cdi/src/ guicedee-cdi/src/
+COPY guicedee-cdi-spi/pom.xml guicedee-cdi-spi/pom.xml
+COPY guicedee-cdi-spi/src/ guicedee-cdi-spi/src/
+COPY guicedee-cdi-native/ guicedee-cdi-native/
+RUN NATIVE_AUDIT=$NATIVE_AUDIT NATIVE_DESKTOP=$NATIVE_DESKTOP NATIVE_CLOUD_CONTROL_PLANE=$NATIVE_CLOUD_CONTROL_PLANE NATIVE_FULL_REFLECTION=$NATIVE_FULL_REFLECTION /opt/maven/bin/mvn -B -ntp -pl guicedee-cdi-native -am package -Pnative,cdi-config,cdi-native -Dguicedee.version=$GUICEDEE_VERSION -DskipTests
+
+FROM common-os AS guicedee-cdi-native
+COPY --from=guicedee-cdi-native-build /src/guicedee-cdi-native/target/application /app/application
+COPY --from=guicedee-cdi-native-build /src/guicedee-cdi-native/target/*.so /app/
+COPY --from=guicedee-cdi-native-build /src/guicedee-cdi-native/target/native-build-info.txt /app/native-build-info.txt
+COPY --from=guicedee-cdi-native-build /src/guicedee-cdi-native/target/native-build-statistics.json /app/native-build-statistics.json
+COPY guicedee-cdi-spi/.env .env
+ENV GUICEDEE_DISCOVERY_MODE=spi
+ENTRYPOINT ["/app/application"]

@@ -43,7 +43,7 @@ def stage(repository, applications):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repository', type=Path, default=Path.home()/'.m2/repository')
-    parser.add_argument('--applications', nargs='+', choices=['guicedee','guicedee-scan','guicedee-native'],
+    parser.add_argument('--applications', nargs='+', choices=['guicedee','guicedee-scan','guicedee-native','guicedee-cdi','guicedee-cdi-spi','guicedee-cdi-native'],
                         default=['guicedee','guicedee-scan'])
     args = parser.parse_args()
     stage(args.repository, args.applications)
