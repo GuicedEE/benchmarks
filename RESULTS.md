@@ -551,41 +551,41 @@ and query in all three applications. Readiness includes the database lifecycle; 
 response includes the committed graph. The graph precedes the detailed measurements below.
 
 <!-- BEGIN GENERATED: persistence -->
-Measured **2026-11-16**, **default JVM profile**, batch `20261116-133334`. **9 fresh starts / 126 passing checks**. Each start has 20 warmup reads and CRUD cycles, then 150 measured reads and 150 measured CRUD cycles. All samples are retained.
+Measured **2026-11-16**, **default JVM profile**, batch `20261116-165501`. **9 fresh starts / 126 passing checks**. Each start has 20 warmup reads and CRUD cycles, then 150 measured reads and 150 measured CRUD cycles. All samples are retained.
 
 ![PostgreSQL startup and transaction latency](docs/persistence.svg)
 
 | Application | Starts | DB-ready (s) | First transaction (ms) | Launch to committed graph (s) | Full startup min–max (s) | Peak charged memory (MiB) | Hibernate ORM |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE reactive stateless | 3 | 12.687 | 2498.04 | 15.025 | 14.599–15.229 | 228.58 | 7.4.15.Final |
-| Quarkus ORM / Narayana | 3 | 10.068 | 1810.11 | 12.180 | 11.632–12.224 | 222.59 | 7.4.9.Final |
-| Micronaut ORM / local transactions | 3 | 14.893 | 1901.60 | 16.794 | 15.803–16.978 | 242.57 | 7.4.10.Final |
+| GuicedEE reactive stateless | 3 | 12.757 | 2085.06 | 14.842 | 14.630–14.923 | 238.55 | 7.4.15.Final |
+| Quarkus ORM / Narayana | 3 | 10.221 | 1899.50 | 12.246 | 12.028–12.271 | 223.77 | 7.4.9.Final |
+| Micronaut ORM / local transactions | 3 | 15.107 | 1711.93 | 16.819 | 15.648–16.932 | 241.82 | 7.4.10.Final |
 
 | Operation | GuicedEE p50 (ms) | p95 | p99 | Quarkus p50 (ms) | p95 | p99 | Micronaut p50 (ms) | p95 | p99 | GuicedEE vs Quarkus | GuicedEE vs Micronaut |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Joined graph read | 2.41 | 69.32 | 90.72 | 2.31 | 62.66 | 84.68 | 2.46 | 79.00 | 88.00 | +4.7% | -1.7% |
-| Create 15 rows | 5.52 | 87.82 | 98.32 | 5.68 | 86.30 | 94.36 | 7.01 | 89.88 | 97.67 | -2.8% | -21.2% |
-| Update 15 rows | 6.67 | 91.71 | 99.22 | 6.15 | 88.04 | 97.47 | 8.34 | 93.99 | 100.49 | +8.5% | -20.0% |
-| Delete 15 rows | 5.74 | 90.07 | 98.24 | 5.23 | 79.54 | 97.20 | 6.44 | 93.38 | 98.22 | +9.8% | -10.8% |
-| Complete CRUD cycle | 80.31 | 193.88 | 206.47 | 80.07 | 171.95 | 203.72 | 95.77 | 193.43 | 273.56 | +0.3% | -16.1% |
+| Joined graph read | 2.53 | 80.61 | 90.40 | 2.36 | 76.67 | 84.71 | 2.70 | 73.65 | 88.00 | +7.6% | -6.0% |
+| Create 15 rows | 5.63 | 89.25 | 95.66 | 6.05 | 81.69 | 96.28 | 8.06 | 90.72 | 97.47 | -7.0% | -30.2% |
+| Update 15 rows | 6.20 | 91.49 | 96.61 | 6.43 | 87.86 | 95.96 | 8.31 | 86.81 | 96.38 | -3.5% | -25.4% |
+| Delete 15 rows | 5.85 | 90.36 | 94.99 | 5.37 | 85.09 | 94.94 | 7.19 | 91.50 | 97.37 | +8.9% | -18.6% |
+| Complete CRUD cycle | 81.33 | 188.01 | 204.11 | 81.12 | 151.06 | 215.16 | 96.77 | 193.34 | 209.88 | +0.3% | -16.0% |
 
 Per-start warm medians expose the variation within this small, CPU-capped cohort. No individual start is dropped.
 
 | Application | Start | Read p50 (ms) | Create p50 (ms) | Update p50 (ms) | Delete p50 (ms) | CRUD cycle p50 (ms) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| GuicedEE reactive stateless | 1 | 2.41 | 5.52 | 6.67 | 5.74 | 78.78 |
-| Quarkus ORM / Narayana | 1 | 2.44 | 5.85 | 6.22 | 5.23 | 81.82 |
-| Micronaut ORM / local transactions | 1 | 2.46 | 7.01 | 7.63 | 6.26 | 95.77 |
-| Micronaut ORM / local transactions | 2 | 2.58 | 7.69 | 8.34 | 6.85 | 94.96 |
-| Quarkus ORM / Narayana | 2 | 2.31 | 5.68 | 5.95 | 5.12 | 80.07 |
-| GuicedEE reactive stateless | 2 | 2.25 | 5.21 | 6.59 | 5.50 | 82.99 |
-| Quarkus ORM / Narayana | 3 | 2.30 | 5.51 | 6.15 | 5.35 | 79.08 |
-| Micronaut ORM / local transactions | 3 | 2.39 | 6.75 | 20.35 | 6.44 | 96.38 |
-| GuicedEE reactive stateless | 3 | 2.80 | 6.03 | 6.77 | 6.36 | 80.31 |
+| GuicedEE reactive stateless | 1 | 2.25 | 5.54 | 5.89 | 5.25 | 81.44 |
+| Quarkus ORM / Narayana | 1 | 2.34 | 6.05 | 6.26 | 5.25 | 83.24 |
+| Micronaut ORM / local transactions | 1 | 2.37 | 6.77 | 7.32 | 6.59 | 96.50 |
+| Micronaut ORM / local transactions | 2 | 3.26 | 8.56 | 13.32 | 8.49 | 99.05 |
+| Quarkus ORM / Narayana | 2 | 2.63 | 6.19 | 7.44 | 5.66 | 81.12 |
+| GuicedEE reactive stateless | 2 | 2.53 | 5.63 | 6.20 | 5.85 | 81.29 |
+| Quarkus ORM / Narayana | 3 | 2.36 | 5.83 | 6.43 | 5.37 | 74.70 |
+| Micronaut ORM / local transactions | 3 | 2.70 | 8.06 | 8.31 | 7.19 | 96.77 |
+| GuicedEE reactive stateless | 3 | 2.63 | 6.57 | 7.44 | 6.24 | 81.33 |
 
-Update p50 spans **6.59–6.77 ms** for GuicedEE and **5.95–6.22 ms** for Quarkus across starts. Every container records CPU throttling; these measurements do not separate database work from quota waits. Individual operation medians do not add up to the median of a complete CRUD cycle.
+Update p50 spans **5.89–7.44 ms** for GuicedEE and **6.26–7.44 ms** for Quarkus across starts. Every container records CPU throttling; these measurements do not separate database work from quota waits. Individual operation medians do not add up to the median of a complete CRUD cycle.
 
-Against Quarkus, GuicedEE's launch-to-commit median differs by **+23.4%**; its peak charged container memory differs by **+2.7%**. Against Micronaut, those differences are **-10.5%** and **-5.8%**. Negative differences mean less time or memory. Warm percentiles are medians of per-start percentiles. A CRUD cycle includes four HTTP requests, three completed write transactions and one read without an explicit transaction; its latency is not one transaction. Database memory is separate from the application memory figures.
+Against Quarkus, GuicedEE's launch-to-commit median differs by **+21.2%**; its peak charged container memory differs by **+6.6%**. Against Micronaut, those differences are **-11.8%** and **-1.4%**. Negative differences mean less time or memory. Warm percentiles are medians of per-start percentiles. A CRUD cycle includes four HTTP requests, three completed write transactions and one read without an explicit transaction; its latency is not one transaction. Database memory is separate from the application memory figures.
 
 All three full-JDK applications use the same immutable JDK base, schema, graph/query source and five-connection limit. The database runs separately at 2 CPU / 1 GiB with durable commit settings. Application limits are 250m CPU / 500 MiB. The persistence patterns are Quarkus managed JPA/Narayana, Micronaut managed JPA/local transactions and GuicedEE reactive stateless operations. This is not a distributed-transaction, saturation-throughput, native or jlink result.
 
@@ -593,7 +593,7 @@ All three full-JDK applications use the same immutable JDK base, schema, graph/q
 
 | Application | Immutable image |
 | --- | ---: |
-| GuicedEE reactive stateless | `sha256:04ca63b859ea0e578fd8e9957e79562160585efc144449b757ab565dfc6d67ac` |
+| GuicedEE reactive stateless | `sha256:d14c0f3597267352c15258adc1a928821e6bb820ed73efe6033b8dab6969a5a9` |
 | Quarkus ORM / Narayana | `sha256:0bc7159055535327cd5e298f12265717f1b36bca53ae9aff8dda5117977be753` |
 | Micronaut ORM / local transactions | `sha256:e72f031e28a1cb3ef439b739ac74950e997d1b970340b68b8dc0ec6a43a91d83` |
 

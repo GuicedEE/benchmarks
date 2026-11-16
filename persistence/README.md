@@ -76,6 +76,13 @@ the configured thread-context-loader precedence and observing context-loader cha
 on every lookup. Successful class lookups no longer create an exception stack trace.
 Custom class loaders and SPI resource ordering retain their normal fallback behavior.
 
+Hibernate's metadata adapter loads types without running their static initializers when
+using the standard class-loading service. Reflection can inspect a type without initializing
+it; construction and static member access still perform normal JVM initialization. Custom
+class-loading services keep their own resolution behavior, and service-provider loading is
+unchanged. This avoids initializing unrelated baseline types such as `BigDecimal` merely
+to register their metadata; applications that use those types still initialize them normally.
+
 ## Run
 
 Use the same JDK 25, Maven 4, Python and Docker prerequisites as the main suite. PostgreSQL
