@@ -10,6 +10,14 @@ own transaction interceptor and resource-local Hibernate transaction manager, pl
 Blocking operations run on Micronaut's blocking executor. This compares these application patterns;
 it does not isolate the transaction manager or compare distributed XA transactions.
 
+Stateless sessions avoid persistence-context tracking and automatic dirty checking.
+Reactive I/O avoids holding a thread while waiting for the database; its main advantage
+is scalability under concurrency. Neither removes Hibernate metadata initialization,
+SQL execution or commit costs, and neither guarantees the lowest sequential request
+latency. This suite measures that latency at a small CPU quota, rather than maximum
+concurrent throughput. See the [Hibernate Reactive reference](https://docs.hibernate.org/stable/reactive/reference/html_single/)
+for the distinction between reactive scalability and individual-request performance.
+
 | Project | Role |
 |---|---|
 | `model` | Shared Jakarta Persistence mappings, graph construction and joined read query; JPMS descriptor retained |
@@ -62,6 +70,11 @@ Enhanced entity interception uses Hibernate's existing superclass setup. Annotat
 units skip the legacy HBM binder when their collected XML binding list is empty.
 Nonempty XML bindings retain the complete mapping path; schema validation and transaction
 readiness remain part of startup.
+
+The Hibernate aggregate class loader visits each delegate once by identity, preserving
+the configured thread-context-loader precedence and observing context-loader changes
+on every lookup. Successful class lookups no longer create an exception stack trace.
+Custom class loaders and SPI resource ordering retain their normal fallback behavior.
 
 ## Run
 

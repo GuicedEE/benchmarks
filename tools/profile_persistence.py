@@ -51,6 +51,8 @@ def summarize(events, marks):
                 'com.guicedee.client.scopes.mutiny.CallScopeUniInterceptor.existingScoper',
                 'com.guicedee.client.scopes.mutiny.CallScopeUniInterceptor$ScopedUniSubscription.<init>',
                 'com.guicedee.client.IGuiceContext.loaderToSet',
+                'org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.getResources',
+                'org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass',
                 'com.guicedee.persistence.implementations.PersistenceDescriptorParser.parse',
                 'com.guicedee.modules.services.hibernate.scan.ClassGraphScanner.scan',
                 'com.guicedee.modules.services.hibernate.scan.ExplicitPersistenceScanner.scan',
@@ -71,9 +73,12 @@ def summarize(events, marks):
                 'com.guicedee.client.scopes.mutiny.CallScopeUniInterceptor.captureCallScope',
                 'com.guicedee.rest.pathing.OperationRegistry.handleRequest',
                 'org.hibernate.query.sqm.tree.select.SqmQuerySpec.containsCollectionFetches',
+                'org.hibernate.reactive.util.impl.CompletionStages.loop',
                 'org.hibernate.reactive.util.async.impl.AsyncTrampoline$TrampolineInternal.unroll']})
         phases[phase]['focusedExecutionSamples'] = {name:samples[name] for name in [
             'java.lang.ClassLoader.loadClass',
+            'org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.getResources',
+            'org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass',
             'org.hibernate.boot.internal.BootstrapContextImpl.createModelBuildingContext',
             'org.hibernate.models.internal.AnnotationDescriptorBuilding.extractAttributeDescriptors',
             'org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete',
