@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <parent><groupId>dev.guicedee.benchmarks</groupId><artifactId>service-comparison</artifactId><version>1.0-SNAPSHOT</version></parent>
+    <artifactId>comparison-guicedee-cdi-native</artifactId>
+    <dependencies>
+        <!-- The existing application JAR is used unchanged, including its module descriptor. -->
+        <dependency><groupId>dev.guicedee.benchmarks</groupId><artifactId>comparison-guicedee-cdi-spi</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.guicedee</groupId><artifactId>native-image</artifactId><version>${guicedee.version}</version></dependency>
+        <dependency><groupId>org.graalvm.sdk</groupId><artifactId>nativeimage</artifactId><version>25.0.4.1</version><scope>provided</scope></dependency>
+    </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/../quarkus-native/src/main/resources</directory>
+                <!-- GuicedEE retains Native Image's ServiceLoader feature. The explicit
+                     provider constructors compensate for Quarkus disabling that feature. -->
+                <excludes><exclude>META-INF/native-image/dev.guicedee.benchmarks/*/sdk-services/reflect-config.json</exclude></excludes>
+            </resource>
+            <resource><directory>${project.basedir}/../guicedee-native/src/main/resources</directory><excludes><exclude>**/guicedee-trace/**</exclude></excludes></resource>
+            <resource><directory>src/main/resources</directory></resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>dev.openjavaformat</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <configuration>
+                    <additionalSourceDirectories>
+                        <param>${project.basedir}/../quarkus-native/src/main/java</param>
+                    </additionalSourceDirectories>
+                </configuration>
+            </plugin>
+            <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- 2.6.0 uses shared Netty; old relocated Commerce substitutions have no target. -->
+                    <excludes><exclude>**/CommerceContentDecoder.java</exclude><exclude>**/CommerceJdkTls.java</exclude></excludes>
+                </configuration>
+            </plugin>
+            <plugin><groupId>org.codehaus.mojo</groupId><artifactId>build-helper-maven-plugin</artifactId><version>3.8.0</version>
+                <executions><execution><id>shared-sdk-native-compatibility</id><phase>generate-sources</phase><goals><goal>add-source</goal></goals>
+                    <configuration><sources><source>${project.basedir}/../quarkus-native/src/main/java</source></sources></configuration>
+                </execution></executions>
+            </plugin>
+            <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-dependency-plugin</artifactId>
+                <executions><execution><id>native-module-path</id><phase>prepare-package</phase><goals><goal>copy-dependencies</goal></goals>
+                    <configuration><includeScope>compile</includeScope><outputDirectory>${project.build.directory}/lib</outputDirectory></configuration>
+                </execution></executions>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles><profile><id>native</id><build><plugins>
+        <plugin><groupId>org.codehaus.mojo</groupId><artifactId>exec-maven-plugin</artifactId><version>3.6.4</version>
+            <executions><execution><id>native-executable</id><phase>package</phase><goals><goal>exec</goal></goals>
+                <configuration><executable>sh</executable><arguments><argument>${project.basedir}/build-native.sh</argument></arguments></configuration>
+            </execution></executions>
+        </plugin>
+    </plugins></build></profile></profiles>
+</project>

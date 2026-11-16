@@ -1,0 +1,269 @@
+{
+  "sourceImage": "sha256:df9360755c9b6cf73c2410dae26ed36e417c27f378ccb8ef484ccf286821321d",
+  "sdkValidationImage": "sha256:df9360755c9b6cf73c2410dae26ed36e417c27f378ccb8ef484ccf286821321d",
+  "sdkJars": [
+    {
+      "name": "com/google/firebase/firebase-admin/9.12.0/firebase-admin-9.12.0.jar",
+      "sha256": "52047eca2454ed10a95e107884f47cbbbf3c9a8833c74d59737096fb6516ff46"
+    },
+    {
+      "name": "com/commercetools/sdk/commercetools-sdk-java-api/20.4.0/commercetools-sdk-java-api-20.4.0.jar",
+      "sha256": "6e347d150e378ba58d01f79fb80e84e94f4a3c0b0fa45ec59512f25aae267c4b"
+    }
+  ],
+  "tracedSdkDependencies": [
+    {
+      "name": "tools/jackson/core/jackson-core/3.2.3/jackson-core-3.2.3.jar",
+      "sha256": "a0c17e7e665a5e95c82f5fb45c0fec2ae3dc556c80f0016452c9c84cd23f3817"
+    },
+    {
+      "name": "com/fasterxml/jackson/core/jackson-annotations/2.23/jackson-annotations-2.23.jar",
+      "sha256": "e5b60c3088e0887b290ff9226394354589a1dad583743944b7f5538661056b4c"
+    },
+    {
+      "name": "com/google/firebase/firebase-admin/9.12.0/firebase-admin-9.12.0.jar",
+      "sha256": "52047eca2454ed10a95e107884f47cbbbf3c9a8833c74d59737096fb6516ff46"
+    },
+    {
+      "name": "com/google/auth/google-auth-library-oauth2-http/1.49.0/google-auth-library-oauth2-http-1.49.0.jar",
+      "sha256": "1aed82b028537e7cb38815df5b5ee10fe3f2203a742cfbc417ae51e9a4315c47"
+    },
+    {
+      "name": "com/google/auto/value/auto-value-annotations/1.11.0/auto-value-annotations-1.11.0.jar",
+      "sha256": "5a055ce4255333b3346e1a8703da5bf8ff049532286fdcd31712d624abe111dd"
+    },
+    {
+      "name": "com/google/auth/google-auth-library-credentials/1.57.0/google-auth-library-credentials-1.57.0.jar",
+      "sha256": "fef8ff77d1744ba602ab03f4f433b028cf5d5ca94ec16d40995108a8ff9a0b3a"
+    },
+    {
+      "name": "com/google/http-client/google-http-client-gson/2.2.0/google-http-client-gson-2.2.0.jar",
+      "sha256": "3242dc7e91d355d118a355c5d586271bedfeb84c3f2f6fa2f3b9b42503a4dc59"
+    },
+    {
+      "name": "com/google/errorprone/error_prone_annotations/2.48.0/error_prone_annotations-2.48.0.jar",
+      "sha256": "b49c5c958316ed67a09c699dda9aa749caf434d51d863dea599ef36a49b9c855"
+    },
+    {
+      "name": "com/google/code/gson/gson/2.14.0/gson-2.14.0.jar",
+      "sha256": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f"
+    },
+    {
+      "name": "com/google/api-client/google-api-client/2.9.2/google-api-client-2.9.2.jar",
+      "sha256": "04b6b433367e770541c1912a5a9820d00e0697b71490e56beccbd120e5949e07"
+    },
+    {
+      "name": "com/google/oauth-client/google-oauth-client/1.39.0/google-oauth-client-1.39.0.jar",
+      "sha256": "27fc61ee2d526e33d31350b5ea383091c0879345e261f9b2e6fcc97a20c86f88"
+    },
+    {
+      "name": "com/google/http-client/google-http-client-apache-v2/2.2.0/google-http-client-apache-v2-2.2.0.jar",
+      "sha256": "aa62efa466a08426bfdf1dfac22b76738075057aa09f44324a569585a92c1441"
+    },
+    {
+      "name": "com/google/api-client/google-api-client-gson/2.9.2/google-api-client-gson-2.9.2.jar",
+      "sha256": "d1988abc378a471abb49258d016d1cf0aa5410e3a9e641c85bfc66625a1e2904"
+    },
+    {
+      "name": "com/google/http-client/google-http-client/2.2.0/google-http-client-2.2.0.jar",
+      "sha256": "36cea7079c550aeb12fa7366a1ae65d503eaf15bcfc4f50124fde2a8f784e568"
+    },
+    {
+      "name": "com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar",
+      "sha256": "88241573467ddca44ffd4d74aa04c2bbfd11bf7c17e0c342c94c9de7a70a7c64"
+    },
+    {
+      "name": "com/google/api/api-common/2.73.0/api-common-2.73.0.jar",
+      "sha256": "23783188616b1c7fbf824ef3d35e93259b502add3525f6cd6ac76976153ef4a5"
+    },
+    {
+      "name": "com/google/cloud/google-cloud-storage/2.78.0/google-cloud-storage-2.78.0.jar",
+      "sha256": "c67a74b42b7c09dac34100b3dd0bf6cabf397fe6b11069f55c1be623e1ce8d27"
+    },
+    {
+      "name": "com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar",
+      "sha256": "cbfc3906b19b8f55dd7cfd6dfe0aa4532e834250d7f080bd8d211a3e246b59cb"
+    },
+    {
+      "name": "com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar",
+      "sha256": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99"
+    },
+    {
+      "name": "com/google/http-client/google-http-client-jackson2/2.2.0/google-http-client-jackson2-2.2.0.jar",
+      "sha256": "a31b42bba74a1b83a29cd3a816b00f26096aa808d2581831e575b94fa9aec2c8"
+    },
+    {
+      "name": "com/google/apis/google-api-services-storage/v1-rev20260524-2.0.0/google-api-services-storage-v1-rev20260524-2.0.0.jar",
+      "sha256": "a00a1466c80f21318d134d77382082f2ffbad3fef537d1cb22ff9a913c9d95d9"
+    },
+    {
+      "name": "com/google/cloud/google-cloud-core/2.75.0/google-cloud-core-2.75.0.jar",
+      "sha256": "c17528e514c5f9d48b45f3d9f1b616f4c356acc4d71d925c9fd33729e7642abd"
+    },
+    {
+      "name": "com/google/cloud/google-cloud-core-http/2.80.0/google-cloud-core-http-2.80.0.jar",
+      "sha256": "bb7023302eaaa81a09f22b3958ee47c32e665a2040729079413bc4ea422bed78"
+    },
+    {
+      "name": "com/google/http-client/google-http-client-appengine/2.2.0/google-http-client-appengine-2.2.0.jar",
+      "sha256": "620fe5bc633acf62446cbe483664fc3691695bafa706c35f1238a788fe201ac6"
+    },
+    {
+      "name": "com/google/api/gax-httpjson/2.90.0/gax-httpjson-2.90.0.jar",
+      "sha256": "8cbb30d590e6e0803ecd262609259753e28c586d490e7e12aa6a36aa1167ba79"
+    },
+    {
+      "name": "com/google/cloud/google-cloud-core-grpc/2.80.0/google-cloud-core-grpc-2.80.0.jar",
+      "sha256": "354e3709f8e366b9b7a26085c4bc21a154bb5a3a6a88908aba764d36de0d9e84"
+    },
+    {
+      "name": "com/google/api/gax/2.82.0/gax-2.82.0.jar",
+      "sha256": "e1fa5bb5f942989604017e203902403a8f8a19a2e1cd5776e3649c13082fa13a"
+    },
+    {
+      "name": "com/google/api/gax-grpc/2.82.0/gax-grpc-2.82.0.jar",
+      "sha256": "077aece3f053b2d9037166c5ea9686a4925bc8d215b26921db3e6113937c5e0b"
+    },
+    {
+      "name": "com/google/api/grpc/proto-google-iam-v1/1.76.0/proto-google-iam-v1-1.76.0.jar",
+      "sha256": "d4176ac1ba1bc4a38ad9a4ba2e62cbf5138ddba54984f8e7fc1d6d517278e8cb"
+    },
+    {
+      "name": "com/google/protobuf/protobuf-java/4.34.1/protobuf-java-4.34.1.jar",
+      "sha256": "ae0459030b54a6f3058ad349aa01fc2edcbb2d4a84b73699675bbd125df2e96d"
+    },
+    {
+      "name": "com/google/protobuf/protobuf-java-util/4.34.1/protobuf-java-util-4.34.1.jar",
+      "sha256": "5d82fa744a6935bef1fce329e886b03d26c46389db7e3f5cd8363bc795908580"
+    },
+    {
+      "name": "com/google/android/annotations/4.1.1.4/annotations-4.1.1.4.jar",
+      "sha256": "ba734e1e84c09d615af6a09d33034b4f0442f8772dec120efb376d86a565ae15"
+    },
+    {
+      "name": "com/google/api/grpc/proto-google-common-protos/2.81.0/proto-google-common-protos-2.81.0.jar",
+      "sha256": "b5137e9a6371c2211e12b8d712ebe7aff0b470d7576900e8311bbe80a1fa34a4"
+    },
+    {
+      "name": "com/google/api/grpc/proto-google-cloud-storage-v2/2.78.0/proto-google-cloud-storage-v2-2.78.0.jar",
+      "sha256": "f7db24e9fcf2e4256b7393a2da0f3b91f6b82514b75bbb945b2d10f260f98f44"
+    },
+    {
+      "name": "com/google/api/grpc/grpc-google-cloud-storage-v2/2.78.0/grpc-google-cloud-storage-v2-2.78.0.jar",
+      "sha256": "fb4b0ae3fefc7404c80943502e5a21534e6997861b7b9078e106432d37627f72"
+    },
+    {
+      "name": "com/google/api/grpc/gapic-google-cloud-storage-v2/2.78.0/gapic-google-cloud-storage-v2-2.78.0.jar",
+      "sha256": "b71cfdc8b17fa5adf345013cba50c888b5957fc2cbfe10a27eabc02d66976629"
+    },
+    {
+      "name": "com/google/cloud/opentelemetry/exporter-metrics/0.33.0/exporter-metrics-0.33.0.jar",
+      "sha256": "7a9ab87683a97357a95389ff3cec9684785648076f9b158d44da3becb93bb036"
+    },
+    {
+      "name": "com/google/cloud/google-cloud-monitoring/3.103.0/google-cloud-monitoring-3.103.0.jar",
+      "sha256": "c2de8f35e96ce0800e2bb489205cec30f4418fcb51b2dde25141a4961b051afc"
+    },
+    {
+      "name": "com/google/api/grpc/proto-google-cloud-monitoring-v3/3.103.0/proto-google-cloud-monitoring-v3-3.103.0.jar",
+      "sha256": "7c91c9f8d68502ab244ccb56979cbbb3b039d19df92cab680f871d0a22767da8"
+    },
+    {
+      "name": "com/google/cloud/opentelemetry/shared-resourcemapping/0.33.0/shared-resourcemapping-0.33.0.jar",
+      "sha256": "eea9a3e11db783626cc15dd1835c1ed09f53b70a1fca8c58bf723ce813e9f843"
+    },
+    {
+      "name": "com/google/cloud/opentelemetry/detector-resources-support/0.31.0/detector-resources-support-0.31.0.jar",
+      "sha256": "6252d6a872563933a3f5b522d7e59bd31576ddfd6ed4d1d43d671408185c81ad"
+    },
+    {
+      "name": "com/google/re2j/re2j/1.8/re2j-1.8.jar",
+      "sha256": "7b52c72156dd7f98b3237a5b35c1d34fba381b21048c89208913ad80a45dfbd7"
+    },
+    {
+      "name": "com/google/cloud/google-cloud-firestore/3.52.0/google-cloud-firestore-3.52.0.jar",
+      "sha256": "8594c9332a11cdb0eb7787638ed779fa966b0f367f8fad8e5c7c2bfdcbf5aab2"
+    },
+    {
+      "name": "com/google/api/grpc/proto-google-cloud-firestore-v1/3.52.0/proto-google-cloud-firestore-v1-3.52.0.jar",
+      "sha256": "7013214129aa015523abb86ff96eacb006af4a18db04e873b841da780339ccb8"
+    },
+    {
+      "name": "com/google/cloud/proto-google-cloud-firestore-bundle-v1/3.52.0/proto-google-cloud-firestore-bundle-v1-3.52.0.jar",
+      "sha256": "5347691e496bd9ae4bf848d30ae5c14ebbc6ef7f27484434f279ef9fc540b5bc"
+    },
+    {
+      "name": "com/google/guava/guava/33.7.2-jre/guava-33.7.2-jre.jar",
+      "sha256": "b530942257fb935f8b2cfaa5f8eb5bd59c555fd8e8d01b8ce98912e077ea606c"
+    },
+    {
+      "name": "com/commercetools/sdk/commercetools-sdk-java-api/20.4.0/commercetools-sdk-java-api-20.4.0.jar",
+      "sha256": "6e347d150e378ba58d01f79fb80e84e94f4a3c0b0fa45ec59512f25aae267c4b"
+    },
+    {
+      "name": "com/commercetools/sdk/rmf-java-base/20.4.0/rmf-java-base-20.4.0.jar",
+      "sha256": "88bdf49690f144834695981d4c11104efa9c5a4b9aafb2e8b10c0bef55b3f712"
+    },
+    {
+      "name": "com/commercetools/sdk/commercetools-money/20.4.0/commercetools-money-20.4.0.jar",
+      "sha256": "85aa03a1c9eb6e663ab9f02760e2b6f1d89a081d5b8eaf915935ad527e47622d"
+    },
+    {
+      "name": "javax/money/money-api/1.1/money-api-1.1.jar",
+      "sha256": "3eda6a1379b57bdcd92f1edd39a47b945fea481cb38744335bee2adf218e4b17"
+    },
+    {
+      "name": "org/javamoney/moneta/moneta-core/1.4.5/moneta-core-1.4.5.jar",
+      "sha256": "959efe4411f2bbddc93ed83ead599e49ee16964b32687951745c0dda8cf99fa7"
+    },
+    {
+      "name": "tools/jackson/core/jackson-databind/3.2.3/jackson-databind-3.2.3.jar",
+      "sha256": "235b72436af983857e44efa42449f4f0a2c571e69d6c5d9dd1253ae7d192dcf2"
+    },
+    {
+      "name": "com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar",
+      "sha256": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7"
+    },
+    {
+      "name": "com/commercetools/sdk/commercetools-http-client/20.4.0/commercetools-http-client-20.4.0.jar",
+      "sha256": "c6deada2fac53b8ea6523dbda77597b128006674616f140f04df23264c6d1aa3"
+    },
+    {
+      "name": "com/commercetools/sdk/commercetools-async-http-client/20.4.0/commercetools-async-http-client-20.4.0.jar",
+      "sha256": "fd928c1ed197314fb568615c0a02318483f64c5eaca61e7a13b4461fd68ee323"
+    },
+    {
+      "name": "org/asynchttpclient/async-http-client/2.16.1/async-http-client-2.16.1.jar",
+      "sha256": "9e76dd36d4ef6e13e81e2478f4e18723cabda0fe2e3b7ad6a4f41990969a7c90"
+    },
+    {
+      "name": "org/asynchttpclient/async-http-client-netty-utils/2.16.1/async-http-client-netty-utils-2.16.1.jar",
+      "sha256": "5dc30eb034ec1daea2578e3ecf861ee3212f8693170f7da53cc3503a9ff44971"
+    }
+  ],
+  "allCapabilitiesPassed": true,
+  "agentSha256": "6a42aae41f2c615a17415e1c53672f6d57cc8444d88c914d440dded63566e8c4",
+  "traceSha256": "1a32931a3d3fc31d6f877ce449d95fc7d5e6c1a0d40ec2f1d9e6ffd7b1a3dd8b",
+  "included": {
+    "reflection": 4582,
+    "resources": 9
+  },
+  "declaredSdkProviders": {
+    "META-INF/services/io.vrap.rmf.base.client.utils.json.ModuleSupplier": [
+      "com.commercetools.api.json.ApiModuleSupplier"
+    ],
+    "META-INF/services/com.commercetools.money.MonetaryProvider": [
+      "com.commercetools.money.FastMoneyProvider"
+    ],
+    "META-INF/services/io.vrap.rmf.base.client.ExecutorHttpClientSupplier": [
+      "com.commercetools.http.asynchttp.AsyncHttpClientSupplier"
+    ],
+    "META-INF/services/io.vrap.rmf.base.client.HttpClientSupplier": [
+      "com.commercetools.http.asynchttp.AsyncHttpClientSupplier"
+    ],
+    "META-INF/services/io.vrap.rmf.base.client.SolutionInfo": [
+      "com.commercetools.http.asynchttp.AsyncHttpClientSolutionInfo"
+    ]
+  },
+  "scope": "Observed upstream commercetools, AsyncHttpClient, Jackson 3 and money types/resources, plus SDK-declared service providers; observed Firebase/auth/API-client/Firestore reflection; no GuicedEE wrapper metadata"
+}

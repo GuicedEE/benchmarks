@@ -1,0 +1,35 @@
+{
+  "traceSha256": "80df0aa5023156614cafe9389f7c60030192e23abd02882377074d30a39998a7",
+  "metadataSha256": "eb916f5c55383d4868b230175e7b5b71d9a935d1cfc9e2d000552f668b913358",
+  "sdkJars": [
+    {
+      "name": "firebase-admin-2.6.0.jar",
+      "sha256": "65b58f8774fbde8ebb4be0f23a6fde9a9f137433946599a1fa84db150c4750be"
+    },
+    {
+      "name": "commercetools-2.6.0.jar",
+      "sha256": "d70a9311745879fde60c35bfdb358e5189530e0080c08f36c60d0182c63c774d"
+    }
+  ],
+  "frameworkJars": [
+    {
+      "path": "com/guicedee/modules/services/guice/2.6.0/guice-2.6.0.jar",
+      "sha256": "3fc29b15fe07be5c988cff4717da3148210610fae1d78ce14568ccd8039da29b"
+    },
+    {
+      "path": "com/guicedee/native-image/2.6.0/native-image-2.6.0.jar",
+      "sha256": "4015422628d55b79d9a339a8c1dba520639f2d7549aac9cc3320c4e58c876432"
+    },
+    {
+      "path": "com/guicedee/openapi/2.6.0/openapi-2.6.0.jar",
+      "sha256": "94dde72fe71392688d76d05e693caf52862130c6b78b0524488eef4b8ff55414"
+    },
+    {
+      "path": "com/guicedee/swagger-ui/2.6.0/swagger-ui-2.6.0.jar",
+      "sha256": "bf94b011e7eb1ac0ef7bc4635f01340785f57a23b52020ff94bb0c3dd7a64068"
+    }
+  ],
+  "capabilityCount": 16,
+  "allCapabilitiesPassed": true,
+  "agentSha256": "6a42aae41f2c615a17415e1c53672f6d57cc8444d88c914d440dded63566e8c4"
+}
